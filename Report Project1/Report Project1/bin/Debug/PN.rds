@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RptDataSource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="PN">
+  <ConnectionProperties>
+    <Extension>SQL</Extension>
+    <ConnectString>Data Source=GEA-SRVDATA\SQLSERVER2008;Initial Catalog=Personal_Nomina</ConnectString>
+  </ConnectionProperties>
+  <DataSourceID>3b4a90c0-fe59-496d-bbb9-36db88b0a966</DataSourceID>
+</RptDataSource>

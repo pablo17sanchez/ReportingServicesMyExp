@@ -1,0 +1,567 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2005/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <DataSources>
+    <DataSource Name="DeployDS">
+      <rd:DataSourceID>a12840ab-36ae-433f-be71-6e8e07c1633a</rd:DataSourceID>
+      <DataSourceReference>DeployDS</DataSourceReference>
+    </DataSource>
+  </DataSources>
+  <InteractiveHeight>11in</InteractiveHeight>
+  <ReportParameters>
+    <ReportParameter Name="aFecha">
+      <DataType>DateTime</DataType>
+      <Prompt>Fecha Desde : </Prompt>
+    </ReportParameter>
+    <ReportParameter Name="iFecha">
+      <DataType>DateTime</DataType>
+      <Prompt>Fecha Hasta: </Prompt>
+    </ReportParameter>
+    <ReportParameter Name="iArticulo">
+      <DataType>String</DataType>
+      <Prompt>Articulo</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Localidad">
+      <DataType>String</DataType>
+      <Prompt>Localidad</Prompt>
+      <ValidValues>
+        <ParameterValues>
+          <ParameterValue>
+            <Value>SANISIDRO</Value>
+          </ParameterValue>
+          <ParameterValue>
+            <Value>ROMANA</Value>
+          </ParameterValue>
+          <ParameterValue>
+            <Value>BAVARO</Value>
+          </ParameterValue>
+        </ParameterValues>
+      </ValidValues>
+    </ReportParameter>
+  </ReportParameters>
+  <rd:DrawGrid>true</rd:DrawGrid>
+  <InteractiveWidth>8.5in</InteractiveWidth>
+  <rd:GridSpacing>0.25cm</rd:GridSpacing>
+  <rd:SnapToGrid>true</rd:SnapToGrid>
+  <RightMargin>2.5cm</RightMargin>
+  <LeftMargin>2.5cm</LeftMargin>
+  <PageHeader>
+    <PrintOnFirstPage>true</PrintOnFirstPage>
+    <ReportItems>
+      <Textbox Name="textbox11">
+        <rd:DefaultName>textbox11</rd:DefaultName>
+        <Top>1cm</Top>
+        <Width>6cm</Width>
+        <Style>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+        <ZIndex>1</ZIndex>
+        <CanGrow>true</CanGrow>
+        <Left>16.75cm</Left>
+        <Height>0.74074cm</Height>
+        <Value>=now()</Value>
+      </Textbox>
+      <Textbox Name="textbox1">
+        <rd:DefaultName>textbox1</rd:DefaultName>
+        <Width>22.75cm</Width>
+        <Style>
+          <FontFamily>Tahoma</FontFamily>
+          <FontSize>18pt</FontSize>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+        <CanGrow>true</CanGrow>
+        <Height>0.8381cm</Height>
+        <Value>Ventas - Gráfico de Ventas x Producto x Canal de Servicio x Localidad</Value>
+      </Textbox>
+    </ReportItems>
+    <Height>1.99074cm</Height>
+    <PrintOnLastPage>true</PrintOnLastPage>
+  </PageHeader>
+  <BottomMargin>2.5cm</BottomMargin>
+  <rd:ReportID>ba77e46f-d424-44b9-a8eb-97846ef37164</rd:ReportID>
+  <PageWidth>21cm</PageWidth>
+  <DataSets>
+    <DataSet Name="VentasGEASA">
+      <Fields>
+        <Field Name="NumeroCliente">
+          <DataField>NumeroCliente</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="NombreCliente">
+          <DataField>NombreCliente</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="NumeroArticulo">
+          <DataField>NumeroArticulo</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DescArticulo">
+          <DataField>DescArticulo</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Cantidad">
+          <DataField>Cantidad</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="PrecioUnitario">
+          <DataField>PrecioUnitario</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="Monto">
+          <DataField>Monto</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="FechaDoc">
+          <DataField>FechaDoc</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="CanaldeServicio">
+          <DataField>CanaldeServicio</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Localidad">
+          <DataField>Localidad</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DiaMes">
+          <Value>=Day(Fields!FechaDoc.Value)</Value>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>DeployDS</DataSourceName>
+        <CommandText>select rm.custnmbr[NumeroCliente],rm.Custname[NombreCliente],rtrim(sop.itemnmbr)[NumeroArticulo],rtrim(sop.itemdesc)[DescArticulo],sum(sop.quantity)[Cantidad],sop.unitprce[PrecioUnitario],sum(sop.xtndprce)[Monto],docdate[FechaDoc],case rm.custclas when 'Distribuidor' Then 'Venta de Distriuidor' else case sop.docid When 'PALMFACTURA' Then 'Venta Ranchera' When 'MANUAL' Then 'Venta Ranchera'  else 'Venta en Planta' end end [CanaldeServicio] ,sop.locncode[Localidad] from rm00101 rm join (select a.voidstts,a.custnmbr,b.soptype,b.sopnumbe,b.itemnmbr,b.itemdesc,b.quantity,b.unitprce,b.xtndprce,a.docdate,a.docid,a.locncode from sop10100 a join sop10200 b on 
+a.sopnumbe = b.sopnumbe
+where a.soptype = 3 and voidstts = 0
+union 
+select c.voidstts,c.custnmbr,d.soptype,D.sopnumbe,d.itemnmbr,d.itemdesc,d.quantity,d.unitprce,d.xtndprce,c.docdate,c.docid,c.locncode from sop30200 c join sop30300 d on 
+c.sopnumbe = d.sopnumbe
+where c.soptype = 3 and voidstts = 0 ) sop on rm.custnmbr = sop.custnmbr
+where docdate between @aFecha  and @iFecha and sop.itemnmbr = @iArticulo and sop.locncode = @Localidad
+group by rm.custnmbr,rm.Custname,sop.itemnmbr,sop.itemdesc,sop.unitprce,docdate, rm.custclas,sop.docid,sop.locncode</CommandText>
+        <QueryParameters>
+          <QueryParameter Name="@aFecha">
+            <Value>=Parameters!aFecha.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@iFecha">
+            <Value>=Parameters!iFecha.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@iArticulo">
+            <Value>=Parameters!iArticulo.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@Localidad">
+            <Value>=Parameters!Localidad.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+      </Query>
+    </DataSet>
+  </DataSets>
+  <Width>29.75cm</Width>
+  <Body>
+    <ColumnSpacing>1cm</ColumnSpacing>
+    <ReportItems>
+      <Textbox Name="textbox2">
+        <rd:DefaultName>textbox2</rd:DefaultName>
+        <Top>1cm</Top>
+        <Width>19.75cm</Width>
+        <Style>
+          <FontWeight>700</FontWeight>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+        <ZIndex>2</ZIndex>
+        <CanGrow>true</CanGrow>
+        <Left>0.25cm</Left>
+        <Height>1.00529cm</Height>
+        <Value>="Fecha Desde:  "&amp;Parameters!aFecha.Value &amp;"     " &amp;"Fecha Hasta:  "&amp;Parameters!iFecha.Value &amp;"   "&amp; Parameters!iArticulo.Value &amp;"  "&amp; Parameters!Localidad.Value</Value>
+      </Textbox>
+      <Chart Name="chart1">
+        <Legend>
+          <Visible>true</Visible>
+          <Style>
+            <BorderStyle>
+              <Default>Solid</Default>
+            </BorderStyle>
+          </Style>
+          <Position>RightCenter</Position>
+        </Legend>
+        <CategoryAxis>
+          <Axis>
+            <Title />
+            <MajorGridLines>
+              <Style>
+                <BorderStyle>
+                  <Default>Solid</Default>
+                </BorderStyle>
+              </Style>
+            </MajorGridLines>
+            <MinorGridLines>
+              <Style>
+                <BorderStyle>
+                  <Default>Solid</Default>
+                </BorderStyle>
+              </Style>
+            </MinorGridLines>
+            <MajorTickMarks>Outside</MajorTickMarks>
+            <Min>0</Min>
+            <Visible>true</Visible>
+          </Axis>
+        </CategoryAxis>
+        <ZIndex>1</ZIndex>
+        <DataSetName>VentasGEASA</DataSetName>
+        <PlotArea>
+          <Style>
+            <BackgroundColor>LightGrey</BackgroundColor>
+            <BorderStyle>
+              <Default>Solid</Default>
+            </BorderStyle>
+          </Style>
+        </PlotArea>
+        <ThreeDProperties>
+          <Rotation>30</Rotation>
+          <Inclination>30</Inclination>
+          <Shading>Simple</Shading>
+          <WallThickness>50</WallThickness>
+        </ThreeDProperties>
+        <PointWidth>0</PointWidth>
+        <SeriesGroupings>
+          <SeriesGrouping>
+            <DynamicSeries>
+              <Grouping Name="chart1_SeriesGroup1">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!CanaldeServicio.Value</GroupExpression>
+                </GroupExpressions>
+              </Grouping>
+              <Label>=Fields!CanaldeServicio.Value</Label>
+            </DynamicSeries>
+          </SeriesGrouping>
+        </SeriesGroupings>
+        <Top>6.75cm</Top>
+        <Subtype>Plain</Subtype>
+        <ValueAxis>
+          <Axis>
+            <Title />
+            <MajorGridLines>
+              <ShowGridLines>true</ShowGridLines>
+              <Style>
+                <BorderStyle>
+                  <Default>Solid</Default>
+                </BorderStyle>
+              </Style>
+            </MajorGridLines>
+            <MinorGridLines>
+              <Style>
+                <BorderStyle>
+                  <Default>Solid</Default>
+                </BorderStyle>
+              </Style>
+            </MinorGridLines>
+            <MajorTickMarks>Outside</MajorTickMarks>
+            <Min>0</Min>
+            <Margin>true</Margin>
+            <Visible>true</Visible>
+            <Scalar>true</Scalar>
+          </Axis>
+        </ValueAxis>
+        <Type>Column</Type>
+        <CategoryGroupings>
+          <CategoryGrouping>
+            <DynamicCategories>
+              <Grouping Name="chart1_DiaMes">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!DiaMes.Value</GroupExpression>
+                </GroupExpressions>
+              </Grouping>
+              <Sorting>
+                <SortBy>
+                  <SortExpression>=Fields!DiaMes.Value</SortExpression>
+                  <Direction>Ascending</Direction>
+                </SortBy>
+              </Sorting>
+              <Label>=Fields!DiaMes.Value</Label>
+            </DynamicCategories>
+          </CategoryGrouping>
+          <CategoryGrouping>
+            <DynamicCategories>
+              <Grouping Name="chart1_CategoryGroup1">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!NumeroArticulo.Value</GroupExpression>
+                </GroupExpressions>
+              </Grouping>
+              <Label>=Fields!NumeroArticulo.Value</Label>
+            </DynamicCategories>
+          </CategoryGrouping>
+        </CategoryGroupings>
+        <Palette>Default</Palette>
+        <ChartData>
+          <ChartSeries>
+            <DataPoints>
+              <DataPoint>
+                <DataValues>
+                  <DataValue>
+                    <Value>=Sum(Fields!Cantidad.Value)</Value>
+                  </DataValue>
+                </DataValues>
+                <DataLabel>
+                  <Style>
+                    <Format>N0</Format>
+                  </Style>
+                  <Value>=sum(Fields!Cantidad.Value)</Value>
+                  <Visible>true</Visible>
+                </DataLabel>
+                <Marker>
+                  <Size>6pt</Size>
+                </Marker>
+              </DataPoint>
+            </DataPoints>
+          </ChartSeries>
+        </ChartData>
+        <Style>
+          <BackgroundColor>White</BackgroundColor>
+        </Style>
+        <Title />
+      </Chart>
+      <Matrix Name="matrix1">
+        <MatrixColumns>
+          <MatrixColumn>
+            <Width>3.25cm</Width>
+          </MatrixColumn>
+        </MatrixColumns>
+        <DataSetName>VentasGEASA</DataSetName>
+        <RowGroupings>
+          <RowGrouping>
+            <Width>4.75cm</Width>
+            <DynamicRows>
+              <Grouping Name="matrix1_NumeroArticulo">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!NumeroArticulo.Value</GroupExpression>
+                </GroupExpressions>
+              </Grouping>
+              <Subtotal>
+                <ReportItems>
+                  <Textbox Name="textbox37">
+                    <rd:DefaultName>textbox37</rd:DefaultName>
+                    <Style>
+                      <FontSize>9pt</FontSize>
+                      <FontWeight>700</FontWeight>
+                      <TextAlign>Right</TextAlign>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingRight>2pt</PaddingRight>
+                      <PaddingTop>2pt</PaddingTop>
+                      <PaddingBottom>2pt</PaddingBottom>
+                    </Style>
+                    <ZIndex>1</ZIndex>
+                    <CanGrow>true</CanGrow>
+                    <Value>Total General</Value>
+                  </Textbox>
+                </ReportItems>
+              </Subtotal>
+              <ReportItems>
+                <Textbox Name="NumeroArticulo_1">
+                  <rd:DefaultName>NumeroArticulo_1</rd:DefaultName>
+                  <Style>
+                    <FontSize>9pt</FontSize>
+                    <FontWeight>700</FontWeight>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                  <ZIndex>4</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Value>=Fields!NumeroArticulo.Value &amp;" "&amp;Fields!NumeroArticulo.Value</Value>
+                </Textbox>
+              </ReportItems>
+            </DynamicRows>
+          </RowGrouping>
+          <RowGrouping>
+            <Width>4cm</Width>
+            <DynamicRows>
+              <Grouping Name="matrix1_RowGroup1">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!CanaldeServicio.Value</GroupExpression>
+                </GroupExpressions>
+              </Grouping>
+              <Subtotal>
+                <ReportItems>
+                  <Textbox Name="textbox38">
+                    <rd:DefaultName>textbox38</rd:DefaultName>
+                    <Style>
+                      <BackgroundColor>LightGrey</BackgroundColor>
+                      <FontSize>14pt</FontSize>
+                      <FontWeight>700</FontWeight>
+                      <TextAlign>Right</TextAlign>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingRight>2pt</PaddingRight>
+                      <PaddingTop>2pt</PaddingTop>
+                      <PaddingBottom>2pt</PaddingBottom>
+                    </Style>
+                    <CanGrow>true</CanGrow>
+                    <Value>Total</Value>
+                  </Textbox>
+                </ReportItems>
+              </Subtotal>
+              <ReportItems>
+                <Textbox Name="CanaldeServicio_1">
+                  <rd:DefaultName>CanaldeServicio_1</rd:DefaultName>
+                  <Style>
+                    <FontSize>9pt</FontSize>
+                    <FontWeight>700</FontWeight>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                  <ZIndex>3</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Value>=Fields!CanaldeServicio.Value</Value>
+                </Textbox>
+              </ReportItems>
+            </DynamicRows>
+          </RowGrouping>
+        </RowGroupings>
+        <Top>2.25cm</Top>
+        <ColumnGroupings>
+          <ColumnGrouping>
+            <Height>0.63492cm</Height>
+            <DynamicColumns>
+              <Grouping Name="matrix1_Localidad">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!Localidad.Value</GroupExpression>
+                </GroupExpressions>
+              </Grouping>
+              <ReportItems>
+                <Textbox Name="Localidad">
+                  <rd:DefaultName>Localidad</rd:DefaultName>
+                  <Style>
+                    <BackgroundColor>CornflowerBlue</BackgroundColor>
+                    <FontWeight>700</FontWeight>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                  <ZIndex>7</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Value>=Fields!Localidad.Value</Value>
+                </Textbox>
+              </ReportItems>
+            </DynamicColumns>
+          </ColumnGrouping>
+          <ColumnGrouping>
+            <Height>0.63492cm</Height>
+            <DynamicColumns>
+              <Grouping Name="matrix1_DiaMes">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!DiaMes.Value</GroupExpression>
+                </GroupExpressions>
+              </Grouping>
+              <Sorting>
+                <SortBy>
+                  <SortExpression>=Fields!DiaMes.Value</SortExpression>
+                  <Direction>Ascending</Direction>
+                </SortBy>
+              </Sorting>
+              <ReportItems>
+                <Textbox Name="DiaMes">
+                  <rd:DefaultName>DiaMes</rd:DefaultName>
+                  <Style>
+                    <BackgroundColor>CornflowerBlue</BackgroundColor>
+                    <FontWeight>700</FontWeight>
+                    <TextAlign>Center</TextAlign>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                  <ZIndex>6</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Value>=Fields!DiaMes.Value</Value>
+                </Textbox>
+              </ReportItems>
+            </DynamicColumns>
+          </ColumnGrouping>
+          <ColumnGrouping>
+            <Height>0.63492cm</Height>
+            <StaticColumns>
+              <StaticColumn>
+                <ReportItems>
+                  <Textbox Name="textbox35">
+                    <rd:DefaultName>textbox35</rd:DefaultName>
+                    <Style>
+                      <BackgroundColor>LightSteelBlue</BackgroundColor>
+                      <FontWeight>700</FontWeight>
+                      <TextAlign>Center</TextAlign>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingRight>2pt</PaddingRight>
+                      <PaddingTop>2pt</PaddingTop>
+                      <PaddingBottom>2pt</PaddingBottom>
+                    </Style>
+                    <ZIndex>5</ZIndex>
+                    <CanGrow>true</CanGrow>
+                    <Value>Cantidad</Value>
+                  </Textbox>
+                </ReportItems>
+              </StaticColumn>
+            </StaticColumns>
+          </ColumnGrouping>
+        </ColumnGroupings>
+        <Width>12cm</Width>
+        <Corner>
+          <ReportItems>
+            <Textbox Name="textbox34">
+              <rd:DefaultName>textbox34</rd:DefaultName>
+              <Style>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+              <ZIndex>8</ZIndex>
+              <CanGrow>true</CanGrow>
+              <Value />
+            </Textbox>
+          </ReportItems>
+        </Corner>
+        <MatrixRows>
+          <MatrixRow>
+            <Height>0.63492cm</Height>
+            <MatrixCells>
+              <MatrixCell>
+                <ReportItems>
+                  <Textbox Name="Cantidad_1">
+                    <rd:DefaultName>Cantidad_1</rd:DefaultName>
+                    <Style>
+                      <Format>N0</Format>
+                      <TextAlign>Center</TextAlign>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingRight>2pt</PaddingRight>
+                      <PaddingTop>2pt</PaddingTop>
+                      <PaddingBottom>2pt</PaddingBottom>
+                    </Style>
+                    <ZIndex>2</ZIndex>
+                    <CanGrow>true</CanGrow>
+                    <Value>=Sum(Fields!Cantidad.Value)</Value>
+                  </Textbox>
+                </ReportItems>
+              </MatrixCell>
+            </MatrixCells>
+          </MatrixRow>
+        </MatrixRows>
+        <Height>3.1746cm</Height>
+        <Left>0.25cm</Left>
+      </Matrix>
+    </ReportItems>
+    <Height>14.75cm</Height>
+  </Body>
+  <Language>en-US</Language>
+  <TopMargin>2.5cm</TopMargin>
+  <PageHeight>29.7cm</PageHeight>
+</Report>

@@ -1,0 +1,753 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ToolsVersion="2.0">
+  <State>$base64$PFNvdXJjZUNvbnRyb2xJbmZvIHhtbG5zOnhzZD0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEiIHhtbG5zOnhzaT0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEtaW5zdGFuY2UiIHhtbG5zOmRkbDI9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYW5hbHlzaXNzZXJ2aWNlcy8yMDAzL2VuZ2luZS8yIiB4bWxuczpkZGwyXzI9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYW5hbHlzaXNzZXJ2aWNlcy8yMDAzL2VuZ2luZS8yLzIiIHhtbG5zOmRkbDEwMF8xMDA9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYW5hbHlzaXNzZXJ2aWNlcy8yMDA4L2VuZ2luZS8xMDAvMTAwIiB4bWxuczpkZGwyMDA9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYW5hbHlzaXNzZXJ2aWNlcy8yMDEwL2VuZ2luZS8yMDAiIHhtbG5zOmRkbDIwMF8yMDA9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYW5hbHlzaXNzZXJ2aWNlcy8yMDEwL2VuZ2luZS8yMDAvMjAwIiB4bWxuczpkd2Q9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vRGF0YVdhcmVob3VzZS9EZXNpZ25lci8xLjAiPg0KICA8RW5hYmxlZD5mYWxzZTwvRW5hYmxlZD4NCiAgPFByb2plY3ROYW1lPjwvUHJvamVjdE5hbWU+DQogIDxBdXhQYXRoPjwvQXV4UGF0aD4NCiAgPExvY2FsUGF0aD48L0xvY2FsUGF0aD4NCiAgPFByb3ZpZGVyPjwvUHJvdmlkZXI+DQo8L1NvdXJjZUNvbnRyb2xJbmZvPg==</State>
+  <DataSources>
+    <ProjectItem>
+      <Name>DataSourceGPCompany.rds</Name>
+      <FullPath>DataSourceGPCompany.rds</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>GPDB.rds</Name>
+      <FullPath>GPDB.rds</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>GPIND.rds</Name>
+      <FullPath>GPIND.rds</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>PalmComSync.rds</Name>
+      <FullPath>PalmComSync.rds</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>PN.rds</Name>
+      <FullPath>PN.rds</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>TWO.rds</Name>
+      <FullPath>TWO.rds</FullPath>
+    </ProjectItem>
+  </DataSources>
+  <DataSets />
+  <Reports>
+    <ProjectItem>
+      <Name>Accion-Personal.rdl</Name>
+      <FullPath>Accion-Personal.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Almacen - Reporte de Actividad Articulo resumen.rdl</Name>
+      <FullPath>Almacen - Reporte de Actividad Articulo resumen.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Almacen - Reporte de Actividad Articulo.rdl</Name>
+      <FullPath>Almacen - Reporte de Actividad Articulo.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Almacen-Consulta de Articulos por localidad.rdl</Name>
+      <FullPath>Almacen-Consulta de Articulos por localidad.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Caja - Cuadre de Caja x Cajera.rdl</Name>
+      <FullPath>Caja - Cuadre de Caja x Cajera.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Caja - Detalle Cuadre de Caja- H.rdl</Name>
+      <FullPath>Caja - Detalle Cuadre de Caja- H.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Caja - Detalle Cuadre de Caja x LOCALIDAD.rdl</Name>
+      <FullPath>Caja - Detalle Cuadre de Caja x LOCALIDAD.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Caja - Detalle Cuadre de Caja.rdl</Name>
+      <FullPath>Caja - Detalle Cuadre de Caja.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Caja - Detalle Cuadre de Caja-RO.rdl</Name>
+      <FullPath>Caja - Detalle Cuadre de Caja-RO.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Cheque monto pendiente.rdl</Name>
+      <FullPath>Cheque monto pendiente.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Cliente menor al indicador v2.1c - Copy.rdl</Name>
+      <FullPath>Cliente menor al indicador v2.1c - Copy.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Cliente x ruta con coordenada.rdl</Name>
+      <FullPath>Cliente x ruta con coordenada.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Clientes Dias de Visitas.rdl</Name>
+      <FullPath>Clientes Dias de Visitas.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Cobros - Balanza de cxc.rdl</Name>
+      <FullPath>Cobros - Balanza de cxc.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Cobros - Recibos x Fecha x Clientes - Taramaca.rdl</Name>
+      <FullPath>Cobros - Recibos x Fecha x Clientes - Taramaca.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Cobros - Vtas x Dia x Productos Credito Planta y Vend.rdl</Name>
+      <FullPath>Cobros - Vtas x Dia x Productos Credito Planta y Vend.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Cobros- Recibos de clientes contabilizado y sin contabilizar RM.rdl</Name>
+      <FullPath>Cobros- Recibos de clientes contabilizado y sin contabilizar RM.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Comision - Ayudante Banco.rdl</Name>
+      <FullPath>Comision - Ayudante Banco.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Comision - MODIFICADO Resumen Vtas x Productos x Vendedor x Cantidad-precio x Para Calculo de Comision - Inversiones Taramaca.rdl</Name>
+      <FullPath>Comision - MODIFICADO Resumen Vtas x Productos x Vendedor x Cantidad-precio x Para Calculo de Comision - Inversiones Taramaca.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>comision - Ranch block1 x vendedor x producto.rdl</Name>
+      <FullPath>comision - Ranch block1 x vendedor x producto.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>comision - Ranch block1.rdl</Name>
+      <FullPath>comision - Ranch block1.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Comision- Ayudante con Ruta Conduce.rdl</Name>
+      <FullPath>Comision- Ayudante con Ruta Conduce.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Comision- Ayudante con Ruta x producto x ayudante.rdl</Name>
+      <FullPath>Comision- Ayudante con Ruta x producto x ayudante.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Comision- Ayudante con Ruta.rdl</Name>
+      <FullPath>Comision- Ayudante con Ruta.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Comision -Ayudante con rutas BAVARO.rdl</Name>
+      <FullPath>Comision -Ayudante con rutas BAVARO.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Comision- Ayudante Romana.rdl</Name>
+      <FullPath>Comision- Ayudante Romana.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Comision- Supervisor.rdl</Name>
+      <FullPath>Comision- Supervisor.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Comision- Vendedor Romana.rdl</Name>
+      <FullPath>Comision- Vendedor Romana.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Comision -vendedores con rutas BAVARO.rdl</Name>
+      <FullPath>Comision -vendedores con rutas BAVARO.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Comision -vendedores con rutas Conduce.rdl</Name>
+      <FullPath>Comision -vendedores con rutas Conduce.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Comision -vendedores con rutas x vendedor x producto.rdl</Name>
+      <FullPath>Comision -vendedores con rutas x vendedor x producto.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Comision -vendedores con rutas.rdl</Name>
+      <FullPath>Comision -vendedores con rutas.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Comision -vendedores Punto de Ventas.rdl</Name>
+      <FullPath>Comision -vendedores Punto de Ventas.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Comision -vendedores x vendedor x Agua Pura.rdl</Name>
+      <FullPath>Comision -vendedores x vendedor x Agua Pura.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Comision1-vendedor con ruta comision botellon.rdl</Name>
+      <FullPath>Comision1-vendedor con ruta comision botellon.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Comision1-vendedor Romana.rdl</Name>
+      <FullPath>Comision1-vendedor Romana.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Comision-Ayudante de Crystal.rdl</Name>
+      <FullPath>Comision-Ayudante de Crystal.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Comision-Chofer de Crystal.rdl</Name>
+      <FullPath>Comision-Chofer de Crystal.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Comision-de Puesto.rdl</Name>
+      <FullPath>Comision-de Puesto.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Comsumo de la Ruta de Bavaro.rdl</Name>
+      <FullPath>Comsumo de la Ruta de Bavaro.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Conduce sin Contabilizar.rdl</Name>
+      <FullPath>Conduce sin Contabilizar.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Consulta de Articulos por localidad.rdl</Name>
+      <FullPath>Consulta de Articulos por localidad.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Consulta de Articulos.rdl</Name>
+      <FullPath>Consulta de Articulos.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Consulta Transaccion de Inventario Costo promedio.rdl</Name>
+      <FullPath>Consulta Transaccion de Inventario Costo promedio.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Consumo de Cliente.rdl</Name>
+      <FullPath>Consumo de Cliente.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Consumo de Producto por ruta.rdl</Name>
+      <FullPath>Consumo de Producto por ruta.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Copy of Comision - Ayudante Banco.rdl</Name>
+      <FullPath>Copy of Comision - Ayudante Banco.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Copy of comision - Ranch block1.rdl</Name>
+      <FullPath>Copy of comision - Ranch block1.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Copy of Comision- Ayudante con Ruta.rdl</Name>
+      <FullPath>Copy of Comision- Ayudante con Ruta.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Copy of Comision -vendedores con rutas.rdl</Name>
+      <FullPath>Copy of Comision -vendedores con rutas.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Copy of Matriz-Consumo de Ruta x Mes x Ano-BAVARO.rdl</Name>
+      <FullPath>Copy of Matriz-Consumo de Ruta x Mes x Ano-BAVARO.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Copy of Ventas - Detalle de Venta por Vendedor x Dia-S.rdl</Name>
+      <FullPath>Copy of Ventas - Detalle de Venta por Vendedor x Dia-S.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Copy of Ventas - Resumen Vtas Total x Productos Cr. Contado x Div. Neg. - Inversiones Taramaca devolucion.rdl</Name>
+      <FullPath>Copy of Ventas - Resumen Vtas Total x Productos Cr. Contado x Div. Neg. - Inversiones Taramaca devolucion.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Cuadre-Conduce sin Contabilizar.rdl</Name>
+      <FullPath>Cuadre-Conduce sin Contabilizar.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Descuento de Inasistencia.rdl</Name>
+      <FullPath>Descuento de Inasistencia.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>DEtalle  Faturado no en menu.rdl</Name>
+      <FullPath>DEtalle  Faturado no en menu.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>DEtalle Cliente Total Ruta.rdl</Name>
+      <FullPath>DEtalle Cliente Total Ruta.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>DEtalle no Cliente Total Ruta.rdl</Name>
+      <FullPath>DEtalle no Cliente Total Ruta.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>DEtalle Visitado Faturado.rdl</Name>
+      <FullPath>DEtalle Visitado Faturado.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>DEtalle Visitado No Faturado.rdl</Name>
+      <FullPath>DEtalle Visitado No Faturado.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>DGT_3.rdl</Name>
+      <FullPath>DGT_3.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Distribucion-Reportes de Efectividad Visita Vendedor.rdl</Name>
+      <FullPath>Distribucion-Reportes de Efectividad Visita Vendedor.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Divison de Nomina 1.1v.rdl</Name>
+      <FullPath>Divison de Nomina 1.1v.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Divison de Nomina Definido por la matriz 1.1v.rdl</Name>
+      <FullPath>Divison de Nomina Definido por la matriz 1.1v.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Divison de Nomina Definido por la matriz 1.2v.rdl</Name>
+      <FullPath>Divison de Nomina Definido por la matriz 1.2v.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Divison de Nomina.rdl</Name>
+      <FullPath>Divison de Nomina.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Empleados Plantilla.rdl</Name>
+      <FullPath>Empleados Plantilla.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Historico de Facturas Pendientes.rdl</Name>
+      <FullPath>Historico de Facturas Pendientes.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Historico of Reporte Distribucion.rdl</Name>
+      <FullPath>Historico of Reporte Distribucion.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Hora Extra comparacion por ano.rdl</Name>
+      <FullPath>Hora Extra comparacion por ano.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Ingreso de Efectivo Planta.rdl</Name>
+      <FullPath>Ingreso de Efectivo Planta.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Inventory Purchase Receipts.rdl</Name>
+      <FullPath>Inventory Purchase Receipts.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Libreta de Inventario.rdl</Name>
+      <FullPath>Libreta de Inventario.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Matrix de activos por clientes.rdl</Name>
+      <FullPath>Matrix de activos por clientes.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Matrix de Costo de Articulos.rdl</Name>
+      <FullPath>Matrix de Costo de Articulos.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Matrix de nivel de Precios x Nivel.rdl</Name>
+      <FullPath>Matrix de nivel de Precios x Nivel.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Matrix de nivel de Precios x Producto.rdl</Name>
+      <FullPath>Matrix de nivel de Precios x Producto.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Matrix- Nomina.rdl</Name>
+      <FullPath>Matrix- Nomina.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Matriz-Consumo de Ruta x Mes x Ano1.rdl</Name>
+      <FullPath>Matriz-Consumo de Ruta x Mes x Ano1.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Matriz-Consumo de Ruta x Mes x Ano-S.rdl</Name>
+      <FullPath>Matriz-Consumo de Ruta x Mes x Ano-S.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Mayor GP.rdl</Name>
+      <FullPath>Mayor GP.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Menu de Visita 2.0.rdl</Name>
+      <FullPath>Menu de Visita 2.0.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>NC reports.rdl</Name>
+      <FullPath>NC reports.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Nuevo cuadre Vendedores.rdl</Name>
+      <FullPath>Nuevo cuadre Vendedores.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Personal_Nomina - Tesoreria.rdl</Name>
+      <FullPath>Personal_Nomina - Tesoreria.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Proceso de nivel de precios.rdl</Name>
+      <FullPath>Proceso de nivel de precios.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Promedio de compras de los clientes de creditos.rdl</Name>
+      <FullPath>Promedio de compras de los clientes de creditos.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Receivables Detail.rdl</Name>
+      <FullPath>Receivables Detail.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Recibo de Cobro Taramaca Contabilizado.rdl</Name>
+      <FullPath>Recibo de Cobro Taramaca Contabilizado.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Recibo de Ingreso.rdl</Name>
+      <FullPath>Recibo de Ingreso.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Report1.rdl</Name>
+      <FullPath>Report1.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Report10.rdl</Name>
+      <FullPath>Report10.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Report2.rdl</Name>
+      <FullPath>Report2.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Report3.rdl</Name>
+      <FullPath>Report3.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Report4.rdl</Name>
+      <FullPath>Report4.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Report6.rdl</Name>
+      <FullPath>Report6.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Report7.rdl</Name>
+      <FullPath>Report7.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Report8.rdl</Name>
+      <FullPath>Report8.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Report9.rdl</Name>
+      <FullPath>Report9.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Reporte- Comision Vendedor con Ruta.rdl</Name>
+      <FullPath>Reporte- Comision Vendedor con Ruta.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Reporte de Activo por Rutas.rdl</Name>
+      <FullPath>Reporte de Activo por Rutas.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Reporte de cliente repetido por ruta del mismo tipo.rdl</Name>
+      <FullPath>Reporte de cliente repetido por ruta del mismo tipo.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Reporte de Conduce.rdl</Name>
+      <FullPath>Reporte de Conduce.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Reporte de Descuento.rdl</Name>
+      <FullPath>Reporte de Descuento.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Reporte de Deuda Empleado GP.rdl</Name>
+      <FullPath>Reporte de Deuda Empleado GP.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Reporte de Embutido- Mes x Ano.rdl</Name>
+      <FullPath>Reporte de Embutido- Mes x Ano.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Reporte de Factura Anulada.rdl</Name>
+      <FullPath>Reporte de Factura Anulada.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Reporte de Pedido.rdl</Name>
+      <FullPath>Reporte de Pedido.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Reporte de seguridad de recibo.rdl</Name>
+      <FullPath>Reporte de seguridad de recibo.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Reporte de variación de compras diarias.rdl</Name>
+      <FullPath>Reporte de variación de compras diarias.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Reporte de Venta de 8 semana Fijo.rdl</Name>
+      <FullPath>Reporte de Venta de 8 semana Fijo.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Reporte de Venta de 8 semana.rdl</Name>
+      <FullPath>Reporte de Venta de 8 semana.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Reporte de Venta del dia.rdl</Name>
+      <FullPath>Reporte de Venta del dia.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Reporte Distribucion.rdl</Name>
+      <FullPath>Reporte Distribucion.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Reporte Global.rdl</Name>
+      <FullPath>Reporte Global.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Reporte-Cliente nivel de precio x producto.rdl</Name>
+      <FullPath>Reporte-Cliente nivel de precio x producto.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Reporte-Costo por departamento BAVARO.rdl</Name>
+      <FullPath>Reporte-Costo por departamento BAVARO.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Reporte-Costo por departamento MG.rdl</Name>
+      <FullPath>Reporte-Costo por departamento MG.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Reporte-Costo por departamento.rdl</Name>
+      <FullPath>Reporte-Costo por departamento.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>ReporteCuadreMercanciaVendedor.rdl</Name>
+      <FullPath>ReporteCuadreMercanciaVendedor.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>ReporteCuadreMercanciaVendedorPorDia.rdl</Name>
+      <FullPath>ReporteCuadreMercanciaVendedorPorDia.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Reporte-Resume de producto por cajera.rdl</Name>
+      <FullPath>Reporte-Resume de producto por cajera.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Reportes - Gerentes de Ventas Monto Agua.rdl</Name>
+      <FullPath>Reportes - Gerentes de Ventas Monto Agua.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Reportes - Gerentes de Ventas Monto Aguaold.rdl</Name>
+      <FullPath>Reportes - Gerentes de Ventas Monto Aguaold.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Reportes - Gerentes de Ventas Monto Hielo.rdl</Name>
+      <FullPath>Reportes - Gerentes de Ventas Monto Hielo.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Reportes - Gerentes de Ventas Monto Hieloold.rdl</Name>
+      <FullPath>Reportes - Gerentes de Ventas Monto Hieloold.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Reportes - Gerentes de Ventas.rdl</Name>
+      <FullPath>Reportes - Gerentes de Ventas.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Reportes de Preventa Detalle.rdl</Name>
+      <FullPath>Reportes de Preventa Detalle.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Reportes de Preventa Resumen.rdl</Name>
+      <FullPath>Reportes de Preventa Resumen.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Reportes Global.rdl</Name>
+      <FullPath>Reportes Global.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Reportes- menu de visitas.rdl</Name>
+      <FullPath>Reportes- menu de visitas.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Reportes- Ventas por Activos.rdl</Name>
+      <FullPath>Reportes- Ventas por Activos.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>ReportMatrix.rdl</Name>
+      <FullPath>ReportMatrix.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Reports-Factura vendedor.rdl</Name>
+      <FullPath>Reports-Factura vendedor.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Resumen de venta de cajera x Localidad x Fecha.rdl</Name>
+      <FullPath>Resumen de venta de cajera x Localidad x Fecha.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Sales Per Month.rdl</Name>
+      <FullPath>Sales Per Month.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Top Customers by YTD Sales Pie Chart.rdl</Name>
+      <FullPath>Top Customers by YTD Sales Pie Chart.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Top Customers by YTD Sales.rdl</Name>
+      <FullPath>Top Customers by YTD Sales.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Trial Balance Detail.rdl</Name>
+      <FullPath>Trial Balance Detail.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Trial Balance Summary.rdl</Name>
+      <FullPath>Trial Balance Summary.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Vendedor PALMID.rdl</Name>
+      <FullPath>Vendedor PALMID.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Venta- Venta en valores x localidad.rdl</Name>
+      <FullPath>Venta- Venta en valores x localidad.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Ventas - Consumo Clientes Menor o Igual a Indicador por Tipo Producto.rdl</Name>
+      <FullPath>Ventas - Consumo Clientes Menor o Igual a Indicador por Tipo Producto.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Ventas - Detalle de Venta por Vendedor x Dia.rdl</Name>
+      <FullPath>Ventas - Detalle de Venta por Vendedor x Dia.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Ventas - Detalle de Venta por Vendedor x Dia1.rdl</Name>
+      <FullPath>Ventas - Detalle de Venta por Vendedor x Dia1.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Ventas - Detalle de Venta por Vendedor x Dia-S.rdl</Name>
+      <FullPath>Ventas - Detalle de Venta por Vendedor x Dia-S.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Ventas - Listado de Clientes x Ruta.rdl</Name>
+      <FullPath>Ventas - Listado de Clientes x Ruta.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Ventas - Menu de Visita 2.0.rdl</Name>
+      <FullPath>Ventas - Menu de Visita 2.0.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Ventas - Menu de Visita 3.0.rdl</Name>
+      <FullPath>Ventas - Menu de Visita 3.0.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Ventas - Resumen Vtas Global  x Productos x Precio Promedio - Inversiones Taramaca.rdl</Name>
+      <FullPath>Ventas - Resumen Vtas Global  x Productos x Precio Promedio - Inversiones Taramaca.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Ventas - Resumen Vtas Total x Productos Cr. Contado x Div. Neg. - Inversiones Taramaca devolucion y conduce.rdl</Name>
+      <FullPath>Ventas - Resumen Vtas Total x Productos Cr. Contado x Div. Neg. - Inversiones Taramaca devolucion y conduce.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Ventas - Resumen Vtas Total x Productos Cr. Contado x Div. Neg. - Inversiones Taramaca devolucion.rdl</Name>
+      <FullPath>Ventas - Resumen Vtas Total x Productos Cr. Contado x Div. Neg. - Inversiones Taramaca devolucion.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Ventas - Resumen Vtas Total x Productos Cr. Contado x Div. Neg. - Inversiones Taramaca y factura cxc.rdl</Name>
+      <FullPath>Ventas - Resumen Vtas Total x Productos Cr. Contado x Div. Neg. - Inversiones Taramaca y factura cxc.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Ventas - Resumen Vtas x Productos x Vendedor x Cantidad Precio.   Div. Neg. Inversiones Taramaca.rdl</Name>
+      <FullPath>Ventas - Resumen Vtas x Productos x Vendedor x Cantidad Precio.   Div. Neg. Inversiones Taramaca.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Ventas - Tarjeta Clientes Con Ruta y nivel.rdl</Name>
+      <FullPath>Ventas - Tarjeta Clientes Con Ruta y nivel.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Ventas - Venta en volumen x localidad.rdl</Name>
+      <FullPath>Ventas - Venta en volumen x localidad.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Ventas - Ventas en valores.rdl</Name>
+      <FullPath>Ventas - Ventas en valores.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>ventas clientes x activos.rdl</Name>
+      <FullPath>ventas clientes x activos.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Ventas en valores v2.rdl</Name>
+      <FullPath>Ventas en valores v2.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Ventas- Proyeccion en valores.rdl</Name>
+      <FullPath>Ventas- Proyeccion en valores.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Ventas- Proyeccion en Volumen.rdl</Name>
+      <FullPath>Ventas- Proyeccion en Volumen.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Ventas- Reporte de Puesto Resumen.rdl</Name>
+      <FullPath>Ventas- Reporte de Puesto Resumen.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Ventas- Reporte de Puesto.rdl</Name>
+      <FullPath>Ventas- Reporte de Puesto.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Ventas- Reporte Puestos La Fe y SanIsidro.rdl</Name>
+      <FullPath>Ventas- Reporte Puestos La Fe y SanIsidro.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Ventas- Venta en volumen.rdl</Name>
+      <FullPath>Ventas- Venta en volumen.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Ventas-Consumo de Cliente.rdl</Name>
+      <FullPath>Ventas-Consumo de Cliente.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Ventas-Consumo de Producto por ruta 2013 Multi.rdl</Name>
+      <FullPath>Ventas-Consumo de Producto por ruta 2013 Multi.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>ventas-productos.rdl</Name>
+      <FullPath>ventas-productos.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Visita del Cliente.rdl</Name>
+      <FullPath>Visita del Cliente.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Levantamiento_Activos.rdl</Name>
+      <FullPath>LEvantamiento_Activos.rdl</FullPath>
+    </ProjectItem>
+  </Reports>
+  <Configurations>
+    <Configuration>
+      <Name>Debug</Name>
+      <Platform>Win32</Platform>
+      <Options>
+        <OutputPath>bin\Debug</OutputPath>
+        <TargetServerVersion>SSRS2008</TargetServerVersion>
+        <TargetServerURL>http://gea-srvdata:8081/ReportServer_SQLSERVER2008</TargetServerURL>
+        <TargetFolder>Prueba Kelvin</TargetFolder>
+        <TargetDataSourceFolder>Data Sources</TargetDataSourceFolder>
+        <TargetDatasetFolder>Datasets</TargetDatasetFolder>
+        <TargetReportPartFolder>Report Parts</TargetReportPartFolder>
+      </Options>
+    </Configuration>
+    <Configuration>
+      <Name>DebugLocal</Name>
+      <Platform>Win32</Platform>
+      <Options>
+        <OutputPath>bin\DebugLocal</OutputPath>
+        <TargetServerVersion>SSRS2008R2</TargetServerVersion>
+        <TargetServerURL>http://gea-srvdata:8081/ReportServer_SQLSERVER2008</TargetServerURL>
+        <TargetFolder>Kelvin Prueba</TargetFolder>
+        <TargetDataSourceFolder>Data Sources</TargetDataSourceFolder>
+        <TargetDatasetFolder>Datasets</TargetDatasetFolder>
+        <TargetReportPartFolder>Report Parts</TargetReportPartFolder>
+      </Options>
+    </Configuration>
+    <Configuration>
+      <Name>Release</Name>
+      <Platform>Win32</Platform>
+      <Options>
+        <OutputPath>bin\Release</OutputPath>
+        <TargetServerVersion>SSRS2008R2</TargetServerVersion>
+        <TargetFolder>Report Project1</TargetFolder>
+        <TargetDataSourceFolder>Data Sources</TargetDataSourceFolder>
+        <TargetDatasetFolder>Datasets</TargetDatasetFolder>
+        <TargetReportPartFolder>Report Parts</TargetReportPartFolder>
+      </Options>
+    </Configuration>
+  </Configurations>
+</Project>

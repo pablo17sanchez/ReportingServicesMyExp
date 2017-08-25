@@ -1,0 +1,1435 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2008/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <Body>
+    <ReportItems>
+      <Textbox Name="CURRCOST">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=Sum(Fields!CURRCOST.Value, "Encabezado")</Value>
+                <Style>
+                  <Format>N</Format>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Left</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>CURRCOST</rd:DefaultName>
+        <Top>1.43278in</Top>
+        <Left>2.12721in</Left>
+        <Height>0.25in</Height>
+        <Width>1in</Width>
+        <Style>
+          <Border>
+            <Style>Solid</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox6">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Costo.:</Value>
+                <Style>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox6</rd:DefaultName>
+        <Top>1.44667in</Top>
+        <Left>0.48138in</Left>
+        <Height>0.25in</Height>
+        <Width>0.5625in</Width>
+        <ZIndex>1</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <BackgroundColor>PaleTurquoise</BackgroundColor>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="UOMSCHDL">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=First(Fields!UOMSCHDL.Value, "Encabezado")</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Left</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>UOMSCHDL</rd:DefaultName>
+        <Top>1.76611in</Top>
+        <Left>2.12721in</Left>
+        <Height>0.25in</Height>
+        <Width>1in</Width>
+        <ZIndex>2</ZIndex>
+        <Style>
+          <Border>
+            <Style>Solid</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox7">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Unidad Medida.:</Value>
+                <Style>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox6</rd:DefaultName>
+        <Top>1.76611in</Top>
+        <Left>0.48138in</Left>
+        <Height>0.25in</Height>
+        <Width>1.14583in</Width>
+        <ZIndex>3</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <BackgroundColor>PaleTurquoise</BackgroundColor>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="QTYONHND">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=Sum(Fields!QTYONHND.Value, "Detalle")-Sum(Fields!ATYALLOC.Value, "Detalle")</Value>
+                <Style>
+                  <Format>N0</Format>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Left</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>QTYONHND</rd:DefaultName>
+        <Top>2.07167in</Top>
+        <Left>2.12721in</Left>
+        <Height>0.25in</Height>
+        <Width>1in</Width>
+        <ZIndex>4</ZIndex>
+        <Style>
+          <Border>
+            <Style>Solid</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox8">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Cant. Disponible.:</Value>
+                <Style>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox6</rd:DefaultName>
+        <Top>2.07167in</Top>
+        <Left>0.48138in</Left>
+        <Height>0.25in</Height>
+        <Width>1.27083in</Width>
+        <ZIndex>5</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <BackgroundColor>PaleTurquoise</BackgroundColor>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="QTYONORD">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=Sum(Fields!QTYONORD.Value, "Detalle")</Value>
+                <Style>
+                  <Format>N0</Format>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Left</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>QTYONORD</rd:DefaultName>
+        <Top>2.39111in</Top>
+        <Left>2.12721in</Left>
+        <Height>0.25in</Height>
+        <Width>1in</Width>
+        <ZIndex>6</ZIndex>
+        <Style>
+          <Border>
+            <Style>Solid</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox9">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>En Pedido.:</Value>
+                <Style>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox6</rd:DefaultName>
+        <Top>2.39111in</Top>
+        <Left>0.48138in</Left>
+        <Height>0.25in</Height>
+        <Width>1.14583in</Width>
+        <ZIndex>7</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <BackgroundColor>PaleTurquoise</BackgroundColor>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="ITEMNMBR">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=First(Fields!ITEMNMBR.Value, "Detalle")</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Left</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>ITEMNMBR</rd:DefaultName>
+        <Top>0.70139in</Top>
+        <Left>2.12721in</Left>
+        <Height>0.25in</Height>
+        <Width>1.21875in</Width>
+        <ZIndex>8</ZIndex>
+        <Style>
+          <Border>
+            <Style>Solid</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="ITEMDESC">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=First(Fields!ITEMDESC.Value, "Encabezado")</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Left</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>ITEMDESC</rd:DefaultName>
+        <Top>1.02083in</Top>
+        <Left>2.12721in</Left>
+        <Height>0.25in</Height>
+        <Width>3.92708in</Width>
+        <ZIndex>9</ZIndex>
+        <Style>
+          <Border>
+            <Style>Solid</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox2">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Codigo Art.:</Value>
+                <Style>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox2</rd:DefaultName>
+        <Top>0.70139in</Top>
+        <Left>0.48137in</Left>
+        <Height>0.25in</Height>
+        <Width>0.93403in</Width>
+        <ZIndex>10</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <BackgroundColor>PaleTurquoise</BackgroundColor>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox3">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Descripcion.:</Value>
+                <Style>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox2</rd:DefaultName>
+        <Top>1.02083in</Top>
+        <Left>0.48138in</Left>
+        <Height>0.25in</Height>
+        <Width>0.93402in</Width>
+        <ZIndex>11</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <BackgroundColor>PaleTurquoise</BackgroundColor>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Expr1">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=IIF(Sum(Fields!Expr1.Value, "cantrecepcion")=0,0,Sum(Fields!Expr1.Value, "cantrecepcion"))</Value>
+                <Style>
+                  <Format>N0</Format>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Left</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Expr1</rd:DefaultName>
+        <Top>2.71056in</Top>
+        <Left>2.12721in</Left>
+        <Height>0.25in</Height>
+        <Width>1in</Width>
+        <ZIndex>12</ZIndex>
+        <Style>
+          <Border>
+            <Style>Solid</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox10">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>En Recepcion.:</Value>
+                <Style>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox6</rd:DefaultName>
+        <Top>2.71056in</Top>
+        <Left>0.48138in</Left>
+        <Height>0.25in</Height>
+        <Width>1.14583in</Width>
+        <ZIndex>13</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <BackgroundColor>PaleTurquoise</BackgroundColor>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox11">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Existencia Real.:</Value>
+                <Style>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox6</rd:DefaultName>
+        <Top>3.03in</Top>
+        <Left>0.48137in</Left>
+        <Height>0.25in</Height>
+        <Width>1.27084in</Width>
+        <ZIndex>14</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <BackgroundColor>PaleTurquoise</BackgroundColor>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox18">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=Sum(Fields!Expr1.Value, "cantrecepcion")+(Sum(Fields!QTYONHND.Value, "Detalle")-Sum(Fields!ATYALLOC.Value, "Detalle"))</Value>
+                <Style>
+                  <Format>N0</Format>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Left</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox18</rd:DefaultName>
+        <Top>3.03in</Top>
+        <Left>2.12721in</Left>
+        <Height>0.25in</Height>
+        <Width>1in</Width>
+        <ZIndex>15</ZIndex>
+        <Style>
+          <Border>
+            <Style>Solid</Style>
+          </Border>
+          <BottomBorder>
+            <Style>Solid</Style>
+          </BottomBorder>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+    </ReportItems>
+    <Height>3.89583in</Height>
+    <Style>
+      <BackgroundColor>White</BackgroundColor>
+    </Style>
+  </Body>
+  <Width>6.5in</Width>
+  <Page>
+    <PageHeader>
+      <Height>0.73611in</Height>
+      <PrintOnFirstPage>true</PrintOnFirstPage>
+      <PrintOnLastPage>true</PrintOnLastPage>
+      <ReportItems>
+        <Textbox Name="UserID">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>=User!UserID</Value>
+                  <Style />
+                </TextRun>
+              </TextRuns>
+              <Style />
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>UserID</rd:DefaultName>
+          <Top>0.33208in</Top>
+          <Left>4.25in</Left>
+          <Height>0.25in</Height>
+          <Width>2.25in</Width>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Textbox Name="Textbox19">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>Consulta Cantidades de Articulos por localidad</Value>
+                  <Style>
+                    <FontStyle>Italic</FontStyle>
+                    <FontWeight>Bold</FontWeight>
+                    <Color>Red</Color>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style />
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox19</rd:DefaultName>
+          <Top>0.33208in</Top>
+          <Left>0.24875in</Left>
+          <Height>0.25in</Height>
+          <Width>3.29512in</Width>
+          <ZIndex>1</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+      </ReportItems>
+      <Style>
+        <Border>
+          <Style>None</Style>
+        </Border>
+        <BackgroundColor>PaleTurquoise</BackgroundColor>
+      </Style>
+    </PageHeader>
+    <PageFooter>
+      <Height>1in</Height>
+      <PrintOnFirstPage>true</PrintOnFirstPage>
+      <PrintOnLastPage>true</PrintOnLastPage>
+      <ReportItems>
+        <Textbox Name="Textbox20">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>Derecho Reservado 2012</Value>
+                  <Style>
+                    <FontSize>5pt</FontSize>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style />
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox20</rd:DefaultName>
+          <Top>0.875in</Top>
+          <Left>2.54387in</Left>
+          <Height>0.125in</Height>
+          <Width>1in</Width>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+      </ReportItems>
+      <Style>
+        <Border>
+          <Style>None</Style>
+        </Border>
+        <BackgroundColor>PaleTurquoise</BackgroundColor>
+      </Style>
+    </PageFooter>
+    <LeftMargin>1in</LeftMargin>
+    <RightMargin>1in</RightMargin>
+    <TopMargin>1in</TopMargin>
+    <BottomMargin>1in</BottomMargin>
+    <Style />
+  </Page>
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="Gp">
+      <DataSourceReference>GPDB</DataSourceReference>
+      <rd:SecurityType>None</rd:SecurityType>
+      <rd:DataSourceID>f8cac33e-3fa6-4e53-8072-5a0f85016d53</rd:DataSourceID>
+    </DataSource>
+  </DataSources>
+  <DataSets>
+    <DataSet Name="Detalle">
+      <Query>
+        <DataSourceName>Gp</DataSourceName>
+        <QueryParameters>
+          <QueryParameter Name="@articulo">
+            <Value>=Parameters!articulo.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@localidad">
+            <Value>=Parameters!localidad.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <CommandText>SELECT     TOP (25) ITEMNMBR, LOCNCODE, BINNMBR, RCRDTYPE, PRIMVNDR, ITMFRFLG, BGNGQTY, LSORDQTY, LRCPTQTY, LSTORDDT, LSORDVND, LSRCPTDT, 
+                      QTYRQSTN, QTYONORD, QTYBKORD, QTY_Drop_Shipped, QTYINUSE, QTYINSVC, QTYRTRND, QTYDMGED, QTYONHND, ATYALLOC, QTYCOMTD, QTYSOLD, 
+                      NXTCNTDT, NXTCNTTM, LSTCNTDT, LSTCNTTM, STCKCNTINTRVL, Landed_Cost_Group_ID, BUYERID, PLANNERID, ORDERPOLICY, FXDORDRQTY, ORDRPNTQTY, 
+                      NMBROFDYS, MNMMORDRQTY, MXMMORDRQTY, ORDERMULTIPLE, REPLENISHMENTMETHOD, SHRINKAGEFACTOR, PRCHSNGLDTM, MNFCTRNGFXDLDTM, 
+                      MNFCTRNGVRBLLDTM, STAGINGLDTME, PLNNNGTMFNCDYS, DMNDTMFNCPRDS, INCLDDINPLNNNG, CALCULATEATP, AUTOCHKATP, PLNFNLPAB, 
+                      FRCSTCNSMPTNPRD, ORDRUPTOLVL, SFTYSTCKQTY, REORDERVARIANCE, PORECEIPTBIN, PORETRNBIN, SOFULFILLMENTBIN, SORETURNBIN, BOMRCPTBIN, 
+                      MATERIALISSUEBIN, MORECEIPTBIN, REPAIRISSUESBIN, ReplenishmentLevel, POPOrderMethod, MasterLocationCode, POPVendorSelection, POPPricingSelection, 
+                      PurchasePrice, IncludeAllocations, IncludeBackorders, IncludeRequisitions, PICKTICKETITEMOPT, INCLDMRPMOVEIN, INCLDMRPMOVEOUT, INCLDMRPCANCEL, 
+                      Move_Out_Fence, DEX_ROW_ID
+FROM         IV00102 WITH (NOLOCK)
+WHERE     (ITEMNMBR = @articulo) AND (RCRDTYPE = 2) AND (LOCNCODE = @localidad)
+ORDER BY ITEMNMBR, RCRDTYPE, LOCNCODE</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="ITEMNMBR">
+          <DataField>ITEMNMBR</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="LOCNCODE">
+          <DataField>LOCNCODE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="BINNMBR">
+          <DataField>BINNMBR</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="RCRDTYPE">
+          <DataField>RCRDTYPE</DataField>
+          <rd:TypeName>System.Int16</rd:TypeName>
+        </Field>
+        <Field Name="PRIMVNDR">
+          <DataField>PRIMVNDR</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ITMFRFLG">
+          <DataField>ITMFRFLG</DataField>
+          <rd:TypeName>System.Byte</rd:TypeName>
+        </Field>
+        <Field Name="BGNGQTY">
+          <DataField>BGNGQTY</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="LSORDQTY">
+          <DataField>LSORDQTY</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="LRCPTQTY">
+          <DataField>LRCPTQTY</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="LSTORDDT">
+          <DataField>LSTORDDT</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="LSORDVND">
+          <DataField>LSORDVND</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="LSRCPTDT">
+          <DataField>LSRCPTDT</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="QTYRQSTN">
+          <DataField>QTYRQSTN</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="QTYONORD">
+          <DataField>QTYONORD</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="QTYBKORD">
+          <DataField>QTYBKORD</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="QTY_Drop_Shipped">
+          <DataField>QTY_Drop_Shipped</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="QTYINUSE">
+          <DataField>QTYINUSE</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="QTYINSVC">
+          <DataField>QTYINSVC</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="QTYRTRND">
+          <DataField>QTYRTRND</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="QTYDMGED">
+          <DataField>QTYDMGED</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="QTYONHND">
+          <DataField>QTYONHND</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ATYALLOC">
+          <DataField>ATYALLOC</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="QTYCOMTD">
+          <DataField>QTYCOMTD</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="QTYSOLD">
+          <DataField>QTYSOLD</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="NXTCNTDT">
+          <DataField>NXTCNTDT</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="NXTCNTTM">
+          <DataField>NXTCNTTM</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="LSTCNTDT">
+          <DataField>LSTCNTDT</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="LSTCNTTM">
+          <DataField>LSTCNTTM</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="STCKCNTINTRVL">
+          <DataField>STCKCNTINTRVL</DataField>
+          <rd:TypeName>System.Int16</rd:TypeName>
+        </Field>
+        <Field Name="Landed_Cost_Group_ID">
+          <DataField>Landed_Cost_Group_ID</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="BUYERID">
+          <DataField>BUYERID</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="PLANNERID">
+          <DataField>PLANNERID</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ORDERPOLICY">
+          <DataField>ORDERPOLICY</DataField>
+          <rd:TypeName>System.Int16</rd:TypeName>
+        </Field>
+        <Field Name="FXDORDRQTY">
+          <DataField>FXDORDRQTY</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ORDRPNTQTY">
+          <DataField>ORDRPNTQTY</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="NMBROFDYS">
+          <DataField>NMBROFDYS</DataField>
+          <rd:TypeName>System.Int16</rd:TypeName>
+        </Field>
+        <Field Name="MNMMORDRQTY">
+          <DataField>MNMMORDRQTY</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="MXMMORDRQTY">
+          <DataField>MXMMORDRQTY</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ORDERMULTIPLE">
+          <DataField>ORDERMULTIPLE</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="REPLENISHMENTMETHOD">
+          <DataField>REPLENISHMENTMETHOD</DataField>
+          <rd:TypeName>System.Int16</rd:TypeName>
+        </Field>
+        <Field Name="SHRINKAGEFACTOR">
+          <DataField>SHRINKAGEFACTOR</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="PRCHSNGLDTM">
+          <DataField>PRCHSNGLDTM</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="MNFCTRNGFXDLDTM">
+          <DataField>MNFCTRNGFXDLDTM</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="MNFCTRNGVRBLLDTM">
+          <DataField>MNFCTRNGVRBLLDTM</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="STAGINGLDTME">
+          <DataField>STAGINGLDTME</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="PLNNNGTMFNCDYS">
+          <DataField>PLNNNGTMFNCDYS</DataField>
+          <rd:TypeName>System.Int16</rd:TypeName>
+        </Field>
+        <Field Name="DMNDTMFNCPRDS">
+          <DataField>DMNDTMFNCPRDS</DataField>
+          <rd:TypeName>System.Int16</rd:TypeName>
+        </Field>
+        <Field Name="INCLDDINPLNNNG">
+          <DataField>INCLDDINPLNNNG</DataField>
+          <rd:TypeName>System.Byte</rd:TypeName>
+        </Field>
+        <Field Name="CALCULATEATP">
+          <DataField>CALCULATEATP</DataField>
+          <rd:TypeName>System.Byte</rd:TypeName>
+        </Field>
+        <Field Name="AUTOCHKATP">
+          <DataField>AUTOCHKATP</DataField>
+          <rd:TypeName>System.Byte</rd:TypeName>
+        </Field>
+        <Field Name="PLNFNLPAB">
+          <DataField>PLNFNLPAB</DataField>
+          <rd:TypeName>System.Byte</rd:TypeName>
+        </Field>
+        <Field Name="FRCSTCNSMPTNPRD">
+          <DataField>FRCSTCNSMPTNPRD</DataField>
+          <rd:TypeName>System.Int16</rd:TypeName>
+        </Field>
+        <Field Name="ORDRUPTOLVL">
+          <DataField>ORDRUPTOLVL</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="SFTYSTCKQTY">
+          <DataField>SFTYSTCKQTY</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="REORDERVARIANCE">
+          <DataField>REORDERVARIANCE</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="PORECEIPTBIN">
+          <DataField>PORECEIPTBIN</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="PORETRNBIN">
+          <DataField>PORETRNBIN</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="SOFULFILLMENTBIN">
+          <DataField>SOFULFILLMENTBIN</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="SORETURNBIN">
+          <DataField>SORETURNBIN</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="BOMRCPTBIN">
+          <DataField>BOMRCPTBIN</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="MATERIALISSUEBIN">
+          <DataField>MATERIALISSUEBIN</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="MORECEIPTBIN">
+          <DataField>MORECEIPTBIN</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="REPAIRISSUESBIN">
+          <DataField>REPAIRISSUESBIN</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ReplenishmentLevel">
+          <DataField>ReplenishmentLevel</DataField>
+          <rd:TypeName>System.Int16</rd:TypeName>
+        </Field>
+        <Field Name="POPOrderMethod">
+          <DataField>POPOrderMethod</DataField>
+          <rd:TypeName>System.Int16</rd:TypeName>
+        </Field>
+        <Field Name="MasterLocationCode">
+          <DataField>MasterLocationCode</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="POPVendorSelection">
+          <DataField>POPVendorSelection</DataField>
+          <rd:TypeName>System.Int16</rd:TypeName>
+        </Field>
+        <Field Name="POPPricingSelection">
+          <DataField>POPPricingSelection</DataField>
+          <rd:TypeName>System.Int16</rd:TypeName>
+        </Field>
+        <Field Name="PurchasePrice">
+          <DataField>PurchasePrice</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="IncludeAllocations">
+          <DataField>IncludeAllocations</DataField>
+          <rd:TypeName>System.Byte</rd:TypeName>
+        </Field>
+        <Field Name="IncludeBackorders">
+          <DataField>IncludeBackorders</DataField>
+          <rd:TypeName>System.Byte</rd:TypeName>
+        </Field>
+        <Field Name="IncludeRequisitions">
+          <DataField>IncludeRequisitions</DataField>
+          <rd:TypeName>System.Byte</rd:TypeName>
+        </Field>
+        <Field Name="PICKTICKETITEMOPT">
+          <DataField>PICKTICKETITEMOPT</DataField>
+          <rd:TypeName>System.Int16</rd:TypeName>
+        </Field>
+        <Field Name="INCLDMRPMOVEIN">
+          <DataField>INCLDMRPMOVEIN</DataField>
+          <rd:TypeName>System.Byte</rd:TypeName>
+        </Field>
+        <Field Name="INCLDMRPMOVEOUT">
+          <DataField>INCLDMRPMOVEOUT</DataField>
+          <rd:TypeName>System.Byte</rd:TypeName>
+        </Field>
+        <Field Name="INCLDMRPCANCEL">
+          <DataField>INCLDMRPCANCEL</DataField>
+          <rd:TypeName>System.Byte</rd:TypeName>
+        </Field>
+        <Field Name="Move_Out_Fence">
+          <DataField>Move_Out_Fence</DataField>
+          <rd:TypeName>System.Int16</rd:TypeName>
+        </Field>
+        <Field Name="DEX_ROW_ID">
+          <DataField>DEX_ROW_ID</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="Encabezado">
+      <Query>
+        <DataSourceName>Gp</DataSourceName>
+        <QueryParameters>
+          <QueryParameter Name="@articulo">
+            <Value>=Parameters!articulo.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <CommandText>SELECT     TOP (25) ITEMNMBR, ITEMDESC, NOTEINDX, ITMSHNAM, ITEMTYPE, ITMGEDSC, STNDCOST, CURRCOST, ITEMSHWT, DECPLQTY, DECPLCUR, ITMTSHID, 
+                      TAXOPTNS, IVIVINDX, IVIVOFIX, IVCOGSIX, IVSLSIDX, IVSLDSIX, IVSLRNIX, IVINUSIX, IVINSVIX, IVDMGIDX, IVVARIDX, DPSHPIDX, PURPVIDX, UPPVIDX, IVRETIDX, 
+                      ASMVRIDX, ITMCLSCD, ITMTRKOP, LOTTYPE, KPERHIST, KPTRXHST, KPCALHST, KPDSTHST, ALWBKORD, VCTNMTHD, UOMSCHDL, ALTITEM1, ALTITEM2, 
+                      USCATVLS_1, USCATVLS_2, USCATVLS_3, USCATVLS_4, USCATVLS_5, USCATVLS_6, MSTRCDTY, MODIFDT, CREATDDT, WRNTYDYS, PRCLEVEL, LOCNCODE, 
+                      PINFLIDX, PURMCIDX, IVINFIDX, INVMCIDX, CGSINFLX, CGSMCIDX, ITEMCODE, TCC, PriceGroup, PRICMTHD, PRCHSUOM, SELNGUOM, KTACCTSR, LASTGENSN, 
+                      ABCCODE, Revalue_Inventory, Tolerance_Percentage, Purchase_Item_Tax_Schedu, Purchase_Tax_Options, ITMPLNNNGTYP, STTSTCLVLPRCNTG, CNTRYORGN, 
+                      INACTIVE, MINSHELF1, MINSHELF2, INCLUDEINDP, LOTEXPWARN, LOTEXPWARNDAYS, LASTGENLOT, Lot_Split_Quantity, DEX_ROW_TS, DEX_ROW_ID
+FROM         IV00101 WITH (NOLOCK)
+WHERE     (ITEMNMBR = @articulo)
+ORDER BY ITEMNMBR</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="ITEMNMBR">
+          <DataField>ITEMNMBR</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ITEMDESC">
+          <DataField>ITEMDESC</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="NOTEINDX">
+          <DataField>NOTEINDX</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ITMSHNAM">
+          <DataField>ITMSHNAM</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ITEMTYPE">
+          <DataField>ITEMTYPE</DataField>
+          <rd:TypeName>System.Int16</rd:TypeName>
+        </Field>
+        <Field Name="ITMGEDSC">
+          <DataField>ITMGEDSC</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="STNDCOST">
+          <DataField>STNDCOST</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="CURRCOST">
+          <DataField>CURRCOST</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ITEMSHWT">
+          <DataField>ITEMSHWT</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="DECPLQTY">
+          <DataField>DECPLQTY</DataField>
+          <rd:TypeName>System.Int16</rd:TypeName>
+        </Field>
+        <Field Name="DECPLCUR">
+          <DataField>DECPLCUR</DataField>
+          <rd:TypeName>System.Int16</rd:TypeName>
+        </Field>
+        <Field Name="ITMTSHID">
+          <DataField>ITMTSHID</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="TAXOPTNS">
+          <DataField>TAXOPTNS</DataField>
+          <rd:TypeName>System.Int16</rd:TypeName>
+        </Field>
+        <Field Name="IVIVINDX">
+          <DataField>IVIVINDX</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="IVIVOFIX">
+          <DataField>IVIVOFIX</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="IVCOGSIX">
+          <DataField>IVCOGSIX</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="IVSLSIDX">
+          <DataField>IVSLSIDX</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="IVSLDSIX">
+          <DataField>IVSLDSIX</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="IVSLRNIX">
+          <DataField>IVSLRNIX</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="IVINUSIX">
+          <DataField>IVINUSIX</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="IVINSVIX">
+          <DataField>IVINSVIX</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="IVDMGIDX">
+          <DataField>IVDMGIDX</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="IVVARIDX">
+          <DataField>IVVARIDX</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="DPSHPIDX">
+          <DataField>DPSHPIDX</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="PURPVIDX">
+          <DataField>PURPVIDX</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="UPPVIDX">
+          <DataField>UPPVIDX</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="IVRETIDX">
+          <DataField>IVRETIDX</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="ASMVRIDX">
+          <DataField>ASMVRIDX</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="ITMCLSCD">
+          <DataField>ITMCLSCD</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ITMTRKOP">
+          <DataField>ITMTRKOP</DataField>
+          <rd:TypeName>System.Int16</rd:TypeName>
+        </Field>
+        <Field Name="LOTTYPE">
+          <DataField>LOTTYPE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="KPERHIST">
+          <DataField>KPERHIST</DataField>
+          <rd:TypeName>System.Byte</rd:TypeName>
+        </Field>
+        <Field Name="KPTRXHST">
+          <DataField>KPTRXHST</DataField>
+          <rd:TypeName>System.Byte</rd:TypeName>
+        </Field>
+        <Field Name="KPCALHST">
+          <DataField>KPCALHST</DataField>
+          <rd:TypeName>System.Byte</rd:TypeName>
+        </Field>
+        <Field Name="KPDSTHST">
+          <DataField>KPDSTHST</DataField>
+          <rd:TypeName>System.Byte</rd:TypeName>
+        </Field>
+        <Field Name="ALWBKORD">
+          <DataField>ALWBKORD</DataField>
+          <rd:TypeName>System.Byte</rd:TypeName>
+        </Field>
+        <Field Name="VCTNMTHD">
+          <DataField>VCTNMTHD</DataField>
+          <rd:TypeName>System.Int16</rd:TypeName>
+        </Field>
+        <Field Name="UOMSCHDL">
+          <DataField>UOMSCHDL</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ALTITEM1">
+          <DataField>ALTITEM1</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ALTITEM2">
+          <DataField>ALTITEM2</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="USCATVLS_1">
+          <DataField>USCATVLS_1</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="USCATVLS_2">
+          <DataField>USCATVLS_2</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="USCATVLS_3">
+          <DataField>USCATVLS_3</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="USCATVLS_4">
+          <DataField>USCATVLS_4</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="USCATVLS_5">
+          <DataField>USCATVLS_5</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="USCATVLS_6">
+          <DataField>USCATVLS_6</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="MSTRCDTY">
+          <DataField>MSTRCDTY</DataField>
+          <rd:TypeName>System.Int16</rd:TypeName>
+        </Field>
+        <Field Name="MODIFDT">
+          <DataField>MODIFDT</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="CREATDDT">
+          <DataField>CREATDDT</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="WRNTYDYS">
+          <DataField>WRNTYDYS</DataField>
+          <rd:TypeName>System.Int16</rd:TypeName>
+        </Field>
+        <Field Name="PRCLEVEL">
+          <DataField>PRCLEVEL</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="LOCNCODE">
+          <DataField>LOCNCODE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="PINFLIDX">
+          <DataField>PINFLIDX</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="PURMCIDX">
+          <DataField>PURMCIDX</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="IVINFIDX">
+          <DataField>IVINFIDX</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="INVMCIDX">
+          <DataField>INVMCIDX</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="CGSINFLX">
+          <DataField>CGSINFLX</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="CGSMCIDX">
+          <DataField>CGSMCIDX</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="ITEMCODE">
+          <DataField>ITEMCODE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="TCC">
+          <DataField>TCC</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="PriceGroup">
+          <DataField>PriceGroup</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="PRICMTHD">
+          <DataField>PRICMTHD</DataField>
+          <rd:TypeName>System.Int16</rd:TypeName>
+        </Field>
+        <Field Name="PRCHSUOM">
+          <DataField>PRCHSUOM</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="SELNGUOM">
+          <DataField>SELNGUOM</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="KTACCTSR">
+          <DataField>KTACCTSR</DataField>
+          <rd:TypeName>System.Int16</rd:TypeName>
+        </Field>
+        <Field Name="LASTGENSN">
+          <DataField>LASTGENSN</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ABCCODE">
+          <DataField>ABCCODE</DataField>
+          <rd:TypeName>System.Int16</rd:TypeName>
+        </Field>
+        <Field Name="Revalue_Inventory">
+          <DataField>Revalue_Inventory</DataField>
+          <rd:TypeName>System.Byte</rd:TypeName>
+        </Field>
+        <Field Name="Tolerance_Percentage">
+          <DataField>Tolerance_Percentage</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="Purchase_Item_Tax_Schedu">
+          <DataField>Purchase_Item_Tax_Schedu</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Purchase_Tax_Options">
+          <DataField>Purchase_Tax_Options</DataField>
+          <rd:TypeName>System.Int16</rd:TypeName>
+        </Field>
+        <Field Name="ITMPLNNNGTYP">
+          <DataField>ITMPLNNNGTYP</DataField>
+          <rd:TypeName>System.Int16</rd:TypeName>
+        </Field>
+        <Field Name="STTSTCLVLPRCNTG">
+          <DataField>STTSTCLVLPRCNTG</DataField>
+          <rd:TypeName>System.Int16</rd:TypeName>
+        </Field>
+        <Field Name="CNTRYORGN">
+          <DataField>CNTRYORGN</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="INACTIVE">
+          <DataField>INACTIVE</DataField>
+          <rd:TypeName>System.Byte</rd:TypeName>
+        </Field>
+        <Field Name="MINSHELF1">
+          <DataField>MINSHELF1</DataField>
+          <rd:TypeName>System.Int16</rd:TypeName>
+        </Field>
+        <Field Name="MINSHELF2">
+          <DataField>MINSHELF2</DataField>
+          <rd:TypeName>System.Int16</rd:TypeName>
+        </Field>
+        <Field Name="INCLUDEINDP">
+          <DataField>INCLUDEINDP</DataField>
+          <rd:TypeName>System.Byte</rd:TypeName>
+        </Field>
+        <Field Name="LOTEXPWARN">
+          <DataField>LOTEXPWARN</DataField>
+          <rd:TypeName>System.Byte</rd:TypeName>
+        </Field>
+        <Field Name="LOTEXPWARNDAYS">
+          <DataField>LOTEXPWARNDAYS</DataField>
+          <rd:TypeName>System.Int16</rd:TypeName>
+        </Field>
+        <Field Name="LASTGENLOT">
+          <DataField>LASTGENLOT</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Lot_Split_Quantity">
+          <DataField>Lot_Split_Quantity</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="DEX_ROW_TS">
+          <DataField>DEX_ROW_TS</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="DEX_ROW_ID">
+          <DataField>DEX_ROW_ID</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="cantrecepcion">
+      <Query>
+        <DataSourceName>Gp</DataSourceName>
+        <QueryParameters>
+          <QueryParameter Name="@articulo">
+            <Value>=Parameters!articulo.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@localidad">
+            <Value>=Parameters!localidad.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <CommandText>SELECT     PO1.ITEMNMBR, SUM(PO34.QUANTITY) AS Expr1
+FROM         POP10310 AS PO1 INNER JOIN
+                      POP10340 AS PO34 ON PO1.POPRCTNM = PO34.POPRCTNM
+WHERE     (PO1.ITEMNMBR = @articulo) AND (PO1.LOCNCODE = @localidad)
+GROUP BY PO1.ITEMNMBR</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="ITEMNMBR">
+          <DataField>ITEMNMBR</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Expr1">
+          <DataField>Expr1</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+  </DataSets>
+  <ReportParameters>
+    <ReportParameter Name="articulo">
+      <DataType>String</DataType>
+      <Prompt>Articulo</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="localidad">
+      <DataType>String</DataType>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>Localidad</Prompt>
+      <ValidValues>
+        <ParameterValues>
+          <ParameterValue>
+            <Value>SANISIDRO</Value>
+            <Label>SANISIDRO</Label>
+          </ParameterValue>
+          <ParameterValue>
+            <Value>ROMANA</Value>
+            <Label>ROMANA</Label>
+          </ParameterValue>
+          <ParameterValue>
+            <Value>BAVARO</Value>
+            <Label>BAVARO</Label>
+          </ParameterValue>
+        </ParameterValues>
+      </ValidValues>
+    </ReportParameter>
+  </ReportParameters>
+  <rd:ReportUnitType>Inch</rd:ReportUnitType>
+  <rd:ReportID>395c8f51-89b7-42ed-82de-1ce9f9562ba3</rd:ReportID>
+</Report>

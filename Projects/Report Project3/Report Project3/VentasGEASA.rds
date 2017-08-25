@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RptDataSource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Name>VentasGEASA</Name>
+  <DataSourceID>3289fdd8-7cd2-4e87-98d0-0ac9f7680f89</DataSourceID>
+  <ConnectionProperties>
+    <Extension>SQL</Extension>
+    <ConnectString>Data Source=10.0.0.86;Initial Catalog=PalmComSync</ConnectString>
+  </ConnectionProperties>
+</RptDataSource>

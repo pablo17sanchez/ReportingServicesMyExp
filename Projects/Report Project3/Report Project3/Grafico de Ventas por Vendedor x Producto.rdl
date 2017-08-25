@@ -1,0 +1,290 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2005/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <DataSources>
+    <DataSource Name="Taramaca">
+      <ConnectionProperties>
+        <ConnectString>Data Source=10.0.0.86;Initial Catalog=TWO</ConnectString>
+        <DataProvider>SQL</DataProvider>
+      </ConnectionProperties>
+      <rd:DataSourceID>7cbb4a72-2870-43d6-871c-e738309f99dc</rd:DataSourceID>
+    </DataSource>
+  </DataSources>
+  <BottomMargin>2.5cm</BottomMargin>
+  <RightMargin>2.5cm</RightMargin>
+  <PageWidth>21cm</PageWidth>
+  <ReportParameters>
+    <ReportParameter Name="iFecha">
+      <DataType>String</DataType>
+      <Prompt>Fecha Desde yyyymm</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="aFecha">
+      <DataType>String</DataType>
+      <Prompt>Fecha Hasta yyyymm</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="iVendedor">
+      <DataType>String</DataType>
+      <Prompt>iVendedor</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Articulo">
+      <DataType>String</DataType>
+      <Prompt>Articulo</Prompt>
+    </ReportParameter>
+  </ReportParameters>
+  <rd:DrawGrid>true</rd:DrawGrid>
+  <InteractiveWidth>8.5in</InteractiveWidth>
+  <rd:GridSpacing>0.25cm</rd:GridSpacing>
+  <rd:SnapToGrid>true</rd:SnapToGrid>
+  <Body>
+    <ColumnSpacing>1cm</ColumnSpacing>
+    <ReportItems>
+      <Matrix Name="matrix1">
+        <MatrixColumns>
+          <MatrixColumn>
+            <Width>2.53968cm</Width>
+          </MatrixColumn>
+        </MatrixColumns>
+        <Left>1cm</Left>
+        <RowGroupings>
+          <RowGrouping>
+            <Width>2.53968cm</Width>
+            <DynamicRows>
+              <ReportItems>
+                <Textbox Name="itemnmbr">
+                  <rd:DefaultName>itemnmbr</rd:DefaultName>
+                  <ZIndex>1</ZIndex>
+                  <Style>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingBottom>2pt</PaddingBottom>
+                    <BackgroundColor>CornflowerBlue</BackgroundColor>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                  </Style>
+                  <CanGrow>true</CanGrow>
+                  <Value>=Fields!itemnmbr.Value</Value>
+                </Textbox>
+              </ReportItems>
+              <Grouping Name="matrix1_itemnmbr">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!itemnmbr.Value</GroupExpression>
+                </GroupExpressions>
+              </Grouping>
+            </DynamicRows>
+          </RowGrouping>
+        </RowGroupings>
+        <ColumnGroupings>
+          <ColumnGrouping>
+            <DynamicColumns>
+              <ReportItems>
+                <Textbox Name="Mes_Venta">
+                  <rd:DefaultName>Mes_Venta</rd:DefaultName>
+                  <ZIndex>2</ZIndex>
+                  <Style>
+                    <TextAlign>Right</TextAlign>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingBottom>2pt</PaddingBottom>
+                    <BackgroundColor>SkyBlue</BackgroundColor>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                  </Style>
+                  <CanGrow>true</CanGrow>
+                  <Value>=Fields!Mes_Venta.Value</Value>
+                </Textbox>
+              </ReportItems>
+              <Grouping Name="matrix1_Mes_Venta">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!Mes_Venta.Value</GroupExpression>
+                </GroupExpressions>
+              </Grouping>
+            </DynamicColumns>
+            <Height>0.63492cm</Height>
+          </ColumnGrouping>
+        </ColumnGroupings>
+        <DataSetName>Taramaca</DataSetName>
+        <Top>0.5cm</Top>
+        <Width>5.07936cm</Width>
+        <Corner>
+          <ReportItems>
+            <Textbox Name="textbox2">
+              <rd:DefaultName>textbox2</rd:DefaultName>
+              <ZIndex>3</ZIndex>
+              <Style>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingBottom>2pt</PaddingBottom>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+              </Style>
+              <CanGrow>true</CanGrow>
+              <Value />
+            </Textbox>
+          </ReportItems>
+        </Corner>
+        <Height>1.26984cm</Height>
+        <MatrixRows>
+          <MatrixRow>
+            <Height>0.63492cm</Height>
+            <MatrixCells>
+              <MatrixCell>
+                <ReportItems>
+                  <Textbox Name="Cantidad">
+                    <rd:DefaultName>Cantidad</rd:DefaultName>
+                    <Style>
+                      <TextAlign>Right</TextAlign>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingBottom>2pt</PaddingBottom>
+                      <PaddingRight>2pt</PaddingRight>
+                      <PaddingTop>2pt</PaddingTop>
+                    </Style>
+                    <CanGrow>true</CanGrow>
+                    <Value>=Sum(Fields!Cantidad.Value)</Value>
+                  </Textbox>
+                </ReportItems>
+              </MatrixCell>
+            </MatrixCells>
+          </MatrixRow>
+        </MatrixRows>
+      </Matrix>
+    </ReportItems>
+    <Height>2.01984cm</Height>
+  </Body>
+  <PageHeader>
+    <ReportItems>
+      <Textbox Name="textbox6">
+        <Left>4.25cm</Left>
+        <Top>1.25cm</Top>
+        <rd:DefaultName>textbox6</rd:DefaultName>
+        <ZIndex>2</ZIndex>
+        <Width>2.53968cm</Width>
+        <Style>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingBottom>2pt</PaddingBottom>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+        </Style>
+        <CanGrow>true</CanGrow>
+        <Height>0.63492cm</Height>
+        <Value>="Hasta" + Parameters!aFecha.Value</Value>
+      </Textbox>
+      <Textbox Name="textbox3">
+        <Left>0.5cm</Left>
+        <Top>1.25cm</Top>
+        <rd:DefaultName>textbox3</rd:DefaultName>
+        <ZIndex>1</ZIndex>
+        <Width>2.75cm</Width>
+        <Style>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingBottom>2pt</PaddingBottom>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+        </Style>
+        <CanGrow>true</CanGrow>
+        <Height>0.63492cm</Height>
+        <Value>="Desde " + Parameters!iFecha.Value  </Value>
+      </Textbox>
+      <Textbox Name="textbox1">
+        <rd:DefaultName>textbox1</rd:DefaultName>
+        <Style>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingBottom>2pt</PaddingBottom>
+          <FontFamily>Tahoma</FontFamily>
+          <FontSize>18pt</FontSize>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+        </Style>
+        <CanGrow>true</CanGrow>
+        <Height>0.8381cm</Height>
+        <Value>Grafico de Ventas por Vendedor x Producto</Value>
+      </Textbox>
+    </ReportItems>
+    <Height>2.38492cm</Height>
+    <PrintOnLastPage>true</PrintOnLastPage>
+    <PrintOnFirstPage>true</PrintOnFirstPage>
+  </PageHeader>
+  <rd:ReportID>90de2dab-ec2d-4d95-a5a7-f2830fcd4cdb</rd:ReportID>
+  <LeftMargin>2.5cm</LeftMargin>
+  <DataSets>
+    <DataSet Name="Taramaca">
+      <Query>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+        <CommandText>select year(soph.docdate)[Año Venta],month(soph.docdate)[Mes Venta],sop.sopnumbe,sop.itemnmbr,sop.itemdesc,sop.locncode,cast(sop.unitprce as decimal(10,2))[Precio Unitario],cast(sop.quantity as decimal(10,0)) [Cantidad],cast((sop.unitprce * sop.quantity) as decimal(10,2)) [Valor Venta],sop.salsterr,sop.slprsnid,sop.city 
+from (select soptype,sopnumbe,itemnmbr,itemdesc,locncode,unitprce,quantity,(unitprce * quantity)[Valor Venta],salsterr,slprsnid,city  from sop10200
+union all
+select soptype,sopnumbe,itemnmbr,itemdesc,locncode,unitprce,quantity,(unitprce * quantity)[Valor Venta],salsterr,slprsnid,city from sop30300) sop join (select sopnumbe,docdate from sop10100 
+union all 
+select sopnumbe,docdate from sop30200) soph on sop.sopnumbe = soph.sopnumbe join rm00301 vp on sop.slprsnid = vp.slprsnid
+where soptype = 3 and (cast (year(docdate) as varchar (4))+''+ 
+ cast (replicate('0', 2 - len(month(docdate))) as varchar (2)) + cast (month(docdate) as varchar(2))) between  @iFecha and @aFecha  and sop.slprsnid = @iVendedor and sop.itemnmbr = @Articulo
+order by year(soph.docdate)</CommandText>
+        <QueryParameters>
+          <QueryParameter Name="@iFecha">
+            <Value>=Parameters!iFecha.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@aFecha">
+            <Value>=Parameters!aFecha.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@iVendedor">
+            <Value>=Parameters!iVendedor.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@Articulo">
+            <Value>=Parameters!Articulo.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <DataSourceName>Taramaca</DataSourceName>
+      </Query>
+      <Fields>
+        <Field Name="Año_Venta">
+          <rd:TypeName>System.Int32</rd:TypeName>
+          <DataField>Año Venta</DataField>
+        </Field>
+        <Field Name="Mes_Venta">
+          <rd:TypeName>System.Int32</rd:TypeName>
+          <DataField>Mes Venta</DataField>
+        </Field>
+        <Field Name="sopnumbe">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>sopnumbe</DataField>
+        </Field>
+        <Field Name="itemnmbr">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>itemnmbr</DataField>
+        </Field>
+        <Field Name="itemdesc">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>itemdesc</DataField>
+        </Field>
+        <Field Name="locncode">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>locncode</DataField>
+        </Field>
+        <Field Name="Precio_Unitario">
+          <rd:TypeName>System.Decimal</rd:TypeName>
+          <DataField>Precio Unitario</DataField>
+        </Field>
+        <Field Name="Cantidad">
+          <rd:TypeName>System.Decimal</rd:TypeName>
+          <DataField>Cantidad</DataField>
+        </Field>
+        <Field Name="Valor_Venta">
+          <rd:TypeName>System.Decimal</rd:TypeName>
+          <DataField>Valor Venta</DataField>
+        </Field>
+        <Field Name="salsterr">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>salsterr</DataField>
+        </Field>
+        <Field Name="slprsnid">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>slprsnid</DataField>
+        </Field>
+        <Field Name="city">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>city</DataField>
+        </Field>
+      </Fields>
+    </DataSet>
+  </DataSets>
+  <Width>15.5cm</Width>
+  <InteractiveHeight>11in</InteractiveHeight>
+  <Language>en-US</Language>
+  <TopMargin>2.5cm</TopMargin>
+  <PageHeight>29.7cm</PageHeight>
+</Report>

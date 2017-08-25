@@ -1,0 +1,2725 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2005/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <Language>en-US</Language>
+  <rd:GridSpacing>0.125in</rd:GridSpacing>
+  <Width>10.8in</Width>
+  <TopMargin>0.3in</TopMargin>
+  <BottomMargin>0.3in</BottomMargin>
+  <LeftMargin>0.1in</LeftMargin>
+  <RightMargin>0.1in</RightMargin>
+  <PageWidth>11in</PageWidth>
+  <PageHeight>8.5in</PageHeight>
+  <ReportParameters>
+    <ReportParameter Name="FechaDocumento">
+      <DataType>DateTime</DataType>
+      <Nullable>true</Nullable>
+      <Prompt>Fecha Documento</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="FechaDocumento1">
+      <DataType>DateTime</DataType>
+      <Nullable>true</Nullable>
+      <Prompt>Fecha Documento1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="CodigoVendedor">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <DefaultValue>
+        <Values>
+          <Value>="0"</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Codigo Vendedor</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="CodigoVendedor2">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <DefaultValue>
+        <Values>
+          <Value>="0"</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Codigo Vendedor2</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="ITEMNMBR">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <DefaultValue>
+        <Values>
+          <Value>="0"</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>ITEMNMBR</Prompt>
+      <ValidValues>
+        <DataSetReference>
+          <DataSetName>paramDataSet</DataSetName>
+          <ValueField>value</ValueField>
+          <LabelField>value</LabelField>
+        </DataSetReference>
+      </ValidValues>
+    </ReportParameter>
+  </ReportParameters>
+  <Body>
+    <Height>0in</Height>
+    <Style />
+    <ReportItems>
+      <Textbox Name="Title">
+        <Value>Inversiones Taramaca, S. A.</Value>
+        <CanGrow>true</CanGrow>
+        <Width>4.375in</Width>
+        <Height>0.25in</Height>
+        <Left>0.125in</Left>
+        <Top>0.125in</Top>
+        <Style>
+          <FontSize>14pt</FontSize>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+          <FontFamily>Tahoma</FontFamily>
+          <TextAlign>Left</TextAlign>
+        </Style>
+        <CustomProperties>
+          <CustomProperty>
+            <Name>rb:Watermark</Name>
+            <Value>Click to add title</Value>
+          </CustomProperty>
+        </CustomProperties>
+      </Textbox>
+      <Table Name="table">
+        <TableColumns>
+          <TableColumn>
+            <Width>0.75in</Width>
+            <Visibility>
+              <Hidden>=Fields!Localidad.IsMissing</Hidden>
+            </Visibility>
+          </TableColumn>
+          <TableColumn>
+            <Width>0.72917in</Width>
+            <Visibility>
+              <Hidden>=Fields!Vendedor.IsMissing</Hidden>
+            </Visibility>
+          </TableColumn>
+          <TableColumn>
+            <Width>1.35657in</Width>
+            <Visibility>
+              <Hidden>=Fields!NombreCompleto.IsMissing</Hidden>
+            </Visibility>
+          </TableColumn>
+          <TableColumn>
+            <Width>0.5in</Width>
+            <Visibility>
+              <Hidden>=Fields!Cod_Art.IsMissing</Hidden>
+            </Visibility>
+          </TableColumn>
+          <TableColumn>
+            <Width>1.375in</Width>
+            <Visibility>
+              <Hidden>=Fields!Descripción.IsMissing</Hidden>
+            </Visibility>
+          </TableColumn>
+          <TableColumn>
+            <Width>0.75in</Width>
+            <Visibility>
+              <Hidden>=Fields!CantidadxPrecio_Sum.IsMissing</Hidden>
+            </Visibility>
+          </TableColumn>
+          <TableColumn>
+            <Width>0.75in</Width>
+            <Visibility>
+              <Hidden>=Fields!Precio.IsMissing</Hidden>
+            </Visibility>
+          </TableColumn>
+          <TableColumn>
+            <Width>0.75in</Width>
+            <Visibility>
+              <Hidden>=Fields!Total_Sum.IsMissing</Hidden>
+            </Visibility>
+          </TableColumn>
+          <TableColumn>
+            <Width>0.54167in</Width>
+            <Visibility>
+              <Hidden>=Fields!Comision_Sum.IsMissing Or Fields!Comision_Sum1.IsMissing</Hidden>
+            </Visibility>
+          </TableColumn>
+        </TableColumns>
+        <Header>
+          <TableRows>
+            <TableRow>
+              <TableCells>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="AlmacenPredeterminado_Header">
+                      <Value>Localidad</Value>
+                      <CanGrow>true</CanGrow>
+                      <UserSort>
+                        <SortExpression>=Fields!Localidad.Value</SortExpression>
+                        <SortExpressionScope>table_Localidad</SortExpressionScope>
+                      </UserSort>
+                      <Style>
+                        <Color>White</Color>
+                        <BackgroundColor>#518ae5</BackgroundColor>
+                        <FontSize>7pt</FontSize>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <BorderColor>
+                          <Default>LightGrey</Default>
+                        </BorderColor>
+                        <BorderStyle>
+                          <Default>Solid</Default>
+                        </BorderStyle>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontWeight>Bold</FontWeight>
+                        <Language>en-US</Language>
+                      </Style>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="CodigoVendedor_Header">
+                      <Value>Vendedor</Value>
+                      <CanGrow>true</CanGrow>
+                      <UserSort>
+                        <SortExpression>=Fields!Vendedor.Value</SortExpression>
+                        <SortExpressionScope>table_Vendedor</SortExpressionScope>
+                      </UserSort>
+                      <Style>
+                        <Color>White</Color>
+                        <BackgroundColor>#518ae5</BackgroundColor>
+                        <FontSize>7pt</FontSize>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <BorderColor>
+                          <Default>LightGrey</Default>
+                        </BorderColor>
+                        <BorderStyle>
+                          <Default>Solid</Default>
+                        </BorderStyle>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontWeight>Bold</FontWeight>
+                        <Language>en-US</Language>
+                      </Style>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="NombreCompleto_Header">
+                      <Value>Nombre Completo</Value>
+                      <CanGrow>true</CanGrow>
+                      <UserSort>
+                        <SortExpression>=Fields!NombreCompleto.Value</SortExpression>
+                        <SortExpressionScope>table_NombreCompleto</SortExpressionScope>
+                      </UserSort>
+                      <Style>
+                        <Color>White</Color>
+                        <BackgroundColor>#518ae5</BackgroundColor>
+                        <FontSize>7pt</FontSize>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <BorderColor>
+                          <Default>LightGrey</Default>
+                        </BorderColor>
+                        <BorderStyle>
+                          <Default>Solid</Default>
+                        </BorderStyle>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontWeight>Bold</FontWeight>
+                        <Language>en-US</Language>
+                      </Style>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="ITEMNMBR_Header">
+                      <Value>Cod_Art</Value>
+                      <CanGrow>true</CanGrow>
+                      <UserSort>
+                        <SortExpression>=Fields!Cod_Art.Value</SortExpression>
+                        <SortExpressionScope>table_Cod_Art</SortExpressionScope>
+                      </UserSort>
+                      <Style>
+                        <Color>White</Color>
+                        <BackgroundColor>#518ae5</BackgroundColor>
+                        <FontSize>7pt</FontSize>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <BorderColor>
+                          <Default>LightGrey</Default>
+                        </BorderColor>
+                        <BorderStyle>
+                          <Default>Solid</Default>
+                        </BorderStyle>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontWeight>Bold</FontWeight>
+                        <Language>en-US</Language>
+                      </Style>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="ITEMDESC_Header">
+                      <Value>Descripción </Value>
+                      <CanGrow>true</CanGrow>
+                      <UserSort>
+                        <SortExpression>=Fields!Descripción.Value</SortExpression>
+                        <SortExpressionScope>table_Descripción</SortExpressionScope>
+                      </UserSort>
+                      <Style>
+                        <Color>White</Color>
+                        <BackgroundColor>#518ae5</BackgroundColor>
+                        <FontSize>7pt</FontSize>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <BorderColor>
+                          <Default>LightGrey</Default>
+                        </BorderColor>
+                        <BorderStyle>
+                          <Default>Solid</Default>
+                        </BorderStyle>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontWeight>Bold</FontWeight>
+                        <Language>en-US</Language>
+                      </Style>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="TotalQUANTITY_Header2">
+                      <Value>Cantidad x Precio</Value>
+                      <CanGrow>true</CanGrow>
+                      <UserSort>
+                        <SortExpression>=Fields!CantidadxPrecio_Sum.Value</SortExpression>
+                        <SortExpressionScope>table_Precio</SortExpressionScope>
+                      </UserSort>
+                      <Style>
+                        <Color>White</Color>
+                        <BackgroundColor>#518ae5</BackgroundColor>
+                        <FontSize>7pt</FontSize>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <BorderColor>
+                          <Default>LightGrey</Default>
+                        </BorderColor>
+                        <BorderStyle>
+                          <Default>Solid</Default>
+                        </BorderStyle>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontWeight>Bold</FontWeight>
+                        <Language>en-US</Language>
+                      </Style>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="UNITPRCE_Header">
+                      <Value>Precio	</Value>
+                      <CanGrow>true</CanGrow>
+                      <UserSort>
+                        <SortExpression>=Fields!Precio.Value</SortExpression>
+                        <SortExpressionScope>table_Precio</SortExpressionScope>
+                      </UserSort>
+                      <Style>
+                        <Color>White</Color>
+                        <BackgroundColor>#518ae5</BackgroundColor>
+                        <FontSize>7pt</FontSize>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <BorderColor>
+                          <Default>LightGrey</Default>
+                        </BorderColor>
+                        <BorderStyle>
+                          <Default>Solid</Default>
+                        </BorderStyle>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontWeight>Bold</FontWeight>
+                        <Language>en-US</Language>
+                      </Style>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="TotalXTNDPRCE_Header">
+                      <Value>Total </Value>
+                      <CanGrow>true</CanGrow>
+                      <UserSort>
+                        <SortExpression>=Fields!Total_Sum.Value</SortExpression>
+                        <SortExpressionScope>table_Precio</SortExpressionScope>
+                      </UserSort>
+                      <Style>
+                        <Color>White</Color>
+                        <BackgroundColor>#518ae5</BackgroundColor>
+                        <FontSize>7pt</FontSize>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <BorderColor>
+                          <Default>LightGrey</Default>
+                        </BorderColor>
+                        <BorderStyle>
+                          <Default>Solid</Default>
+                        </BorderStyle>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontWeight>Bold</FontWeight>
+                        <Language>en-US</Language>
+                      </Style>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="PrecioPromedio_Header">
+                      <Value>Comision</Value>
+                      <CanGrow>true</CanGrow>
+                      <UserSort>
+                        <SortExpression>=(Fields!Comision_Sum.Value / Fields!Comision_Sum1.Value)</SortExpression>
+                        <SortExpressionScope>table_Precio</SortExpressionScope>
+                      </UserSort>
+                      <Style>
+                        <Color>White</Color>
+                        <BackgroundColor>#518ae5</BackgroundColor>
+                        <FontSize>7pt</FontSize>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <BorderColor>
+                          <Default>LightGrey</Default>
+                        </BorderColor>
+                        <BorderStyle>
+                          <Default>Solid</Default>
+                        </BorderStyle>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontWeight>Bold</FontWeight>
+                        <TextAlign>Left</TextAlign>
+                        <Language>en-US</Language>
+                      </Style>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+              </TableCells>
+              <Height>0.5in</Height>
+            </TableRow>
+          </TableRows>
+          <RepeatOnNewPage>true</RepeatOnNewPage>
+          <FixedHeader>true</FixedHeader>
+        </Header>
+        <TableGroups>
+          <TableGroup>
+            <Grouping Name="table_Localidad">
+              <GroupExpressions>
+                <GroupExpression>=Fields!Localidad.Value</GroupExpression>
+              </GroupExpressions>
+            </Grouping>
+            <Sorting>
+              <SortBy>
+                <SortExpression>=IIf(True, Fields!Localidad.Value, Nothing)</SortExpression>
+              </SortBy>
+            </Sorting>
+            <Footer>
+              <TableRows>
+                <TableRow>
+                  <TableCells>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="blank">
+                          <Value />
+                          <CanGrow>true</CanGrow>
+                          <Style>
+                            <BackgroundColor>White</BackgroundColor>
+                            <FontSize>7pt</FontSize>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                            <BorderColor>
+                              <Default>LightGrey</Default>
+                            </BorderColor>
+                            <BorderStyle>
+                              <Left>Solid</Left>
+                              <Right>Solid</Right>
+                            </BorderStyle>
+                            <FontFamily>Tahoma</FontFamily>
+                            <Language>en-US</Language>
+                          </Style>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ColSpan>4</ColSpan>
+                      <ReportItems>
+                        <Textbox Name="textbox2">
+                          <Value>Total</Value>
+                          <CanGrow>true</CanGrow>
+                          <Style>
+                            <BackgroundColor>#c6dbff</BackgroundColor>
+                            <FontSize>7pt</FontSize>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                            <BorderColor>
+                              <Default>LightGrey</Default>
+                            </BorderColor>
+                            <BorderStyle>
+                              <Default>Solid</Default>
+                            </BorderStyle>
+                            <FontFamily>Tahoma</FontFamily>
+                          </Style>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="TotalQUANTITY_Total_2_2_2_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_1_1_1_1_1_1_1">
+                          <Value>=SUM(Fields!CantidadxPrecio_Sum.Value)</Value>
+                          <CanGrow>true</CanGrow>
+                          <Action>
+                            <Drillthrough>
+                              <ReportName>=DataSources!dataSource1.DataSourceReference</ReportName>
+                              <Parameters>
+                                <Parameter Name="rs:EntityID">
+                                  <Value>Gfeccacaf-ea76-4204-83ea-bb88ac7dcc73</Value>
+                                </Parameter>
+                                <Parameter Name="rs:DrillType">
+                                  <Value>List</Value>
+                                </Parameter>
+                                <Parameter Name="rs:Command">
+                                  <Value>Drillthrough</Value>
+                                </Parameter>
+                                <Parameter Name="DrillthroughSourceQuery">
+                                  <Value>=DataSets!dataSet.RewrittenCommandText</Value>
+                                </Parameter>
+                                <Parameter Name="DrillthroughContext">
+                                  <Value>=CreateDrillthroughContext()</Value>
+                                </Parameter>
+                              </Parameters>
+                            </Drillthrough>
+                          </Action>
+                          <Style>
+                            <BackgroundColor>#c6dbff</BackgroundColor>
+                            <FontSize>8pt</FontSize>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                            <BorderColor>
+                              <Default>#c0c0c0</Default>
+                            </BorderColor>
+                            <BorderStyle>
+                              <Default>Solid</Default>
+                            </BorderStyle>
+                            <FontFamily>Tahoma</FontFamily>
+                            <Language>en-US</Language>
+                          </Style>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="textbox14_1">
+                          <Value />
+                          <CanGrow>true</CanGrow>
+                          <Style>
+                            <BackgroundColor>#c6dbff</BackgroundColor>
+                            <FontSize>8pt</FontSize>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                            <BorderColor>
+                              <Default>#c0c0c0</Default>
+                            </BorderColor>
+                            <BorderStyle>
+                              <Default>Solid</Default>
+                            </BorderStyle>
+                            <FontFamily>Tahoma</FontFamily>
+                            <Format>f2</Format>
+                            <Language>en-US</Language>
+                          </Style>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="TotalXTNDPRCE_Total_2_2_2_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_1_1_1_1_1_1_1">
+                          <Value>=SUM(Fields!Total_Sum.Value)</Value>
+                          <CanGrow>true</CanGrow>
+                          <Action>
+                            <Drillthrough>
+                              <ReportName>=DataSources!dataSource1.DataSourceReference</ReportName>
+                              <Parameters>
+                                <Parameter Name="rs:EntityID">
+                                  <Value>Gfeccacaf-ea76-4204-83ea-bb88ac7dcc73</Value>
+                                </Parameter>
+                                <Parameter Name="rs:DrillType">
+                                  <Value>List</Value>
+                                </Parameter>
+                                <Parameter Name="rs:Command">
+                                  <Value>Drillthrough</Value>
+                                </Parameter>
+                                <Parameter Name="DrillthroughSourceQuery">
+                                  <Value>=DataSets!dataSet.RewrittenCommandText</Value>
+                                </Parameter>
+                                <Parameter Name="DrillthroughContext">
+                                  <Value>=CreateDrillthroughContext()</Value>
+                                </Parameter>
+                              </Parameters>
+                            </Drillthrough>
+                          </Action>
+                          <Style>
+                            <BackgroundColor>#c6dbff</BackgroundColor>
+                            <FontSize>8pt</FontSize>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                            <BorderColor>
+                              <Default>#c0c0c0</Default>
+                            </BorderColor>
+                            <BorderStyle>
+                              <Default>Solid</Default>
+                            </BorderStyle>
+                            <FontFamily>Tahoma</FontFamily>
+                            <Language>en-US</Language>
+                          </Style>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="PrecioPromedio_Total_2_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_1_1_1_1_1_1_1">
+                          <Value>=(SUM(Fields!Comision_Sum.Value) / SUM(Fields!Comision_Sum1.Value))</Value>
+                          <CanGrow>true</CanGrow>
+                          <Action>
+                            <Drillthrough>
+                              <ReportName>=DataSources!dataSource1.DataSourceReference</ReportName>
+                              <Parameters>
+                                <Parameter Name="rs:EntityID">
+                                  <Value>Gfeccacaf-ea76-4204-83ea-bb88ac7dcc73</Value>
+                                </Parameter>
+                                <Parameter Name="rs:DrillType">
+                                  <Value>List</Value>
+                                </Parameter>
+                                <Parameter Name="rs:Command">
+                                  <Value>Drillthrough</Value>
+                                </Parameter>
+                                <Parameter Name="DrillthroughSourceQuery">
+                                  <Value>=DataSets!dataSet.RewrittenCommandText</Value>
+                                </Parameter>
+                                <Parameter Name="DrillthroughContext">
+                                  <Value>=CreateDrillthroughContext()</Value>
+                                </Parameter>
+                              </Parameters>
+                            </Drillthrough>
+                          </Action>
+                          <Style>
+                            <BackgroundColor>#c6dbff</BackgroundColor>
+                            <FontSize>8pt</FontSize>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                            <BorderColor>
+                              <Default>#c0c0c0</Default>
+                            </BorderColor>
+                            <BorderStyle>
+                              <Default>Solid</Default>
+                            </BorderStyle>
+                            <FontFamily>Tahoma</FontFamily>
+                            <Format>g</Format>
+                            <TextAlign>Left</TextAlign>
+                            <Language>en-US</Language>
+                          </Style>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                  </TableCells>
+                  <Height>0.20833in</Height>
+                </TableRow>
+              </TableRows>
+            </Footer>
+          </TableGroup>
+          <TableGroup>
+            <Grouping Name="table_Vendedor">
+              <GroupExpressions>
+                <GroupExpression>=Fields!Vendedor.Value</GroupExpression>
+              </GroupExpressions>
+            </Grouping>
+            <Sorting>
+              <SortBy>
+                <SortExpression>=Fields!Vendedor.Value</SortExpression>
+              </SortBy>
+            </Sorting>
+          </TableGroup>
+          <TableGroup>
+            <Grouping Name="table_NombreCompleto">
+              <GroupExpressions>
+                <GroupExpression>=Fields!NombreCompleto.Value</GroupExpression>
+              </GroupExpressions>
+            </Grouping>
+            <Footer>
+              <TableRows>
+                <TableRow>
+                  <TableCells>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="blank2">
+                          <Value />
+                          <CanGrow>true</CanGrow>
+                          <Style>
+                            <BackgroundColor>White</BackgroundColor>
+                            <FontSize>7pt</FontSize>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                            <BorderColor>
+                              <Default>LightGrey</Default>
+                            </BorderColor>
+                            <BorderStyle>
+                              <Left>Solid</Left>
+                              <Right>Solid</Right>
+                            </BorderStyle>
+                            <FontFamily>Tahoma</FontFamily>
+                            <Language>en-US</Language>
+                          </Style>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="blank3">
+                          <Value />
+                          <CanGrow>true</CanGrow>
+                          <Style>
+                            <BackgroundColor>White</BackgroundColor>
+                            <FontSize>7pt</FontSize>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                            <BorderColor>
+                              <Default>LightGrey</Default>
+                            </BorderColor>
+                            <BorderStyle>
+                              <Left>Solid</Left>
+                              <Right>Solid</Right>
+                              <Bottom>=Iif( RowNumber("table_Vendedor") = CountRows("table_Vendedor"), "Solid", Nothing)</Bottom>
+                            </BorderStyle>
+                            <FontFamily>Tahoma</FontFamily>
+                            <Language>en-US</Language>
+                          </Style>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="blank4">
+                          <Value />
+                          <CanGrow>true</CanGrow>
+                          <Style>
+                            <BackgroundColor>White</BackgroundColor>
+                            <FontSize>7pt</FontSize>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                            <BorderColor>
+                              <Default>LightGrey</Default>
+                            </BorderColor>
+                            <BorderStyle>
+                              <Left>Solid</Left>
+                              <Right>Solid</Right>
+                            </BorderStyle>
+                            <FontFamily>Tahoma</FontFamily>
+                            <Language>en-US</Language>
+                          </Style>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ColSpan>2</ColSpan>
+                      <ReportItems>
+                        <Textbox Name="textbox5">
+                          <Value>Total</Value>
+                          <CanGrow>true</CanGrow>
+                          <Style>
+                            <BackgroundColor>#c6dbff</BackgroundColor>
+                            <FontSize>7pt</FontSize>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                            <BorderColor>
+                              <Default>LightGrey</Default>
+                            </BorderColor>
+                            <BorderStyle>
+                              <Default>Solid</Default>
+                            </BorderStyle>
+                            <FontFamily>Tahoma</FontFamily>
+                          </Style>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="TotalQUANTITY_Total_2_2_2_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_1_1_1_1_1_1_2">
+                          <Value>=SUM(Fields!CantidadxPrecio_Sum.Value)</Value>
+                          <CanGrow>true</CanGrow>
+                          <Action>
+                            <Drillthrough>
+                              <ReportName>=DataSources!dataSource1.DataSourceReference</ReportName>
+                              <Parameters>
+                                <Parameter Name="rs:EntityID">
+                                  <Value>Gfeccacaf-ea76-4204-83ea-bb88ac7dcc73</Value>
+                                </Parameter>
+                                <Parameter Name="rs:DrillType">
+                                  <Value>List</Value>
+                                </Parameter>
+                                <Parameter Name="rs:Command">
+                                  <Value>Drillthrough</Value>
+                                </Parameter>
+                                <Parameter Name="DrillthroughSourceQuery">
+                                  <Value>=DataSets!dataSet.RewrittenCommandText</Value>
+                                </Parameter>
+                                <Parameter Name="DrillthroughContext">
+                                  <Value>=CreateDrillthroughContext()</Value>
+                                </Parameter>
+                              </Parameters>
+                            </Drillthrough>
+                          </Action>
+                          <Style>
+                            <BackgroundColor>#c6dbff</BackgroundColor>
+                            <FontSize>8pt</FontSize>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                            <BorderColor>
+                              <Default>#c0c0c0</Default>
+                            </BorderColor>
+                            <BorderStyle>
+                              <Default>Solid</Default>
+                            </BorderStyle>
+                            <FontFamily>Tahoma</FontFamily>
+                            <Language>en-US</Language>
+                          </Style>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="textbox14_2">
+                          <Value />
+                          <CanGrow>true</CanGrow>
+                          <Style>
+                            <BackgroundColor>#c6dbff</BackgroundColor>
+                            <FontSize>8pt</FontSize>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                            <BorderColor>
+                              <Default>#c0c0c0</Default>
+                            </BorderColor>
+                            <BorderStyle>
+                              <Default>Solid</Default>
+                            </BorderStyle>
+                            <FontFamily>Tahoma</FontFamily>
+                            <Format>f2</Format>
+                            <Language>en-US</Language>
+                          </Style>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="TotalXTNDPRCE_Total_2_2_2_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_1_1_1_1_1_1_2">
+                          <Value>=SUM(Fields!Total_Sum.Value)</Value>
+                          <CanGrow>true</CanGrow>
+                          <Action>
+                            <Drillthrough>
+                              <ReportName>=DataSources!dataSource1.DataSourceReference</ReportName>
+                              <Parameters>
+                                <Parameter Name="rs:EntityID">
+                                  <Value>Gfeccacaf-ea76-4204-83ea-bb88ac7dcc73</Value>
+                                </Parameter>
+                                <Parameter Name="rs:DrillType">
+                                  <Value>List</Value>
+                                </Parameter>
+                                <Parameter Name="rs:Command">
+                                  <Value>Drillthrough</Value>
+                                </Parameter>
+                                <Parameter Name="DrillthroughSourceQuery">
+                                  <Value>=DataSets!dataSet.RewrittenCommandText</Value>
+                                </Parameter>
+                                <Parameter Name="DrillthroughContext">
+                                  <Value>=CreateDrillthroughContext()</Value>
+                                </Parameter>
+                              </Parameters>
+                            </Drillthrough>
+                          </Action>
+                          <Style>
+                            <BackgroundColor>#c6dbff</BackgroundColor>
+                            <FontSize>8pt</FontSize>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                            <BorderColor>
+                              <Default>#c0c0c0</Default>
+                            </BorderColor>
+                            <BorderStyle>
+                              <Default>Solid</Default>
+                            </BorderStyle>
+                            <FontFamily>Tahoma</FontFamily>
+                            <Language>en-US</Language>
+                          </Style>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="PrecioPromedio_Total_2_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_1_1_1_1_1_1_2">
+                          <Value>=(SUM(Fields!Comision_Sum.Value) / SUM(Fields!Comision_Sum1.Value))</Value>
+                          <CanGrow>true</CanGrow>
+                          <Action>
+                            <Drillthrough>
+                              <ReportName>=DataSources!dataSource1.DataSourceReference</ReportName>
+                              <Parameters>
+                                <Parameter Name="rs:EntityID">
+                                  <Value>Gfeccacaf-ea76-4204-83ea-bb88ac7dcc73</Value>
+                                </Parameter>
+                                <Parameter Name="rs:DrillType">
+                                  <Value>List</Value>
+                                </Parameter>
+                                <Parameter Name="rs:Command">
+                                  <Value>Drillthrough</Value>
+                                </Parameter>
+                                <Parameter Name="DrillthroughSourceQuery">
+                                  <Value>=DataSets!dataSet.RewrittenCommandText</Value>
+                                </Parameter>
+                                <Parameter Name="DrillthroughContext">
+                                  <Value>=CreateDrillthroughContext()</Value>
+                                </Parameter>
+                              </Parameters>
+                            </Drillthrough>
+                          </Action>
+                          <Style>
+                            <BackgroundColor>#c6dbff</BackgroundColor>
+                            <FontSize>8pt</FontSize>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                            <BorderColor>
+                              <Default>#c0c0c0</Default>
+                            </BorderColor>
+                            <BorderStyle>
+                              <Default>Solid</Default>
+                            </BorderStyle>
+                            <FontFamily>Tahoma</FontFamily>
+                            <Format>g</Format>
+                            <TextAlign>Left</TextAlign>
+                            <Language>en-US</Language>
+                          </Style>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                  </TableCells>
+                  <Height>0.20833in</Height>
+                </TableRow>
+              </TableRows>
+            </Footer>
+          </TableGroup>
+          <TableGroup>
+            <Grouping Name="table_Cod_Art">
+              <GroupExpressions>
+                <GroupExpression>=Fields!Cod_Art.Value</GroupExpression>
+              </GroupExpressions>
+            </Grouping>
+            <Sorting>
+              <SortBy>
+                <SortExpression>=Fields!Cod_Art.Value</SortExpression>
+              </SortBy>
+            </Sorting>
+          </TableGroup>
+          <TableGroup>
+            <Grouping Name="table_Descripción">
+              <GroupExpressions>
+                <GroupExpression>=Fields!Descripción.Value</GroupExpression>
+              </GroupExpressions>
+            </Grouping>
+            <Sorting>
+              <SortBy>
+                <SortExpression>=IIf(True, Fields!Descripción.Value, Nothing)</SortExpression>
+              </SortBy>
+            </Sorting>
+          </TableGroup>
+        </TableGroups>
+        <Details>
+          <TableRows>
+            <TableRow>
+              <TableCells>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="AlmacenPredeterminado_Value">
+                      <Value>=Fields!Localidad.Value</Value>
+                      <CanGrow>true</CanGrow>
+                      <HideDuplicates>table_Localidad</HideDuplicates>
+                      <Style>
+                        <BackgroundColor>White</BackgroundColor>
+                        <FontSize>7pt</FontSize>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <BorderColor>
+                          <Default>LightGrey</Default>
+                        </BorderColor>
+                        <BorderStyle>
+                          <Left>Solid</Left>
+                          <Right>Solid</Right>
+                        </BorderStyle>
+                        <FontFamily>Tahoma</FontFamily>
+                        <Language>en-US</Language>
+                      </Style>
+                      <DataElementOutput>Output</DataElementOutput>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="CodigoVendedor_Value">
+                      <Value>=Fields!Vendedor.Value</Value>
+                      <CanGrow>true</CanGrow>
+                      <HideDuplicates>table_Vendedor</HideDuplicates>
+                      <Style>
+                        <BackgroundColor>White</BackgroundColor>
+                        <FontSize>7pt</FontSize>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <BorderColor>
+                          <Default>LightGrey</Default>
+                        </BorderColor>
+                        <BorderStyle>
+                          <Left>Solid</Left>
+                          <Right>Solid</Right>
+                          <Bottom>=Iif( RowNumber("table_Vendedor") = CountRows("table_Vendedor"), "Solid", Nothing)</Bottom>
+                        </BorderStyle>
+                        <FontFamily>Tahoma</FontFamily>
+                        <Language>en-US</Language>
+                      </Style>
+                      <DataElementOutput>Output</DataElementOutput>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="NombreCompleto_Value">
+                      <Value>=Fields!NombreCompleto.Value</Value>
+                      <CanGrow>true</CanGrow>
+                      <HideDuplicates>table_NombreCompleto</HideDuplicates>
+                      <Style>
+                        <BackgroundColor>White</BackgroundColor>
+                        <FontSize>7pt</FontSize>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <BorderColor>
+                          <Default>LightGrey</Default>
+                        </BorderColor>
+                        <BorderStyle>
+                          <Left>Solid</Left>
+                          <Right>Solid</Right>
+                        </BorderStyle>
+                        <FontFamily>Tahoma</FontFamily>
+                        <Language>en-US</Language>
+                      </Style>
+                      <DataElementOutput>Output</DataElementOutput>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="ITEMNMBR_Value">
+                      <Value>=Fields!Cod_Art.Value</Value>
+                      <CanGrow>true</CanGrow>
+                      <HideDuplicates>table_Cod_Art</HideDuplicates>
+                      <Style>
+                        <BackgroundColor>White</BackgroundColor>
+                        <FontSize>7pt</FontSize>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <BorderColor>
+                          <Default>LightGrey</Default>
+                        </BorderColor>
+                        <BorderStyle>
+                          <Left>Solid</Left>
+                          <Right>Solid</Right>
+                          <Bottom>=Iif( RowNumber("table_Cod_Art") = CountRows("table_Cod_Art"), "Solid", Nothing)</Bottom>
+                        </BorderStyle>
+                        <FontFamily>Tahoma</FontFamily>
+                        <Language>en-US</Language>
+                      </Style>
+                      <DataElementOutput>Output</DataElementOutput>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="ITEMDESC_Value">
+                      <Value>=Fields!Descripción.Value</Value>
+                      <CanGrow>true</CanGrow>
+                      <HideDuplicates>table_Descripción</HideDuplicates>
+                      <Style>
+                        <BackgroundColor>White</BackgroundColor>
+                        <FontSize>7pt</FontSize>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <BorderColor>
+                          <Default>LightGrey</Default>
+                        </BorderColor>
+                        <BorderStyle>
+                          <Left>Solid</Left>
+                          <Right>Solid</Right>
+                          <Bottom>=Iif( RowNumber("table_Descripción") = CountRows("table_Descripción"), "Solid", Nothing)</Bottom>
+                        </BorderStyle>
+                        <FontFamily>Tahoma</FontFamily>
+                        <Language>en-US</Language>
+                      </Style>
+                      <DataElementOutput>Output</DataElementOutput>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="TotalQUANTITY_Value2">
+                      <Value>=Fields!CantidadxPrecio_Sum.Value</Value>
+                      <CanGrow>true</CanGrow>
+                      <Action>
+                        <Drillthrough>
+                          <ReportName>=DataSources!dataSource1.DataSourceReference</ReportName>
+                          <Parameters>
+                            <Parameter Name="rs:EntityID">
+                              <Value>Gfeccacaf-ea76-4204-83ea-bb88ac7dcc73</Value>
+                            </Parameter>
+                            <Parameter Name="rs:DrillType">
+                              <Value>List</Value>
+                            </Parameter>
+                            <Parameter Name="rs:Command">
+                              <Value>Drillthrough</Value>
+                            </Parameter>
+                            <Parameter Name="DrillthroughSourceQuery">
+                              <Value>=DataSets!dataSet.RewrittenCommandText</Value>
+                            </Parameter>
+                            <Parameter Name="DrillthroughContext">
+                              <Value>=CreateDrillthroughContext()</Value>
+                            </Parameter>
+                          </Parameters>
+                        </Drillthrough>
+                      </Action>
+                      <Style>
+                        <BackgroundColor>White</BackgroundColor>
+                        <FontSize>7pt</FontSize>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <BorderColor>
+                          <Default>LightGrey</Default>
+                        </BorderColor>
+                        <BorderStyle>
+                          <Left>Solid</Left>
+                          <Right>Solid</Right>
+                          <Bottom>Solid</Bottom>
+                        </BorderStyle>
+                        <FontFamily>Tahoma</FontFamily>
+                        <Format>n</Format>
+                        <TextAlign>Right</TextAlign>
+                        <Language>en-US</Language>
+                      </Style>
+                      <DataElementOutput>Output</DataElementOutput>
+                      <CustomProperties>
+                        <CustomProperty>
+                          <Name>rb:Group</Name>
+                          <Value>table_Precio</Value>
+                        </CustomProperty>
+                      </CustomProperties>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="UNITPRCE_Value">
+                      <Value>=Fields!Precio.Value</Value>
+                      <CanGrow>true</CanGrow>
+                      <Style>
+                        <BackgroundColor>White</BackgroundColor>
+                        <FontSize>7pt</FontSize>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <BorderColor>
+                          <Default>LightGrey</Default>
+                        </BorderColor>
+                        <BorderStyle>
+                          <Left>Solid</Left>
+                          <Right>Solid</Right>
+                          <Bottom>Solid</Bottom>
+                        </BorderStyle>
+                        <FontFamily>Tahoma</FontFamily>
+                        <Format>n</Format>
+                        <TextAlign>Right</TextAlign>
+                        <Language>en-US</Language>
+                      </Style>
+                      <DataElementOutput>Output</DataElementOutput>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="TotalXTNDPRCE_Value">
+                      <Value>=Fields!Total_Sum.Value</Value>
+                      <CanGrow>true</CanGrow>
+                      <Action>
+                        <Drillthrough>
+                          <ReportName>=DataSources!dataSource1.DataSourceReference</ReportName>
+                          <Parameters>
+                            <Parameter Name="rs:EntityID">
+                              <Value>Gfeccacaf-ea76-4204-83ea-bb88ac7dcc73</Value>
+                            </Parameter>
+                            <Parameter Name="rs:DrillType">
+                              <Value>List</Value>
+                            </Parameter>
+                            <Parameter Name="rs:Command">
+                              <Value>Drillthrough</Value>
+                            </Parameter>
+                            <Parameter Name="DrillthroughSourceQuery">
+                              <Value>=DataSets!dataSet.RewrittenCommandText</Value>
+                            </Parameter>
+                            <Parameter Name="DrillthroughContext">
+                              <Value>=CreateDrillthroughContext()</Value>
+                            </Parameter>
+                          </Parameters>
+                        </Drillthrough>
+                      </Action>
+                      <Style>
+                        <BackgroundColor>White</BackgroundColor>
+                        <FontSize>7pt</FontSize>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <BorderColor>
+                          <Default>LightGrey</Default>
+                        </BorderColor>
+                        <BorderStyle>
+                          <Left>Solid</Left>
+                          <Right>Solid</Right>
+                          <Bottom>Solid</Bottom>
+                        </BorderStyle>
+                        <FontFamily>Tahoma</FontFamily>
+                        <Format>n</Format>
+                        <TextAlign>Right</TextAlign>
+                        <Language>en-US</Language>
+                      </Style>
+                      <DataElementOutput>Output</DataElementOutput>
+                      <CustomProperties>
+                        <CustomProperty>
+                          <Name>rb:Group</Name>
+                          <Value>table_Precio</Value>
+                        </CustomProperty>
+                      </CustomProperties>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="PrecioPromedio_Value">
+                      <Value>=(Fields!Comision_Sum.Value / Fields!Comision_Sum1.Value)</Value>
+                      <CanGrow>true</CanGrow>
+                      <Action>
+                        <Drillthrough>
+                          <ReportName>=DataSources!dataSource1.DataSourceReference</ReportName>
+                          <Parameters>
+                            <Parameter Name="rs:EntityID">
+                              <Value>Gfeccacaf-ea76-4204-83ea-bb88ac7dcc73</Value>
+                            </Parameter>
+                            <Parameter Name="rs:DrillType">
+                              <Value>List</Value>
+                            </Parameter>
+                            <Parameter Name="rs:Command">
+                              <Value>Drillthrough</Value>
+                            </Parameter>
+                            <Parameter Name="DrillthroughSourceQuery">
+                              <Value>=DataSets!dataSet.RewrittenCommandText</Value>
+                            </Parameter>
+                            <Parameter Name="DrillthroughContext">
+                              <Value>=CreateDrillthroughContext()</Value>
+                            </Parameter>
+                          </Parameters>
+                        </Drillthrough>
+                      </Action>
+                      <Style>
+                        <BackgroundColor>White</BackgroundColor>
+                        <FontSize>7pt</FontSize>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <BorderColor>
+                          <Default>LightGrey</Default>
+                        </BorderColor>
+                        <BorderStyle>
+                          <Left>Solid</Left>
+                          <Right>Solid</Right>
+                          <Bottom>Solid</Bottom>
+                        </BorderStyle>
+                        <FontFamily>Tahoma</FontFamily>
+                        <Format>n</Format>
+                        <TextAlign>Right</TextAlign>
+                        <Language>en-US</Language>
+                      </Style>
+                      <DataElementOutput>Output</DataElementOutput>
+                      <CustomProperties>
+                        <CustomProperty>
+                          <Name>rb:Group</Name>
+                          <Value>table_Precio</Value>
+                        </CustomProperty>
+                      </CustomProperties>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+              </TableCells>
+              <Height>0.25in</Height>
+            </TableRow>
+          </TableRows>
+          <Grouping Name="table_Precio">
+            <GroupExpressions>
+              <GroupExpression>=Fields!Precio.Value</GroupExpression>
+            </GroupExpressions>
+          </Grouping>
+          <Sorting>
+            <SortBy>
+              <SortExpression>=IIf(True, Fields!Precio.Value, Nothing)</SortExpression>
+              <Direction>Descending</Direction>
+            </SortBy>
+          </Sorting>
+        </Details>
+        <DataSetName>dataSet</DataSetName>
+        <Width>0in</Width>
+        <Height>0in</Height>
+        <Left>0.15in</Left>
+        <Top>1.825in</Top>
+        <Style />
+      </Table>
+      <Textbox Name="textbox3">
+        <Value>Resumen Vtas  x Producto x Vendedor x Cantidad - Precio. Para Comision</Value>
+        <CanGrow>true</CanGrow>
+        <Width>6.375in</Width>
+        <Height>0.25in</Height>
+        <Left>0.15in</Left>
+        <Top>0.575in</Top>
+        <Style>
+          <FontSize>12pt</FontSize>
+          <PaddingLeft>3pt</PaddingLeft>
+          <PaddingRight>3pt</PaddingRight>
+          <PaddingTop>3pt</PaddingTop>
+          <PaddingBottom>3pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="TotalRows">
+        <Value>=String.Format("Total rows" &amp; Chr(58) &amp; " {0}", COUNTROWS("dataSet"))</Value>
+        <CanGrow>true</CanGrow>
+        <Width>9.25in</Width>
+        <Height>0.25in</Height>
+        <Left>0.25in</Left>
+        <Top>3.75in</Top>
+        <Style>
+          <FontSize>8pt</FontSize>
+          <PaddingLeft>3pt</PaddingLeft>
+          <PaddingRight>3pt</PaddingRight>
+          <PaddingTop>3pt</PaddingTop>
+          <PaddingBottom>3pt</PaddingBottom>
+        </Style>
+        <CustomProperties>
+          <CustomProperty>
+            <Name>rb:SpecialContent</Name>
+            <Value>TotalRows</Value>
+          </CustomProperty>
+        </CustomProperties>
+      </Textbox>
+      <Textbox Name="textbox11">
+        <Value>=now</Value>
+        <CanGrow>true</CanGrow>
+        <Width>2in</Width>
+        <Height>0.25in</Height>
+        <Left>8.15in</Left>
+        <Top>0.2in</Top>
+        <Style>
+          <FontSize>8pt</FontSize>
+          <PaddingLeft>3pt</PaddingLeft>
+          <PaddingRight>3pt</PaddingRight>
+          <PaddingTop>3pt</PaddingTop>
+          <PaddingBottom>3pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="textbox16">
+        <Value>="Desde :   " +   Format(Parameters!FechaDocumento.value,  "dd/MMM/yyyy     ")     +       "        Hasta :   "   +   Format(Parameters!FechaDocumento1.value,   "dd/MMM/yyyy")</Value>
+        <CanGrow>true</CanGrow>
+        <Width>7in</Width>
+        <Height>0.25in</Height>
+        <Left>0.15in</Left>
+        <Top>1.2in</Top>
+        <Style>
+          <FontSize>8pt</FontSize>
+          <PaddingLeft>3pt</PaddingLeft>
+          <PaddingRight>3pt</PaddingRight>
+          <PaddingTop>3pt</PaddingTop>
+          <PaddingBottom>3pt</PaddingBottom>
+        </Style>
+      </Textbox>
+    </ReportItems>
+  </Body>
+  <DataSources>
+    <DataSource Name="dataSource1">
+      <rd:DataSourceID>36b9c3d2-cc51-404e-b5af-bda21e19d190</rd:DataSourceID>
+      <DataSourceReference>/Models/GPDB</DataSourceReference>
+    </DataSource>
+  </DataSources>
+  <DataSets>
+    <DataSet Name="dataSet">
+      <Query>
+        <DataSourceName>dataSource1</DataSourceName>
+        <CommandText>&lt;SemanticQuery xmlns="http://schemas.microsoft.com/sqlserver/2004/10/semanticmodeling" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:rb="http://schemas.microsoft.com/sqlserver/2004/11/reportbuilder" xmlns:qd="http://schemas.microsoft.com/sqlserver/2004/11/semanticquerydesign"&gt;
+  &lt;Hierarchies&gt;
+    &lt;Hierarchy&gt;
+      &lt;BaseEntity&gt;
+        &lt;!--Ventas Detalle--&gt;
+        &lt;EntityID&gt;Gfeccacaf-ea76-4204-83ea-bb88ac7dcc73&lt;/EntityID&gt;
+      &lt;/BaseEntity&gt;
+      &lt;Groupings&gt;
+        &lt;Grouping Name="Localidad"&gt;
+          &lt;Expression Name="Localidad"&gt;
+            &lt;Path&gt;
+              &lt;RolePathItem&gt;
+                &lt;!--Ventas--&gt;
+                &lt;RoleID&gt;G078b2600-dd4a-4231-9e14-569410789557&lt;/RoleID&gt;
+              &lt;/RolePathItem&gt;
+            &lt;/Path&gt;
+            &lt;AttributeRef&gt;
+              &lt;!--Almacen Predeterminado--&gt;
+              &lt;AttributeID&gt;G5c923270-76b9-467e-9519-7cfa990869e8&lt;/AttributeID&gt;
+            &lt;/AttributeRef&gt;
+          &lt;/Expression&gt;
+        &lt;/Grouping&gt;
+        &lt;Grouping Name="Vendedor"&gt;
+          &lt;Expression Name="Vendedor"&gt;
+            &lt;Path&gt;
+              &lt;RolePathItem&gt;
+                &lt;!--Ventas--&gt;
+                &lt;RoleID&gt;G078b2600-dd4a-4231-9e14-569410789557&lt;/RoleID&gt;
+              &lt;/RolePathItem&gt;
+              &lt;RolePathItem&gt;
+                &lt;!--Vendedor--&gt;
+                &lt;RoleID&gt;G220b18e3-1c89-4791-ada7-be1f31c4e355&lt;/RoleID&gt;
+              &lt;/RolePathItem&gt;
+            &lt;/Path&gt;
+            &lt;AttributeRef&gt;
+              &lt;!--Codigo Vendedor--&gt;
+              &lt;AttributeID&gt;Ge7fcffb1-ce74-4bb1-9db4-593fbc138125&lt;/AttributeID&gt;
+            &lt;/AttributeRef&gt;
+          &lt;/Expression&gt;
+        &lt;/Grouping&gt;
+        &lt;Grouping Name="Nombre Completo"&gt;
+          &lt;Expression Name="Nombre Completo"&gt;
+            &lt;Path&gt;
+              &lt;RolePathItem&gt;
+                &lt;!--Ventas--&gt;
+                &lt;RoleID&gt;G078b2600-dd4a-4231-9e14-569410789557&lt;/RoleID&gt;
+              &lt;/RolePathItem&gt;
+              &lt;RolePathItem&gt;
+                &lt;!--Vendedor--&gt;
+                &lt;RoleID&gt;G220b18e3-1c89-4791-ada7-be1f31c4e355&lt;/RoleID&gt;
+              &lt;/RolePathItem&gt;
+            &lt;/Path&gt;
+            &lt;AttributeRef&gt;
+              &lt;!--Nombre Completo--&gt;
+              &lt;AttributeID&gt;G73fa611d-4463-4dff-8edb-c823e8e328fc&lt;/AttributeID&gt;
+            &lt;/AttributeRef&gt;
+          &lt;/Expression&gt;
+        &lt;/Grouping&gt;
+        &lt;Grouping Name="Cod_Art"&gt;
+          &lt;Expression Name="Cod_Art"&gt;
+            &lt;AttributeRef&gt;
+              &lt;!--ITEMNMBR--&gt;
+              &lt;AttributeID&gt;G86806e35-4b77-4ddd-8b38-35b1afac2581&lt;/AttributeID&gt;
+            &lt;/AttributeRef&gt;
+          &lt;/Expression&gt;
+        &lt;/Grouping&gt;
+        &lt;Grouping Name="Descripción "&gt;
+          &lt;Expression Name="Descripción "&gt;
+            &lt;AttributeRef&gt;
+              &lt;!--ITEMDESC--&gt;
+              &lt;AttributeID&gt;Gd66761ec-7289-4c85-8f42-f1afb9c89e2f&lt;/AttributeID&gt;
+            &lt;/AttributeRef&gt;
+          &lt;/Expression&gt;
+        &lt;/Grouping&gt;
+        &lt;Grouping Name="Precio&amp;#x9;"&gt;
+          &lt;Expression Name="Precio&amp;#x9;"&gt;
+            &lt;AttributeRef&gt;
+              &lt;!--UNITPRCE--&gt;
+              &lt;AttributeID&gt;G22e20e9b-c092-40d4-9655-25c0bd86c90f&lt;/AttributeID&gt;
+            &lt;/AttributeRef&gt;
+          &lt;/Expression&gt;
+        &lt;/Grouping&gt;
+      &lt;/Groupings&gt;
+      &lt;Filter&gt;
+        &lt;Expression Name="expr2"&gt;
+          &lt;Function&gt;
+            &lt;FunctionName&gt;And&lt;/FunctionName&gt;
+            &lt;Arguments&gt;
+              &lt;Expression&gt;
+                &lt;Function&gt;
+                  &lt;FunctionName&gt;GreaterThanOrEquals&lt;/FunctionName&gt;
+                  &lt;Arguments&gt;
+                    &lt;Expression&gt;
+                      &lt;Path&gt;
+                        &lt;RolePathItem&gt;
+                          &lt;!--Ventas--&gt;
+                          &lt;RoleID&gt;G078b2600-dd4a-4231-9e14-569410789557&lt;/RoleID&gt;
+                        &lt;/RolePathItem&gt;
+                      &lt;/Path&gt;
+                      &lt;AttributeRef&gt;
+                        &lt;!--Fecha Documento--&gt;
+                        &lt;AttributeID&gt;Gacc5d224-5d26-428d-a0db-53b5120125d6&lt;/AttributeID&gt;
+                      &lt;/AttributeRef&gt;
+                    &lt;/Expression&gt;
+                    &lt;Expression&gt;
+                      &lt;ParameterRef&gt;
+                        &lt;ParameterName&gt;Fecha Documento&lt;/ParameterName&gt;
+                      &lt;/ParameterRef&gt;
+                    &lt;/Expression&gt;
+                  &lt;/Arguments&gt;
+                &lt;/Function&gt;
+                &lt;CustomProperties&gt;
+                  &lt;CustomProperty Name="qd:FilterCondition" /&gt;
+                &lt;/CustomProperties&gt;
+              &lt;/Expression&gt;
+              &lt;Expression&gt;
+                &lt;Function&gt;
+                  &lt;FunctionName&gt;And&lt;/FunctionName&gt;
+                  &lt;Arguments&gt;
+                    &lt;Expression&gt;
+                      &lt;Function&gt;
+                        &lt;FunctionName&gt;LessThanOrEquals&lt;/FunctionName&gt;
+                        &lt;Arguments&gt;
+                          &lt;Expression&gt;
+                            &lt;Path&gt;
+                              &lt;RolePathItem&gt;
+                                &lt;!--Ventas--&gt;
+                                &lt;RoleID&gt;G078b2600-dd4a-4231-9e14-569410789557&lt;/RoleID&gt;
+                              &lt;/RolePathItem&gt;
+                            &lt;/Path&gt;
+                            &lt;AttributeRef&gt;
+                              &lt;!--Fecha Documento--&gt;
+                              &lt;AttributeID&gt;Gacc5d224-5d26-428d-a0db-53b5120125d6&lt;/AttributeID&gt;
+                            &lt;/AttributeRef&gt;
+                          &lt;/Expression&gt;
+                          &lt;Expression&gt;
+                            &lt;ParameterRef&gt;
+                              &lt;ParameterName&gt;Fecha Documento1&lt;/ParameterName&gt;
+                            &lt;/ParameterRef&gt;
+                          &lt;/Expression&gt;
+                        &lt;/Arguments&gt;
+                      &lt;/Function&gt;
+                      &lt;CustomProperties&gt;
+                        &lt;CustomProperty Name="qd:FilterCondition" /&gt;
+                      &lt;/CustomProperties&gt;
+                    &lt;/Expression&gt;
+                    &lt;Expression&gt;
+                      &lt;Function&gt;
+                        &lt;FunctionName&gt;And&lt;/FunctionName&gt;
+                        &lt;Arguments&gt;
+                          &lt;Expression&gt;
+                            &lt;Function&gt;
+                              &lt;FunctionName&gt;Equals&lt;/FunctionName&gt;
+                              &lt;Arguments&gt;
+                                &lt;Expression&gt;
+                                  &lt;Path&gt;
+                                    &lt;RolePathItem&gt;
+                                      &lt;!--Ventas--&gt;
+                                      &lt;RoleID&gt;G078b2600-dd4a-4231-9e14-569410789557&lt;/RoleID&gt;
+                                    &lt;/RolePathItem&gt;
+                                  &lt;/Path&gt;
+                                  &lt;AttributeRef&gt;
+                                    &lt;!--Nulo--&gt;
+                                    &lt;AttributeID&gt;Gca2e35d1-cf76-452d-afea-a2586ab258e7&lt;/AttributeID&gt;
+                                  &lt;/AttributeRef&gt;
+                                &lt;/Expression&gt;
+                                &lt;Expression&gt;
+                                  &lt;Literal&gt;
+                                    &lt;DataType&gt;Integer&lt;/DataType&gt;
+                                    &lt;Value&gt;0&lt;/Value&gt;
+                                  &lt;/Literal&gt;
+                                &lt;/Expression&gt;
+                              &lt;/Arguments&gt;
+                            &lt;/Function&gt;
+                            &lt;CustomProperties&gt;
+                              &lt;CustomProperty Name="qd:ExpressionCondition" /&gt;
+                              &lt;CustomProperty Name="qd:FilterCondition" /&gt;
+                            &lt;/CustomProperties&gt;
+                          &lt;/Expression&gt;
+                          &lt;Expression&gt;
+                            &lt;Function&gt;
+                              &lt;FunctionName&gt;And&lt;/FunctionName&gt;
+                              &lt;Arguments&gt;
+                                &lt;Expression&gt;
+                                  &lt;Function&gt;
+                                    &lt;FunctionName&gt;GreaterThanOrEquals&lt;/FunctionName&gt;
+                                    &lt;Arguments&gt;
+                                      &lt;Expression&gt;
+                                        &lt;Path&gt;
+                                          &lt;RolePathItem&gt;
+                                            &lt;!--Ventas--&gt;
+                                            &lt;RoleID&gt;G078b2600-dd4a-4231-9e14-569410789557&lt;/RoleID&gt;
+                                          &lt;/RolePathItem&gt;
+                                          &lt;RolePathItem&gt;
+                                            &lt;!--Vendedor--&gt;
+                                            &lt;RoleID&gt;G220b18e3-1c89-4791-ada7-be1f31c4e355&lt;/RoleID&gt;
+                                          &lt;/RolePathItem&gt;
+                                        &lt;/Path&gt;
+                                        &lt;AttributeRef&gt;
+                                          &lt;!--Codigo Vendedor--&gt;
+                                          &lt;AttributeID&gt;Ge7fcffb1-ce74-4bb1-9db4-593fbc138125&lt;/AttributeID&gt;
+                                        &lt;/AttributeRef&gt;
+                                      &lt;/Expression&gt;
+                                      &lt;Expression&gt;
+                                        &lt;ParameterRef&gt;
+                                          &lt;ParameterName&gt;Codigo Vendedor&lt;/ParameterName&gt;
+                                        &lt;/ParameterRef&gt;
+                                      &lt;/Expression&gt;
+                                    &lt;/Arguments&gt;
+                                  &lt;/Function&gt;
+                                  &lt;CustomProperties&gt;
+                                    &lt;CustomProperty Name="qd:FilterCondition" /&gt;
+                                  &lt;/CustomProperties&gt;
+                                &lt;/Expression&gt;
+                                &lt;Expression&gt;
+                                  &lt;Function&gt;
+                                    &lt;FunctionName&gt;And&lt;/FunctionName&gt;
+                                    &lt;Arguments&gt;
+                                      &lt;Expression&gt;
+                                        &lt;Function&gt;
+                                          &lt;FunctionName&gt;LessThanOrEquals&lt;/FunctionName&gt;
+                                          &lt;Arguments&gt;
+                                            &lt;Expression&gt;
+                                              &lt;Path&gt;
+                                                &lt;RolePathItem&gt;
+                                                  &lt;!--Ventas--&gt;
+                                                  &lt;RoleID&gt;G078b2600-dd4a-4231-9e14-569410789557&lt;/RoleID&gt;
+                                                &lt;/RolePathItem&gt;
+                                                &lt;RolePathItem&gt;
+                                                  &lt;!--Vendedor--&gt;
+                                                  &lt;RoleID&gt;G220b18e3-1c89-4791-ada7-be1f31c4e355&lt;/RoleID&gt;
+                                                &lt;/RolePathItem&gt;
+                                              &lt;/Path&gt;
+                                              &lt;AttributeRef&gt;
+                                                &lt;!--Codigo Vendedor--&gt;
+                                                &lt;AttributeID&gt;Ge7fcffb1-ce74-4bb1-9db4-593fbc138125&lt;/AttributeID&gt;
+                                              &lt;/AttributeRef&gt;
+                                            &lt;/Expression&gt;
+                                            &lt;Expression&gt;
+                                              &lt;ParameterRef&gt;
+                                                &lt;ParameterName&gt;Codigo Vendedor2&lt;/ParameterName&gt;
+                                              &lt;/ParameterRef&gt;
+                                            &lt;/Expression&gt;
+                                          &lt;/Arguments&gt;
+                                        &lt;/Function&gt;
+                                        &lt;CustomProperties&gt;
+                                          &lt;CustomProperty Name="qd:FilterCondition" /&gt;
+                                        &lt;/CustomProperties&gt;
+                                      &lt;/Expression&gt;
+                                      &lt;Expression&gt;
+                                        &lt;Function&gt;
+                                          &lt;FunctionName&gt;And&lt;/FunctionName&gt;
+                                          &lt;Arguments&gt;
+                                            &lt;Expression&gt;
+                                              &lt;Function&gt;
+                                                &lt;FunctionName&gt;GreaterThan&lt;/FunctionName&gt;
+                                                &lt;Arguments&gt;
+                                                  &lt;Expression&gt;
+                                                    &lt;Function&gt;
+                                                      &lt;FunctionName&gt;Count&lt;/FunctionName&gt;
+                                                      &lt;Arguments&gt;
+                                                        &lt;Expression&gt;
+                                                          &lt;Path&gt;
+                                                            &lt;RolePathItem&gt;
+                                                              &lt;!--Ventas--&gt;
+                                                              &lt;RoleID&gt;G078b2600-dd4a-4231-9e14-569410789557&lt;/RoleID&gt;
+                                                            &lt;/RolePathItem&gt;
+                                                            &lt;RolePathItem&gt;
+                                                              &lt;!--Venta Extras--&gt;
+                                                              &lt;RoleID&gt;G346dd600-1294-49d1-9f93-813b263525f5&lt;/RoleID&gt;
+                                                            &lt;/RolePathItem&gt;
+                                                            &lt;RolePathItem&gt;
+                                                              &lt;!--Ventas Detalle--&gt;
+                                                              &lt;RoleID&gt;Ge5518e69-037f-460e-929c-1879b8570515&lt;/RoleID&gt;
+                                                            &lt;/RolePathItem&gt;
+                                                          &lt;/Path&gt;
+                                                          &lt;Function&gt;
+                                                            &lt;FunctionName&gt;Filter&lt;/FunctionName&gt;
+                                                            &lt;Arguments&gt;
+                                                              &lt;Expression&gt;
+                                                                &lt;EntityRef&gt;
+                                                                  &lt;!--Ventas Detalle--&gt;
+                                                                  &lt;EntityID&gt;Gfeccacaf-ea76-4204-83ea-bb88ac7dcc73&lt;/EntityID&gt;
+                                                                &lt;/EntityRef&gt;
+                                                              &lt;/Expression&gt;
+                                                              &lt;Expression&gt;
+                                                                &lt;AttributeRef&gt;
+                                                                  &lt;AttributeName&gt;expr18&lt;/AttributeName&gt;
+                                                                &lt;/AttributeRef&gt;
+                                                              &lt;/Expression&gt;
+                                                            &lt;/Arguments&gt;
+                                                          &lt;/Function&gt;
+                                                        &lt;/Expression&gt;
+                                                      &lt;/Arguments&gt;
+                                                    &lt;/Function&gt;
+                                                  &lt;/Expression&gt;
+                                                  &lt;Expression&gt;
+                                                    &lt;Literal&gt;
+                                                      &lt;DataType&gt;Integer&lt;/DataType&gt;
+                                                      &lt;Value&gt;0&lt;/Value&gt;
+                                                    &lt;/Literal&gt;
+                                                  &lt;/Expression&gt;
+                                                &lt;/Arguments&gt;
+                                              &lt;/Function&gt;
+                                              &lt;CustomProperties&gt;
+                                                &lt;CustomProperty Name="qd:FilterCondition" /&gt;
+                                              &lt;/CustomProperties&gt;
+                                            &lt;/Expression&gt;
+                                            &lt;Expression&gt;
+                                              &lt;Function&gt;
+                                                &lt;FunctionName&gt;In&lt;/FunctionName&gt;
+                                                &lt;Arguments&gt;
+                                                  &lt;Expression&gt;
+                                                    &lt;Path&gt;
+                                                      &lt;RolePathItem&gt;
+                                                        &lt;!--Ventas--&gt;
+                                                        &lt;RoleID&gt;G078b2600-dd4a-4231-9e14-569410789557&lt;/RoleID&gt;
+                                                      &lt;/RolePathItem&gt;
+                                                    &lt;/Path&gt;
+                                                    &lt;AttributeRef&gt;
+                                                      &lt;!--ID Documento--&gt;
+                                                      &lt;AttributeID&gt;Gbca81213-dae4-4677-9a45-d16513565d3d&lt;/AttributeID&gt;
+                                                    &lt;/AttributeRef&gt;
+                                                  &lt;/Expression&gt;
+                                                  &lt;Expression&gt;
+                                                    &lt;Literal&gt;
+                                                      &lt;DataType&gt;String&lt;/DataType&gt;
+                                                      &lt;Values&gt;
+                                                        &lt;Value&gt;MANUAL         &lt;/Value&gt;
+                                                        &lt;Value&gt;PALMFACTURA    &lt;/Value&gt;
+                                                      &lt;/Values&gt;
+                                                    &lt;/Literal&gt;
+                                                  &lt;/Expression&gt;
+                                                &lt;/Arguments&gt;
+                                              &lt;/Function&gt;
+                                              &lt;CustomProperties&gt;
+                                                &lt;CustomProperty Name="qd:FilterCondition" /&gt;
+                                              &lt;/CustomProperties&gt;
+                                            &lt;/Expression&gt;
+                                          &lt;/Arguments&gt;
+                                        &lt;/Function&gt;
+                                      &lt;/Expression&gt;
+                                    &lt;/Arguments&gt;
+                                  &lt;/Function&gt;
+                                &lt;/Expression&gt;
+                              &lt;/Arguments&gt;
+                            &lt;/Function&gt;
+                          &lt;/Expression&gt;
+                        &lt;/Arguments&gt;
+                      &lt;/Function&gt;
+                    &lt;/Expression&gt;
+                  &lt;/Arguments&gt;
+                &lt;/Function&gt;
+              &lt;/Expression&gt;
+            &lt;/Arguments&gt;
+          &lt;/Function&gt;
+          &lt;CustomProperties&gt;
+            &lt;CustomProperty Name="qd:Filter" /&gt;
+            &lt;CustomProperty Name="qd:ContextEntityID"&gt;
+              &lt;Value xsi:type="xsd:string"&gt;Gfeccacaf-ea76-4204-83ea-bb88ac7dcc73&lt;/Value&gt;
+            &lt;/CustomProperty&gt;
+            &lt;CustomProperty Name="qd:AutoChangeBaseEntity" /&gt;
+            &lt;CustomProperty Name="qd:Design"&gt;
+              &lt;Value xsi:type="xsd:string"&gt;expr17&lt;/Value&gt;
+            &lt;/CustomProperty&gt;
+          &lt;/CustomProperties&gt;
+        &lt;/Expression&gt;
+      &lt;/Filter&gt;
+    &lt;/Hierarchy&gt;
+  &lt;/Hierarchies&gt;
+  &lt;MeasureGroups&gt;
+    &lt;MeasureGroup&gt;
+      &lt;BaseEntity&gt;
+        &lt;!--Ventas Detalle--&gt;
+        &lt;EntityID&gt;Gfeccacaf-ea76-4204-83ea-bb88ac7dcc73&lt;/EntityID&gt;
+      &lt;/BaseEntity&gt;
+      &lt;Measures&gt;
+        &lt;Expression Name="Cantidad x Precio_Sum"&gt;
+          &lt;Function&gt;
+            &lt;FunctionName&gt;Sum&lt;/FunctionName&gt;
+            &lt;Arguments&gt;
+              &lt;Expression&gt;
+                &lt;AttributeRef&gt;
+                  &lt;!--QUANTITY--&gt;
+                  &lt;AttributeID&gt;Ga325f6a1-3db5-4404-9e87-20235745ee75&lt;/AttributeID&gt;
+                &lt;/AttributeRef&gt;
+              &lt;/Expression&gt;
+            &lt;/Arguments&gt;
+          &lt;/Function&gt;
+          &lt;CustomProperties&gt;
+            &lt;CustomProperty Name="qd:Design"&gt;
+              &lt;Value xsi:type="xsd:string"&gt;Cantidad x Precio&lt;/Value&gt;
+            &lt;/CustomProperty&gt;
+          &lt;/CustomProperties&gt;
+        &lt;/Expression&gt;
+        &lt;Expression Name="Total _Sum"&gt;
+          &lt;Function&gt;
+            &lt;FunctionName&gt;Sum&lt;/FunctionName&gt;
+            &lt;Arguments&gt;
+              &lt;Expression&gt;
+                &lt;AttributeRef&gt;
+                  &lt;!--XTNDPRCE--&gt;
+                  &lt;AttributeID&gt;Ga2bc744f-772b-4e66-8ee6-2b2da3a43144&lt;/AttributeID&gt;
+                &lt;/AttributeRef&gt;
+              &lt;/Expression&gt;
+            &lt;/Arguments&gt;
+          &lt;/Function&gt;
+          &lt;CustomProperties&gt;
+            &lt;CustomProperty Name="qd:Design"&gt;
+              &lt;Value xsi:type="xsd:string"&gt;Total &lt;/Value&gt;
+            &lt;/CustomProperty&gt;
+          &lt;/CustomProperties&gt;
+        &lt;/Expression&gt;
+        &lt;Expression Name="Comision_Sum"&gt;
+          &lt;Function&gt;
+            &lt;FunctionName&gt;Sum&lt;/FunctionName&gt;
+            &lt;Arguments&gt;
+              &lt;Expression&gt;
+                &lt;AttributeRef&gt;
+                  &lt;!--XTNDPRCE--&gt;
+                  &lt;AttributeID&gt;Ga2bc744f-772b-4e66-8ee6-2b2da3a43144&lt;/AttributeID&gt;
+                &lt;/AttributeRef&gt;
+              &lt;/Expression&gt;
+            &lt;/Arguments&gt;
+          &lt;/Function&gt;
+          &lt;CustomProperties&gt;
+            &lt;CustomProperty Name="qd:Design"&gt;
+              &lt;Value xsi:type="xsd:string"&gt;Comision&lt;/Value&gt;
+            &lt;/CustomProperty&gt;
+          &lt;/CustomProperties&gt;
+        &lt;/Expression&gt;
+        &lt;Expression Name="Comision_Sum1"&gt;
+          &lt;Function&gt;
+            &lt;FunctionName&gt;Sum&lt;/FunctionName&gt;
+            &lt;Arguments&gt;
+              &lt;Expression&gt;
+                &lt;AttributeRef&gt;
+                  &lt;!--QTYTOINV--&gt;
+                  &lt;AttributeID&gt;G9c6d6408-a185-4054-b4e4-f6c253f501d6&lt;/AttributeID&gt;
+                &lt;/AttributeRef&gt;
+              &lt;/Expression&gt;
+            &lt;/Arguments&gt;
+          &lt;/Function&gt;
+          &lt;CustomProperties&gt;
+            &lt;CustomProperty Name="qd:Design"&gt;
+              &lt;Value xsi:type="xsd:string"&gt;Comision&lt;/Value&gt;
+            &lt;/CustomProperty&gt;
+          &lt;/CustomProperties&gt;
+        &lt;/Expression&gt;
+      &lt;/Measures&gt;
+    &lt;/MeasureGroup&gt;
+  &lt;/MeasureGroups&gt;
+  &lt;CalculatedAttributes&gt;
+    &lt;Expression Name="expr18"&gt;
+      &lt;Function&gt;
+        &lt;FunctionName&gt;Equals&lt;/FunctionName&gt;
+        &lt;Arguments&gt;
+          &lt;Expression&gt;
+            &lt;AttributeRef&gt;
+              &lt;!--ITEMNMBR--&gt;
+              &lt;AttributeID&gt;G86806e35-4b77-4ddd-8b38-35b1afac2581&lt;/AttributeID&gt;
+            &lt;/AttributeRef&gt;
+          &lt;/Expression&gt;
+          &lt;Expression&gt;
+            &lt;ParameterRef&gt;
+              &lt;ParameterName&gt;ITEMNMBR&lt;/ParameterName&gt;
+            &lt;/ParameterRef&gt;
+          &lt;/Expression&gt;
+        &lt;/Arguments&gt;
+      &lt;/Function&gt;
+      &lt;CustomProperties&gt;
+        &lt;CustomProperty Name="qd:FilterCondition" /&gt;
+        &lt;CustomProperty Name="qd:Filter" /&gt;
+        &lt;CustomProperty Name="qd:ContextEntityID"&gt;
+          &lt;Value xsi:type="xsd:string"&gt;Gfeccacaf-ea76-4204-83ea-bb88ac7dcc73&lt;/Value&gt;
+        &lt;/CustomProperty&gt;
+        &lt;CustomProperty Name="qd:Design"&gt;
+          &lt;Value xsi:type="xsd:string"&gt;expr19&lt;/Value&gt;
+        &lt;/CustomProperty&gt;
+      &lt;/CustomProperties&gt;
+    &lt;/Expression&gt;
+    &lt;Expression Name="expr19"&gt;
+      &lt;Function&gt;
+        &lt;FunctionName&gt;Or&lt;/FunctionName&gt;
+        &lt;Arguments&gt;
+          &lt;Expression&gt;
+            &lt;Function&gt;
+              &lt;FunctionName&gt;Equals&lt;/FunctionName&gt;
+              &lt;Arguments&gt;
+                &lt;Expression&gt;
+                  &lt;AttributeRef&gt;
+                    &lt;!--ITEMNMBR--&gt;
+                    &lt;AttributeID&gt;G86806e35-4b77-4ddd-8b38-35b1afac2581&lt;/AttributeID&gt;
+                  &lt;/AttributeRef&gt;
+                &lt;/Expression&gt;
+                &lt;Expression&gt;
+                  &lt;ParameterRef&gt;
+                    &lt;ParameterName&gt;ITEMNMBR&lt;/ParameterName&gt;
+                  &lt;/ParameterRef&gt;
+                &lt;/Expression&gt;
+              &lt;/Arguments&gt;
+            &lt;/Function&gt;
+            &lt;CustomProperties&gt;
+              &lt;CustomProperty Name="qd:FilterCondition" /&gt;
+            &lt;/CustomProperties&gt;
+          &lt;/Expression&gt;
+          &lt;Expression&gt;
+            &lt;Null /&gt;
+            &lt;CustomProperties&gt;
+              &lt;CustomProperty Name="qd:Unspecified" /&gt;
+            &lt;/CustomProperties&gt;
+          &lt;/Expression&gt;
+        &lt;/Arguments&gt;
+      &lt;/Function&gt;
+      &lt;CustomProperties&gt;
+        &lt;CustomProperty Name="qd:Filter" /&gt;
+        &lt;CustomProperty Name="qd:ContextEntityID"&gt;
+          &lt;Value xsi:type="xsd:string"&gt;Gfeccacaf-ea76-4204-83ea-bb88ac7dcc73&lt;/Value&gt;
+        &lt;/CustomProperty&gt;
+      &lt;/CustomProperties&gt;
+    &lt;/Expression&gt;
+    &lt;Expression Name="expr3"&gt;
+      &lt;Function&gt;
+        &lt;FunctionName&gt;Divide&lt;/FunctionName&gt;
+        &lt;Arguments&gt;
+          &lt;Expression&gt;
+            &lt;AttributeRef&gt;
+              &lt;!--Total XTNDPRCE--&gt;
+              &lt;AttributeID&gt;G22b87851-0545-4fa3-823e-c7caa2441af3&lt;/AttributeID&gt;
+            &lt;/AttributeRef&gt;
+          &lt;/Expression&gt;
+          &lt;Expression&gt;
+            &lt;AttributeRef&gt;
+              &lt;!--Total QTYTOINV--&gt;
+              &lt;AttributeID&gt;G9d01130e-22d1-48f5-95ff-ad888aaa08a4&lt;/AttributeID&gt;
+            &lt;/AttributeRef&gt;
+          &lt;/Expression&gt;
+        &lt;/Arguments&gt;
+      &lt;/Function&gt;
+      &lt;CustomProperties&gt;
+        &lt;CustomProperty Name="qd:DisplayName"&gt;
+          &lt;Value xsi:type="xsd:string"&gt;Precio Promedio&lt;/Value&gt;
+        &lt;/CustomProperty&gt;
+        &lt;CustomProperty Name="qd:ContextEntityID"&gt;
+          &lt;Value xsi:type="xsd:string"&gt;Gfeccacaf-ea76-4204-83ea-bb88ac7dcc73&lt;/Value&gt;
+        &lt;/CustomProperty&gt;
+      &lt;/CustomProperties&gt;
+    &lt;/Expression&gt;
+    &lt;Expression Name="expr4"&gt;
+      &lt;Function&gt;
+        &lt;FunctionName&gt;If&lt;/FunctionName&gt;
+        &lt;Arguments&gt;
+          &lt;Expression&gt;
+            &lt;Function&gt;
+              &lt;FunctionName&gt;GreaterThan&lt;/FunctionName&gt;
+              &lt;Arguments&gt;
+                &lt;Expression&gt;
+                  &lt;AttributeRef&gt;
+                    &lt;!--Balance Factura--&gt;
+                    &lt;AttributeID&gt;Gdff488f3-9d28-42bb-9800-b2fbfe67b59b&lt;/AttributeID&gt;
+                  &lt;/AttributeRef&gt;
+                &lt;/Expression&gt;
+                &lt;Expression&gt;
+                  &lt;Literal&gt;
+                    &lt;DataType&gt;Integer&lt;/DataType&gt;
+                    &lt;Value&gt;0&lt;/Value&gt;
+                  &lt;/Literal&gt;
+                &lt;/Expression&gt;
+              &lt;/Arguments&gt;
+            &lt;/Function&gt;
+          &lt;/Expression&gt;
+          &lt;Expression&gt;
+            &lt;Literal&gt;
+              &lt;DataType&gt;String&lt;/DataType&gt;
+              &lt;Value&gt;C&lt;/Value&gt;
+            &lt;/Literal&gt;
+          &lt;/Expression&gt;
+          &lt;Expression&gt;
+            &lt;Literal&gt;
+              &lt;DataType&gt;String&lt;/DataType&gt;
+              &lt;Value&gt;&lt;/Value&gt;
+            &lt;/Literal&gt;
+          &lt;/Expression&gt;
+        &lt;/Arguments&gt;
+      &lt;/Function&gt;
+      &lt;CustomProperties&gt;
+        &lt;CustomProperty Name="qd:DisplayName"&gt;
+          &lt;Value xsi:type="xsd:string"&gt;Tipo Factura&lt;/Value&gt;
+        &lt;/CustomProperty&gt;
+        &lt;CustomProperty Name="qd:ContextEntityID"&gt;
+          &lt;Value xsi:type="xsd:string"&gt;Gf1c2ef28-6500-4c1f-9c01-89f1342a2624&lt;/Value&gt;
+        &lt;/CustomProperty&gt;
+      &lt;/CustomProperties&gt;
+    &lt;/Expression&gt;
+    &lt;Expression Name="expr6"&gt;
+      &lt;Function&gt;
+        &lt;FunctionName&gt;Count&lt;/FunctionName&gt;
+        &lt;Arguments&gt;
+          &lt;Expression&gt;
+            &lt;Path&gt;
+              &lt;RolePathItem&gt;
+                &lt;!--Venta Detalle--&gt;
+                &lt;RoleID&gt;G3cb305de-1d17-47f5-aa02-adffcab0f633&lt;/RoleID&gt;
+              &lt;/RolePathItem&gt;
+            &lt;/Path&gt;
+            &lt;AttributeRef&gt;
+              &lt;!--Tipo Venta--&gt;
+              &lt;AttributeID&gt;G078cb0c0-bf59-49cb-806b-9ec634c43202&lt;/AttributeID&gt;
+            &lt;/AttributeRef&gt;
+          &lt;/Expression&gt;
+        &lt;/Arguments&gt;
+      &lt;/Function&gt;
+      &lt;CustomProperties&gt;
+        &lt;CustomProperty Name="qd:DisplayName"&gt;
+          &lt;Value xsi:type="xsd:string"&gt;Total Docmtos&lt;/Value&gt;
+        &lt;/CustomProperty&gt;
+        &lt;CustomProperty Name="qd:ContextEntityID"&gt;
+          &lt;Value xsi:type="xsd:string"&gt;Gf1c2ef28-6500-4c1f-9c01-89f1342a2624&lt;/Value&gt;
+        &lt;/CustomProperty&gt;
+      &lt;/CustomProperties&gt;
+    &lt;/Expression&gt;
+    &lt;Expression Name="expr5"&gt;
+      &lt;Function&gt;
+        &lt;FunctionName&gt;Divide&lt;/FunctionName&gt;
+        &lt;Arguments&gt;
+          &lt;Expression&gt;
+            &lt;AttributeRef&gt;
+              &lt;!--XTNDPRCE--&gt;
+              &lt;AttributeID&gt;Ga2bc744f-772b-4e66-8ee6-2b2da3a43144&lt;/AttributeID&gt;
+            &lt;/AttributeRef&gt;
+          &lt;/Expression&gt;
+          &lt;Expression&gt;
+            &lt;AttributeRef&gt;
+              &lt;!--QUANTITY--&gt;
+              &lt;AttributeID&gt;Ga325f6a1-3db5-4404-9e87-20235745ee75&lt;/AttributeID&gt;
+            &lt;/AttributeRef&gt;
+          &lt;/Expression&gt;
+        &lt;/Arguments&gt;
+      &lt;/Function&gt;
+      &lt;CustomProperties&gt;
+        &lt;CustomProperty Name="qd:DisplayName"&gt;
+          &lt;Value xsi:type="xsd:string"&gt;Saldo Precio&lt;/Value&gt;
+        &lt;/CustomProperty&gt;
+        &lt;CustomProperty Name="qd:ContextEntityID"&gt;
+          &lt;Value xsi:type="xsd:string"&gt;Gfeccacaf-ea76-4204-83ea-bb88ac7dcc73&lt;/Value&gt;
+        &lt;/CustomProperty&gt;
+      &lt;/CustomProperties&gt;
+    &lt;/Expression&gt;
+    &lt;Expression Name="expr7"&gt;
+      &lt;Function&gt;
+        &lt;FunctionName&gt;Sum&lt;/FunctionName&gt;
+        &lt;Arguments&gt;
+          &lt;Expression&gt;
+            &lt;Function&gt;
+              &lt;FunctionName&gt;If&lt;/FunctionName&gt;
+              &lt;Arguments&gt;
+                &lt;Expression&gt;
+                  &lt;Function&gt;
+                    &lt;FunctionName&gt;Equals&lt;/FunctionName&gt;
+                    &lt;Arguments&gt;
+                      &lt;Expression&gt;
+                        &lt;AttributeRef&gt;
+                          &lt;!--Monto Documento--&gt;
+                          &lt;AttributeID&gt;G54b5d196-114a-4497-8925-60c3c6848df4&lt;/AttributeID&gt;
+                        &lt;/AttributeRef&gt;
+                      &lt;/Expression&gt;
+                      &lt;Expression&gt;
+                        &lt;AttributeRef&gt;
+                          &lt;!--Pagado--&gt;
+                          &lt;AttributeID&gt;G20bbc77b-dcd8-43da-9064-b42da35378ed&lt;/AttributeID&gt;
+                        &lt;/AttributeRef&gt;
+                      &lt;/Expression&gt;
+                    &lt;/Arguments&gt;
+                  &lt;/Function&gt;
+                &lt;/Expression&gt;
+                &lt;Expression&gt;
+                  &lt;AttributeRef&gt;
+                    &lt;!--Monto Documento--&gt;
+                    &lt;AttributeID&gt;G54b5d196-114a-4497-8925-60c3c6848df4&lt;/AttributeID&gt;
+                  &lt;/AttributeRef&gt;
+                &lt;/Expression&gt;
+                &lt;Expression&gt;
+                  &lt;Literal&gt;
+                    &lt;DataType&gt;Integer&lt;/DataType&gt;
+                    &lt;Value&gt;0&lt;/Value&gt;
+                  &lt;/Literal&gt;
+                &lt;/Expression&gt;
+              &lt;/Arguments&gt;
+            &lt;/Function&gt;
+          &lt;/Expression&gt;
+        &lt;/Arguments&gt;
+      &lt;/Function&gt;
+      &lt;CustomProperties&gt;
+        &lt;CustomProperty Name="qd:DisplayName"&gt;
+          &lt;Value xsi:type="xsd:string"&gt;Monto Contado&lt;/Value&gt;
+        &lt;/CustomProperty&gt;
+        &lt;CustomProperty Name="qd:ContextEntityID"&gt;
+          &lt;Value xsi:type="xsd:string"&gt;Gf1c2ef28-6500-4c1f-9c01-89f1342a2624&lt;/Value&gt;
+        &lt;/CustomProperty&gt;
+      &lt;/CustomProperties&gt;
+    &lt;/Expression&gt;
+    &lt;Expression Name="expr8"&gt;
+      &lt;Function&gt;
+        &lt;FunctionName&gt;Sum&lt;/FunctionName&gt;
+        &lt;Arguments&gt;
+          &lt;Expression&gt;
+            &lt;Function&gt;
+              &lt;FunctionName&gt;If&lt;/FunctionName&gt;
+              &lt;Arguments&gt;
+                &lt;Expression&gt;
+                  &lt;Function&gt;
+                    &lt;FunctionName&gt;Equals&lt;/FunctionName&gt;
+                    &lt;Arguments&gt;
+                      &lt;Expression&gt;
+                        &lt;AttributeRef&gt;
+                          &lt;!--Monto Documento--&gt;
+                          &lt;AttributeID&gt;G54b5d196-114a-4497-8925-60c3c6848df4&lt;/AttributeID&gt;
+                        &lt;/AttributeRef&gt;
+                      &lt;/Expression&gt;
+                      &lt;Expression&gt;
+                        &lt;AttributeRef&gt;
+                          &lt;!--Pagado--&gt;
+                          &lt;AttributeID&gt;G20bbc77b-dcd8-43da-9064-b42da35378ed&lt;/AttributeID&gt;
+                        &lt;/AttributeRef&gt;
+                      &lt;/Expression&gt;
+                    &lt;/Arguments&gt;
+                  &lt;/Function&gt;
+                &lt;/Expression&gt;
+                &lt;Expression&gt;
+                  &lt;Literal&gt;
+                    &lt;DataType&gt;Integer&lt;/DataType&gt;
+                    &lt;Value&gt;0&lt;/Value&gt;
+                  &lt;/Literal&gt;
+                &lt;/Expression&gt;
+                &lt;Expression&gt;
+                  &lt;AttributeRef&gt;
+                    &lt;!--Monto Documento--&gt;
+                    &lt;AttributeID&gt;G54b5d196-114a-4497-8925-60c3c6848df4&lt;/AttributeID&gt;
+                  &lt;/AttributeRef&gt;
+                &lt;/Expression&gt;
+              &lt;/Arguments&gt;
+            &lt;/Function&gt;
+          &lt;/Expression&gt;
+        &lt;/Arguments&gt;
+      &lt;/Function&gt;
+      &lt;CustomProperties&gt;
+        &lt;CustomProperty Name="qd:DisplayName"&gt;
+          &lt;Value xsi:type="xsd:string"&gt;Monto Credito&lt;/Value&gt;
+        &lt;/CustomProperty&gt;
+        &lt;CustomProperty Name="qd:ContextEntityID"&gt;
+          &lt;Value xsi:type="xsd:string"&gt;Gf1c2ef28-6500-4c1f-9c01-89f1342a2624&lt;/Value&gt;
+        &lt;/CustomProperty&gt;
+      &lt;/CustomProperties&gt;
+    &lt;/Expression&gt;
+    &lt;Expression Name="expr9"&gt;
+      &lt;Function&gt;
+        &lt;FunctionName&gt;Sum&lt;/FunctionName&gt;
+        &lt;Arguments&gt;
+          &lt;Expression&gt;
+            &lt;Function&gt;
+              &lt;FunctionName&gt;If&lt;/FunctionName&gt;
+              &lt;Arguments&gt;
+                &lt;Expression&gt;
+                  &lt;Function&gt;
+                    &lt;FunctionName&gt;Equals&lt;/FunctionName&gt;
+                    &lt;Arguments&gt;
+                      &lt;Expression&gt;
+                        &lt;Path&gt;
+                          &lt;RolePathItem&gt;
+                            &lt;!--Ventas--&gt;
+                            &lt;RoleID&gt;G078b2600-dd4a-4231-9e14-569410789557&lt;/RoleID&gt;
+                          &lt;/RolePathItem&gt;
+                        &lt;/Path&gt;
+                        &lt;AttributeRef&gt;
+                          &lt;!--Monto Documento--&gt;
+                          &lt;AttributeID&gt;G54b5d196-114a-4497-8925-60c3c6848df4&lt;/AttributeID&gt;
+                        &lt;/AttributeRef&gt;
+                      &lt;/Expression&gt;
+                      &lt;Expression&gt;
+                        &lt;Path&gt;
+                          &lt;RolePathItem&gt;
+                            &lt;!--Ventas--&gt;
+                            &lt;RoleID&gt;G078b2600-dd4a-4231-9e14-569410789557&lt;/RoleID&gt;
+                          &lt;/RolePathItem&gt;
+                        &lt;/Path&gt;
+                        &lt;AttributeRef&gt;
+                          &lt;!--Pagado--&gt;
+                          &lt;AttributeID&gt;G20bbc77b-dcd8-43da-9064-b42da35378ed&lt;/AttributeID&gt;
+                        &lt;/AttributeRef&gt;
+                      &lt;/Expression&gt;
+                    &lt;/Arguments&gt;
+                  &lt;/Function&gt;
+                &lt;/Expression&gt;
+                &lt;Expression&gt;
+                  &lt;AttributeRef&gt;
+                    &lt;!--QUANTITY--&gt;
+                    &lt;AttributeID&gt;Ga325f6a1-3db5-4404-9e87-20235745ee75&lt;/AttributeID&gt;
+                  &lt;/AttributeRef&gt;
+                &lt;/Expression&gt;
+                &lt;Expression&gt;
+                  &lt;Literal&gt;
+                    &lt;DataType&gt;Integer&lt;/DataType&gt;
+                    &lt;Value&gt;0&lt;/Value&gt;
+                  &lt;/Literal&gt;
+                &lt;/Expression&gt;
+              &lt;/Arguments&gt;
+            &lt;/Function&gt;
+          &lt;/Expression&gt;
+        &lt;/Arguments&gt;
+      &lt;/Function&gt;
+      &lt;CustomProperties&gt;
+        &lt;CustomProperty Name="qd:DisplayName"&gt;
+          &lt;Value xsi:type="xsd:string"&gt;Cant Contado&lt;/Value&gt;
+        &lt;/CustomProperty&gt;
+        &lt;CustomProperty Name="qd:ContextEntityID"&gt;
+          &lt;Value xsi:type="xsd:string"&gt;Gfeccacaf-ea76-4204-83ea-bb88ac7dcc73&lt;/Value&gt;
+        &lt;/CustomProperty&gt;
+      &lt;/CustomProperties&gt;
+    &lt;/Expression&gt;
+    &lt;Expression Name="expr10"&gt;
+      &lt;Function&gt;
+        &lt;FunctionName&gt;Sum&lt;/FunctionName&gt;
+        &lt;Arguments&gt;
+          &lt;Expression&gt;
+            &lt;Function&gt;
+              &lt;FunctionName&gt;If&lt;/FunctionName&gt;
+              &lt;Arguments&gt;
+                &lt;Expression&gt;
+                  &lt;Function&gt;
+                    &lt;FunctionName&gt;Equals&lt;/FunctionName&gt;
+                    &lt;Arguments&gt;
+                      &lt;Expression&gt;
+                        &lt;Path&gt;
+                          &lt;RolePathItem&gt;
+                            &lt;!--Ventas--&gt;
+                            &lt;RoleID&gt;G078b2600-dd4a-4231-9e14-569410789557&lt;/RoleID&gt;
+                          &lt;/RolePathItem&gt;
+                        &lt;/Path&gt;
+                        &lt;AttributeRef&gt;
+                          &lt;!--Monto Documento--&gt;
+                          &lt;AttributeID&gt;G54b5d196-114a-4497-8925-60c3c6848df4&lt;/AttributeID&gt;
+                        &lt;/AttributeRef&gt;
+                      &lt;/Expression&gt;
+                      &lt;Expression&gt;
+                        &lt;Path&gt;
+                          &lt;RolePathItem&gt;
+                            &lt;!--Ventas--&gt;
+                            &lt;RoleID&gt;G078b2600-dd4a-4231-9e14-569410789557&lt;/RoleID&gt;
+                          &lt;/RolePathItem&gt;
+                        &lt;/Path&gt;
+                        &lt;AttributeRef&gt;
+                          &lt;!--Pagado--&gt;
+                          &lt;AttributeID&gt;G20bbc77b-dcd8-43da-9064-b42da35378ed&lt;/AttributeID&gt;
+                        &lt;/AttributeRef&gt;
+                      &lt;/Expression&gt;
+                    &lt;/Arguments&gt;
+                  &lt;/Function&gt;
+                &lt;/Expression&gt;
+                &lt;Expression&gt;
+                  &lt;Literal&gt;
+                    &lt;DataType&gt;Integer&lt;/DataType&gt;
+                    &lt;Value&gt;0&lt;/Value&gt;
+                  &lt;/Literal&gt;
+                &lt;/Expression&gt;
+                &lt;Expression&gt;
+                  &lt;AttributeRef&gt;
+                    &lt;!--QUANTITY--&gt;
+                    &lt;AttributeID&gt;Ga325f6a1-3db5-4404-9e87-20235745ee75&lt;/AttributeID&gt;
+                  &lt;/AttributeRef&gt;
+                &lt;/Expression&gt;
+              &lt;/Arguments&gt;
+            &lt;/Function&gt;
+          &lt;/Expression&gt;
+        &lt;/Arguments&gt;
+      &lt;/Function&gt;
+      &lt;CustomProperties&gt;
+        &lt;CustomProperty Name="qd:DisplayName"&gt;
+          &lt;Value xsi:type="xsd:string"&gt;Cant Credito&lt;/Value&gt;
+        &lt;/CustomProperty&gt;
+        &lt;CustomProperty Name="qd:ContextEntityID"&gt;
+          &lt;Value xsi:type="xsd:string"&gt;Gfeccacaf-ea76-4204-83ea-bb88ac7dcc73&lt;/Value&gt;
+        &lt;/CustomProperty&gt;
+      &lt;/CustomProperties&gt;
+    &lt;/Expression&gt;
+    &lt;Expression Name="expr11"&gt;
+      &lt;Function&gt;
+        &lt;FunctionName&gt;Divide&lt;/FunctionName&gt;
+        &lt;Arguments&gt;
+          &lt;Expression&gt;
+            &lt;Function&gt;
+              &lt;FunctionName&gt;Aggregate&lt;/FunctionName&gt;
+              &lt;Arguments&gt;
+                &lt;Expression&gt;
+                  &lt;Path&gt;
+                    &lt;RolePathItem&gt;
+                      &lt;!--Ventas--&gt;
+                      &lt;RoleID&gt;G078b2600-dd4a-4231-9e14-569410789557&lt;/RoleID&gt;
+                    &lt;/RolePathItem&gt;
+                  &lt;/Path&gt;
+                  &lt;AttributeRef&gt;
+                    &lt;AttributeName&gt;expr7&lt;/AttributeName&gt;
+                  &lt;/AttributeRef&gt;
+                &lt;/Expression&gt;
+              &lt;/Arguments&gt;
+            &lt;/Function&gt;
+          &lt;/Expression&gt;
+          &lt;Expression&gt;
+            &lt;AttributeRef&gt;
+              &lt;AttributeName&gt;expr9&lt;/AttributeName&gt;
+            &lt;/AttributeRef&gt;
+          &lt;/Expression&gt;
+        &lt;/Arguments&gt;
+      &lt;/Function&gt;
+      &lt;CustomProperties&gt;
+        &lt;CustomProperty Name="qd:DisplayName"&gt;
+          &lt;Value xsi:type="xsd:string"&gt;Precio Prom Cont&lt;/Value&gt;
+        &lt;/CustomProperty&gt;
+        &lt;CustomProperty Name="qd:ContextEntityID"&gt;
+          &lt;Value xsi:type="xsd:string"&gt;Gfeccacaf-ea76-4204-83ea-bb88ac7dcc73&lt;/Value&gt;
+        &lt;/CustomProperty&gt;
+      &lt;/CustomProperties&gt;
+    &lt;/Expression&gt;
+    &lt;Expression Name="expr12"&gt;
+      &lt;Function&gt;
+        &lt;FunctionName&gt;Divide&lt;/FunctionName&gt;
+        &lt;Arguments&gt;
+          &lt;Expression&gt;
+            &lt;Function&gt;
+              &lt;FunctionName&gt;Aggregate&lt;/FunctionName&gt;
+              &lt;Arguments&gt;
+                &lt;Expression&gt;
+                  &lt;Path&gt;
+                    &lt;RolePathItem&gt;
+                      &lt;!--Ventas--&gt;
+                      &lt;RoleID&gt;G078b2600-dd4a-4231-9e14-569410789557&lt;/RoleID&gt;
+                    &lt;/RolePathItem&gt;
+                  &lt;/Path&gt;
+                  &lt;AttributeRef&gt;
+                    &lt;AttributeName&gt;expr8&lt;/AttributeName&gt;
+                  &lt;/AttributeRef&gt;
+                &lt;/Expression&gt;
+              &lt;/Arguments&gt;
+            &lt;/Function&gt;
+          &lt;/Expression&gt;
+          &lt;Expression&gt;
+            &lt;AttributeRef&gt;
+              &lt;AttributeName&gt;expr10&lt;/AttributeName&gt;
+            &lt;/AttributeRef&gt;
+          &lt;/Expression&gt;
+        &lt;/Arguments&gt;
+      &lt;/Function&gt;
+      &lt;CustomProperties&gt;
+        &lt;CustomProperty Name="qd:DisplayName"&gt;
+          &lt;Value xsi:type="xsd:string"&gt;Precio Prom Cred&lt;/Value&gt;
+        &lt;/CustomProperty&gt;
+        &lt;CustomProperty Name="qd:ContextEntityID"&gt;
+          &lt;Value xsi:type="xsd:string"&gt;Gfeccacaf-ea76-4204-83ea-bb88ac7dcc73&lt;/Value&gt;
+        &lt;/CustomProperty&gt;
+      &lt;/CustomProperties&gt;
+    &lt;/Expression&gt;
+    &lt;Expression Name="expr15"&gt;
+      &lt;Function&gt;
+        &lt;FunctionName&gt;Avg&lt;/FunctionName&gt;
+        &lt;Arguments&gt;
+          &lt;Expression&gt;
+            &lt;Function&gt;
+              &lt;FunctionName&gt;Divide&lt;/FunctionName&gt;
+              &lt;Arguments&gt;
+                &lt;Expression&gt;
+                  &lt;AttributeRef&gt;
+                    &lt;!--XTNDPRCE--&gt;
+                    &lt;AttributeID&gt;Ga2bc744f-772b-4e66-8ee6-2b2da3a43144&lt;/AttributeID&gt;
+                  &lt;/AttributeRef&gt;
+                &lt;/Expression&gt;
+                &lt;Expression&gt;
+                  &lt;AttributeRef&gt;
+                    &lt;!--QUANTITY--&gt;
+                    &lt;AttributeID&gt;Ga325f6a1-3db5-4404-9e87-20235745ee75&lt;/AttributeID&gt;
+                  &lt;/AttributeRef&gt;
+                &lt;/Expression&gt;
+              &lt;/Arguments&gt;
+            &lt;/Function&gt;
+          &lt;/Expression&gt;
+        &lt;/Arguments&gt;
+      &lt;/Function&gt;
+      &lt;CustomProperties&gt;
+        &lt;CustomProperty Name="qd:DisplayName"&gt;
+          &lt;Value xsi:type="xsd:string"&gt;Precio Prom Tot&lt;/Value&gt;
+        &lt;/CustomProperty&gt;
+        &lt;CustomProperty Name="qd:ContextEntityID"&gt;
+          &lt;Value xsi:type="xsd:string"&gt;Gfeccacaf-ea76-4204-83ea-bb88ac7dcc73&lt;/Value&gt;
+        &lt;/CustomProperty&gt;
+      &lt;/CustomProperties&gt;
+    &lt;/Expression&gt;
+    &lt;Expression Name="expr13"&gt;
+      &lt;Function&gt;
+        &lt;FunctionName&gt;Sum&lt;/FunctionName&gt;
+        &lt;Arguments&gt;
+          &lt;Expression&gt;
+            &lt;Function&gt;
+              &lt;FunctionName&gt;If&lt;/FunctionName&gt;
+              &lt;Arguments&gt;
+                &lt;Expression&gt;
+                  &lt;Function&gt;
+                    &lt;FunctionName&gt;Equals&lt;/FunctionName&gt;
+                    &lt;Arguments&gt;
+                      &lt;Expression&gt;
+                        &lt;Path&gt;
+                          &lt;RolePathItem&gt;
+                            &lt;!--Ventas--&gt;
+                            &lt;RoleID&gt;G078b2600-dd4a-4231-9e14-569410789557&lt;/RoleID&gt;
+                          &lt;/RolePathItem&gt;
+                        &lt;/Path&gt;
+                        &lt;AttributeRef&gt;
+                          &lt;!--Monto Documento--&gt;
+                          &lt;AttributeID&gt;G54b5d196-114a-4497-8925-60c3c6848df4&lt;/AttributeID&gt;
+                        &lt;/AttributeRef&gt;
+                      &lt;/Expression&gt;
+                      &lt;Expression&gt;
+                        &lt;Path&gt;
+                          &lt;RolePathItem&gt;
+                            &lt;!--Ventas--&gt;
+                            &lt;RoleID&gt;G078b2600-dd4a-4231-9e14-569410789557&lt;/RoleID&gt;
+                          &lt;/RolePathItem&gt;
+                        &lt;/Path&gt;
+                        &lt;AttributeRef&gt;
+                          &lt;!--Pagado--&gt;
+                          &lt;AttributeID&gt;G20bbc77b-dcd8-43da-9064-b42da35378ed&lt;/AttributeID&gt;
+                        &lt;/AttributeRef&gt;
+                      &lt;/Expression&gt;
+                    &lt;/Arguments&gt;
+                  &lt;/Function&gt;
+                &lt;/Expression&gt;
+                &lt;Expression&gt;
+                  &lt;AttributeRef&gt;
+                    &lt;!--XTNDPRCE--&gt;
+                    &lt;AttributeID&gt;Ga2bc744f-772b-4e66-8ee6-2b2da3a43144&lt;/AttributeID&gt;
+                  &lt;/AttributeRef&gt;
+                &lt;/Expression&gt;
+                &lt;Expression&gt;
+                  &lt;Literal&gt;
+                    &lt;DataType&gt;Integer&lt;/DataType&gt;
+                    &lt;Value&gt;0&lt;/Value&gt;
+                  &lt;/Literal&gt;
+                &lt;/Expression&gt;
+              &lt;/Arguments&gt;
+            &lt;/Function&gt;
+          &lt;/Expression&gt;
+        &lt;/Arguments&gt;
+      &lt;/Function&gt;
+      &lt;CustomProperties&gt;
+        &lt;CustomProperty Name="qd:DisplayName"&gt;
+          &lt;Value xsi:type="xsd:string"&gt;Valor Cont&lt;/Value&gt;
+        &lt;/CustomProperty&gt;
+        &lt;CustomProperty Name="qd:ContextEntityID"&gt;
+          &lt;Value xsi:type="xsd:string"&gt;Gfeccacaf-ea76-4204-83ea-bb88ac7dcc73&lt;/Value&gt;
+        &lt;/CustomProperty&gt;
+      &lt;/CustomProperties&gt;
+    &lt;/Expression&gt;
+    &lt;Expression Name="expr14"&gt;
+      &lt;Function&gt;
+        &lt;FunctionName&gt;Sum&lt;/FunctionName&gt;
+        &lt;Arguments&gt;
+          &lt;Expression&gt;
+            &lt;Function&gt;
+              &lt;FunctionName&gt;If&lt;/FunctionName&gt;
+              &lt;Arguments&gt;
+                &lt;Expression&gt;
+                  &lt;Function&gt;
+                    &lt;FunctionName&gt;Equals&lt;/FunctionName&gt;
+                    &lt;Arguments&gt;
+                      &lt;Expression&gt;
+                        &lt;Path&gt;
+                          &lt;RolePathItem&gt;
+                            &lt;!--Ventas--&gt;
+                            &lt;RoleID&gt;G078b2600-dd4a-4231-9e14-569410789557&lt;/RoleID&gt;
+                          &lt;/RolePathItem&gt;
+                        &lt;/Path&gt;
+                        &lt;AttributeRef&gt;
+                          &lt;!--Monto Documento--&gt;
+                          &lt;AttributeID&gt;G54b5d196-114a-4497-8925-60c3c6848df4&lt;/AttributeID&gt;
+                        &lt;/AttributeRef&gt;
+                      &lt;/Expression&gt;
+                      &lt;Expression&gt;
+                        &lt;Path&gt;
+                          &lt;RolePathItem&gt;
+                            &lt;!--Ventas--&gt;
+                            &lt;RoleID&gt;G078b2600-dd4a-4231-9e14-569410789557&lt;/RoleID&gt;
+                          &lt;/RolePathItem&gt;
+                        &lt;/Path&gt;
+                        &lt;AttributeRef&gt;
+                          &lt;!--Pagado--&gt;
+                          &lt;AttributeID&gt;G20bbc77b-dcd8-43da-9064-b42da35378ed&lt;/AttributeID&gt;
+                        &lt;/AttributeRef&gt;
+                      &lt;/Expression&gt;
+                    &lt;/Arguments&gt;
+                  &lt;/Function&gt;
+                &lt;/Expression&gt;
+                &lt;Expression&gt;
+                  &lt;Literal&gt;
+                    &lt;DataType&gt;Integer&lt;/DataType&gt;
+                    &lt;Value&gt;0&lt;/Value&gt;
+                  &lt;/Literal&gt;
+                &lt;/Expression&gt;
+                &lt;Expression&gt;
+                  &lt;AttributeRef&gt;
+                    &lt;!--XTNDPRCE--&gt;
+                    &lt;AttributeID&gt;Ga2bc744f-772b-4e66-8ee6-2b2da3a43144&lt;/AttributeID&gt;
+                  &lt;/AttributeRef&gt;
+                &lt;/Expression&gt;
+              &lt;/Arguments&gt;
+            &lt;/Function&gt;
+          &lt;/Expression&gt;
+        &lt;/Arguments&gt;
+      &lt;/Function&gt;
+      &lt;CustomProperties&gt;
+        &lt;CustomProperty Name="qd:DisplayName"&gt;
+          &lt;Value xsi:type="xsd:string"&gt;Valor Cr&lt;/Value&gt;
+        &lt;/CustomProperty&gt;
+        &lt;CustomProperty Name="qd:ContextEntityID"&gt;
+          &lt;Value xsi:type="xsd:string"&gt;Gfeccacaf-ea76-4204-83ea-bb88ac7dcc73&lt;/Value&gt;
+        &lt;/CustomProperty&gt;
+      &lt;/CustomProperties&gt;
+    &lt;/Expression&gt;
+    &lt;Expression Name="expr16"&gt;
+      &lt;Function&gt;
+        &lt;FunctionName&gt;Sum&lt;/FunctionName&gt;
+        &lt;Arguments&gt;
+          &lt;Expression&gt;
+            &lt;AttributeRef&gt;
+              &lt;!--XTNDPRCE--&gt;
+              &lt;AttributeID&gt;Ga2bc744f-772b-4e66-8ee6-2b2da3a43144&lt;/AttributeID&gt;
+            &lt;/AttributeRef&gt;
+          &lt;/Expression&gt;
+        &lt;/Arguments&gt;
+      &lt;/Function&gt;
+      &lt;CustomProperties&gt;
+        &lt;CustomProperty Name="qd:DisplayName"&gt;
+          &lt;Value xsi:type="xsd:string"&gt;Total Vtas&lt;/Value&gt;
+        &lt;/CustomProperty&gt;
+        &lt;CustomProperty Name="qd:ContextEntityID"&gt;
+          &lt;Value xsi:type="xsd:string"&gt;Gfeccacaf-ea76-4204-83ea-bb88ac7dcc73&lt;/Value&gt;
+        &lt;/CustomProperty&gt;
+      &lt;/CustomProperties&gt;
+    &lt;/Expression&gt;
+    &lt;Expression Name="Cantidad x Precio"&gt;
+      &lt;AttributeRef&gt;
+        &lt;!--Total QUANTITY--&gt;
+        &lt;AttributeID&gt;G388f8d6e-d74c-4319-82de-b033449e41ef&lt;/AttributeID&gt;
+      &lt;/AttributeRef&gt;
+      &lt;CustomProperties&gt;
+        &lt;CustomProperty Name="qd:ContextEntityID"&gt;
+          &lt;Value xsi:type="xsd:string"&gt;Gfeccacaf-ea76-4204-83ea-bb88ac7dcc73&lt;/Value&gt;
+        &lt;/CustomProperty&gt;
+      &lt;/CustomProperties&gt;
+    &lt;/Expression&gt;
+    &lt;Expression Name="Total "&gt;
+      &lt;AttributeRef&gt;
+        &lt;!--Total XTNDPRCE--&gt;
+        &lt;AttributeID&gt;G22b87851-0545-4fa3-823e-c7caa2441af3&lt;/AttributeID&gt;
+      &lt;/AttributeRef&gt;
+      &lt;CustomProperties&gt;
+        &lt;CustomProperty Name="qd:ContextEntityID"&gt;
+          &lt;Value xsi:type="xsd:string"&gt;Gfeccacaf-ea76-4204-83ea-bb88ac7dcc73&lt;/Value&gt;
+        &lt;/CustomProperty&gt;
+      &lt;/CustomProperties&gt;
+    &lt;/Expression&gt;
+    &lt;Expression Name="Comision"&gt;
+      &lt;AttributeRef&gt;
+        &lt;AttributeName&gt;expr3&lt;/AttributeName&gt;
+      &lt;/AttributeRef&gt;
+      &lt;CustomProperties&gt;
+        &lt;CustomProperty Name="qd:ContextEntityID"&gt;
+          &lt;Value xsi:type="xsd:string"&gt;Gfeccacaf-ea76-4204-83ea-bb88ac7dcc73&lt;/Value&gt;
+        &lt;/CustomProperty&gt;
+      &lt;/CustomProperties&gt;
+    &lt;/Expression&gt;
+  &lt;/CalculatedAttributes&gt;
+  &lt;Parameters&gt;
+    &lt;Parameter Name="Fecha Documento"&gt;
+      &lt;DataType&gt;DateTime&lt;/DataType&gt;
+      &lt;Nullable&gt;true&lt;/Nullable&gt;
+    &lt;/Parameter&gt;
+    &lt;Parameter Name="Fecha Documento1"&gt;
+      &lt;DataType&gt;DateTime&lt;/DataType&gt;
+      &lt;Nullable&gt;true&lt;/Nullable&gt;
+    &lt;/Parameter&gt;
+    &lt;Parameter Name="Codigo Vendedor"&gt;
+      &lt;DataType&gt;String&lt;/DataType&gt;
+      &lt;Nullable&gt;true&lt;/Nullable&gt;
+      &lt;Expression&gt;
+        &lt;Literal&gt;
+          &lt;DataType&gt;String&lt;/DataType&gt;
+          &lt;Value&gt;0&lt;/Value&gt;
+        &lt;/Literal&gt;
+      &lt;/Expression&gt;
+    &lt;/Parameter&gt;
+    &lt;Parameter Name="Codigo Vendedor2"&gt;
+      &lt;DataType&gt;String&lt;/DataType&gt;
+      &lt;Nullable&gt;true&lt;/Nullable&gt;
+      &lt;Expression&gt;
+        &lt;Literal&gt;
+          &lt;DataType&gt;String&lt;/DataType&gt;
+          &lt;Value&gt;0&lt;/Value&gt;
+        &lt;/Literal&gt;
+      &lt;/Expression&gt;
+    &lt;/Parameter&gt;
+    &lt;Parameter Name="ITEMNMBR"&gt;
+      &lt;DataType&gt;String&lt;/DataType&gt;
+      &lt;Nullable&gt;true&lt;/Nullable&gt;
+      &lt;Expression&gt;
+        &lt;Literal&gt;
+          &lt;DataType&gt;String&lt;/DataType&gt;
+          &lt;Value&gt;0&lt;/Value&gt;
+        &lt;/Literal&gt;
+      &lt;/Expression&gt;
+    &lt;/Parameter&gt;
+  &lt;/Parameters&gt;
+&lt;/SemanticQuery&gt;</CommandText>
+        <QueryParameters>
+          <QueryParameter Name="Fecha Documento">
+            <Value>=Parameters!FechaDocumento.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="Fecha Documento1">
+            <Value>=Parameters!FechaDocumento1.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="Codigo Vendedor">
+            <Value>=Parameters!CodigoVendedor.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="Codigo Vendedor2">
+            <Value>=Parameters!CodigoVendedor2.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="ITEMNMBR">
+            <Value>=Parameters!ITEMNMBR.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+      </Query>
+      <Fields>
+        <Field Name="Localidad">
+          <DataField>Localidad</DataField>
+        </Field>
+        <Field Name="Vendedor">
+          <DataField>Vendedor</DataField>
+        </Field>
+        <Field Name="NombreCompleto">
+          <DataField>Nombre Completo</DataField>
+        </Field>
+        <Field Name="Cod_Art">
+          <DataField>Cod_Art</DataField>
+        </Field>
+        <Field Name="Descripción">
+          <DataField>Descripción </DataField>
+        </Field>
+        <Field Name="Precio">
+          <DataField>Precio	</DataField>
+        </Field>
+        <Field Name="CantidadxPrecio_Sum">
+          <DataField>Cantidad x Precio_Sum</DataField>
+        </Field>
+        <Field Name="Total_Sum">
+          <DataField>Total _Sum</DataField>
+        </Field>
+        <Field Name="Comision_Sum">
+          <DataField>Comision_Sum</DataField>
+        </Field>
+        <Field Name="Comision_Sum1">
+          <DataField>Comision_Sum1</DataField>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="paramDataSet">
+      <Query>
+        <DataSourceName>dataSource1</DataSourceName>
+        <CommandText>&lt;SemanticQuery xmlns="http://schemas.microsoft.com/sqlserver/2004/10/semanticmodeling" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:qd="http://schemas.microsoft.com/sqlserver/2004/11/semanticquerydesign"&gt;
+  &lt;Hierarchies&gt;
+    &lt;Hierarchy&gt;
+      &lt;BaseEntity&gt;
+        &lt;!--Ventas Detalle--&gt;
+        &lt;EntityID&gt;Gfeccacaf-ea76-4204-83ea-bb88ac7dcc73&lt;/EntityID&gt;
+      &lt;/BaseEntity&gt;
+      &lt;Groupings&gt;
+        &lt;Grouping Name="value"&gt;
+          &lt;Expression Name="value"&gt;
+            &lt;AttributeRef&gt;
+              &lt;!--ITEMNMBR--&gt;
+              &lt;AttributeID&gt;G86806e35-4b77-4ddd-8b38-35b1afac2581&lt;/AttributeID&gt;
+            &lt;/AttributeRef&gt;
+          &lt;/Expression&gt;
+        &lt;/Grouping&gt;
+      &lt;/Groupings&gt;
+    &lt;/Hierarchy&gt;
+  &lt;/Hierarchies&gt;
+&lt;/SemanticQuery&gt;</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="value">
+          <DataField>value</DataField>
+        </Field>
+      </Fields>
+    </DataSet>
+  </DataSets>
+</Report>

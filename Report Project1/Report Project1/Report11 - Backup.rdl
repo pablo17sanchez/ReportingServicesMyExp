@@ -1,0 +1,280 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2005/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <DataSources>
+    <DataSource Name="GPDB">
+      <rd:DataSourceID>692a5b97-218b-44e4-a239-059dc4dd66e8</rd:DataSourceID>
+      <DataSourceReference>GPDB</DataSourceReference>
+    </DataSource>
+  </DataSources>
+  <rd:ReportID>711121d0-aa65-46ea-9aee-691b7b4a0d4b</rd:ReportID>
+  <Width>5in</Width>
+  <Body>
+    <Height>1.28in</Height>
+    <ColumnSpacing>0.5in</ColumnSpacing>
+    <ReportItems>
+      <Textbox Name="textbox1">
+        <Style>
+          <FontFamily>Tahoma</FontFamily>
+          <FontSize>20pt</FontSize>
+          <Color>SteelBlue</Color>
+          <FontWeight>Bold</FontWeight>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+        <rd:DefaultName>textbox1</rd:DefaultName>
+        <Value>Report11</Value>
+        <CanGrow>true</CanGrow>
+        <Height>0.36in</Height>
+      </Textbox>
+      <List Name="List1">
+        <Style>
+          <FontFamily>Tahoma</FontFamily>
+          <FontSize>14pt</FontSize>
+          <Color>SlateGray</Color>
+        </Style>
+        <ReportItems>
+          <Textbox Name="Internet_Address_Name">
+            <Style>
+              <FontFamily>Tahoma</FontFamily>
+              <FontSize>14pt</FontSize>
+              <Color>SlateGray</Color>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+            <rd:DefaultName>Internet_Address_Name</rd:DefaultName>
+            <Value>=Fields!Internet_Address_Name.Value</Value>
+            <CanGrow>true</CanGrow>
+            <Height>0.27in</Height>
+          </Textbox>
+          <Matrix Name="matrix1">
+            <Top>0.5in</Top>
+            <RowGroupings>
+              <RowGrouping>
+                <DynamicRows>
+                  <Grouping Name="matrix1_Usuario">
+                    <GroupExpressions>
+                      <GroupExpression>=Fields!Usuario.Value</GroupExpression>
+                    </GroupExpressions>
+                  </Grouping>
+                  <Sorting>
+                    <SortBy>
+                      <SortExpression>=Fields!Usuario.Value</SortExpression>
+                    </SortBy>
+                  </Sorting>
+                  <ReportItems>
+                    <Textbox Name="Usuario">
+                      <Style>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontSize>10pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
+                        <Color>White</Color>
+                        <BackgroundColor>#6e9eca</BackgroundColor>
+                        <BorderStyle>
+                          <Default>Solid</Default>
+                        </BorderStyle>
+                        <BorderColor>
+                          <Default>LightGrey</Default>
+                        </BorderColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                      <rd:DefaultName>Usuario</rd:DefaultName>
+                      <Value>=Fields!Usuario.Value</Value>
+                      <CanGrow>true</CanGrow>
+                      <Height>0.21in</Height>
+                      <Width>1in</Width>
+                    </Textbox>
+                  </ReportItems>
+                </DynamicRows>
+                <Width>1in</Width>
+              </RowGrouping>
+            </RowGroupings>
+            <MatrixRows>
+              <MatrixRow>
+                <MatrixCells>
+                  <MatrixCell>
+                    <ReportItems>
+                      <Textbox Name="textbox2">
+                        <Style>
+                          <FontFamily>Tahoma</FontFamily>
+                          <FontSize>10pt</FontSize>
+                          <BorderStyle>
+                            <Default>Solid</Default>
+                          </BorderStyle>
+                          <BorderColor>
+                            <Default>LightGrey</Default>
+                          </BorderColor>
+                          <PaddingLeft>2pt</PaddingLeft>
+                          <PaddingRight>2pt</PaddingRight>
+                          <PaddingTop>2pt</PaddingTop>
+                          <PaddingBottom>2pt</PaddingBottom>
+                        </Style>
+                        <rd:DefaultName>textbox2</rd:DefaultName>
+                        <Value>=Sum(Fields!Efectivo.Value)</Value>
+                        <CanGrow>true</CanGrow>
+                        <Height>0.21in</Height>
+                        <Width>1in</Width>
+                      </Textbox>
+                    </ReportItems>
+                  </MatrixCell>
+                </MatrixCells>
+                <Height>0.21in</Height>
+              </MatrixRow>
+            </MatrixRows>
+            <Corner>
+              <ReportItems>
+                <Textbox Name="textbox3">
+                  <Style>
+                    <FontFamily>Tahoma</FontFamily>
+                    <FontSize>10pt</FontSize>
+                    <BorderStyle>
+                      <Default>Solid</Default>
+                    </BorderStyle>
+                    <BorderColor>
+                      <Default>LightGrey</Default>
+                    </BorderColor>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                  <rd:DefaultName>textbox3</rd:DefaultName>
+                  <Value>
+                  </Value>
+                  <CanGrow>true</CanGrow>
+                  <Height>0.21in</Height>
+                </Textbox>
+              </ReportItems>
+            </Corner>
+            <DataSetName>DataSet1</DataSetName>
+            <MatrixColumns>
+              <MatrixColumn>
+                <Width>1in</Width>
+              </MatrixColumn>
+            </MatrixColumns>
+            <ColumnGroupings>
+              <ColumnGrouping>
+                <DynamicColumns>
+                  <Grouping Name="matrix1_Tipo_Documento">
+                    <GroupExpressions>
+                      <GroupExpression>=Fields!Tipo_Documento.Value</GroupExpression>
+                    </GroupExpressions>
+                  </Grouping>
+                  <Sorting>
+                    <SortBy>
+                      <SortExpression>=Fields!Tipo_Documento.Value</SortExpression>
+                    </SortBy>
+                  </Sorting>
+                  <ReportItems>
+                    <Textbox Name="Tipo_Documento">
+                      <Style>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontSize>10pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
+                        <Color>White</Color>
+                        <BackgroundColor>#6e9eca</BackgroundColor>
+                        <BorderStyle>
+                          <Default>Solid</Default>
+                        </BorderStyle>
+                        <BorderColor>
+                          <Default>LightGrey</Default>
+                        </BorderColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                      <rd:DefaultName>Tipo_Documento</rd:DefaultName>
+                      <Value>=Fields!Tipo_Documento.Value</Value>
+                      <CanGrow>true</CanGrow>
+                      <Height>0.21in</Height>
+                      <Width>1in</Width>
+                    </Textbox>
+                  </ReportItems>
+                </DynamicColumns>
+                <Height>0.21in</Height>
+              </ColumnGrouping>
+            </ColumnGroupings>
+          </Matrix>
+        </ReportItems>
+        <Grouping Name="list1_Internet_Address_Name">
+          <GroupExpressions>
+            <GroupExpression>=Fields!Internet_Address_Name.Value</GroupExpression>
+          </GroupExpressions>
+          <PageBreakAtEnd>true</PageBreakAtEnd>
+        </Grouping>
+        <Sorting>
+          <SortBy>
+            <SortExpression>=Fields!Internet_Address_Name.Value</SortExpression>
+          </SortBy>
+        </Sorting>
+        <Top>0.36in</Top>
+        <DataSetName>DataSet1</DataSetName>
+      </List>
+    </ReportItems>
+  </Body>
+  <Language>en-US</Language>
+  <LeftMargin>1in</LeftMargin>
+  <RightMargin>1in</RightMargin>
+  <TopMargin>1in</TopMargin>
+  <BottomMargin>1in</BottomMargin>
+  <PageWidth>8.5in</PageWidth>
+  <PageHeight>11in</PageHeight>
+  <DataSets>
+    <DataSet Name="DataSet1">
+      <Fields>
+        <Field Name="Tipo_Documento">
+          <DataField>Tipo_Documento</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Documento">
+          <DataField>Documento</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Fecha">
+          <DataField>Fecha</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="Codigo">
+          <DataField>Codigo</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Cliente">
+          <DataField>Cliente</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Valor">
+          <DataField>Valor</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="Efectivo">
+          <DataField>Efectivo</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="Usuario">
+          <DataField>Usuario</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Internet_Address_Name">
+          <DataField>Internet_Address_Name</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>GPDB</DataSourceName>
+        <CommandType>Text</CommandType>
+        <CommandText>SELECT     Tipo_Documento, Documento, Fecha, Codigo, Cliente, Valor, Efectivo, Usuario, s.Internet_Address_Name
+FROM         DataRS..Detalle_cuadre_cajera AS c INNER JOIN
+                      DYNAMICS.dbo.SY01400 AS s ON c.Usuario = s.USERID
+WHERE     (s.Internet_Address = 'CAJA') AND (Fecha BETWEEN @Ifecha AND @aFecha) AND (s.Internet_Address_Name = @localidad)</CommandText>
+        <Timeout>0</Timeout>
+      </Query>
+    </DataSet>
+  </DataSets>
+</Report>

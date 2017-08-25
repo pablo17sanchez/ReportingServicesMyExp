@@ -1,0 +1,275 @@
+﻿<DataSourceView xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" dwd:design-time-name="760e1bd2-3830-4bec-b0d2-7fbb547d339e" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
+  <ID>PalmComSyncDSW</ID>
+  <Name>PalmComSyncDSW</Name>
+  <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
+  <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+  <Annotations>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowFriendlyNames</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:CurrentLayout</Name>
+      <Value>_ALL_TABLES_</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:SchemaRestriction</Name>
+      <Value></Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:RetrieveRelationships</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:Layouts</Name>
+      <Value>
+        <Layouts xmlns="">
+          <Diagram>
+            <Name>_ALL_TABLES_</Name>
+            <DiagramLayout />
+            <ShowRelationshipNames>False</ShowRelationshipNames>
+            <UseDiagramDefaultLayout>True</UseDiagramDefaultLayout>
+            <DiagramViewPortLeft>0</DiagramViewPortLeft>
+            <DiagramViewPortTop>0</DiagramViewPortTop>
+            <DiagramBoundingLeft>0</DiagramBoundingLeft>
+            <DiagramBoundingTop>0</DiagramBoundingTop>
+            <DiagramZoom>100</DiagramZoom>
+          </Diagram>
+        </Layouts>
+      </Value>
+    </Annotation>
+  </Annotations>
+  <DataSourceID>PalmComSyncDS</DataSourceID>
+  <Schema>
+    <xs:schema id="PalmComSyncDSW" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop">
+      <xs:element name="PalmComSyncDSW" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:design-time-name="09bd27ad-ea99-4cb9-9aa5-828225e7334f">
+        <xs:complexType>
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="dbo_GP_AYUDANTERVENDEDOR" msprop:FriendlyName="GP_AYUDANTERVENDEDOR" msprop:DbSchemaName="dbo" msprop:DbTableName="GP_AYUDANTERVENDEDOR" msprop:design-time-name="88ee9dfd-7df4-4edb-9b15-a0c8f5512d61" msprop:TableType="Table">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="IdVendedor" msprop:FriendlyName="IdVendedor" msprop:DbColumnName="IdVendedor" msprop:design-time-name="b36fa01b-42b9-43f0-9bd4-d7f0c85e2773">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="10" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="IdAyudante" msprop:FriendlyName="IdAyudante" msprop:DbColumnName="IdAyudante" msprop:design-time-name="a8bf583d-742c-4792-9e6c-18dabe5224cc">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="10" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="IdAyudante2" msprop:FriendlyName="IdAyudante2" msprop:DbColumnName="IdAyudante2" msprop:design-time-name="c9327eb3-380d-4eae-8bc2-e11fa4a209de" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="10" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="NombreVendedor" msprop:FriendlyName="NombreVendedor" msprop:DbColumnName="NombreVendedor" msprop:design-time-name="1306c84a-3709-447f-b23d-5e2ec71a8f3b" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="50" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="NombreAyudante" msprop:FriendlyName="NombreAyudante" msprop:DbColumnName="NombreAyudante" msprop:design-time-name="24636cc5-d6b2-4319-aca4-e9f3fe732e7b" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="50" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="NombreAyudante2" msprop:FriendlyName="NombreAyudante2" msprop:DbColumnName="NombreAyudante2" msprop:design-time-name="06d092ac-3766-4af5-ad42-fd3592f9ec45" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="50" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="dbo_GP_CLIENTEDIASRUTA" msprop:FriendlyName="GP_CLIENTEDIASRUTA" msprop:DbSchemaName="dbo" msprop:DbTableName="GP_CLIENTEDIASRUTA" msprop:design-time-name="c231291f-515b-40bb-ad3c-df2ccfe12d68" msprop:TableType="Table">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="Codigo" msdata:ReadOnly="true" msdata:AutoIncrement="true" msprop:FriendlyName="Codigo" msprop:DbColumnName="Codigo" msprop:design-time-name="2897ad98-a505-4192-8455-25049d500b2d" type="xs:int" />
+                  <xs:element name="CodCliente" msprop:FriendlyName="CodCliente" msprop:DbColumnName="CodCliente" msprop:design-time-name="1d7e7a33-3f75-4762-a45b-0ac9122ce0df">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="15" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="Nombre" msprop:FriendlyName="Nombre" msprop:DbColumnName="Nombre" msprop:design-time-name="fa57b45b-0b1b-40d3-b00a-28956682df1f">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="65" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="CodRuta" msprop:FriendlyName="CodRuta" msprop:DbColumnName="CodRuta" msprop:design-time-name="ca1506f8-eef8-4215-8be6-d544b2ed4af6" type="xs:int" />
+                  <xs:element name="NombreRuta" msprop:FriendlyName="NombreRuta" msprop:DbColumnName="NombreRuta" msprop:design-time-name="d40f8c58-a8e7-49b4-a138-710dd84c168d">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="50" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="Lunes" msprop:FriendlyName="Lunes" msprop:DbColumnName="Lunes" msprop:design-time-name="dec405bb-02f2-4035-9fb7-89ec05fc0992" type="xs:boolean" />
+                  <xs:element name="Martes" msprop:FriendlyName="Martes" msprop:DbColumnName="Martes" msprop:design-time-name="76ec2960-4f62-49e1-ae39-f4bec1f927ce" type="xs:boolean" />
+                  <xs:element name="Miercoles" msprop:FriendlyName="Miercoles" msprop:DbColumnName="Miercoles" msprop:design-time-name="9d5d1792-277f-4b0d-9ceb-cf965fd48e1a" type="xs:boolean" />
+                  <xs:element name="Jueves" msprop:FriendlyName="Jueves" msprop:DbColumnName="Jueves" msprop:design-time-name="3f90610f-824e-44a0-9a0a-30060ea99186" type="xs:boolean" />
+                  <xs:element name="Viernes" msprop:FriendlyName="Viernes" msprop:DbColumnName="Viernes" msprop:design-time-name="8452dd7b-c16b-445d-89c2-3312b35e7029" type="xs:boolean" />
+                  <xs:element name="Sabado" msprop:FriendlyName="Sabado" msprop:DbColumnName="Sabado" msprop:design-time-name="dc364cbc-077a-4d32-8e99-2e17acdb9440" type="xs:boolean" />
+                  <xs:element name="Domingo" msprop:FriendlyName="Domingo" msprop:DbColumnName="Domingo" msprop:design-time-name="48f8967c-a2bf-4910-82e5-beea30b2a2d6" type="xs:boolean" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="dbo_GP_DIASRUTA" msprop:FriendlyName="GP_DIASRUTA" msprop:DbSchemaName="dbo" msprop:DbTableName="GP_DIASRUTA" msprop:design-time-name="35d3da75-be10-47f7-8eaa-dd82b05ccca2" msprop:TableType="Table">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="Domingo" msprop:FriendlyName="Domingo" msprop:DbColumnName="Domingo" msprop:design-time-name="8a0710f1-542e-4113-81b1-b4cf1e9eac95" type="xs:boolean" />
+                  <xs:element name="Lunes" msprop:FriendlyName="Lunes" msprop:DbColumnName="Lunes" msprop:design-time-name="032b67a3-cc78-4055-bb3a-53680df24487" type="xs:boolean" />
+                  <xs:element name="Martes" msprop:FriendlyName="Martes" msprop:DbColumnName="Martes" msprop:design-time-name="9959f65d-03c3-4518-b50f-bbb120f21f43" type="xs:boolean" />
+                  <xs:element name="Miercoles" msprop:FriendlyName="Miercoles" msprop:DbColumnName="Miercoles" msprop:design-time-name="413b9a53-14e1-4d85-923c-b91b30b37140" type="xs:boolean" />
+                  <xs:element name="Jueves" msprop:FriendlyName="Jueves" msprop:DbColumnName="Jueves" msprop:design-time-name="1dbe488d-d93e-42b2-bc25-fb088a2bf1fd" type="xs:boolean" />
+                  <xs:element name="Viernes" msprop:FriendlyName="Viernes" msprop:DbColumnName="Viernes" msprop:design-time-name="e3cc9ab3-aa0e-4975-bd07-d1fabb280e41" type="xs:boolean" />
+                  <xs:element name="Sabado" msprop:FriendlyName="Sabado" msprop:DbColumnName="Sabado" msprop:design-time-name="698e57e8-fd6b-49f8-b675-fdcf2fe1b0fd" type="xs:boolean" />
+                  <xs:element name="CodRuta" msprop:FriendlyName="CodRuta" msprop:DbColumnName="CodRuta" msprop:design-time-name="342b67a2-dad0-4c0d-857c-421c29ecd934" type="xs:int" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="dbo_GP_RSUPERVISORVENDEDOR" msprop:FriendlyName="GP_RSUPERVISORVENDEDOR" msprop:DbSchemaName="dbo" msprop:DbTableName="GP_RSUPERVISORVENDEDOR" msprop:design-time-name="2e3c714a-7fe9-4197-b3f1-1e4468488a3c" msprop:TableType="Table">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="Codigo" msdata:ReadOnly="true" msdata:AutoIncrement="true" msprop:FriendlyName="Codigo" msprop:DbColumnName="Codigo" msprop:design-time-name="aec2dfea-3d37-4ebd-9886-78bb35c12621" type="xs:int" />
+                  <xs:element name="CodSupervisor" msprop:FriendlyName="CodSupervisor" msprop:DbColumnName="CodSupervisor" msprop:design-time-name="c0b3dbb8-bc15-46de-9138-75695a640d24" type="xs:int" />
+                  <xs:element name="NombreSupervisor" msprop:FriendlyName="NombreSupervisor" msprop:DbColumnName="NombreSupervisor" msprop:design-time-name="70802f67-01a7-42bb-9e68-e0ea6bd11f37">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="50" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="CodVendedor" msprop:FriendlyName="CodVendedor" msprop:DbColumnName="CodVendedor" msprop:design-time-name="9f11185d-eae2-48a7-a8ee-1a2f0b531f2b">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="10" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="NombreVendedor" msprop:FriendlyName="NombreVendedor" msprop:DbColumnName="NombreVendedor" msprop:design-time-name="459db3ce-9ab6-457e-99b2-931f65eb0b65">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="50" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="dbo_GP_RUTA" msprop:FriendlyName="GP_RUTA" msprop:DbSchemaName="dbo" msprop:DbTableName="GP_RUTA" msprop:design-time-name="bd19b009-942a-40d9-aa77-5ea04c8aacbd" msprop:TableType="Table">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="CodRuta" msdata:ReadOnly="true" msdata:AutoIncrement="true" msprop:FriendlyName="CodRuta" msprop:DbColumnName="CodRuta" msprop:design-time-name="6748ed19-6b3f-4485-9cb2-a04ede9a8cd7" type="xs:int" />
+                  <xs:element name="NombreRuta" msprop:FriendlyName="NombreRuta" msprop:DbColumnName="NombreRuta" msprop:design-time-name="2b28b18e-c6a0-4b18-a7a9-1cf44304d624">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="50" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="IdVendedor" msprop:FriendlyName="IdVendedor" msprop:DbColumnName="IdVendedor" msprop:design-time-name="eea3e8ce-c66a-4742-8896-96bb609964e6">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="10" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="NombreVendedor" msprop:FriendlyName="NombreVendedor" msprop:DbColumnName="NombreVendedor" msprop:design-time-name="7464d4e7-fbfa-4dad-a98c-dad05d9556ce" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="50" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="CodStatus" msprop:FriendlyName="CodStatus" msprop:DbColumnName="CodStatus" msprop:design-time-name="95b61bc5-f96e-46b4-a7f6-c92690729074" type="xs:int" />
+                  <xs:element name="CodSubZona" msprop:FriendlyName="CodSubZona" msprop:DbColumnName="CodSubZona" msprop:design-time-name="0a8693e7-57dd-4b67-867e-b535f0a77814" type="xs:int" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="dbo_GP_STATUS" msprop:FriendlyName="GP_STATUS" msprop:DbSchemaName="dbo" msprop:DbTableName="GP_STATUS" msprop:design-time-name="172e0ca9-dc64-4e3a-b5ee-94e948b87244" msprop:TableType="Table">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="CodStatus" msprop:FriendlyName="CodStatus" msprop:DbColumnName="CodStatus" msprop:design-time-name="22946827-7905-4a17-bed7-062b7e6d91e1" type="xs:int" />
+                  <xs:element name="Descripcion" msprop:FriendlyName="Descripcion" msprop:DbColumnName="Descripcion" msprop:design-time-name="619bdb9d-e217-461f-9bac-0ad4fdb690e9">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="50" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="dbo_GP_SUBZONA" msprop:FriendlyName="GP_SUBZONA" msprop:DbSchemaName="dbo" msprop:DbTableName="GP_SUBZONA" msprop:design-time-name="22db6caf-0fc7-46b5-9bf8-855f9ad444c4" msprop:TableType="Table">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="CodSubzona" msdata:ReadOnly="true" msdata:AutoIncrement="true" msprop:FriendlyName="CodSubzona" msprop:DbColumnName="CodSubzona" msprop:design-time-name="861c80d9-4c15-4051-bba4-9154211c9db3" type="xs:int" />
+                  <xs:element name="Descripcion" msprop:FriendlyName="Descripcion" msprop:DbColumnName="Descripcion" msprop:design-time-name="c006e381-1fcc-410b-b482-a99b506e0d27">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="255" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="IdZona" msprop:FriendlyName="IdZona" msprop:DbColumnName="IdZona" msprop:design-time-name="6e168855-8e7b-41bc-8173-f837a61b2d7f">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="15" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="ZonaDesc" msprop:FriendlyName="ZonaDesc" msprop:DbColumnName="ZonaDesc" msprop:design-time-name="ffe2c6e7-9d85-46b7-aeaa-73e7c8b73701">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="31" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="CodSupervisor" msprop:FriendlyName="CodSupervisor" msprop:DbColumnName="CodSupervisor" msprop:design-time-name="86bded08-93fe-4682-a7df-553b56b854b9" type="xs:int" />
+                  <xs:element name="NombreSupervisor" msprop:FriendlyName="NombreSupervisor" msprop:DbColumnName="NombreSupervisor" msprop:design-time-name="13d0a1ba-ac10-4314-8887-72e6b1b4ca06">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="50" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="dbo_GP_SUPERVISOR" msprop:FriendlyName="GP_SUPERVISOR" msprop:DbSchemaName="dbo" msprop:DbTableName="GP_SUPERVISOR" msprop:design-time-name="8d0ec20a-9ce8-47c9-af84-4c455ec056aa" msprop:TableType="Table">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="CodSupervisor" msdata:ReadOnly="true" msdata:AutoIncrement="true" msprop:FriendlyName="CodSupervisor" msprop:DbColumnName="CodSupervisor" msprop:design-time-name="2ce927dd-8f8b-4e67-a073-95f4f9e94148" type="xs:int" />
+                  <xs:element name="Nombre" msprop:FriendlyName="Nombre" msprop:DbColumnName="Nombre" msprop:design-time-name="f9ad9e23-4992-4719-8310-022b1b58e0db" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="50" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:choice>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+    <diffgr:diffgram xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:diffgr="urn:schemas-microsoft-com:xml-diffgram-v1" />
+  </Schema>
+</DataSourceView>

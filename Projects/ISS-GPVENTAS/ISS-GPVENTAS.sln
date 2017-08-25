@@ -1,0 +1,17 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{D183A3D8-5FD8-494B-B014-37F57B35E655}") = "ISS-GPVENTAS", "ISS-GPVENTAS\ISS-GPVENTAS.dtproj", "{9AE701F9-991D-414E-B3D6-046DD6728A90}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Development|Default = Development|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9AE701F9-991D-414E-B3D6-046DD6728A90}.Development|Default.ActiveCfg = Development
+		{9AE701F9-991D-414E-B3D6-046DD6728A90}.Development|Default.Build.0 = Development
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

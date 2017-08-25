@@ -1,0 +1,826 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2005/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <DataSources>
+    <DataSource Name="DeployDS">
+      <rd:DataSourceID>54f32700-5f00-40cb-aeb0-fd56eaec1f77</rd:DataSourceID>
+      <DataSourceReference>DeployDS</DataSourceReference>
+    </DataSource>
+  </DataSources>
+  <InteractiveHeight>11in</InteractiveHeight>
+  <ReportParameters>
+    <ReportParameter Name="CodCliente">
+      <DataType>String</DataType>
+      <Prompt>CodCliente</Prompt>
+    </ReportParameter>
+  </ReportParameters>
+  <rd:DrawGrid>true</rd:DrawGrid>
+  <InteractiveWidth>8.5in</InteractiveWidth>
+  <rd:GridSpacing>0.25cm</rd:GridSpacing>
+  <rd:SnapToGrid>true</rd:SnapToGrid>
+  <RightMargin>2.5cm</RightMargin>
+  <LeftMargin>2.5cm</LeftMargin>
+  <BottomMargin>2.5cm</BottomMargin>
+  <rd:ReportID>4ad72744-9feb-447b-b368-37b417c450a9</rd:ReportID>
+  <PageWidth>21cm</PageWidth>
+  <DataSets>
+    <DataSet Name="DeployDS">
+      <Fields>
+        <Field Name="CodCliente">
+          <DataField>CodCliente</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="NombCliente">
+          <DataField>NombCliente</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="IdClase">
+          <DataField>IdClase</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="PersCont">
+          <DataField>PersCont</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Direccion1">
+          <DataField>Direccion1</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Direccion2">
+          <DataField>Direccion2</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Direccion3">
+          <DataField>Direccion3</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Pais">
+          <DataField>Pais</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Ciudad">
+          <DataField>Ciudad</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="STATE">
+          <DataField>STATE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Telefono1">
+          <DataField>Telefono1</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Telefono2">
+          <DataField>Telefono2</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Telefono3">
+          <DataField>Telefono3</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Fax">
+          <DataField>Fax</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="IdPago">
+          <DataField>IdPago</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Comentario1">
+          <DataField>Comentario1</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Comentario2">
+          <DataField>Comentario2</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="NCF">
+          <DataField>NCF</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="RNC">
+          <DataField>RNC</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Inactivo">
+          <DataField>Inactivo</DataField>
+          <rd:TypeName>System.Byte</rd:TypeName>
+        </Field>
+        <Field Name="Suspendido">
+          <DataField>Suspendido</DataField>
+          <rd:TypeName>System.Byte</rd:TypeName>
+        </Field>
+        <Field Name="Latitud">
+          <DataField>Latitud</DataField>
+          <rd:TypeName>System.Single</rd:TypeName>
+        </Field>
+        <Field Name="Longitud">
+          <DataField>Longitud</DataField>
+          <rd:TypeName>System.Single</rd:TypeName>
+        </Field>
+        <Field Name="NombreRuta">
+          <DataField>NombreRuta</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="IdVendedor">
+          <DataField>IdVendedor</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="NombreVendedor">
+          <DataField>NombreVendedor</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="NZonaSup">
+          <DataField>NZonaSup</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="NombreSupervisor">
+          <DataField>NombreSupervisor</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="IdZona">
+          <DataField>IdZona</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ZonaDesc">
+          <DataField>ZonaDesc</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ZonaResponsable">
+          <DataField>ZonaResponsable</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="FechaCreacion">
+          <DataField>FechaCreacion</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="UltimaFechaFactura">
+          <DataField>UltimaFechaFactura</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Estatus">
+          <Value>=Iif((Fields!Suspendido.Value)=0,"Activo","Suspendido")</Value>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>DeployDS</DataSourceName>
+        <CommandText>select * from vw_clientes_csr
+where codcliente = @CodCliente</CommandText>
+        <QueryParameters>
+          <QueryParameter Name="@CodCliente">
+            <Value>=Parameters!CodCliente.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+      </Query>
+    </DataSet>
+  </DataSets>
+  <Width>27.25cm</Width>
+  <Body>
+    <ColumnSpacing>1cm</ColumnSpacing>
+    <ReportItems>
+      <Textbox Name="textbox10">
+        <rd:DefaultName>textbox10</rd:DefaultName>
+        <Width>24.25926cm</Width>
+        <Style>
+          <FontSize>18pt</FontSize>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+        <ZIndex>1</ZIndex>
+        <CanGrow>true</CanGrow>
+        <Left>0.25cm</Left>
+        <Height>1.00529cm</Height>
+        <Value>Ventas - Tarjeta Cliente/Zona de Ventas </Value>
+      </Textbox>
+      <List Name="list1">
+        <DataSetName>DeployDS</DataSetName>
+        <ReportItems>
+          <Textbox Name="textbox17">
+            <rd:DefaultName>textbox17</rd:DefaultName>
+            <Top>4cm</Top>
+            <Width>2.53968cm</Width>
+            <Style>
+              <FontWeight>700</FontWeight>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+            <ZIndex>36</ZIndex>
+            <CanGrow>true</CanGrow>
+            <Left>16.75cm</Left>
+            <Height>0.63492cm</Height>
+            <Value>Tipo NCF:</Value>
+          </Textbox>
+          <Textbox Name="textbox16">
+            <rd:DefaultName>textbox16</rd:DefaultName>
+            <Top>3.25cm</Top>
+            <Width>2.53968cm</Width>
+            <Style>
+              <FontWeight>700</FontWeight>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+            <ZIndex>35</ZIndex>
+            <CanGrow>true</CanGrow>
+            <Left>16.75cm</Left>
+            <Height>0.63492cm</Height>
+            <Value>RNC:</Value>
+          </Textbox>
+          <Textbox Name="textbox15">
+            <rd:DefaultName>textbox15</rd:DefaultName>
+            <Top>2.05291cm</Top>
+            <Width>2.53968cm</Width>
+            <Style>
+              <FontWeight>700</FontWeight>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+            <ZIndex>34</ZIndex>
+            <CanGrow>true</CanGrow>
+            <Left>16.75cm</Left>
+            <Height>0.63492cm</Height>
+            <Value>Teléfonos:</Value>
+          </Textbox>
+          <Textbox Name="textbox14">
+            <rd:DefaultName>textbox14</rd:DefaultName>
+            <Top>1cm</Top>
+            <Width>2.53968cm</Width>
+            <Style>
+              <FontWeight>700</FontWeight>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+            <ZIndex>33</ZIndex>
+            <CanGrow>true</CanGrow>
+            <Left>16.75cm</Left>
+            <Height>0.63492cm</Height>
+            <Value>Clase:</Value>
+          </Textbox>
+          <Textbox Name="textbox13">
+            <rd:DefaultName>textbox13</rd:DefaultName>
+            <Top>0.25cm</Top>
+            <Width>2.53968cm</Width>
+            <Style>
+              <FontWeight>700</FontWeight>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+            <ZIndex>32</ZIndex>
+            <CanGrow>true</CanGrow>
+            <Left>16.75cm</Left>
+            <Height>0.63492cm</Height>
+            <Value>Estado:</Value>
+          </Textbox>
+          <Textbox Name="Estatus">
+            <rd:DefaultName>Estatus</rd:DefaultName>
+            <Top>0.25cm</Top>
+            <Width>4.5cm</Width>
+            <Style>
+              <TextAlign>Left</TextAlign>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+            <ZIndex>31</ZIndex>
+            <CanGrow>true</CanGrow>
+            <Left>19.75cm</Left>
+            <Height>0.63492cm</Height>
+            <Value>=Fields!Estatus.Value</Value>
+          </Textbox>
+          <Textbox Name="textbox12">
+            <Top>7.75cm</Top>
+            <Width>4.25cm</Width>
+            <Style>
+              <FontWeight>700</FontWeight>
+              <TextAlign>Right</TextAlign>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+            <ZIndex>30</ZIndex>
+            <CanGrow>true</CanGrow>
+            <Left>0.25cm</Left>
+            <Height>0.63492cm</Height>
+            <Value>Ruta/Vendedor:</Value>
+          </Textbox>
+          <Textbox Name="textbox11">
+            <Top>7cm</Top>
+            <Width>4.25cm</Width>
+            <Style>
+              <FontWeight>700</FontWeight>
+              <TextAlign>Right</TextAlign>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+            <ZIndex>29</ZIndex>
+            <CanGrow>true</CanGrow>
+            <Left>0.25cm</Left>
+            <Height>0.63492cm</Height>
+            <Value>Zona Supervision:</Value>
+          </Textbox>
+          <Textbox Name="textbox9">
+            <Top>6.25cm</Top>
+            <Width>4.25cm</Width>
+            <Style>
+              <FontWeight>700</FontWeight>
+              <TextAlign>Right</TextAlign>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+            <ZIndex>28</ZIndex>
+            <CanGrow>true</CanGrow>
+            <Left>0.25cm</Left>
+            <Height>0.63492cm</Height>
+            <Value>Zona Coordinacion:</Value>
+          </Textbox>
+          <Textbox Name="textbox8">
+            <Top>5.5cm</Top>
+            <Width>4.25cm</Width>
+            <Style>
+              <FontWeight>700</FontWeight>
+              <TextAlign>Right</TextAlign>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+            <ZIndex>27</ZIndex>
+            <CanGrow>true</CanGrow>
+            <Left>0.25cm</Left>
+            <Height>0.63492cm</Height>
+            <Value>Coordenadas:</Value>
+          </Textbox>
+          <Textbox Name="textbox7">
+            <Top>4.75cm</Top>
+            <Width>4.25cm</Width>
+            <Style>
+              <FontWeight>700</FontWeight>
+              <TextAlign>Right</TextAlign>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+            <ZIndex>26</ZIndex>
+            <CanGrow>true</CanGrow>
+            <Left>0.25cm</Left>
+            <Height>0.63492cm</Height>
+            <Value>Estado/Provincia:</Value>
+          </Textbox>
+          <Textbox Name="textbox6">
+            <Top>4cm</Top>
+            <Width>4.25cm</Width>
+            <Style>
+              <FontWeight>700</FontWeight>
+              <TextAlign>Right</TextAlign>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+            <ZIndex>25</ZIndex>
+            <CanGrow>true</CanGrow>
+            <Left>0.25cm</Left>
+            <Height>0.63492cm</Height>
+            <Value>Ciudad:</Value>
+          </Textbox>
+          <Textbox Name="textbox5">
+            <Top>3.25cm</Top>
+            <Width>4.25cm</Width>
+            <Style>
+              <FontWeight>700</FontWeight>
+              <TextAlign>Right</TextAlign>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+            <ZIndex>24</ZIndex>
+            <CanGrow>true</CanGrow>
+            <Left>0.25cm</Left>
+            <Height>0.63492cm</Height>
+            <Value>Sub Sector</Value>
+          </Textbox>
+          <Textbox Name="textbox4">
+            <Top>2.5cm</Top>
+            <Width>4.25cm</Width>
+            <Style>
+              <FontWeight>700</FontWeight>
+              <TextAlign>Right</TextAlign>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+            <ZIndex>23</ZIndex>
+            <CanGrow>true</CanGrow>
+            <Left>0.25cm</Left>
+            <Height>0.63492cm</Height>
+            <Value>Sector:</Value>
+          </Textbox>
+          <Textbox Name="textbox3">
+            <Top>1.75cm</Top>
+            <Width>4.25cm</Width>
+            <Style>
+              <FontWeight>700</FontWeight>
+              <TextAlign>Right</TextAlign>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+            <ZIndex>22</ZIndex>
+            <CanGrow>true</CanGrow>
+            <Left>0.25cm</Left>
+            <Height>0.63492cm</Height>
+            <Value>Direccion:</Value>
+          </Textbox>
+          <Textbox Name="textbox2">
+            <Top>1cm</Top>
+            <Width>4.25cm</Width>
+            <Style>
+              <FontWeight>700</FontWeight>
+              <TextAlign>Right</TextAlign>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+            <ZIndex>21</ZIndex>
+            <CanGrow>true</CanGrow>
+            <Left>0.25cm</Left>
+            <Height>0.63492cm</Height>
+            <Value>Nombre Cliente:</Value>
+          </Textbox>
+          <Textbox Name="textbox1">
+            <rd:DefaultName>textbox1</rd:DefaultName>
+            <Top>0.25cm</Top>
+            <Width>3.25cm</Width>
+            <Style>
+              <FontWeight>700</FontWeight>
+              <TextAlign>Right</TextAlign>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+            <ZIndex>20</ZIndex>
+            <CanGrow>true</CanGrow>
+            <Left>1.25cm</Left>
+            <Height>0.63492cm</Height>
+            <Value>Codigo Cliente:</Value>
+          </Textbox>
+          <Textbox Name="IdVendedor">
+            <rd:DefaultName>IdVendedor</rd:DefaultName>
+            <Top>7.75cm</Top>
+            <Width>10.25cm</Width>
+            <Style>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+            <ZIndex>19</ZIndex>
+            <CanGrow>true</CanGrow>
+            <Left>9.5cm</Left>
+            <Height>0.63492cm</Height>
+            <Value>=Fields!IdVendedor.Value &amp; "   "&amp;Fields!NombreVendedor.Value</Value>
+          </Textbox>
+          <Textbox Name="NombreRuta">
+            <rd:DefaultName>NombreRuta</rd:DefaultName>
+            <Top>7.75cm</Top>
+            <Width>4.5cm</Width>
+            <Style>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+            <ZIndex>18</ZIndex>
+            <CanGrow>true</CanGrow>
+            <Left>4.75cm</Left>
+            <Height>0.63492cm</Height>
+            <Value>=Fields!NombreRuta.Value</Value>
+          </Textbox>
+          <Textbox Name="NombreSupervisor">
+            <rd:DefaultName>NombreSupervisor</rd:DefaultName>
+            <Top>7cm</Top>
+            <Width>5cm</Width>
+            <Style>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+            <ZIndex>17</ZIndex>
+            <CanGrow>true</CanGrow>
+            <Left>9.5cm</Left>
+            <Height>0.63492cm</Height>
+            <Value>=Fields!NombreSupervisor.Value</Value>
+          </Textbox>
+          <Textbox Name="NZonaSup">
+            <rd:DefaultName>NZonaSup</rd:DefaultName>
+            <Top>7cm</Top>
+            <Width>4.5cm</Width>
+            <Style>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+            <ZIndex>16</ZIndex>
+            <CanGrow>true</CanGrow>
+            <Left>4.75cm</Left>
+            <Height>0.63492cm</Height>
+            <Value>=Fields!NZonaSup.Value</Value>
+          </Textbox>
+          <Textbox Name="ZonaResponsable">
+            <rd:DefaultName>ZonaResponsable</rd:DefaultName>
+            <Top>6.25cm</Top>
+            <Width>4.5cm</Width>
+            <Style>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+            <ZIndex>15</ZIndex>
+            <CanGrow>true</CanGrow>
+            <Left>9.5cm</Left>
+            <Height>0.63492cm</Height>
+            <Value>=Fields!ZonaResponsable.Value</Value>
+          </Textbox>
+          <Textbox Name="ZonaDesc">
+            <rd:DefaultName>ZonaDesc</rd:DefaultName>
+            <Top>6.25cm</Top>
+            <Width>4.5cm</Width>
+            <Style>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+            <ZIndex>14</ZIndex>
+            <CanGrow>true</CanGrow>
+            <Left>4.75cm</Left>
+            <Height>0.63492cm</Height>
+            <Value>=Fields!ZonaDesc.Value</Value>
+          </Textbox>
+          <Textbox Name="Longitud">
+            <rd:DefaultName>Longitud</rd:DefaultName>
+            <Top>5.5cm</Top>
+            <Width>3.75cm</Width>
+            <Style>
+              <TextAlign>Right</TextAlign>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+            <ZIndex>13</ZIndex>
+            <CanGrow>true</CanGrow>
+            <Left>8.25cm</Left>
+            <Height>0.63492cm</Height>
+            <Value>=Fields!Longitud.Value</Value>
+          </Textbox>
+          <Textbox Name="Latitud">
+            <rd:DefaultName>Latitud</rd:DefaultName>
+            <Top>5.5cm</Top>
+            <Width>3.25cm</Width>
+            <Style>
+              <TextAlign>Right</TextAlign>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+            <ZIndex>12</ZIndex>
+            <CanGrow>true</CanGrow>
+            <Left>4.75cm</Left>
+            <Height>0.63492cm</Height>
+            <Value>=Fields!Latitud.Value</Value>
+          </Textbox>
+          <Textbox Name="NCF">
+            <rd:DefaultName>NCF</rd:DefaultName>
+            <Top>4cm</Top>
+            <Width>4.5cm</Width>
+            <Style>
+              <TextAlign>Left</TextAlign>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+            <ZIndex>11</ZIndex>
+            <CanGrow>true</CanGrow>
+            <Left>19.75cm</Left>
+            <Height>0.63492cm</Height>
+            <Value>=Fields!NCF.Value</Value>
+          </Textbox>
+          <Textbox Name="STATE">
+            <rd:DefaultName>STATE</rd:DefaultName>
+            <Top>4.75cm</Top>
+            <Width>5cm</Width>
+            <Style>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+            <ZIndex>10</ZIndex>
+            <CanGrow>true</CanGrow>
+            <Left>4.75cm</Left>
+            <Height>0.63492cm</Height>
+            <Value>=Fields!STATE.Value</Value>
+          </Textbox>
+          <Textbox Name="RNC">
+            <rd:DefaultName>RNC</rd:DefaultName>
+            <Top>3.25cm</Top>
+            <Width>4.5cm</Width>
+            <Style>
+              <TextAlign>Left</TextAlign>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+            <ZIndex>9</ZIndex>
+            <CanGrow>true</CanGrow>
+            <Left>19.75cm</Left>
+            <Height>0.63492cm</Height>
+            <Value>=Fields!RNC.Value</Value>
+          </Textbox>
+          <Textbox Name="Telefono2">
+            <rd:DefaultName>Telefono2</rd:DefaultName>
+            <Top>2.5cm</Top>
+            <Width>4.5cm</Width>
+            <Style>
+              <TextAlign>Left</TextAlign>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+            <ZIndex>8</ZIndex>
+            <CanGrow>true</CanGrow>
+            <Left>19.75cm</Left>
+            <Height>0.63492cm</Height>
+            <Value>=Fields!Telefono2.Value</Value>
+          </Textbox>
+          <Textbox Name="Telefono1">
+            <rd:DefaultName>Telefono1</rd:DefaultName>
+            <Top>1.75cm</Top>
+            <Width>4.5cm</Width>
+            <Style>
+              <TextAlign>Left</TextAlign>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+            <ZIndex>7</ZIndex>
+            <CanGrow>true</CanGrow>
+            <Left>19.75cm</Left>
+            <Height>0.63492cm</Height>
+            <Value>=Fields!Telefono1.Value</Value>
+          </Textbox>
+          <Textbox Name="Ciudad">
+            <rd:DefaultName>Ciudad</rd:DefaultName>
+            <Top>4cm</Top>
+            <Width>9.25cm</Width>
+            <Style>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+            <ZIndex>6</ZIndex>
+            <CanGrow>true</CanGrow>
+            <Left>4.75cm</Left>
+            <Height>0.63492cm</Height>
+            <Value>=Fields!Ciudad.Value</Value>
+          </Textbox>
+          <Textbox Name="Direccion3">
+            <rd:DefaultName>Direccion3</rd:DefaultName>
+            <Top>3.25cm</Top>
+            <Width>9.25cm</Width>
+            <Style>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+            <ZIndex>5</ZIndex>
+            <CanGrow>true</CanGrow>
+            <Left>4.75cm</Left>
+            <Height>0.63492cm</Height>
+            <Value>=Fields!Direccion3.Value</Value>
+          </Textbox>
+          <Textbox Name="Direccion2">
+            <rd:DefaultName>Direccion2</rd:DefaultName>
+            <Top>2.5cm</Top>
+            <Width>9.25cm</Width>
+            <Style>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+            <ZIndex>4</ZIndex>
+            <CanGrow>true</CanGrow>
+            <Left>4.75cm</Left>
+            <Height>0.63492cm</Height>
+            <Value>=Fields!Direccion2.Value</Value>
+          </Textbox>
+          <Textbox Name="Direccion1">
+            <rd:DefaultName>Direccion1</rd:DefaultName>
+            <Top>1.75cm</Top>
+            <Width>9.25cm</Width>
+            <Style>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+            <ZIndex>3</ZIndex>
+            <CanGrow>true</CanGrow>
+            <Left>4.75cm</Left>
+            <Height>0.63492cm</Height>
+            <Value>=Fields!Direccion1.Value</Value>
+          </Textbox>
+          <Textbox Name="CodCliente">
+            <rd:DefaultName>CodCliente</rd:DefaultName>
+            <Top>0.25cm</Top>
+            <Width>2.53968cm</Width>
+            <Style>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+            <ZIndex>2</ZIndex>
+            <CanGrow>true</CanGrow>
+            <Left>4.75cm</Left>
+            <Height>0.63492cm</Height>
+            <Value>=Fields!CodCliente.Value</Value>
+          </Textbox>
+          <Textbox Name="IdClase">
+            <rd:DefaultName>IdClase</rd:DefaultName>
+            <Top>1cm</Top>
+            <Width>4.5cm</Width>
+            <Style>
+              <TextAlign>Left</TextAlign>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+            <ZIndex>1</ZIndex>
+            <CanGrow>true</CanGrow>
+            <Left>19.75cm</Left>
+            <Height>0.63492cm</Height>
+            <Value>=Fields!IdClase.Value</Value>
+          </Textbox>
+          <Textbox Name="NombCliente">
+            <rd:DefaultName>NombCliente</rd:DefaultName>
+            <Top>1cm</Top>
+            <Width>9.25cm</Width>
+            <Style>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+            <CanGrow>true</CanGrow>
+            <Left>4.75cm</Left>
+            <Height>0.63492cm</Height>
+            <Value>=Fields!NombCliente.Value</Value>
+          </Textbox>
+        </ReportItems>
+        <Top>1.25cm</Top>
+        <Width>24.5cm</Width>
+      </List>
+    </ReportItems>
+    <Height>10.5cm</Height>
+  </Body>
+  <Language>en-US</Language>
+  <TopMargin>2.5cm</TopMargin>
+  <PageHeight>29.7cm</PageHeight>
+</Report>

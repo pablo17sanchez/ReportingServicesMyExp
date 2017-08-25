@@ -1,0 +1,533 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2005/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <DataSources>
+    <DataSource Name="DeployDS">
+      <rd:DataSourceID>8cc8d154-850c-4bf3-9f5c-e8cc11250eba</rd:DataSourceID>
+      <DataSourceReference>DeployDS</DataSourceReference>
+    </DataSource>
+  </DataSources>
+  <InteractiveHeight>11in</InteractiveHeight>
+  <ReportParameters>
+    <ReportParameter Name="iFecha">
+      <DataType>DateTime</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>=today</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Fecha</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Usuario">
+      <DataType>String</DataType>
+      <Prompt>Usuario</Prompt>
+      <ValidValues>
+        <DataSetReference>
+          <DataSetName>Users</DataSetName>
+          <ValueField>USERID</ValueField>
+          <LabelField>USERNAME</LabelField>
+        </DataSetReference>
+      </ValidValues>
+    </ReportParameter>
+  </ReportParameters>
+  <rd:DrawGrid>true</rd:DrawGrid>
+  <InteractiveWidth>8.5in</InteractiveWidth>
+  <rd:GridSpacing>0.25cm</rd:GridSpacing>
+  <rd:SnapToGrid>true</rd:SnapToGrid>
+  <RightMargin>0.5in</RightMargin>
+  <LeftMargin>0.5in</LeftMargin>
+  <PageHeader>
+    <PrintOnFirstPage>true</PrintOnFirstPage>
+    <ReportItems>
+      <Textbox Name="textbox1">
+        <rd:DefaultName>textbox1</rd:DefaultName>
+        <Top>0.25cm</Top>
+        <Width>13cm</Width>
+        <Style>
+          <FontSize>14pt</FontSize>
+          <FontWeight>700</FontWeight>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+        <ZIndex>1</ZIndex>
+        <CanGrow>true</CanGrow>
+        <Left>0.5cm</Left>
+        <Height>0.75cm</Height>
+        <Value>Caja - Cuadre de Caja x Cajera</Value>
+      </Textbox>
+      <Textbox Name="textbox7">
+        <rd:DefaultName>textbox7</rd:DefaultName>
+        <Top>0.25cm</Top>
+        <Width>3cm</Width>
+        <Style>
+          <FontSize>8pt</FontSize>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+        <CanGrow>true</CanGrow>
+        <Left>15cm</Left>
+        <Height>0.75cm</Height>
+        <Value>=Globals!PageNumber &amp;"/"&amp;Globals!TotalPages</Value>
+      </Textbox>
+    </ReportItems>
+    <Height>1.02646cm</Height>
+    <PrintOnLastPage>true</PrintOnLastPage>
+  </PageHeader>
+  <BottomMargin>0.5in</BottomMargin>
+  <rd:ReportID>bdf55259-0c24-4470-a924-de39d1331dc1</rd:ReportID>
+  <PageWidth>21cm</PageWidth>
+  <DataSets>
+    <DataSet Name="Users">
+      <Fields>
+        <Field Name="USERID">
+          <DataField>USERID</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="USERNAME">
+          <DataField>USERNAME</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>DeployDS</DataSourceName>
+        <CommandText>SELECT '' USERID, 'SELECCIONAR USUARIO' USERNAME
+UNION ALL
+SELECT USERID, USERNAME FROM DYNAMICS..SY01400
+where usrclass in ('cajera','cuadre','cajera est')
+order by userid</CommandText>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+      </Query>
+    </DataSet>
+    <DataSet Name="dtsVentas">
+      <Fields>
+        <Field Name="BACHNUMB">
+          <DataField>BACHNUMB</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DOCDATE">
+          <DataField>docdate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="USER2ENT">
+          <DataField>user2ent</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CUSTNAME">
+          <DataField>custname</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="SOPNUMBE">
+          <DataField>sopnumbe</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DOCAMNT">
+          <DataField>docamnt</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="PYMTRCVD">
+          <DataField>pymtrcvd</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>DeployDS</DataSourceName>
+        <CommandText>select BACHNUMB,docdate,user2ent,custname,sopnumbe,docamnt,pymtrcvd from vw_ventasgp
+where docdate = @iFecha and User2Ent = @Usuario 
+group by BACHNUMB,docdate,user2ent,custname,sopnumbe,docamnt,pymtrcvd</CommandText>
+        <QueryParameters>
+          <QueryParameter Name="@iFecha">
+            <Value>=Parameters!iFecha.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@Usuario">
+            <Value>=Parameters!Usuario.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+      </Query>
+    </DataSet>
+  </DataSets>
+  <Width>19.25cm</Width>
+  <Body>
+    <ColumnSpacing>1cm</ColumnSpacing>
+    <ReportItems>
+      <Textbox Name="textbox14">
+        <rd:DefaultName>textbox14</rd:DefaultName>
+        <Top>1cm</Top>
+        <Width>8.25cm</Width>
+        <Style>
+          <FontWeight>700</FontWeight>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+        <ZIndex>2</ZIndex>
+        <CanGrow>true</CanGrow>
+        <Left>0.5cm</Left>
+        <Height>0.63492cm</Height>
+        <Value>="Fecha:   " &amp; Parameters!iFecha.Value</Value>
+      </Textbox>
+      <Textbox Name="textbox9">
+        <rd:DefaultName>textbox9</rd:DefaultName>
+        <Top>0.25cm</Top>
+        <Width>8.25cm</Width>
+        <Style>
+          <FontWeight>700</FontWeight>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+        <ZIndex>1</ZIndex>
+        <CanGrow>true</CanGrow>
+        <Left>0.5cm</Left>
+        <Height>0.63492cm</Height>
+        <Value>="Cajera:  "  &amp;Parameters!Usuario.Value</Value>
+      </Textbox>
+      <Table Name="table1">
+        <DataSetName>dtsVentas</DataSetName>
+        <Top>2cm</Top>
+        <Width>18.25cm</Width>
+        <Details>
+          <TableRows>
+            <TableRow>
+              <TableCells>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="BACHNUMB">
+                      <rd:DefaultName>BACHNUMB</rd:DefaultName>
+                      <Style>
+                        <FontSize>8pt</FontSize>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                      <ZIndex>4</ZIndex>
+                      <CanGrow>true</CanGrow>
+                      <Value>=Fields!BACHNUMB.Value</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="SOPNUMBE">
+                      <rd:DefaultName>SOPNUMBE</rd:DefaultName>
+                      <Style>
+                        <FontSize>8pt</FontSize>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                      <ZIndex>3</ZIndex>
+                      <CanGrow>true</CanGrow>
+                      <Value>=Fields!SOPNUMBE.Value</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="CUSTNAME">
+                      <rd:DefaultName>CUSTNAME</rd:DefaultName>
+                      <Style>
+                        <FontSize>8pt</FontSize>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                      <ZIndex>2</ZIndex>
+                      <CanGrow>true</CanGrow>
+                      <Value>=Fields!CUSTNAME.Value</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="DOCAMNT">
+                      <rd:DefaultName>DOCAMNT</rd:DefaultName>
+                      <Style>
+                        <FontSize>8pt</FontSize>
+                        <Format>N</Format>
+                        <TextAlign>Right</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                      <ZIndex>1</ZIndex>
+                      <CanGrow>true</CanGrow>
+                      <Value>=Fields!DOCAMNT.Value</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="PYMTRCVD">
+                      <rd:DefaultName>PYMTRCVD</rd:DefaultName>
+                      <Style>
+                        <FontSize>8pt</FontSize>
+                        <Format>N</Format>
+                        <TextAlign>Right</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value>=Fields!PYMTRCVD.Value</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+              </TableCells>
+              <Height>0.50265cm</Height>
+            </TableRow>
+          </TableRows>
+        </Details>
+        <Style>
+          <FontSize>8pt</FontSize>
+          <FontWeight>700</FontWeight>
+        </Style>
+        <Header>
+          <TableRows>
+            <TableRow>
+              <TableCells>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox2">
+                      <rd:DefaultName>textbox2</rd:DefaultName>
+                      <Style>
+                        <BackgroundColor>LightSteelBlue</BackgroundColor>
+                        <FontSize>8pt</FontSize>
+                        <FontWeight>700</FontWeight>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                      <ZIndex>14</ZIndex>
+                      <CanGrow>true</CanGrow>
+                      <Value>Número Lote</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox20">
+                      <rd:DefaultName>textbox20</rd:DefaultName>
+                      <Style>
+                        <BackgroundColor>LightSteelBlue</BackgroundColor>
+                        <FontSize>8pt</FontSize>
+                        <FontWeight>700</FontWeight>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                      <ZIndex>13</ZIndex>
+                      <CanGrow>true</CanGrow>
+                      <Value>No. Documento</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox16">
+                      <rd:DefaultName>textbox16</rd:DefaultName>
+                      <Style>
+                        <BackgroundColor>LightSteelBlue</BackgroundColor>
+                        <FontSize>8pt</FontSize>
+                        <FontWeight>700</FontWeight>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                      <ZIndex>12</ZIndex>
+                      <CanGrow>true</CanGrow>
+                      <Value>Nombre Cliente</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox4">
+                      <rd:DefaultName>textbox4</rd:DefaultName>
+                      <Style>
+                        <BackgroundColor>LightSteelBlue</BackgroundColor>
+                        <FontSize>8pt</FontSize>
+                        <FontWeight>700</FontWeight>
+                        <TextAlign>Right</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                      <ZIndex>11</ZIndex>
+                      <CanGrow>true</CanGrow>
+                      <Value>Monto Facturado</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox3">
+                      <rd:DefaultName>textbox3</rd:DefaultName>
+                      <Style>
+                        <BackgroundColor>LightSteelBlue</BackgroundColor>
+                        <FontSize>8pt</FontSize>
+                        <FontWeight>700</FontWeight>
+                        <TextAlign>Right</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                      <ZIndex>10</ZIndex>
+                      <CanGrow>true</CanGrow>
+                      <Value>Monto Recibido</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+              </TableCells>
+              <Height>0.75cm</Height>
+            </TableRow>
+          </TableRows>
+        </Header>
+        <TableColumns>
+          <TableColumn>
+            <Width>2.75cm</Width>
+          </TableColumn>
+          <TableColumn>
+            <Width>3.75cm</Width>
+          </TableColumn>
+          <TableColumn>
+            <Width>6cm</Width>
+          </TableColumn>
+          <TableColumn>
+            <Width>3cm</Width>
+          </TableColumn>
+          <TableColumn>
+            <Width>2.75cm</Width>
+          </TableColumn>
+        </TableColumns>
+        <Height>1.7553cm</Height>
+        <Footer>
+          <TableRows>
+            <TableRow>
+              <TableCells>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox12">
+                      <rd:DefaultName>textbox12</rd:DefaultName>
+                      <Style>
+                        <BackgroundColor>Lavender</BackgroundColor>
+                        <FontSize>8pt</FontSize>
+                        <FontWeight>700</FontWeight>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                      <ZIndex>9</ZIndex>
+                      <CanGrow>true</CanGrow>
+                      <Value />
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox23">
+                      <rd:DefaultName>textbox23</rd:DefaultName>
+                      <Style>
+                        <BackgroundColor>Lavender</BackgroundColor>
+                        <FontSize>8pt</FontSize>
+                        <FontWeight>700</FontWeight>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                      <ZIndex>8</ZIndex>
+                      <CanGrow>true</CanGrow>
+                      <Value />
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox19">
+                      <rd:DefaultName>textbox19</rd:DefaultName>
+                      <Style>
+                        <BackgroundColor>Lavender</BackgroundColor>
+                        <FontSize>8pt</FontSize>
+                        <FontWeight>700</FontWeight>
+                        <TextAlign>Right</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                      <ZIndex>7</ZIndex>
+                      <CanGrow>true</CanGrow>
+                      <Value>TOTAL</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox6">
+                      <Style>
+                        <BackgroundColor>Lavender</BackgroundColor>
+                        <FontSize>8pt</FontSize>
+                        <FontWeight>700</FontWeight>
+                        <Format>N</Format>
+                        <TextAlign>Center</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                      <ZIndex>6</ZIndex>
+                      <CanGrow>true</CanGrow>
+                      <Value>=Sum(Fields!DOCAMNT.Value)</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox10">
+                      <Style>
+                        <BackgroundColor>Lavender</BackgroundColor>
+                        <FontSize>8pt</FontSize>
+                        <FontWeight>700</FontWeight>
+                        <Format>N</Format>
+                        <TextAlign>Right</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                      <ZIndex>5</ZIndex>
+                      <CanGrow>true</CanGrow>
+                      <Value>=Sum(Fields!PYMTRCVD.Value)</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+              </TableCells>
+              <Height>0.50265cm</Height>
+            </TableRow>
+          </TableRows>
+        </Footer>
+      </Table>
+    </ReportItems>
+    <Height>4.39022cm</Height>
+  </Body>
+  <Language>en-US</Language>
+  <TopMargin>0.5in</TopMargin>
+  <PageHeight>29.7cm</PageHeight>
+</Report>

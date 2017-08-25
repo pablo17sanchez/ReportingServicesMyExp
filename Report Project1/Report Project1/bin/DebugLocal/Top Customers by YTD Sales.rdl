@@ -1,0 +1,576 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner" xmlns="http://schemas.microsoft.com/sqlserver/reporting/2008/01/reportdefinition">
+  <DataSources>
+    <DataSource Name="DataSourceGPCompany">
+      <DataSourceReference>DataSourceGPCompany</DataSourceReference>
+      <rd:DataSourceID>c16990aa-ad9c-4e55-a01c-129cd116b55c</rd:DataSourceID>
+      <rd:SecurityType>None</rd:SecurityType>
+    </DataSource>
+  </DataSources>
+  <DataSets>
+    <DataSet Name="TopCustomersDataset">
+      <Fields>
+        <Field Name="SalesYTD">
+          <DataField>SalesYTD</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="SalesLastYear">
+          <DataField>SalesLastYear</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="CustomerNumber">
+          <DataField>CustomerNumber</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>DataSourceGPCompany</DataSourceName>
+        <CommandType>StoredProcedure</CommandType>
+        <CommandText>dbo.seeRMTopCustomersMetric</CommandText>
+        <QueryParameters>
+          <QueryParameter Name="@I_iNumCustomers">
+            <Value>=Parameters!NumCustomers.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+      </Query>
+    </DataSet>
+    <DataSet Name="GetCurrentFiscalYearDates">
+      <Fields>
+        <Field Name="YEAR1">
+          <DataField>YEAR1</DataField>
+          <rd:TypeName>System.Int16</rd:TypeName>
+        </Field>
+        <Field Name="FSTFSCDY">
+          <DataField>FSTFSCDY</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="LSTFSCDY">
+          <DataField>LSTFSCDY</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="NUMOFPER">
+          <DataField>NUMOFPER</DataField>
+          <rd:TypeName>System.Int16</rd:TypeName>
+        </Field>
+        <Field Name="HISTORYR">
+          <DataField>HISTORYR</DataField>
+          <rd:TypeName>System.Byte</rd:TypeName>
+        </Field>
+        <Field Name="DEX_ROW_ID">
+          <DataField>DEX_ROW_ID</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>DataSourceGPCompany</DataSourceName>
+        <CommandType>StoredProcedure</CommandType>
+        <CommandText>dbo.seeGetFiscalYearDates</CommandText>
+        <QueryParameters>
+          <QueryParameter Name="@I_dUserDate">
+            <Value>=Parameters!CurrentUserDate.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+      </Query>
+    </DataSet>
+    <DataSet Name="GetPreviousFiscalYearDates">
+      <Fields>
+        <Field Name="YEAR1">
+          <DataField>YEAR1</DataField>
+          <rd:TypeName>System.Int16</rd:TypeName>
+        </Field>
+        <Field Name="FSTFSCDY">
+          <DataField>FSTFSCDY</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="LSTFSCDY">
+          <DataField>LSTFSCDY</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="NUMOFPER">
+          <DataField>NUMOFPER</DataField>
+          <rd:TypeName>System.Int16</rd:TypeName>
+        </Field>
+        <Field Name="HISTORYR">
+          <DataField>HISTORYR</DataField>
+          <rd:TypeName>System.Byte</rd:TypeName>
+        </Field>
+        <Field Name="DEX_ROW_ID">
+          <DataField>DEX_ROW_ID</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>DataSourceGPCompany</DataSourceName>
+        <CommandType>StoredProcedure</CommandType>
+        <CommandText>dbo.seeGetFiscalYearDates</CommandText>
+        <QueryParameters>
+          <QueryParameter Name="@I_dUserDate">
+            <Value>=Parameters!PreviousYearDate.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+      </Query>
+    </DataSet>
+  </DataSets>
+  <Body>
+    <ReportItems>
+      <Chart Name="Chart2">
+        <ChartCategoryHierarchy>
+          <ChartMembers>
+            <ChartMember>
+              <Group Name="Chart1_CategoryGroup2">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!CustomerNumber.Value</GroupExpression>
+                </GroupExpressions>
+              </Group>
+              <Label>=Fields!CustomerNumber.Value</Label>
+            </ChartMember>
+          </ChartMembers>
+        </ChartCategoryHierarchy>
+        <ChartSeriesHierarchy>
+          <ChartMembers>
+            <ChartMember>
+              <Label>Sales YTD</Label>
+            </ChartMember>
+            <ChartMember>
+              <Label>Sales Last Year</Label>
+            </ChartMember>
+          </ChartMembers>
+        </ChartSeriesHierarchy>
+        <ChartData>
+          <ChartSeriesCollection>
+            <ChartSeries Name="SalesYTD">
+              <Hidden>=Parameters!SalesType.Value=2</Hidden>
+              <ChartDataPoints>
+                <ChartDataPoint>
+                  <ChartDataPointValues>
+                    <Y>=Sum(Fields!SalesYTD.Value)</Y>
+                  </ChartDataPointValues>
+                  <ChartDataLabel>
+                    <Style />
+                  </ChartDataLabel>
+                  <ToolTip>=FormatNumber(Sum(Fields!SalesYTD.Value), 2)</ToolTip>
+                  <ActionInfo>
+                    <Actions>
+                      <Action>
+                        <Drillthrough>
+                          <ReportName>Receivables Detail</ReportName>
+                          <Parameters>
+                            <Parameter Name="CustomerNumber">
+                              <Value>=RTrim(Fields!CustomerNumber.Value)</Value>
+                            </Parameter>
+                            <Parameter Name="TransactionDateFrom">
+                              <Value>=First(Fields!FSTFSCDY.Value, "GetCurrentFiscalYearDates")</Value>
+                            </Parameter>
+                            <Parameter Name="TransactionDateTo">
+                              <Value>=First(Fields!LSTFSCDY.Value, "GetCurrentFiscalYearDates")</Value>
+                            </Parameter>
+                          </Parameters>
+                        </Drillthrough>
+                      </Action>
+                    </Actions>
+                  </ActionInfo>
+                  <Style>
+                    <Color>SlateBlue</Color>
+                    <BackgroundGradientType>LeftRight</BackgroundGradientType>
+                    <BackgroundGradientEndColor>White</BackgroundGradientEndColor>
+                  </Style>
+                  <ChartMarker>
+                    <Style />
+                  </ChartMarker>
+                  <DataElementOutput>Output</DataElementOutput>
+                </ChartDataPoint>
+              </ChartDataPoints>
+              <Style>
+                <ShadowOffset>1.5pt</ShadowOffset>
+              </Style>
+              <ChartEmptyPoints>
+                <Style />
+                <ChartMarker>
+                  <Style />
+                </ChartMarker>
+                <ChartDataLabel>
+                  <Style />
+                </ChartDataLabel>
+              </ChartEmptyPoints>
+              <CustomProperties>
+                <CustomProperty>
+                  <Name>DrawingStyle</Name>
+                  <Value>Cylinder</Value>
+                </CustomProperty>
+              </CustomProperties>
+              <ValueAxisName>Primary</ValueAxisName>
+              <CategoryAxisName>Primary</CategoryAxisName>
+              <ChartSmartLabel>
+                <CalloutLineColor>Black</CalloutLineColor>
+                <MinMovingDistance>0pt</MinMovingDistance>
+              </ChartSmartLabel>
+            </ChartSeries>
+            <ChartSeries Name="SalesLastYear">
+              <Hidden>=Parameters!SalesType.Value=1</Hidden>
+              <ChartDataPoints>
+                <ChartDataPoint>
+                  <ChartDataPointValues>
+                    <Y>=Sum(Fields!SalesLastYear.Value)</Y>
+                  </ChartDataPointValues>
+                  <ChartDataLabel>
+                    <Style />
+                  </ChartDataLabel>
+                  <ToolTip>=FormatNumber(Sum(Fields!SalesLastYear.Value), 2)</ToolTip>
+                  <ActionInfo>
+                    <Actions>
+                      <Action>
+                        <Drillthrough>
+                          <ReportName>Receivables Detail</ReportName>
+                          <Parameters>
+                            <Parameter Name="CustomerNumber">
+                              <Value>=RTrim(Fields!CustomerNumber.Value)</Value>
+                            </Parameter>
+                            <Parameter Name="TransactionDateFrom">
+                              <Value>=First(Fields!FSTFSCDY.Value, "GetCurrentFiscalYearDates")</Value>
+                            </Parameter>
+                            <Parameter Name="TransactionDateTo">
+                              <Value>=First(Fields!LSTFSCDY.Value, "GetCurrentFiscalYearDates")</Value>
+                            </Parameter>
+                          </Parameters>
+                        </Drillthrough>
+                      </Action>
+                    </Actions>
+                  </ActionInfo>
+                  <Style>
+                    <Color>Red</Color>
+                    <BackgroundGradientType>LeftRight</BackgroundGradientType>
+                    <BackgroundGradientEndColor>White</BackgroundGradientEndColor>
+                  </Style>
+                  <ChartMarker>
+                    <Style />
+                  </ChartMarker>
+                  <DataElementOutput>Output</DataElementOutput>
+                </ChartDataPoint>
+              </ChartDataPoints>
+              <Style>
+                <ShadowOffset>1.5pt</ShadowOffset>
+              </Style>
+              <ChartEmptyPoints>
+                <Style />
+                <ChartMarker>
+                  <Style />
+                </ChartMarker>
+                <ChartDataLabel>
+                  <Style />
+                </ChartDataLabel>
+              </ChartEmptyPoints>
+              <CustomProperties>
+                <CustomProperty>
+                  <Name>DrawingStyle</Name>
+                  <Value>Cylinder</Value>
+                </CustomProperty>
+              </CustomProperties>
+              <ValueAxisName>Primary</ValueAxisName>
+              <CategoryAxisName>Primary</CategoryAxisName>
+              <ChartSmartLabel>
+                <CalloutLineColor>Black</CalloutLineColor>
+                <MinMovingDistance>0pt</MinMovingDistance>
+              </ChartSmartLabel>
+            </ChartSeries>
+          </ChartSeriesCollection>
+        </ChartData>
+        <ChartAreas>
+          <ChartArea Name="Default">
+            <ChartCategoryAxes>
+              <ChartAxis Name="Primary">
+                <Style>
+                  <FontSize>8pt</FontSize>
+                  <Format>y</Format>
+                </Style>
+                <ChartAxisTitle>
+                  <Caption>Customer ID</Caption>
+                  <Style>
+                    <FontSize>8pt</FontSize>
+                    <FontWeight>Bold</FontWeight>
+                  </Style>
+                </ChartAxisTitle>
+                <Interval>1</Interval>
+                <IntervalType>Number</IntervalType>
+                <ChartMajorGridLines>
+                  <Enabled>False</Enabled>
+                  <Style>
+                    <Border>
+                      <Color>Gainsboro</Color>
+                    </Border>
+                  </Style>
+                </ChartMajorGridLines>
+                <ChartMinorGridLines>
+                  <Style>
+                    <Border>
+                      <Color>Gainsboro</Color>
+                      <Style>Dotted</Style>
+                    </Border>
+                  </Style>
+                </ChartMinorGridLines>
+                <ChartMinorTickMarks>
+                  <Length>0.5</Length>
+                </ChartMinorTickMarks>
+                <CrossAt>NaN</CrossAt>
+                <Minimum>NaN</Minimum>
+                <Maximum>NaN</Maximum>
+                <Angle>-90</Angle>
+                <PreventLabelOffset>true</PreventLabelOffset>
+                <PreventWordWrap>true</PreventWordWrap>
+                <IncludeZero>false</IncludeZero>
+              </ChartAxis>
+              <ChartAxis Name="Secondary">
+                <Style>
+                  <FontSize>8pt</FontSize>
+                </Style>
+                <ChartAxisTitle>
+                  <Caption>Axis Title</Caption>
+                  <Style>
+                    <FontSize>8pt</FontSize>
+                  </Style>
+                </ChartAxisTitle>
+                <ChartMajorGridLines>
+                  <Enabled>False</Enabled>
+                  <Style>
+                    <Border>
+                      <Color>Gainsboro</Color>
+                    </Border>
+                  </Style>
+                </ChartMajorGridLines>
+                <ChartMinorGridLines>
+                  <Style>
+                    <Border>
+                      <Color>Gainsboro</Color>
+                      <Style>Dotted</Style>
+                    </Border>
+                  </Style>
+                </ChartMinorGridLines>
+                <ChartMinorTickMarks>
+                  <Length>0.5</Length>
+                </ChartMinorTickMarks>
+                <CrossAt>NaN</CrossAt>
+                <Location>Opposite</Location>
+                <Minimum>NaN</Minimum>
+                <Maximum>NaN</Maximum>
+              </ChartAxis>
+            </ChartCategoryAxes>
+            <ChartValueAxes>
+              <ChartAxis Name="Primary">
+                <Style>
+                  <FontSize>8pt</FontSize>
+                </Style>
+                <ChartAxisTitle>
+                  <Caption>=iif(Parameters!SalesType.Value = 1, "YTD Sales Amount", "Sales Amount")</Caption>
+                  <Style>
+                    <FontSize>8pt</FontSize>
+                    <FontWeight>Bold</FontWeight>
+                  </Style>
+                </ChartAxisTitle>
+                <ChartMajorGridLines>
+                  <Style>
+                    <Border>
+                      <Color>Gainsboro</Color>
+                    </Border>
+                  </Style>
+                </ChartMajorGridLines>
+                <ChartMinorGridLines>
+                  <Style>
+                    <Border>
+                      <Color>Gainsboro</Color>
+                      <Style>Dotted</Style>
+                    </Border>
+                  </Style>
+                </ChartMinorGridLines>
+                <ChartMinorTickMarks>
+                  <Length>0.5</Length>
+                </ChartMinorTickMarks>
+                <CrossAt>NaN</CrossAt>
+                <Minimum>NaN</Minimum>
+                <Maximum>NaN</Maximum>
+                <LabelsAutoFitDisabled>true</LabelsAutoFitDisabled>
+                <MinFontSize>8pt</MinFontSize>
+              </ChartAxis>
+              <ChartAxis Name="Secondary">
+                <Style>
+                  <FontSize>8pt</FontSize>
+                </Style>
+                <ChartAxisTitle>
+                  <Caption>Axis Title</Caption>
+                  <Style>
+                    <FontSize>8pt</FontSize>
+                  </Style>
+                </ChartAxisTitle>
+                <ChartMajorGridLines>
+                  <Style>
+                    <Border>
+                      <Color>Gainsboro</Color>
+                    </Border>
+                  </Style>
+                </ChartMajorGridLines>
+                <ChartMinorGridLines>
+                  <Style>
+                    <Border>
+                      <Color>Gainsboro</Color>
+                      <Style>Dotted</Style>
+                    </Border>
+                  </Style>
+                </ChartMinorGridLines>
+                <ChartMinorTickMarks>
+                  <Length>0.5</Length>
+                </ChartMinorTickMarks>
+                <CrossAt>NaN</CrossAt>
+                <Location>Opposite</Location>
+                <Minimum>NaN</Minimum>
+                <Maximum>NaN</Maximum>
+              </ChartAxis>
+            </ChartValueAxes>
+            <ChartThreeDProperties>
+              <Enabled>true</Enabled>
+              <Rotation>0</Rotation>
+              <Inclination>0</Inclination>
+              <Clustered>true</Clustered>
+            </ChartThreeDProperties>
+            <Style>
+              <BackgroundColor>#00ffffff</BackgroundColor>
+              <BackgroundGradientType>None</BackgroundGradientType>
+            </Style>
+          </ChartArea>
+        </ChartAreas>
+        <ChartLegends>
+          <ChartLegend Name="ChartLegend1">
+            <Style>
+              <BackgroundGradientType>None</BackgroundGradientType>
+              <FontSize>8pt</FontSize>
+              <FontWeight>Bold</FontWeight>
+            </Style>
+            <Position>TopRight</Position>
+            <DockOutsideChartArea>true</DockOutsideChartArea>
+            <ChartLegendTitle>
+              <Caption />
+              <Style>
+                <FontSize>8pt</FontSize>
+                <FontWeight>Bold</FontWeight>
+                <TextAlign>Center</TextAlign>
+              </Style>
+            </ChartLegendTitle>
+            <HeaderSeparatorColor>Black</HeaderSeparatorColor>
+            <ColumnSeparatorColor>Black</ColumnSeparatorColor>
+          </ChartLegend>
+        </ChartLegends>
+        <ChartTitles>
+          <ChartTitle Name="Default">
+            <Caption>="Top " + Parameters!NumCustomers.Value + " Customer" + IIf(Parameters!NumCustomers.Value &lt;&gt; 1, "s", "") + " by YTD Sales"</Caption>
+            <Style>
+              <BackgroundGradientType>None</BackgroundGradientType>
+              <FontSize>12pt</FontSize>
+              <FontWeight>Bold</FontWeight>
+              <TextAlign>General</TextAlign>
+              <VerticalAlign>Top</VerticalAlign>
+            </Style>
+          </ChartTitle>
+        </ChartTitles>
+        <Palette>BrightPastel</Palette>
+        <ChartBorderSkin>
+          <Style>
+            <BackgroundColor>Gray</BackgroundColor>
+            <BackgroundGradientType>None</BackgroundGradientType>
+            <Color>White</Color>
+          </Style>
+        </ChartBorderSkin>
+        <ChartNoDataMessage Name="NoDataMessage">
+          <Caption>No Data Available</Caption>
+          <Style>
+            <BackgroundGradientType>None</BackgroundGradientType>
+            <TextAlign>General</TextAlign>
+            <VerticalAlign>Top</VerticalAlign>
+          </Style>
+        </ChartNoDataMessage>
+        <DataSetName>TopCustomersDataset</DataSetName>
+        <Height>3.75in</Height>
+        <Width>4.15in</Width>
+        <Style>
+          <Border>
+            <Color>White</Color>
+            <Style>Solid</Style>
+          </Border>
+          <BackgroundColor>White</BackgroundColor>
+          <BackgroundGradientType>None</BackgroundGradientType>
+        </Style>
+      </Chart>
+    </ReportItems>
+    <Height>3.75in</Height>
+    <Style />
+  </Body>
+  <ReportParameters>
+    <ReportParameter Name="NumCustomers">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>5</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Number of Top Customers</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="SalesType">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>1</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Sales Type</Prompt>
+      <ValidValues>
+        <ParameterValues>
+          <ParameterValue>
+            <Value>1</Value>
+            <Label>Year to Date</Label>
+          </ParameterValue>
+          <ParameterValue>
+            <Value>2</Value>
+            <Label>Last Year</Label>
+          </ParameterValue>
+          <ParameterValue>
+            <Value>3</Value>
+            <Label>Year to Date vs Last Year</Label>
+          </ParameterValue>
+        </ParameterValues>
+      </ValidValues>
+    </ReportParameter>
+    <ReportParameter Name="CurrentUserDate">
+      <DataType>DateTime</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>=Today()</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>CurrentUserDate</Prompt>
+      <Hidden>true</Hidden>
+    </ReportParameter>
+    <ReportParameter Name="PreviousYearDate">
+      <DataType>DateTime</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>=DateAdd("d",-365,Today())</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>PreviousYearDate</Prompt>
+      <Hidden>true</Hidden>
+    </ReportParameter>
+  </ReportParameters>
+  <Width>4.15in</Width>
+  <Page>
+    <PageHeight>27.94cm</PageHeight>
+    <PageWidth>21.59cm</PageWidth>
+    <LeftMargin>1.27cm</LeftMargin>
+    <RightMargin>1.27cm</RightMargin>
+    <TopMargin>1.27cm</TopMargin>
+    <BottomMargin>1.27cm</BottomMargin>
+    <Style />
+  </Page>
+  <Language>en-US</Language>
+  <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
+  <rd:ReportID>6fe40a6b-4c92-405c-bb39-e6101a5b2298</rd:ReportID>
+  <rd:ReportUnitType>Inch</rd:ReportUnitType>
+</Report>

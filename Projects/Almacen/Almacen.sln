@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{F14B399A-7131-4C87-9E4B-1186C45EF12D}") = "Almacen", "Almacen\Almacen.rptproj", "{DCFFDFB2-A6C6-4693-82C3-C5DEC04A7B48}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Default = Debug|Default
+		DebugLocal|Default = DebugLocal|Default
+		Production|Default = Production|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DCFFDFB2-A6C6-4693-82C3-C5DEC04A7B48}.Debug|Default.ActiveCfg = Debug
+		{DCFFDFB2-A6C6-4693-82C3-C5DEC04A7B48}.Debug|Default.Build.0 = DebugLocal
+		{DCFFDFB2-A6C6-4693-82C3-C5DEC04A7B48}.Debug|Default.Deploy.0 = DebugLocal
+		{DCFFDFB2-A6C6-4693-82C3-C5DEC04A7B48}.DebugLocal|Default.ActiveCfg = DebugLocal
+		{DCFFDFB2-A6C6-4693-82C3-C5DEC04A7B48}.DebugLocal|Default.Build.0 = DebugLocal
+		{DCFFDFB2-A6C6-4693-82C3-C5DEC04A7B48}.Production|Default.ActiveCfg = Production
+		{DCFFDFB2-A6C6-4693-82C3-C5DEC04A7B48}.Production|Default.Build.0 = Production
+		{DCFFDFB2-A6C6-4693-82C3-C5DEC04A7B48}.Production|Default.Deploy.0 = Production
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

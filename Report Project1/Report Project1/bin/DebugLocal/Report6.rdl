@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2008/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <Body>
+    <Height>2in</Height>
+    <Style />
+  </Body>
+  <Width>6.5in</Width>
+  <Page>
+    <LeftMargin>1in</LeftMargin>
+    <RightMargin>1in</RightMargin>
+    <TopMargin>1in</TopMargin>
+    <BottomMargin>1in</BottomMargin>
+    <Style />
+  </Page>
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="Dimesion">
+      <ConnectionProperties>
+        <DataProvider>SQL</DataProvider>
+        <ConnectString>Data Source=GEA-SRVDATA\SQLSERVER2008;Initial Catalog=import</ConnectString>
+      </ConnectionProperties>
+      <rd:SecurityType>DataBase</rd:SecurityType>
+      <rd:DataSourceID>71ffbacc-e18b-4e80-b007-e405cda6969a</rd:DataSourceID>
+    </DataSource>
+  </DataSources>
+  <DataSets>
+    <DataSet Name="DataSet1">
+      <Query>
+        <DataSourceName>Dimesion</DataSourceName>
+        <CommandText>SELECT desc_cuenta,SUM(debito)as debito,YEAR(fecha)as ano,MONTH(fecha)as mes  FROM Dimesion1
+GROUP BY desc_cuenta,YEAR(fecha),MONTH(fecha)
+ORDER BY desc_cuenta</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="ano">
+          <DataField>ano</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="mes">
+          <DataField>mes</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="desc_cuenta">
+          <DataField>desc_cuenta</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="debito">
+          <DataField>debito</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+  </DataSets>
+  <rd:ReportUnitType>Inch</rd:ReportUnitType>
+  <rd:ReportID>7c980250-e634-4241-8409-13f4767c0891</rd:ReportID>
+</Report>

@@ -1,0 +1,536 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2005/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <DataSources>
+    <DataSource Name="GPHN">
+      <ConnectionProperties>
+        <ConnectString>Data Source=10.0.0.86;Initial Catalog=GPHN</ConnectString>
+        <DataProvider>SQL</DataProvider>
+      </ConnectionProperties>
+      <rd:DataSourceID>74d3cb34-0495-4b0f-9f13-643b902d6a96</rd:DataSourceID>
+    </DataSource>
+  </DataSources>
+  <BottomMargin>2.5cm</BottomMargin>
+  <RightMargin>2.5cm</RightMargin>
+  <PageWidth>21cm</PageWidth>
+  <ReportParameters>
+    <ReportParameter Name="iFecha">
+      <DataType>DateTime</DataType>
+      <Prompt>Desde Fecha </Prompt>
+    </ReportParameter>
+    <ReportParameter Name="aFecha">
+      <DataType>DateTime</DataType>
+      <Prompt>Hasta Fecha</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="nombreruta">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value />
+        </Values>
+      </DefaultValue>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>nombreruta</Prompt>
+    </ReportParameter>
+  </ReportParameters>
+  <rd:DrawGrid>true</rd:DrawGrid>
+  <InteractiveWidth>8.5in</InteractiveWidth>
+  <rd:GridSpacing>0.25cm</rd:GridSpacing>
+  <rd:SnapToGrid>true</rd:SnapToGrid>
+  <Body>
+    <ColumnSpacing>1cm</ColumnSpacing>
+    <ReportItems>
+      <Table Name="table1">
+        <DataSetName>Taramaca</DataSetName>
+        <Top>3.25cm</Top>
+        <TableGroups>
+          <TableGroup>
+            <Header>
+              <TableRows>
+                <TableRow>
+                  <TableCells>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="MesVenta">
+                          <rd:DefaultName>MesVenta</rd:DefaultName>
+                          <ZIndex>9</ZIndex>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingBottom>2pt</PaddingBottom>
+                            <FontWeight>700</FontWeight>
+                            <BackgroundColor>Silver</BackgroundColor>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                          </Style>
+                          <CanGrow>true</CanGrow>
+                          <Value>=Fields!MesVenta.Value</Value>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="textbox9">
+                          <rd:DefaultName>textbox9</rd:DefaultName>
+                          <ZIndex>8</ZIndex>
+                          <Style>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingBottom>2pt</PaddingBottom>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                          </Style>
+                          <CanGrow>true</CanGrow>
+                          <Value />
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="textbox14">
+                          <rd:DefaultName>textbox14</rd:DefaultName>
+                          <ZIndex>7</ZIndex>
+                          <Style>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingBottom>2pt</PaddingBottom>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                          </Style>
+                          <CanGrow>true</CanGrow>
+                          <Value />
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="textbox22">
+                          <rd:DefaultName>textbox22</rd:DefaultName>
+                          <ZIndex>6</ZIndex>
+                          <Style>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingBottom>2pt</PaddingBottom>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                          </Style>
+                          <CanGrow>true</CanGrow>
+                          <Value />
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="textbox23">
+                          <rd:DefaultName>textbox23</rd:DefaultName>
+                          <ZIndex>5</ZIndex>
+                          <Style>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingBottom>2pt</PaddingBottom>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                          </Style>
+                          <CanGrow>true</CanGrow>
+                          <Value />
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                  </TableCells>
+                  <Height>0.63492cm</Height>
+                </TableRow>
+              </TableRows>
+            </Header>
+            <Grouping Name="table1_Group1">
+              <GroupExpressions>
+                <GroupExpression>=Fields!MesVenta.Value</GroupExpression>
+              </GroupExpressions>
+            </Grouping>
+          </TableGroup>
+        </TableGroups>
+        <ZIndex>2</ZIndex>
+        <Width>16cm</Width>
+        <Details>
+          <TableRows>
+            <TableRow>
+              <TableCells>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox5">
+                      <rd:DefaultName>textbox5</rd:DefaultName>
+                      <ZIndex>4</ZIndex>
+                      <Style>
+                        <TextAlign>Left</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontWeight>700</FontWeight>
+                        <FontSize>9pt</FontSize>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value />
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox18">
+                      <ZIndex>3</ZIndex>
+                      <Style>
+                        <TextAlign>Left</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontWeight>700</FontWeight>
+                        <FontSize>9pt</FontSize>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value>=Fields!itemnmbr.Value &amp;" "&amp;Fields!itemdesc.Value</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox12">
+                      <ZIndex>2</ZIndex>
+                      <Style>
+                        <TextAlign>Right</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontSize>9pt</FontSize>
+                        <Format>N</Format>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value>=Fields!Precio_Unitario.Value</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox13">
+                      <ZIndex>1</ZIndex>
+                      <Style>
+                        <TextAlign>Right</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontSize>9pt</FontSize>
+                        <Format>n0</Format>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value>=Sum(Fields!Cantidad.Value)</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox19">
+                      <Style>
+                        <TextAlign>Right</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontSize>9pt</FontSize>
+                        <Format>C0</Format>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value>=Fields!Precio_Unitario.Value * Sum(Fields!Cantidad.Value)</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+              </TableCells>
+              <Height>0.63492cm</Height>
+            </TableRow>
+          </TableRows>
+          <Grouping Name="table1_Details_Group">
+            <GroupExpressions>
+              <GroupExpression>=Fields!Precio_Unitario.Value</GroupExpression>
+            </GroupExpressions>
+          </Grouping>
+        </Details>
+        <Header>
+          <TableRows>
+            <TableRow>
+              <TableCells>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox2">
+                      <rd:DefaultName>textbox2</rd:DefaultName>
+                      <ZIndex>14</ZIndex>
+                      <Style>
+                        <TextAlign>Center</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontWeight>700</FontWeight>
+                        <BackgroundColor>LightSteelBlue</BackgroundColor>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value>Mes Venta</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox7">
+                      <rd:DefaultName>textbox7</rd:DefaultName>
+                      <ZIndex>13</ZIndex>
+                      <Style>
+                        <TextAlign>Center</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontWeight>700</FontWeight>
+                        <BackgroundColor>LightSteelBlue</BackgroundColor>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value>Artículo</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox10">
+                      <rd:DefaultName>textbox10</rd:DefaultName>
+                      <ZIndex>12</ZIndex>
+                      <Style>
+                        <TextAlign>Center</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontWeight>700</FontWeight>
+                        <BackgroundColor>LightSteelBlue</BackgroundColor>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value>Precio Unitario</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox11">
+                      <rd:DefaultName>textbox11</rd:DefaultName>
+                      <ZIndex>11</ZIndex>
+                      <Style>
+                        <TextAlign>Center</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontWeight>700</FontWeight>
+                        <BackgroundColor>LightSteelBlue</BackgroundColor>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value>Cantidad x Precio</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox21">
+                      <rd:DefaultName>textbox21</rd:DefaultName>
+                      <ZIndex>10</ZIndex>
+                      <Style>
+                        <TextAlign>Center</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontWeight>700</FontWeight>
+                        <BackgroundColor>LightSteelBlue</BackgroundColor>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value>Valor Venta</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+              </TableCells>
+              <Height>0.63492cm</Height>
+            </TableRow>
+          </TableRows>
+        </Header>
+        <TableColumns>
+          <TableColumn>
+            <Width>2.5cm</Width>
+          </TableColumn>
+          <TableColumn>
+            <Width>6.5cm</Width>
+          </TableColumn>
+          <TableColumn>
+            <Width>2cm</Width>
+          </TableColumn>
+          <TableColumn>
+            <Width>2cm</Width>
+          </TableColumn>
+          <TableColumn>
+            <Width>3cm</Width>
+          </TableColumn>
+        </TableColumns>
+        <Height>1.90476cm</Height>
+      </Table>
+      <Textbox Name="textbox3">
+        <Top>1.75cm</Top>
+        <rd:DefaultName>textbox3</rd:DefaultName>
+        <ZIndex>1</ZIndex>
+        <Width>17.5cm</Width>
+        <Style>
+          <TextAlign>Left</TextAlign>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingBottom>2pt</PaddingBottom>
+          <FontWeight>700</FontWeight>
+          <FontSize>9pt</FontSize>
+          <Color>Blue</Color>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+        </Style>
+        <CanGrow>true</CanGrow>
+        <Height>0.75cm</Height>
+        <Value>= "Fecha Desde: " &amp; Parameters!iFecha.Value &amp;"           "&amp; " Fecha Hasta: " &amp; Parameters!aFecha.Value &amp;"                 "&amp; "Nombre Ruta:  "&amp;Fields!nombreruta.Value &amp;"             "&amp; " Empleado: " &amp; Fields!IdVendedor.Value &amp;" "&amp;Fields!NombreVendedor.Value</Value>
+      </Textbox>
+      <Textbox Name="textbox6">
+        <Left>13.5cm</Left>
+        <Top>0.25cm</Top>
+        <rd:DefaultName>textbox6</rd:DefaultName>
+        <Width>5.78968cm</Width>
+        <Style>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingBottom>2pt</PaddingBottom>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+        </Style>
+        <CanGrow>true</CanGrow>
+        <Height>0.63492cm</Height>
+        <Value>=now</Value>
+      </Textbox>
+    </ReportItems>
+    <Height>14cm</Height>
+  </Body>
+  <PageHeader>
+    <ReportItems>
+      <Textbox Name="textbox4">
+        <Top>0.25cm</Top>
+        <rd:DefaultName>textbox4</rd:DefaultName>
+        <ZIndex>1</ZIndex>
+        <Width>10cm</Width>
+        <Style>
+          <TextAlign>Left</TextAlign>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingBottom>2pt</PaddingBottom>
+          <FontWeight>700</FontWeight>
+          <FontSize>16pt</FontSize>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+        </Style>
+        <CanGrow>true</CanGrow>
+        <Height>1cm</Height>
+        <Value>Grupo Empresarial Alaska,S.A.</Value>
+      </Textbox>
+      <Textbox Name="textbox1">
+        <Top>1.25cm</Top>
+        <rd:DefaultName>textbox1</rd:DefaultName>
+        <Width>15.5cm</Width>
+        <Style>
+          <TextAlign>Left</TextAlign>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingBottom>2pt</PaddingBottom>
+          <FontFamily>Tahoma</FontFamily>
+          <FontSize>14pt</FontSize>
+          <TextDecoration>Underline</TextDecoration>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+        </Style>
+        <CanGrow>true</CanGrow>
+        <Height>1cm</Height>
+        <Value>Resumen de Ventas Productos x Vendedor x Dia UND/RD$</Value>
+      </Textbox>
+    </ReportItems>
+    <Height>2.5cm</Height>
+    <PrintOnLastPage>true</PrintOnLastPage>
+    <PrintOnFirstPage>true</PrintOnFirstPage>
+  </PageHeader>
+  <rd:ReportID>e8941b14-0c75-457b-83c7-b7f197665eae</rd:ReportID>
+  <LeftMargin>2.5cm</LeftMargin>
+  <DataSets>
+    <DataSet Name="Taramaca">
+      <Query>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+        <CommandText>select soph.docdate [Fecha Venta],month(docdate)[MesVenta],day(docdate)[DiaVenta],rtrim(sop.itemnmbr) itemnmbr,rtrim(sop.itemdesc)itemdesc,cast(sop.unitprce as decimal(10,2))[Precio Unitario],sum(cast(sop.quantity as decimal(10,0))) [Cantidad],sum(cast((sop.unitprce * sop.quantity) as decimal(10,2))) [Valor Venta],rtrim(r.idvendedor) [IdVendedor],(rtrim(vp.slprsnfn)+' '+rtrim(vp.sprsnsln))  [NombreVendedor],r.nombreruta
+from (select soptype,sopnumbe,itemnmbr,itemdesc,unitprce,quantity,(unitprce * quantity)'ValorVenta',salsterr,slprsnid  from sop10200
+union all
+select soptype,sopnumbe,itemnmbr,itemdesc,unitprce,quantity,(unitprce * quantity)'ValorVenta',salsterr,slprsnid from sop30300) sop join (select sopnumbe,docdate,slprsnid,salsterr from sop10100 
+union all 
+select sopnumbe,docdate,slprsnid,salsterr from sop30200) soph on sop.sopnumbe = soph.sopnumbe join rm00301 vp on soph.slprsnid = vp.slprsnid join palmcomsync..gp_ruta r on soph.slprsnid = r.idvendedor
+where soptype = 3 and soph.docdate between @iFecha and  @aFecha  and r.nombreruta = @nombreruta
+group by docdate,month(docdate),day(docdate),sop.itemnmbr,sop.itemdesc,cast(sop.unitprce as decimal(10,2)) ,cast((sop.unitprce * sop.quantity) as decimal(10,2)) ,r.idvendedor,(rtrim(vp.slprsnfn)+' '+rtrim(vp.sprsnsln)),r.nombreruta</CommandText>
+        <QueryParameters>
+          <QueryParameter Name="@iFecha">
+            <Value>=Parameters!iFecha.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@aFecha">
+            <Value>=Parameters!aFecha.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@nombreruta">
+            <Value>=Parameters!nombreruta.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <DataSourceName>GPHN</DataSourceName>
+      </Query>
+      <Fields>
+        <Field Name="Fecha_Venta">
+          <rd:TypeName>System.DateTime</rd:TypeName>
+          <DataField>Fecha Venta</DataField>
+        </Field>
+        <Field Name="MesVenta">
+          <rd:TypeName>System.Int32</rd:TypeName>
+          <DataField>MesVenta</DataField>
+        </Field>
+        <Field Name="DiaVenta">
+          <rd:TypeName>System.Int32</rd:TypeName>
+          <DataField>DiaVenta</DataField>
+        </Field>
+        <Field Name="itemnmbr">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>itemnmbr</DataField>
+        </Field>
+        <Field Name="itemdesc">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>itemdesc</DataField>
+        </Field>
+        <Field Name="Precio_Unitario">
+          <rd:TypeName>System.Decimal</rd:TypeName>
+          <DataField>Precio Unitario</DataField>
+        </Field>
+        <Field Name="Cantidad">
+          <rd:TypeName>System.Decimal</rd:TypeName>
+          <DataField>Cantidad</DataField>
+        </Field>
+        <Field Name="Valor_Venta">
+          <rd:TypeName>System.Decimal</rd:TypeName>
+          <DataField>Valor Venta</DataField>
+        </Field>
+        <Field Name="IdVendedor">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>IdVendedor</DataField>
+        </Field>
+        <Field Name="NombreVendedor">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>NombreVendedor</DataField>
+        </Field>
+        <Field Name="nombreruta">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>nombreruta</DataField>
+        </Field>
+      </Fields>
+    </DataSet>
+  </DataSets>
+  <Code />
+  <Width>19.5cm</Width>
+  <InteractiveHeight>11in</InteractiveHeight>
+  <Language>en-US</Language>
+  <TopMargin>2.5cm</TopMargin>
+  <PageHeight>29.7cm</PageHeight>
+</Report>

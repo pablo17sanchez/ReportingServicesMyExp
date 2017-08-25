@@ -1,0 +1,172 @@
+﻿<DataSourceView xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
+  <ID>PalmComSync DSW</ID>
+  <Name>PalmComSync DSW</Name>
+  <Annotations xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowFriendlyNames</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:CurrentLayout</Name>
+      <Value>_ALL_TABLES_</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:NameMatchingCriteria</Name>
+      <Value>1</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:SchemaRestriction</Name>
+      <Value>
+      </Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:RetrieveRelationships</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:Layouts</Name>
+      <Value>
+        <Layouts xmlns="">
+          <Diagram>
+            <Name>_ALL_TABLES_</Name>
+            <DiagramLayout />
+            <ShowRelationshipNames>False</ShowRelationshipNames>
+            <UseDiagramDefaultLayout>True</UseDiagramDefaultLayout>
+            <DiagramViewPortLeft>0</DiagramViewPortLeft>
+            <DiagramViewPortTop>0</DiagramViewPortTop>
+            <DiagramBoundingLeft>0</DiagramBoundingLeft>
+            <DiagramBoundingTop>0</DiagramBoundingTop>
+            <DiagramZoom>100</DiagramZoom>
+          </Diagram>
+        </Layouts>
+      </Value>
+    </Annotation>
+  </Annotations>
+  <DataSourceID>PalmComSync DS</DataSourceID>
+  <Schema>
+    <xs:schema id="PalmComSync_x0020_DSW" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop">
+      <xs:element name="PalmComSync_x0020_DSW" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:design-time-name="c4638f94-1177-4316-86c3-fcbae0060f2d" msprop:CompareInfo="&lt;CompareInfo&gt;&lt;Culture&gt;en-US&lt;/Culture&gt;&lt;IgnoreCase&gt;true&lt;/IgnoreCase&gt;&lt;IgnoreKanaType&gt;true&lt;/IgnoreKanaType&gt;&lt;IgnoreWidth&gt;true&lt;/IgnoreWidth&gt;&lt;/CompareInfo&gt;">
+        <xs:complexType>
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="dbo_GP_CLIENTEDIASRUTA" msprop:FriendlyName="GP_CLIENTEDIASRUTA" msprop:DbTableName="GP_CLIENTEDIASRUTA" msprop:DbSchemaName="dbo" msprop:stats_RowCount="7070" msprop:design-time-name="90190741-99a4-44ec-825e-6d447a2626eb" msprop:TableType="Table">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="Codigo" msdata:ReadOnly="true" msdata:AutoIncrement="true" msprop:stats_StDevWidth="0" msprop:stats_UniqueValuePercent="100" msprop:FriendlyName="Codigo" msprop:design-time-name="f37f8a19-f895-4588-9956-746ee73b900c" msprop:stats_MaxWidth="5" msprop:stats_UniqueValueCount="7070" msprop:stats_AvgWidth="5" msprop:DbColumnName="Codigo" type="xs:int" />
+                  <xs:element name="CodCliente" msprop:stats_StDevWidth="0.01189297" msprop:stats_UniqueValuePercent="88" msprop:FriendlyName="CodCliente" msprop:design-time-name="1cb4dc8c-bda2-4492-b27b-7e7de4d0a2d8" msprop:stats_MaxWidth="5" msprop:stats_UniqueValueCount="6245" msprop:stats_AvgWidth="4.999858" msprop:DbColumnName="CodCliente">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="15" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="Nombre" msprop:stats_StDevWidth="5.679935" msprop:stats_UniqueValuePercent="74" msprop:FriendlyName="Nombre" msprop:design-time-name="91b8ed3f-20b3-42a6-a2f6-1c9ae911ae4d" msprop:stats_MaxWidth="64" msprop:stats_UniqueValueCount="5283" msprop:stats_AvgWidth="19.41117" msprop:DbColumnName="Nombre">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="65" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="CodRuta" msprop:stats_StDevWidth="0.1540768" msprop:stats_UniqueValuePercent="0" msprop:FriendlyName="CodRuta" msprop:design-time-name="87cbd72d-835a-45a5-8bbd-ef9b695d2ea8" msprop:stats_MaxWidth="3" msprop:stats_UniqueValueCount="49" msprop:stats_AvgWidth="2.024328" msprop:DbColumnName="CodRuta" type="xs:int" />
+                  <xs:element name="NombreRuta" msprop:stats_StDevWidth="0" msprop:stats_UniqueValuePercent="0" msprop:FriendlyName="NombreRuta" msprop:design-time-name="b5915ca4-7659-43cd-97d2-8a5e59bea690" msprop:stats_MaxWidth="8" msprop:stats_UniqueValueCount="49" msprop:stats_AvgWidth="8" msprop:DbColumnName="NombreRuta">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="50" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="Lunes" msprop:FriendlyName="Lunes" msprop:DbColumnName="Lunes" msprop:stats_UniqueValuePercent="0" msprop:design-time-name="1406d478-7260-4858-bda8-c0a4b35a3140" msprop:stats_UniqueValueCount="1" type="xs:boolean" />
+                  <xs:element name="Martes" msprop:FriendlyName="Martes" msprop:DbColumnName="Martes" msprop:stats_UniqueValuePercent="0" msprop:design-time-name="ae5a76e8-7f53-4686-9f18-2c61b9ff1ef7" msprop:stats_UniqueValueCount="1" type="xs:boolean" />
+                  <xs:element name="Miercoles" msprop:FriendlyName="Miercoles" msprop:DbColumnName="Miercoles" msprop:stats_UniqueValuePercent="0" msprop:design-time-name="289ef485-f922-4a2e-a997-19804ffc818c" msprop:stats_UniqueValueCount="1" type="xs:boolean" />
+                  <xs:element name="Jueves" msprop:FriendlyName="Jueves" msprop:DbColumnName="Jueves" msprop:stats_UniqueValuePercent="0" msprop:design-time-name="49e57053-f296-4186-9d80-0dd9918104de" msprop:stats_UniqueValueCount="1" type="xs:boolean" />
+                  <xs:element name="Viernes" msprop:FriendlyName="Viernes" msprop:DbColumnName="Viernes" msprop:stats_UniqueValuePercent="0" msprop:design-time-name="a296f6c8-c563-4aaa-a68b-874eefffd42f" msprop:stats_UniqueValueCount="1" type="xs:boolean" />
+                  <xs:element name="Sabado" msprop:FriendlyName="Sabado" msprop:DbColumnName="Sabado" msprop:stats_UniqueValuePercent="0" msprop:design-time-name="dd025c02-cb60-4493-86ee-ba0486fcb7d0" msprop:stats_UniqueValueCount="1" type="xs:boolean" />
+                  <xs:element name="Domingo" msprop:FriendlyName="Domingo" msprop:DbColumnName="Domingo" msprop:stats_UniqueValuePercent="0" msprop:design-time-name="c3e5862f-9f90-4d8d-878c-d2214448f9e3" msprop:stats_UniqueValueCount="1" type="xs:boolean" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="dbo_GP_RUTA" msprop:FriendlyName="GP_RUTA" msprop:DbTableName="GP_RUTA" msprop:DbSchemaName="dbo" msprop:stats_RowCount="62" msprop:design-time-name="1baecb6c-1098-49fa-aba7-5f8bc26625c8" msprop:TableType="Table">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="CodRuta" msdata:ReadOnly="true" msdata:AutoIncrement="true" msprop:stats_StDevWidth="0.3851418" msprop:stats_UniqueValuePercent="100" msprop:FriendlyName="CodRuta" msprop:design-time-name="767789c5-e88d-4961-be0e-95a40ca98c08" msprop:stats_MaxWidth="3" msprop:stats_UniqueValueCount="62" msprop:stats_AvgWidth="2.177419" msprop:DbColumnName="CodRuta" type="xs:int" />
+                  <xs:element name="NombreRuta" msprop:stats_StDevWidth="0" msprop:stats_UniqueValuePercent="100" msprop:FriendlyName="NombreRuta" msprop:design-time-name="4022fc9e-24c6-4499-b757-7d441742467b" msprop:stats_MaxWidth="8" msprop:stats_UniqueValueCount="62" msprop:stats_AvgWidth="8" msprop:DbColumnName="NombreRuta">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="50" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="IdVendedor" msprop:stats_StDevWidth="0.1270001" msprop:stats_UniqueValuePercent="85" msprop:FriendlyName="IdVendedor" msprop:design-time-name="dbb3939d-0963-430d-be8b-562671220c62" msprop:stats_MaxWidth="4" msprop:stats_UniqueValueCount="53" msprop:stats_AvgWidth="3.983871" msprop:DbColumnName="IdVendedor">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="10" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="NombreVendedor" msprop:stats_StDevWidth="2.798542" msprop:stats_UniqueValuePercent="85" msprop:FriendlyName="NombreVendedor" msprop:design-time-name="4c93b060-df91-43aa-a5be-f49e371fd476" msprop:stats_MaxWidth="22" msprop:stats_UniqueValueCount="53" msprop:stats_AvgWidth="14.93548" msprop:DbColumnName="NombreVendedor" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="50" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="CodStatus" msprop:stats_StDevWidth="0" msprop:stats_UniqueValuePercent="1" msprop:FriendlyName="CodStatus" msprop:design-time-name="7f2ae6dd-9685-4382-9586-c5914a82b039" msprop:stats_MaxWidth="1" msprop:stats_UniqueValueCount="1" msprop:stats_AvgWidth="1" msprop:DbColumnName="CodStatus" type="xs:int" />
+                  <xs:element name="CodSubZona" msprop:stats_StDevWidth="0" msprop:stats_UniqueValuePercent="12" msprop:FriendlyName="CodSubZona" msprop:design-time-name="3efe771a-d1a5-411c-8704-d7ef9851cec3" msprop:stats_MaxWidth="2" msprop:stats_UniqueValueCount="8" msprop:stats_AvgWidth="2" msprop:DbColumnName="CodSubZona" type="xs:int" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="dbo_GP_SUBZONA" msprop:FriendlyName="GP_SUBZONA" msprop:DbTableName="GP_SUBZONA" msprop:DbSchemaName="dbo" msprop:stats_RowCount="8" msprop:design-time-name="cd0e5615-c9ed-4132-9126-cdbd3856f79f" msprop:TableType="Table">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="CodSubzona" msdata:ReadOnly="true" msdata:AutoIncrement="true" msprop:stats_StDevWidth="0" msprop:stats_UniqueValuePercent="100" msprop:FriendlyName="CodSubzona" msprop:design-time-name="41014fb4-d85a-458c-9773-132bd9349294" msprop:stats_MaxWidth="2" msprop:stats_UniqueValueCount="8" msprop:stats_AvgWidth="2" msprop:DbColumnName="CodSubzona" type="xs:int" />
+                  <xs:element name="Descripcion" msprop:stats_StDevWidth="0" msprop:stats_UniqueValuePercent="100" msprop:FriendlyName="Descripcion" msprop:design-time-name="d9c7eea0-7ab1-4395-b924-dc79d70ca507" msprop:stats_MaxWidth="6" msprop:stats_UniqueValueCount="8" msprop:stats_AvgWidth="6" msprop:DbColumnName="Descripcion">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="255" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="IdZona" msprop:stats_StDevWidth="0" msprop:stats_UniqueValuePercent="50" msprop:FriendlyName="IdZona" msprop:design-time-name="722eba70-d3bc-4c74-80ad-e5c4a3cd4705" msprop:stats_MaxWidth="5" msprop:stats_UniqueValueCount="4" msprop:stats_AvgWidth="5" msprop:DbColumnName="IdZona">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="15" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="ZonaDesc" msprop:stats_StDevWidth="0" msprop:stats_UniqueValuePercent="50" msprop:FriendlyName="ZonaDesc" msprop:design-time-name="cf3dfcfa-0f35-48dc-a9b7-754137a00d4e" msprop:stats_MaxWidth="18" msprop:stats_UniqueValueCount="4" msprop:stats_AvgWidth="18" msprop:DbColumnName="ZonaDesc">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="31" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="CodSupervisor" msprop:stats_StDevWidth="0.4629101" msprop:stats_UniqueValuePercent="100" msprop:FriendlyName="CodSupervisor" msprop:design-time-name="a53b6128-55aa-4daa-bdd4-a1e5bf0f16a6" msprop:stats_MaxWidth="2" msprop:stats_UniqueValueCount="8" msprop:stats_AvgWidth="1.25" msprop:DbColumnName="CodSupervisor" type="xs:int" />
+                  <xs:element name="NombreSupervisor" msprop:stats_StDevWidth="2.875388" msprop:stats_UniqueValuePercent="100" msprop:FriendlyName="NombreSupervisor" msprop:design-time-name="73eb66ed-2a70-46f9-9b07-51d5726d6ba2" msprop:stats_MaxWidth="18" msprop:stats_UniqueValueCount="8" msprop:stats_AvgWidth="14.375" msprop:DbColumnName="NombreSupervisor">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="50" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="dbo_GP_SUPERVISOR" msprop:FriendlyName="GP_SUPERVISOR" msprop:DbTableName="GP_SUPERVISOR" msprop:DbSchemaName="dbo" msprop:stats_RowCount="11" msprop:design-time-name="e9c8d9af-3af5-4106-8d97-a3a5c2c816f9" msprop:TableType="Table">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="CodSupervisor" msdata:ReadOnly="true" msdata:AutoIncrement="true" msprop:stats_StDevWidth="0.4670994" msprop:stats_UniqueValuePercent="100" msprop:FriendlyName="CodSupervisor" msprop:design-time-name="bb052423-73a7-464c-9483-244be70dd927" msprop:stats_MaxWidth="2" msprop:stats_UniqueValueCount="11" msprop:stats_AvgWidth="1.272727" msprop:DbColumnName="CodSupervisor" type="xs:int" />
+                  <xs:element name="Nombre" msprop:stats_StDevWidth="2.248232" msprop:stats_UniqueValuePercent="90" msprop:FriendlyName="Nombre" msprop:design-time-name="55c6a8d7-cec0-450b-a3cd-dffac8ee24b1" msprop:stats_MaxWidth="16" msprop:stats_UniqueValueCount="10" msprop:stats_AvgWidth="14.36364" msprop:DbColumnName="Nombre" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="50" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:choice>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+  </Schema>
+</DataSourceView>

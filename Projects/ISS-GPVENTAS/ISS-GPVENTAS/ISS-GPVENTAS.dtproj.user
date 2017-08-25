@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DataTransformationsUserConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Configurations>
+    <Configuration>
+      <Name>Development</Name>
+      <Options>
+        <UserIDs>
+          <ConfigurationSetting>
+            <Id>DS-GPHN</Id>
+            <Name>DS-GPHN</Name>
+            <Value xsi:type="xsd:string">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAACi5qA7ISfkyJjM53t5esrQAAAAAQAAAARABTAC0ARwBQAEgATgAAAANmAACoAAAAEAAAACPQLbo9mmbS/XYnUrQED6cAAAAABIAAAKAAAAAQAAAAxy/yvhNegIqMD6pweWYB0AgAAAAfk0GivCsxpRQAAABcWN6EG/GVCQx4/JgfQAWRmUeZCw==</Value>
+          </ConfigurationSetting>
+        </UserIDs>
+        <UserPasswords>
+          <ConfigurationSetting>
+            <Id>DS-GPHN</Id>
+            <Name>DS-GPHN</Name>
+            <Value xsi:type="xsd:string">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAACi5qA7ISfkyJjM53t5esrQAAAAAQAAAARABTAC0ARwBQAEgATgAAAANmAACoAAAAEAAAAAHVEm8CxeLEWlxwnZ7QgjkAAAAABIAAAKAAAAAQAAAA1iwQoqcjcqvzOe8YzU3pyRgAAADFhcWk/NX7Lp7/gs8ZyY+MeJKl3UlEszcUAAAAUgBEytyEb0xmGfNYwrE+8pOnxfA=</Value>
+          </ConfigurationSetting>
+        </UserPasswords>
+        <OfflineMode>false</OfflineMode>
+      </Options>
+    </Configuration>
+  </Configurations>
+</DataTransformationsUserConfiguration>

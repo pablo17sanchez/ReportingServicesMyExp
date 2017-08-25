@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{F14B399A-7131-4C87-9E4B-1186C45EF12D}") = "Sample", "Sample\Sample.rptproj", "{DC1123A8-576D-4068-9F71-C03B88B1F228}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Default = Debug|Default
+		DebugLocal|Default = DebugLocal|Default
+		Production|Default = Production|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DC1123A8-576D-4068-9F71-C03B88B1F228}.Debug|Default.ActiveCfg = Debug
+		{DC1123A8-576D-4068-9F71-C03B88B1F228}.Debug|Default.Build.0 = DebugLocal
+		{DC1123A8-576D-4068-9F71-C03B88B1F228}.Debug|Default.Deploy.0 = DebugLocal
+		{DC1123A8-576D-4068-9F71-C03B88B1F228}.DebugLocal|Default.ActiveCfg = DebugLocal
+		{DC1123A8-576D-4068-9F71-C03B88B1F228}.DebugLocal|Default.Build.0 = DebugLocal
+		{DC1123A8-576D-4068-9F71-C03B88B1F228}.Production|Default.ActiveCfg = Production
+		{DC1123A8-576D-4068-9F71-C03B88B1F228}.Production|Default.Build.0 = Production
+		{DC1123A8-576D-4068-9F71-C03B88B1F228}.Production|Default.Deploy.0 = Production
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,944 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2005/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <DataSources>
+    <DataSource Name="DeployDS">
+      <rd:DataSourceID>f8606cf3-42a9-43d2-a219-ddd91f3a038a</rd:DataSourceID>
+      <DataSourceReference>DeployDS</DataSourceReference>
+    </DataSource>
+  </DataSources>
+  <InteractiveHeight>11in</InteractiveHeight>
+  <ReportParameters>
+    <ReportParameter Name="FechaDocumento">
+      <DataType>DateTime</DataType>
+      <Nullable>true</Nullable>
+      <Prompt>Fecha Documento</Prompt>
+      <ValidValues>
+        <DataSetReference>
+          <DataSetName>paramDataSet</DataSetName>
+          <ValueField>value</ValueField>
+          <LabelField>value</LabelField>
+        </DataSetReference>
+      </ValidValues>
+    </ReportParameter>
+    <ReportParameter Name="UsuarioEntrada">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <Prompt>Usuario Entrada</Prompt>
+    </ReportParameter>
+  </ReportParameters>
+  <rd:DrawGrid>true</rd:DrawGrid>
+  <InteractiveWidth>8.5in</InteractiveWidth>
+  <rd:SnapToGrid>true</rd:SnapToGrid>
+  <RightMargin>0.5in</RightMargin>
+  <LeftMargin>0.5in</LeftMargin>
+  <BottomMargin>0.5in</BottomMargin>
+  <rd:ReportID>d91601fc-283a-42b4-9f43-c0df50272a74</rd:ReportID>
+  <DataSets>
+    <DataSet Name="dataSet">
+      <Fields>
+        <Field Name="Cajeroa">
+          <DataField>Cajero/a</DataField>
+        </Field>
+        <Field Name="Ventas">
+          <DataField>Ventas</DataField>
+        </Field>
+        <Field Name="NoLote">
+          <DataField>No. Lote</DataField>
+        </Field>
+        <Field Name="Tipo">
+          <DataField>Tipo</DataField>
+        </Field>
+        <Field Name="NoDocumento">
+          <DataField>No Documento</DataField>
+        </Field>
+        <Field Name="NombreCliente">
+          <DataField>Nombre Cliente</DataField>
+        </Field>
+        <Field Name="expr1">
+          <DataField>expr1</DataField>
+        </Field>
+        <Field Name="Facturado_Sum">
+          <DataField>Facturado_Sum</DataField>
+        </Field>
+        <Field Name="Pagado_Sum">
+          <DataField>Pagado_Sum</DataField>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>DeployDS</DataSourceName>
+        <CommandText>&lt; SemanticQuery xmlns = [http://schemas.microsoft.com/sqlserver/2004/10/semanticmodeling] xmlns : xsd = [http://www.w3.org/2001/XMLSchema] xmlns : xsi = [http://www.w3.org/2001/XMLSchema-instance]
+ xmlns : rb = [http://schemas.microsoft.com/sqlserver/2004/11/reportbuilder] xmlns : qd = [http://schemas.microsoft.com/sqlserver/2004/11/semanticquerydesign] &gt;
+ &lt; Hierarchies &gt; &lt; Hierarchy &gt; &lt; BaseEntity &gt; &lt; ! /*Ventas--&gt;*/ &lt; EntityID &gt; Gf1c2ef28 - 6500 - 4 c1f - 9 c01 - 89 f1342a2624 &lt; / EntityID &gt; &lt; / BaseEntity &gt; &lt; Groupings
+ &gt; &lt; Grouping Name = [Cajero/a] &gt; &lt; Expression Name = [Cajero/a] &gt; &lt; AttributeRef &gt; &lt; ! /*Usuario Entrada--&gt;*/ &lt; AttributeID &gt; G56075363 - e4fd - 4465 - be50 - a1d1501c0158
+ &lt; / AttributeID &gt; &lt; / AttributeRef &gt; &lt; / Expression &gt; &lt; / Grouping &gt; &lt; Grouping Name = [Ventas] &gt; &lt; Expression Name = [Ventas] &gt; &lt; EntityRef &gt; &lt; ! /*Ventas--&gt;*/ &lt; EntityID
+ &gt; Gf1c2ef28 - 6500 - 4 c1f - 9 c01 - 89 f1342a2624 &lt; / EntityID &gt; &lt; / EntityRef &gt; &lt; / Expression &gt; &lt; Details &gt; &lt; Expression Name = [No. Lote] &gt; &lt; AttributeRef &gt; &lt; ! /*No. Lote--&gt;*/ &lt;
+ AttributeID &gt; G29f6328c - d539 - 4858 - ba09 - cf52d7a56d68 &lt; / AttributeID &gt; &lt; / AttributeRef &gt; &lt; / Expression &gt; &lt; Expression Name = [Tipo] &gt; &lt; AttributeRef &gt; &lt; ! /*ID Documento--&gt;*/ &lt;
+ AttributeID &gt; Gbca81213 - dae4 - 4677 - 9 a45 - d16513565d3d &lt; / AttributeID &gt; &lt; / AttributeRef &gt; &lt; / Expression &gt; &lt; Expression Name = [No Documento] &gt; &lt; AttributeRef
+ &gt; &lt; ! /*No Documento--&gt;*/ &lt; AttributeID &gt; G643c6c31 - 9 d19 - 40e4 - b64e - 195941322 a49 &lt; / AttributeID &gt; &lt; / AttributeRef &gt; &lt; / Expression &gt; &lt; Expression Name =
+ [Nombre Cliente] &gt; &lt; AttributeRef &gt; &lt; ! /*Nombre Cliente--&gt;*/ &lt; AttributeID &gt; Gaf387c90 - ec6d - 4 d6c - bb4a - 14720e486595 &lt; / AttributeID &gt; &lt; / AttributeRef &gt; &lt; / Expression
+ &gt; &lt; Expression Name = [expr1] &gt; &lt; AttributeRef &gt; &lt; ! /*Tipo Documento--&gt;*/ &lt; AttributeID &gt; G6f39ea5d - e79e - 45 a3 - b978 - 021 dd308efd3 &lt; / AttributeID &gt; &lt; / AttributeRef
+ &gt; &lt; / Expression &gt; &lt; / Details &gt; &lt; / Grouping &gt; &lt; / Groupings &gt; &lt; Filter &gt; &lt; Expression Name = [expr2] &gt; &lt; FUNCTION &gt; &lt; FunctionName &gt; AND 
+&lt; / FunctionName &gt; &lt; Arguments &gt; &lt; Expression &gt; &lt; FUNCTION &gt; &lt; FunctionName &gt; Equals &lt; / FunctionName &gt; &lt; Arguments &gt; &lt; Expression &gt; &lt; AttributeRef &gt; &lt; ! /*Fecha Documento--&gt;*/ &lt;
+ AttributeID &gt; Gacc5d224 - 5 d26 - 428 d - a0db - 53 b5120125d6 &lt; / AttributeID &gt; &lt; / AttributeRef &gt; &lt; / Expression &gt; &lt; Expression &gt; &lt; ParameterRef &gt; &lt; ParameterName
+ &gt; Fecha Documento &lt; / ParameterName &gt; &lt; / ParameterRef &gt; &lt; / Expression &gt; &lt; / Arguments &gt; &lt; / FUNCTION &gt; &lt; CustomProperties &gt; &lt; CustomProperty Name = [qd:FilterCondition]
+ / &gt; &lt; / CustomProperties &gt; &lt; / Expression &gt; &lt; Expression &gt; &lt; FUNCTION &gt; &lt; FunctionName &gt; AND 
+&lt; / FunctionName &gt; &lt; Arguments &gt; &lt; Expression &gt; &lt; FUNCTION &gt; &lt; FunctionName &gt; Equals &lt; / FunctionName &gt; &lt; Arguments &gt; &lt; Expression &gt; &lt; AttributeRef &gt; &lt; ! /*Usuario Entrada--&gt;*/ &lt;
+ AttributeID &gt; G56075363 - e4fd - 4465 - be50 - a1d1501c0158 &lt; / AttributeID &gt; &lt; / AttributeRef &gt; &lt; / Expression &gt; &lt; Expression &gt; &lt; ParameterRef &gt; &lt; ParameterName
+ &gt; Usuario Entrada &lt; / ParameterName &gt; &lt; / ParameterRef &gt; &lt; / Expression &gt; &lt; / Arguments &gt; &lt; / FUNCTION &gt; &lt; CustomProperties &gt; &lt; CustomProperty Name = [qd:ExpressionCondition]
+ / &gt; &lt; CustomProperty Name = [qd:FilterCondition] / &gt; &lt; / CustomProperties &gt; &lt; / Expression &gt; &lt; Expression &gt; &lt; FUNCTION &gt; &lt; FunctionName &gt; Equals &lt; / FunctionName
+ &gt; &lt; Arguments &gt; &lt; Expression &gt; &lt; AttributeRef &gt; &lt; ! /*Nulo--&gt;*/ &lt; AttributeID &gt; Gca2e35d1 - cf76 - 452 d - afea - a2586ab258e7 &lt; / AttributeID &gt; &lt; / AttributeRef &gt; &lt; / Expression
+ &gt; &lt; Expression &gt; &lt; Literal &gt; &lt; DataType &gt; Integer &lt; / DataType &gt; &lt; Value &gt; 0 &lt; / Value &gt; &lt; / Literal &gt; &lt; / Expression &gt; &lt; / Arguments &gt; &lt; / FUNCTION &gt; &lt; CustomProperties
+ &gt; &lt; CustomProperty Name = [qd:ExpressionCondition] / &gt; &lt; CustomProperty Name = [qd:FilterCondition] / &gt; &lt; / CustomProperties &gt; &lt; / Expression &gt; &lt; / Arguments
+ &gt; &lt; / FUNCTION &gt; &lt; / Expression &gt; &lt; / Arguments &gt; &lt; / FUNCTION &gt; &lt; CustomProperties &gt; &lt; CustomProperty Name = [qd:Filter] / &gt; &lt; CustomProperty Name = [qd:ContextEntityID]
+ &gt; &lt; Value xsi : type = [xsd:string] &gt; Gf1c2ef28 - 6500 - 4 c1f - 9 c01 - 89 f1342a2624 &lt; / Value &gt; &lt; / CustomProperty &gt; &lt; CustomProperty Name = [qd:AutoChangeBaseEntity]
+ / &gt; &lt; CustomProperty Name = [qd:Design] &gt; &lt; Value xsi : type = [xsd:string] &gt; expr3 &lt; / Value &gt; &lt; / CustomProperty &gt; &lt; / CustomProperties &gt; &lt; / Expression &gt; &lt; / Filter
+ &gt; &lt; / Hierarchy &gt; &lt; / Hierarchies &gt; &lt; MeasureGroups &gt; &lt; MeasureGroup &gt; &lt; BaseEntity &gt; &lt; ! /*Ventas--&gt;*/ &lt; EntityID &gt; Gf1c2ef28 - 6500 - 4 c1f - 9 c01 - 89 f1342a2624
+ &lt; / EntityID &gt; &lt; / BaseEntity &gt; &lt; Measures &gt; &lt; Expression Name = [Facturado_Sum] &gt; &lt; FUNCTION &gt; &lt; FunctionName &gt; Sum &lt; / FunctionName &gt; &lt; Arguments &gt; &lt; Expression
+ &gt; &lt; AttributeRef &gt; &lt; ! /*Monto Documento--&gt;*/ &lt; AttributeID &gt; G54b5d196 - 114 a - 4497 - 8925 - 60 c3c6848df4 &lt; / AttributeID &gt; &lt; / AttributeRef &gt; &lt; / Expression &gt; &lt; /
+ Arguments &gt; &lt; / FUNCTION &gt; &lt; CustomProperties &gt; &lt; CustomProperty Name = [qd:Design] &gt; &lt; Value xsi : type = [xsd:string] &gt; Facturado &lt; / Value &gt; &lt; / CustomProperty
+ &gt; &lt; / CustomProperties &gt; &lt; / Expression &gt; &lt; Expression Name = [Pagado_Sum] &gt; &lt; FUNCTION &gt; &lt; FunctionName &gt; Sum &lt; / FunctionName &gt; &lt; Arguments &gt; &lt; Expression
+ &gt; &lt; AttributeRef &gt; &lt; ! /*Pagado--&gt;*/ &lt; AttributeID &gt; G20bbc77b - dcd8 - 43 da - 9064 - b42da35378ed &lt; / AttributeID &gt; &lt; / AttributeRef &gt; &lt; / Expression &gt; &lt; / Arguments
+ &gt; &lt; / FUNCTION &gt; &lt; CustomProperties &gt; &lt; CustomProperty Name = [qd:Design] &gt; &lt; Value xsi : type = [xsd:string] &gt; Pagado &lt; / Value &gt; &lt; / CustomProperty &gt; &lt; / CustomProperties
+ &gt; &lt; / Expression &gt; &lt; / Measures &gt; &lt; / MeasureGroup &gt; &lt; / MeasureGroups &gt; &lt; CalculatedAttributes &gt; &lt; Expression Name = [expr3] &gt; &lt; FUNCTION &gt; &lt; FunctionName
+ &gt; AND &lt; / FunctionName &gt; &lt; Arguments &gt; &lt; Expression &gt; &lt; FUNCTION &gt; &lt; FunctionName &gt; AND 
+&lt; / FunctionName &gt; &lt; Arguments &gt; &lt; Expression &gt; &lt; FUNCTION &gt; &lt; FunctionName &gt; Equals &lt; / FunctionName &gt; &lt; Arguments &gt; &lt; Expression &gt; &lt; AttributeRef &gt; &lt; ! /*Fecha Documento--&gt;*/ &lt;
+ AttributeID &gt; Gacc5d224 - 5 d26 - 428 d - a0db - 53 b5120125d6 &lt; / AttributeID &gt; &lt; / AttributeRef &gt; &lt; / Expression &gt; &lt; Expression &gt; &lt; ParameterRef &gt; &lt; ParameterName
+ &gt; Fecha Documento &lt; / ParameterName &gt; &lt; / ParameterRef &gt; &lt; / Expression &gt; &lt; / Arguments &gt; &lt; / FUNCTION &gt; &lt; CustomProperties &gt; &lt; CustomProperty Name = [qd:FilterCondition]
+ / &gt; &lt; / CustomProperties &gt; &lt; / Expression &gt; &lt; Expression &gt; &lt; NULL 
+/ &gt; &lt; CustomProperties &gt; &lt; CustomProperty Name = [qd:Unspecified] / &gt; &lt; / CustomProperties &gt; &lt; / Expression &gt; &lt; / Arguments &gt; &lt; / FUNCTION &gt; &lt; / Expression &gt; &lt;
+ Expression &gt; &lt; FUNCTION &gt; &lt; FunctionName &gt; AND &lt; / FunctionName &gt; &lt; Arguments &gt; &lt; Expression &gt; &lt; FUNCTION &gt; &lt; FunctionName &gt; AND 
+&lt; / FunctionName &gt; &lt; Arguments &gt; &lt; Expression &gt; &lt; FUNCTION &gt; &lt; FunctionName &gt; Equals &lt; / FunctionName &gt; &lt; Arguments &gt; &lt; Expression &gt; &lt; AttributeRef &gt; &lt; ! /*Usuario Entrada--&gt;*/ &lt;
+ AttributeID &gt; G56075363 - e4fd - 4465 - be50 - a1d1501c0158 &lt; / AttributeID &gt; &lt; / AttributeRef &gt; &lt; / Expression &gt; &lt; Expression &gt; &lt; ParameterRef &gt; &lt; ParameterName
+ &gt; Usuario Entrada &lt; / ParameterName &gt; &lt; / ParameterRef &gt; &lt; / Expression &gt; &lt; / Arguments &gt; &lt; / FUNCTION &gt; &lt; CustomProperties &gt; &lt; CustomProperty Name = [qd:ExpressionCondition]
+ / &gt; &lt; CustomProperty Name = [qd:FilterCondition] / &gt; &lt; / CustomProperties &gt; &lt; / Expression &gt; &lt; Expression &gt; &lt; NULL 
+/ &gt; &lt; CustomProperties &gt; &lt; CustomProperty Name = [qd:Unspecified] / &gt; &lt; / CustomProperties &gt; &lt; / Expression &gt; &lt; / Arguments &gt; &lt; / FUNCTION &gt; &lt; / Expression &gt; &lt;
+ Expression &gt; &lt; FUNCTION &gt; &lt; FunctionName &gt; AND 
+&lt; / FunctionName &gt; &lt; Arguments &gt; &lt; Expression &gt; &lt; FUNCTION &gt; &lt; FunctionName &gt; Equals &lt; / FunctionName &gt; &lt; Arguments &gt; &lt; Expression &gt; &lt; AttributeRef &gt; &lt; ! /*Nulo--&gt;*/ &lt;
+ AttributeID &gt; Gca2e35d1 - cf76 - 452 d - afea - a2586ab258e7 &lt; / AttributeID &gt; &lt; / AttributeRef &gt; &lt; / Expression &gt; &lt; Expression &gt; &lt; Literal &gt; &lt; DataType &gt; Integer &lt; /
+ DataType &gt; &lt; Value &gt; 0 &lt; / Value &gt; &lt; / Literal &gt; &lt; / Expression &gt; &lt; / Arguments &gt; &lt; / FUNCTION &gt; &lt; CustomProperties &gt; &lt; CustomProperty Name = [qd:ExpressionCondition]
+ / &gt; &lt; CustomProperty Name = [qd:FilterCondition] / &gt; &lt; / CustomProperties &gt; &lt; / Expression &gt; &lt; Expression &gt; &lt; NULL 
+/ &gt; &lt; CustomProperties &gt; &lt; CustomProperty Name = [qd:Unspecified] / &gt; &lt; / CustomProperties &gt; &lt; / Expression &gt; &lt; / Arguments &gt; &lt; / FUNCTION &gt; &lt; / Expression &gt; &lt;
+ / Arguments &gt; &lt; / FUNCTION &gt; &lt; / Expression &gt; &lt; / Arguments &gt; &lt; / FUNCTION &gt; &lt; CustomProperties &gt; &lt; CustomProperty Name = [qd:Filter] / &gt; &lt; CustomProperty Name
+ = [qd:ContextEntityID] &gt; &lt; Value xsi : type = [xsd:string] &gt; Gf1c2ef28 - 6500 - 4 c1f - 9 c01 - 89 f1342a2624 &lt; / Value &gt; &lt; / CustomProperty &gt; &lt; CustomProperty Name
+ = [qd:AutoChangeBaseEntity] / &gt; &lt; / CustomProperties &gt; &lt; / Expression &gt; &lt; Expression Name = [Facturado] &gt; &lt; AttributeRef &gt; &lt; ! /*Total DOCAMNT--&gt;*/ &lt; AttributeID
+ &gt; Gb3cee09c - f784 - 47 eb - ad3a - 1891967 fa6fd &lt; / AttributeID &gt; &lt; / AttributeRef &gt; &lt; CustomProperties &gt; &lt; CustomProperty Name = [qd:ContextEntityID] &gt; &lt; Value
+ xsi : type = [xsd:string] &gt; Gf1c2ef28 - 6500 - 4 c1f - 9 c01 - 89 f1342a2624 &lt; / Value &gt; &lt; / CustomProperty &gt; &lt; / CustomProperties &gt; &lt; / Expression &gt; &lt; Expression Name
+ = [Pagado] &gt; &lt; AttributeRef &gt; &lt; ! /*Total PYMTRCVD--&gt;*/ &lt; AttributeID &gt; Gfe15defe - a58a - 402 a - b29f - 23885181 fe12 &lt; / AttributeID &gt; &lt; / AttributeRef &gt; &lt; CustomProperties
+ &gt; &lt; CustomProperty Name = [qd:ContextEntityID] &gt; &lt; Value xsi : type = [xsd:string] &gt; Gf1c2ef28 - 6500 - 4 c1f - 9 c01 - 89 f1342a2624 &lt; / Value &gt; &lt; / CustomProperty
+ &gt; &lt; / CustomProperties &gt; &lt; / Expression &gt; &lt; / CalculatedAttributes &gt; &lt; Parameters &gt; &lt; Parameter Name = [Fecha Documento] &gt; &lt; DataType &gt; DateTime &lt; / DataType
+ &gt; &lt; Nullable &gt; true &lt; / Nullable &gt; &lt; / Parameter &gt; &lt; Parameter Name = [Usuario Entrada] &gt; &lt; DataType &gt; String &lt; / DataType &gt; &lt; Nullable &gt; true &lt; / Nullable &gt; &lt; / Parameter
+ &gt; &lt; / Parameters &gt; &lt; / SemanticQuery &gt;</CommandText>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+      </Query>
+    </DataSet>
+    <DataSet Name="paramDataSet">
+      <Fields>
+        <Field Name="value">
+          <DataField>value</DataField>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>DeployDS</DataSourceName>
+        <CommandText>&lt; SemanticQuery xmlns = [http://schemas.microsoft.com/sqlserver/2004/10/semanticmodeling] xmlns : xsd = [http://www.w3.org/2001/XMLSchema] xmlns : xsi = [http://www.w3.org/2001/XMLSchema-instance]
+ xmlns : qd = [http://schemas.microsoft.com/sqlserver/2004/11/semanticquerydesign] &gt; &lt; Hierarchies &gt; &lt; Hierarchy &gt; &lt; BaseEntity &gt; &lt; ! /*Ventas--&gt;*/ &lt; EntityID &gt; Gf1c2ef28
+ - 6500 - 4 c1f - 9 c01 - 89 f1342a2624 &lt; / EntityID &gt; &lt; / BaseEntity &gt; &lt; Groupings &gt; &lt; Grouping Name = [value] &gt; &lt; Expression Name = [value] &gt; &lt; AttributeRef &gt; &lt; !
+ /*Fecha Documento--&gt;*/ &lt; AttributeID &gt; Gacc5d224 - 5 d26 - 428 d - a0db - 53 b5120125d6 &lt; / AttributeID &gt; &lt; / AttributeRef &gt; &lt; / Expression &gt; &lt; / Grouping &gt; &lt; / Groupings
+ &gt; &lt; / Hierarchy &gt; &lt; / Hierarchies &gt; &lt; / SemanticQuery &gt;</CommandText>
+      </Query>
+    </DataSet>
+  </DataSets>
+  <Width>7.5in</Width>
+  <Body>
+    <ReportItems>
+      <Textbox Name="Title">
+        <Top>0.5in</Top>
+        <Width>3.375in</Width>
+        <Style>
+          <FontFamily>Tahoma</FontFamily>
+          <FontWeight>700</FontWeight>
+          <TextAlign>Left</TextAlign>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+        <CustomProperties>
+          <CustomProperty>
+            <Name>rb:Watermark</Name>
+            <Value>Click to add title</Value>
+          </CustomProperty>
+        </CustomProperties>
+        <ZIndex>4</ZIndex>
+        <CanGrow>true</CanGrow>
+        <Left>0.25in</Left>
+        <Height>0.25in</Height>
+        <Value>Cuadre de Caja por Cajera</Value>
+      </Textbox>
+      <Table Name="table">
+        <ZIndex>3</ZIndex>
+        <DataSetName>dataSet</DataSetName>
+        <Top>1.75in</Top>
+        <TableGroups>
+          <TableGroup>
+            <Grouping Name="table_Cajeroa">
+              <GroupExpressions>
+                <GroupExpression>=Fields!Cajeroa.Value</GroupExpression>
+              </GroupExpressions>
+            </Grouping>
+            <Sorting>
+              <SortBy>
+                <SortExpression>=IIf(True, Fields!Cajeroa.Value, Nothing)</SortExpression>
+                <Direction>Ascending</Direction>
+              </SortBy>
+            </Sorting>
+            <Footer>
+              <TableRows>
+                <TableRow>
+                  <TableCells>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="blank">
+                          <Style>
+                            <BackgroundColor>White</BackgroundColor>
+                            <BorderColor>
+                              <Default>LightGrey</Default>
+                            </BorderColor>
+                            <BorderStyle>
+                              <Left>Solid</Left>
+                              <Right>Solid</Right>
+                              <Bottom>Solid</Bottom>
+                            </BorderStyle>
+                            <FontFamily>Tahoma</FontFamily>
+                            <FontSize>7pt</FontSize>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                            <Language>en-US</Language>
+                          </Style>
+                          <ZIndex>10</ZIndex>
+                          <CanGrow>true</CanGrow>
+                          <Value />
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ColSpan>4</ColSpan>
+                      <ReportItems>
+                        <Textbox Name="Ventas_SubtotalHeader">
+                          <Style>
+                            <BackgroundColor>#c7d9f9</BackgroundColor>
+                            <BorderColor>
+                              <Default>LightGrey</Default>
+                            </BorderColor>
+                            <BorderStyle>
+                              <Default>Solid</Default>
+                            </BorderStyle>
+                            <FontFamily>Tahoma</FontFamily>
+                            <FontSize>7pt</FontSize>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                          <ZIndex>9</ZIndex>
+                          <CanGrow>true</CanGrow>
+                          <Value>Total</Value>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="TotalDOCAMNT_Total_2_2_2_2_2_2_1">
+                          <Style>
+                            <BackgroundColor>#c7d9f9</BackgroundColor>
+                            <BorderColor>
+                              <Default>LightGrey</Default>
+                            </BorderColor>
+                            <BorderStyle>
+                              <Default>Solid</Default>
+                            </BorderStyle>
+                            <FontFamily>Tahoma</FontFamily>
+                            <FontSize>7pt</FontSize>
+                            <Format>n</Format>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                            <Language>en-US</Language>
+                          </Style>
+                          <ZIndex>8</ZIndex>
+                          <CanGrow>true</CanGrow>
+                          <Value>=SUM(Fields!Facturado_Sum.Value)</Value>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="TotalPYMTRCVD_Total_2_2_2_2_2_2_1">
+                          <Style>
+                            <BackgroundColor>#c7d9f9</BackgroundColor>
+                            <BorderColor>
+                              <Default>LightGrey</Default>
+                            </BorderColor>
+                            <BorderStyle>
+                              <Default>Solid</Default>
+                            </BorderStyle>
+                            <FontFamily>Tahoma</FontFamily>
+                            <FontSize>7pt</FontSize>
+                            <Format>n</Format>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                            <Language>en-US</Language>
+                          </Style>
+                          <ZIndex>7</ZIndex>
+                          <CanGrow>true</CanGrow>
+                          <Value>=SUM(Fields!Pagado_Sum.Value)</Value>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                  </TableCells>
+                  <Height>0.125in</Height>
+                </TableRow>
+              </TableRows>
+            </Footer>
+          </TableGroup>
+        </TableGroups>
+        <Width>7in</Width>
+        <Details>
+          <TableRows>
+            <TableRow>
+              <TableCells>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="UsuarioEntrada_Value">
+                      <DataElementOutput>Output</DataElementOutput>
+                      <HideDuplicates>table_Cajeroa</HideDuplicates>
+                      <Style>
+                        <BackgroundColor>White</BackgroundColor>
+                        <BorderColor>
+                          <Default>LightGrey</Default>
+                        </BorderColor>
+                        <BorderStyle>
+                          <Left>Solid</Left>
+                          <Right>Solid</Right>
+                        </BorderStyle>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontSize>7pt</FontSize>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <Language>en-US</Language>
+                      </Style>
+                      <ZIndex>6</ZIndex>
+                      <CanGrow>true</CanGrow>
+                      <Value>=Fields!Cajeroa.Value</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="NoLote_Value">
+                      <DataElementOutput>Output</DataElementOutput>
+                      <Style>
+                        <BackgroundColor>White</BackgroundColor>
+                        <BorderColor>
+                          <Default>LightGrey</Default>
+                        </BorderColor>
+                        <BorderStyle>
+                          <Default>Solid</Default>
+                        </BorderStyle>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontSize>7pt</FontSize>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <Language>en-US</Language>
+                      </Style>
+                      <ZIndex>5</ZIndex>
+                      <CanGrow>true</CanGrow>
+                      <Value>=Fields!NoLote.Value</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="IDDocumento_Value">
+                      <DataElementOutput>Output</DataElementOutput>
+                      <Style>
+                        <BackgroundColor>White</BackgroundColor>
+                        <BorderColor>
+                          <Default>LightGrey</Default>
+                        </BorderColor>
+                        <BorderStyle>
+                          <Default>Solid</Default>
+                        </BorderStyle>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontSize>7pt</FontSize>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <Language>en-US</Language>
+                      </Style>
+                      <ZIndex>4</ZIndex>
+                      <CanGrow>true</CanGrow>
+                      <Value>=Fields!Tipo.Value</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="NoDocumento_Value">
+                      <DataElementOutput>Output</DataElementOutput>
+                      <Style>
+                        <BackgroundColor>White</BackgroundColor>
+                        <BorderColor>
+                          <Default>LightGrey</Default>
+                        </BorderColor>
+                        <BorderStyle>
+                          <Default>Solid</Default>
+                        </BorderStyle>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontSize>7pt</FontSize>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <Language>en-US</Language>
+                      </Style>
+                      <ZIndex>3</ZIndex>
+                      <CanGrow>true</CanGrow>
+                      <Value>=Fields!NoDocumento.Value</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="NombreCliente_Value">
+                      <DataElementOutput>Output</DataElementOutput>
+                      <Style>
+                        <BackgroundColor>White</BackgroundColor>
+                        <BorderColor>
+                          <Default>LightGrey</Default>
+                        </BorderColor>
+                        <BorderStyle>
+                          <Default>Solid</Default>
+                        </BorderStyle>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontSize>7pt</FontSize>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <Language>en-US</Language>
+                      </Style>
+                      <ZIndex>2</ZIndex>
+                      <CanGrow>true</CanGrow>
+                      <Value>=Fields!NombreCliente.Value</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="TotalDOCAMNT_Value">
+                      <DataElementOutput>Output</DataElementOutput>
+                      <Style>
+                        <BackgroundColor>White</BackgroundColor>
+                        <BorderColor>
+                          <Default>LightGrey</Default>
+                        </BorderColor>
+                        <BorderStyle>
+                          <Default>Solid</Default>
+                        </BorderStyle>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontSize>7pt</FontSize>
+                        <Format>n</Format>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <Language>en-US</Language>
+                      </Style>
+                      <CustomProperties>
+                        <CustomProperty>
+                          <Name>rb:Group</Name>
+                          <Value>table_Ventas</Value>
+                        </CustomProperty>
+                      </CustomProperties>
+                      <ZIndex>1</ZIndex>
+                      <CanGrow>true</CanGrow>
+                      <Value>=Fields!Facturado_Sum.Value</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="TotalPYMTRCVD_Value">
+                      <DataElementOutput>Output</DataElementOutput>
+                      <Style>
+                        <BackgroundColor>White</BackgroundColor>
+                        <BorderColor>
+                          <Default>LightGrey</Default>
+                        </BorderColor>
+                        <BorderStyle>
+                          <Default>Solid</Default>
+                        </BorderStyle>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontSize>7pt</FontSize>
+                        <Format>n</Format>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <Language>en-US</Language>
+                      </Style>
+                      <CustomProperties>
+                        <CustomProperty>
+                          <Name>rb:Group</Name>
+                          <Value>table_Ventas</Value>
+                        </CustomProperty>
+                      </CustomProperties>
+                      <CanGrow>true</CanGrow>
+                      <Value>=Fields!Pagado_Sum.Value</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+              </TableCells>
+              <Height>0.375in</Height>
+            </TableRow>
+          </TableRows>
+          <Grouping Name="table_Ventas">
+            <GroupExpressions>
+              <GroupExpression>=Fields!Ventas.Value</GroupExpression>
+            </GroupExpressions>
+          </Grouping>
+          <Sorting>
+            <SortBy>
+              <SortExpression>=Fields!NoDocumento.Value</SortExpression>
+              <Direction>Ascending</Direction>
+            </SortBy>
+            <SortBy>
+              <SortExpression>=IIf(True, Fields!expr1.Value, Nothing)</SortExpression>
+              <Direction>Descending</Direction>
+            </SortBy>
+          </Sorting>
+        </Details>
+        <Header>
+          <TableRows>
+            <TableRow>
+              <TableCells>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="UsuarioEntrada_Header">
+                      <Style>
+                        <Color>White</Color>
+                        <BackgroundColor>#518ae5</BackgroundColor>
+                        <BorderColor>
+                          <Default>LightGrey</Default>
+                        </BorderColor>
+                        <BorderStyle>
+                          <Default>Solid</Default>
+                        </BorderStyle>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontSize>7pt</FontSize>
+                        <FontWeight>700</FontWeight>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <Language>en-US</Language>
+                      </Style>
+                      <ZIndex>20</ZIndex>
+                      <CanGrow>true</CanGrow>
+                      <UserSort>
+                        <SortExpression>=Fields!Cajeroa.Value</SortExpression>
+                        <SortExpressionScope>table_Cajeroa</SortExpressionScope>
+                      </UserSort>
+                      <Value>Cajero/a</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="NoLote_Header">
+                      <Style>
+                        <Color>White</Color>
+                        <BackgroundColor>#518ae5</BackgroundColor>
+                        <BorderColor>
+                          <Default>LightGrey</Default>
+                        </BorderColor>
+                        <BorderStyle>
+                          <Default>Solid</Default>
+                        </BorderStyle>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontSize>7pt</FontSize>
+                        <FontWeight>700</FontWeight>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <Language>en-US</Language>
+                      </Style>
+                      <ZIndex>19</ZIndex>
+                      <CanGrow>true</CanGrow>
+                      <UserSort>
+                        <SortExpression>=Fields!NoLote.Value</SortExpression>
+                        <SortExpressionScope>table_Ventas</SortExpressionScope>
+                      </UserSort>
+                      <Value>No. Lote</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="IDDocumento_Header">
+                      <Style>
+                        <Color>White</Color>
+                        <BackgroundColor>#518ae5</BackgroundColor>
+                        <BorderColor>
+                          <Default>LightGrey</Default>
+                        </BorderColor>
+                        <BorderStyle>
+                          <Default>Solid</Default>
+                        </BorderStyle>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontSize>7pt</FontSize>
+                        <FontWeight>700</FontWeight>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <Language>en-US</Language>
+                      </Style>
+                      <ZIndex>18</ZIndex>
+                      <CanGrow>true</CanGrow>
+                      <UserSort>
+                        <SortExpression>=Fields!Tipo.Value</SortExpression>
+                        <SortExpressionScope>table_Ventas</SortExpressionScope>
+                      </UserSort>
+                      <Value>Tipo</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="NoDocumento_Header">
+                      <Style>
+                        <Color>White</Color>
+                        <BackgroundColor>#518ae5</BackgroundColor>
+                        <BorderColor>
+                          <Default>LightGrey</Default>
+                        </BorderColor>
+                        <BorderStyle>
+                          <Default>Solid</Default>
+                        </BorderStyle>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontSize>7pt</FontSize>
+                        <FontWeight>700</FontWeight>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <Language>en-US</Language>
+                      </Style>
+                      <ZIndex>17</ZIndex>
+                      <CanGrow>true</CanGrow>
+                      <UserSort>
+                        <SortExpression>=Fields!NoDocumento.Value</SortExpression>
+                        <SortExpressionScope>table_Ventas</SortExpressionScope>
+                      </UserSort>
+                      <Value>No Documento</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="NombreCliente_Header">
+                      <Style>
+                        <Color>White</Color>
+                        <BackgroundColor>#518ae5</BackgroundColor>
+                        <BorderColor>
+                          <Default>LightGrey</Default>
+                        </BorderColor>
+                        <BorderStyle>
+                          <Default>Solid</Default>
+                        </BorderStyle>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontSize>7pt</FontSize>
+                        <FontWeight>700</FontWeight>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <Language>en-US</Language>
+                      </Style>
+                      <ZIndex>16</ZIndex>
+                      <CanGrow>true</CanGrow>
+                      <UserSort>
+                        <SortExpression>=Fields!NombreCliente.Value</SortExpression>
+                        <SortExpressionScope>table_Ventas</SortExpressionScope>
+                      </UserSort>
+                      <Value>Nombre Cliente</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="TotalDOCAMNT_Header">
+                      <Style>
+                        <Color>White</Color>
+                        <BackgroundColor>#518ae5</BackgroundColor>
+                        <BorderColor>
+                          <Default>LightGrey</Default>
+                        </BorderColor>
+                        <BorderStyle>
+                          <Default>Solid</Default>
+                        </BorderStyle>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontSize>7pt</FontSize>
+                        <FontWeight>700</FontWeight>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <Language>en-US</Language>
+                      </Style>
+                      <ZIndex>15</ZIndex>
+                      <CanGrow>true</CanGrow>
+                      <UserSort>
+                        <SortExpression>=Fields!Facturado_Sum.Value</SortExpression>
+                        <SortExpressionScope>table_Ventas</SortExpressionScope>
+                      </UserSort>
+                      <Value>Facturado</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="TotalPYMTRCVD_Header">
+                      <Style>
+                        <Color>White</Color>
+                        <BackgroundColor>#518ae5</BackgroundColor>
+                        <BorderColor>
+                          <Default>LightGrey</Default>
+                        </BorderColor>
+                        <BorderStyle>
+                          <Default>Solid</Default>
+                        </BorderStyle>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontSize>7pt</FontSize>
+                        <FontWeight>700</FontWeight>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <Language>en-US</Language>
+                      </Style>
+                      <ZIndex>14</ZIndex>
+                      <CanGrow>true</CanGrow>
+                      <UserSort>
+                        <SortExpression>=Fields!Pagado_Sum.Value</SortExpression>
+                        <SortExpressionScope>table_Ventas</SortExpressionScope>
+                      </UserSort>
+                      <Value>Pagado</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+              </TableCells>
+              <Height>0.25in</Height>
+            </TableRow>
+          </TableRows>
+          <RepeatOnNewPage>true</RepeatOnNewPage>
+          <FixedHeader>true</FixedHeader>
+        </Header>
+        <TableColumns>
+          <TableColumn>
+            <Visibility>
+              <Hidden>=Fields!Cajeroa.IsMissing</Hidden>
+            </Visibility>
+            <Width>0.875in</Width>
+          </TableColumn>
+          <TableColumn>
+            <Visibility>
+              <Hidden>=Fields!NoLote.IsMissing</Hidden>
+            </Visibility>
+            <Width>0.875in</Width>
+          </TableColumn>
+          <TableColumn>
+            <Visibility>
+              <Hidden>=Fields!Tipo.IsMissing</Hidden>
+            </Visibility>
+            <Width>0.75in</Width>
+          </TableColumn>
+          <TableColumn>
+            <Visibility>
+              <Hidden>=Fields!NoDocumento.IsMissing</Hidden>
+            </Visibility>
+            <Width>1.125in</Width>
+          </TableColumn>
+          <TableColumn>
+            <Visibility>
+              <Hidden>=Fields!NombreCliente.IsMissing</Hidden>
+            </Visibility>
+            <Width>1.67853in</Width>
+          </TableColumn>
+          <TableColumn>
+            <Visibility>
+              <Hidden>=Fields!Facturado_Sum.IsMissing</Hidden>
+            </Visibility>
+            <Width>0.94647in</Width>
+          </TableColumn>
+          <TableColumn>
+            <Visibility>
+              <Hidden>=Fields!Pagado_Sum.IsMissing</Hidden>
+            </Visibility>
+            <Width>0.75in</Width>
+          </TableColumn>
+        </TableColumns>
+        <Footer>
+          <TableRows>
+            <TableRow>
+              <TableCells>
+                <TableCell>
+                  <ColSpan>5</ColSpan>
+                  <ReportItems>
+                    <Textbox Name="UsuarioEntrada_SubtotalHeader">
+                      <Style>
+                        <BackgroundColor>#c7d9f9</BackgroundColor>
+                        <BorderColor>
+                          <Default>LightGrey</Default>
+                        </BorderColor>
+                        <BorderStyle>
+                          <Default>Solid</Default>
+                        </BorderStyle>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontSize>7pt</FontSize>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                      <ZIndex>13</ZIndex>
+                      <CanGrow>true</CanGrow>
+                      <Value>Total</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="TotalDOCAMNT_Total_2_2_2_2_2_2_2">
+                      <Style>
+                        <BackgroundColor>#c7d9f9</BackgroundColor>
+                        <BorderColor>
+                          <Default>LightGrey</Default>
+                        </BorderColor>
+                        <BorderStyle>
+                          <Default>Solid</Default>
+                        </BorderStyle>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontSize>7pt</FontSize>
+                        <Format>n</Format>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <Language>en-US</Language>
+                      </Style>
+                      <ZIndex>12</ZIndex>
+                      <CanGrow>true</CanGrow>
+                      <Value>=SUM(Fields!Facturado_Sum.Value)</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="TotalPYMTRCVD_Total_2_2_2_2_2_2_2">
+                      <Style>
+                        <BackgroundColor>#c7d9f9</BackgroundColor>
+                        <BorderColor>
+                          <Default>LightGrey</Default>
+                        </BorderColor>
+                        <BorderStyle>
+                          <Default>Solid</Default>
+                        </BorderStyle>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontSize>7pt</FontSize>
+                        <Format>n</Format>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <Language>en-US</Language>
+                      </Style>
+                      <ZIndex>11</ZIndex>
+                      <CanGrow>true</CanGrow>
+                      <Value>=SUM(Fields!Pagado_Sum.Value)</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+              </TableCells>
+              <Height>0.125in</Height>
+            </TableRow>
+          </TableRows>
+        </Footer>
+        <Left>0.25in</Left>
+      </Table>
+      <Textbox Name="textbox2">
+        <Top>0.25in</Top>
+        <Width>2.25in</Width>
+        <Style>
+          <FontSize>11pt</FontSize>
+          <FontWeight>700</FontWeight>
+          <PaddingLeft>3pt</PaddingLeft>
+          <PaddingRight>3pt</PaddingRight>
+          <PaddingTop>3pt</PaddingTop>
+          <PaddingBottom>3pt</PaddingBottom>
+        </Style>
+        <ZIndex>2</ZIndex>
+        <CanGrow>true</CanGrow>
+        <Left>0.25in</Left>
+        <Height>0.25in</Height>
+        <Value>Inversiones Taramaca</Value>
+      </Textbox>
+      <Textbox Name="textbox3">
+        <Top>0.25in</Top>
+        <Width>2in</Width>
+        <Style>
+          <FontSize>8pt</FontSize>
+          <PaddingLeft>3pt</PaddingLeft>
+          <PaddingRight>3pt</PaddingRight>
+          <PaddingTop>3pt</PaddingTop>
+          <PaddingBottom>3pt</PaddingBottom>
+        </Style>
+        <ZIndex>1</ZIndex>
+        <CanGrow>true</CanGrow>
+        <Left>5in</Left>
+        <Height>0.25in</Height>
+        <Value>=NOW</Value>
+      </Textbox>
+      <Textbox Name="textbox9">
+        <Top>1.125in</Top>
+        <Width>6in</Width>
+        <Style>
+          <FontSize>8pt</FontSize>
+          <PaddingLeft>3pt</PaddingLeft>
+          <PaddingRight>3pt</PaddingRight>
+          <PaddingTop>3pt</PaddingTop>
+          <PaddingBottom>3pt</PaddingBottom>
+        </Style>
+        <CanGrow>true</CanGrow>
+        <Left>0.25in</Left>
+        <Height>0.25in</Height>
+        <Value>=  " FECHA :   " +   Format(Parameters!FechaDocumento.value,  "  dd/MMM/yyyy  ")</Value>
+      </Textbox>
+    </ReportItems>
+    <Height>2.625in</Height>
+  </Body>
+  <Language>en-US</Language>
+  <TopMargin>0.5in</TopMargin>
+</Report>

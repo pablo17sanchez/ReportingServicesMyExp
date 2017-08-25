@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DataTransformationsUserConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Configurations>
+    <Configuration>
+      <Name>Development</Name>
+      <Options>
+        <UserIDs>
+          <ConfigurationSetting>
+            <Id>DS-GPHN</Id>
+            <Name>DS-GPHN</Name>
+            <Value xsi:type="xsd:string">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAERhFit/UEkyK9tDKrQThMwAAAAAQAAAARABTAC0ARwBQAEgATgAAAANmAACoAAAAEAAAAID8hATFtDMyJ8foysAD9WEAAAAABIAAAKAAAAAQAAAA/HST19g/EQDZo5qhg+fmcBAAAAAKKXcTuhQfI3wleTuFpeTsFAAAAHzSGzSPWMybatsWajZsGLvGSw0w</Value>
+          </ConfigurationSetting>
+          <ConfigurationSetting>
+            <Id>DTSPalmComSync</Id>
+            <Name>DTSPalmComSync</Name>
+            <Value xsi:type="xsd:string">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAERhFit/UEkyK9tDKrQThMwAAAAAeAAAARABUAFMAUABhAGwAbQBDAG8AbQBTAHkAbgBjAAAAA2YAAKgAAAAQAAAAME5yqBCNBql3MtxK9yUFdAAAAAAEgAAAoAAAABAAAAD+8FCxdQ5Ef5bBQ5Bq4rIlEAAAAOFJH1XNRQKUJUhq2+hdWe0UAAAABFZ3la+A3KDPN/WS4gC3w7LR5o4=</Value>
+          </ConfigurationSetting>
+        </UserIDs>
+        <UserPasswords>
+          <ConfigurationSetting>
+            <Id>DS-GPHN</Id>
+            <Name>DS-GPHN</Name>
+            <Value xsi:type="xsd:string">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAERhFit/UEkyK9tDKrQThMwAAAAAQAAAARABTAC0ARwBQAEgATgAAAANmAACoAAAAEAAAAHEaMoqjUbC6pyuv9pm2x/YAAAAABIAAAKAAAAAQAAAAbNbhJ61hN/JUn1WLr7LVrBgAAABzxAFhVJFio4gem2K2dPw+huuaSTEKdB8UAAAA1viR6xxTW2Q47J1BjR7lfzSeROs=</Value>
+          </ConfigurationSetting>
+          <ConfigurationSetting>
+            <Id>DTSPalmComSync</Id>
+            <Name>DTSPalmComSync</Name>
+            <Value xsi:type="xsd:string">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAERhFit/UEkyK9tDKrQThMwAAAAAeAAAARABUAFMAUABhAGwAbQBDAG8AbQBTAHkAbgBjAAAAA2YAAKgAAAAQAAAAlmyMqv4++vb9ncF54Q8mKAAAAAAEgAAAoAAAABAAAACT0s1tWMmuMhZEPugI3YDnGAAAADowfmkCn3NsEROdmvBxThp6h+BJySC6PRQAAAANvwY1d4MwdHW9Vb5HTZL7t0EKow==</Value>
+          </ConfigurationSetting>
+        </UserPasswords>
+        <OfflineMode>false</OfflineMode>
+      </Options>
+    </Configuration>
+    <Configuration>
+      <Name>1</Name>
+      <Options>
+        <UserIDs />
+        <UserPasswords />
+        <OfflineMode>false</OfflineMode>
+      </Options>
+    </Configuration>
+  </Configurations>
+</DataTransformationsUserConfiguration>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModelUserConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Configurations>
+    <Configuration>
+      <Name>Production</Name>
+      <Platform>Win32</Platform>
+      <Options>
+        <UserIDs>
+          <ConfigurationSetting>
+            <Id>PalmComSyncDS</Id>
+            <Name>PalmComSyncDS</Name>
+            <Value xsi:type="xsd:string">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAACi5qA7ISfkyJjM53t5esrQAAAAAcAAAAUABhAGwAbQBDAG8AbQBTAHkAbgBjAEQAUwAAAANmAACoAAAAEAAAAFlXy5374q/lAjlxc+yJeTsAAAAABIAAAKAAAAAQAAAAKlSd49QXI6rcOqgfj6K5WQgAAAB165QaGipYWRQAAACHiCs+ndE90x+HAI6QW3LI56pT+w==</Value>
+          </ConfigurationSetting>
+        </UserIDs>
+        <UserPasswords>
+          <ConfigurationSetting>
+            <Id>PalmComSyncDS</Id>
+            <Name>PalmComSyncDS</Name>
+            <Value xsi:type="xsd:string">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAACi5qA7ISfkyJjM53t5esrQAAAAAcAAAAUABhAGwAbQBDAG8AbQBTAHkAbgBjAEQAUwAAAANmAACoAAAAEAAAAHE/cbHVu/kfrWy1XFXC82YAAAAABIAAAKAAAAAQAAAAJr3KG3sIck1OWj4NImet/BgAAACvLAZcqXq+KTzbgwRovKOdwgSPCwwCC48UAAAAXdEzjKfDQ2QfGUZTWjtwxqKQM3Q=</Value>
+          </ConfigurationSetting>
+        </UserPasswords>
+      </Options>
+    </Configuration>
+  </Configurations>
+</ModelUserConfiguration>

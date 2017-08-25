@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2005/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <DataSources>
+    <DataSource Name="PalmComSync">
+      <rd:DataSourceID>fdfe407c-f748-4529-866b-655c83d83147</rd:DataSourceID>
+      <DataSourceReference>PalmComSync</DataSourceReference>
+    </DataSource>
+  </DataSources>
+  <rd:ReportID>cf403fa1-7794-47aa-aafe-88d83dafb292</rd:ReportID>
+  <Width>5in</Width>
+  <Body>
+    <Height>0.36in</Height>
+    <ColumnSpacing>0.5in</ColumnSpacing>
+    <ReportItems>
+      <Textbox Name="textbox1">
+        <Style>
+          <FontFamily>Tahoma</FontFamily>
+          <FontSize>20pt</FontSize>
+          <Color>SteelBlue</Color>
+          <FontWeight>Bold</FontWeight>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+        <rd:DefaultName>textbox1</rd:DefaultName>
+        <Value>Proceso Nivel de precio</Value>
+        <CanGrow>true</CanGrow>
+        <Height>0.36in</Height>
+      </Textbox>
+      <Table Name="table1">
+        <Top>0.36in</Top>
+        <Style />
+        <Header>
+          <RepeatOnNewPage>true</RepeatOnNewPage>
+          <TableRows>
+            <TableRow>
+              <TableCells />
+              <Height>0in</Height>
+            </TableRow>
+          </TableRows>
+        </Header>
+        <Details>
+          <TableRows>
+            <TableRow>
+              <TableCells />
+              <Height>0in</Height>
+            </TableRow>
+          </TableRows>
+        </Details>
+        <TableColumns />
+        <DataSetName>DataSet1</DataSetName>
+      </Table>
+    </ReportItems>
+  </Body>
+  <Language>en-US</Language>
+  <LeftMargin>1in</LeftMargin>
+  <RightMargin>1in</RightMargin>
+  <TopMargin>1in</TopMargin>
+  <BottomMargin>1in</BottomMargin>
+  <PageWidth>8.5in</PageWidth>
+  <PageHeight>11in</PageHeight>
+  <DataSets>
+    <DataSet Name="DataSet1">
+      <Fields />
+      <Query>
+        <DataSourceName>PalmComSync</DataSourceName>
+        <CommandType>StoredProcedure</CommandType>
+        <CommandText>sp_nivelPrecio</CommandText>
+        <Timeout>0</Timeout>
+      </Query>
+    </DataSet>
+  </DataSets>
+</Report>

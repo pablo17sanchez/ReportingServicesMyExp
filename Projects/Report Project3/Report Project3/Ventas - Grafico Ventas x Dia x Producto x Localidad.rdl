@@ -1,0 +1,378 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2005/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <DataSources>
+    <DataSource Name="DeployDS">
+      <rd:DataSourceID>82587658-5dd1-4e44-8e90-a414136e0f1c</rd:DataSourceID>
+      <DataSourceReference>DeployDS</DataSourceReference>
+    </DataSource>
+  </DataSources>
+  <InteractiveHeight>29.7cm</InteractiveHeight>
+  <ReportParameters>
+    <ReportParameter Name="iFecha">
+      <DataType>DateTime</DataType>
+      <Prompt>iFecha</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="aFecha">
+      <DataType>DateTime</DataType>
+      <Prompt>aFecha</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Articulo">
+      <DataType>String</DataType>
+      <Prompt>Articulo</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Localidad">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <Prompt>Localidad</Prompt>
+      <ValidValues>
+        <ParameterValues>
+          <ParameterValue>
+            <Value>SANISISDRO</Value>
+            <Label>SANISIDRO</Label>
+          </ParameterValue>
+          <ParameterValue>
+            <Value>BAVARO</Value>
+          </ParameterValue>
+          <ParameterValue>
+            <Value>ROMANA</Value>
+          </ParameterValue>
+        </ParameterValues>
+      </ValidValues>
+    </ReportParameter>
+  </ReportParameters>
+  <rd:DrawGrid>true</rd:DrawGrid>
+  <InteractiveWidth>21cm</InteractiveWidth>
+  <rd:GridSpacing>0.25cm</rd:GridSpacing>
+  <rd:SnapToGrid>true</rd:SnapToGrid>
+  <RightMargin>2.5cm</RightMargin>
+  <LeftMargin>2.5cm</LeftMargin>
+  <BottomMargin>2.5cm</BottomMargin>
+  <rd:ReportID>b68b53cf-a7ba-4c23-9a66-b32da2e38c78</rd:ReportID>
+  <PageWidth>21cm</PageWidth>
+  <DataSets>
+    <DataSet Name="VentasGEASA">
+      <Fields>
+        <Field Name="DOCID">
+          <DataField>DOCID</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CUSTNMBR">
+          <DataField>CUSTNMBR</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="SOPNUMBE">
+          <DataField>SOPNUMBE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DOCDATE">
+          <DataField>DOCDATE</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="SLPRSNID">
+          <DataField>SLPRSNID</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ITEMNMBR">
+          <DataField>ITEMNMBR</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ITEMDESC">
+          <DataField>ITEMDESC</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="LOCNCODE">
+          <DataField>LOCNCODE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="UNITPRCE">
+          <DataField>UNITPRCE</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="QUANTITY">
+          <DataField>QUANTITY</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="XTNDPRCE">
+          <DataField>XTNDPRCE</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>DeployDS</DataSourceName>
+        <CommandText>SELECT [DOCID]
+      ,[CUSTNMBR]
+      ,[SOPNUMBE]
+      ,[DOCDATE]
+      ,[SLPRSNID]
+      ,[ITEMNMBR]
+      ,[ITEMDESC]
+      ,[LOCNCODE]
+      ,[UNITPRCE]
+      ,[QUANTITY]
+      ,[XTNDPRCE]
+  FROM [TWO].[dbo].[vw_VentasGP]
+
+where docdate between @iFecha and @aFecha and LOCNCODE = @Localidad and ITEMNMBR = @Articulo</CommandText>
+        <QueryParameters>
+          <QueryParameter Name="@iFecha">
+            <Value>=Parameters!iFecha.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@aFecha">
+            <Value>=Parameters!aFecha.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@Localidad">
+            <Value>=Parameters!Localidad.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@Articulo">
+            <Value>=Parameters!Articulo.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+      </Query>
+    </DataSet>
+  </DataSets>
+  <Width>18.11905cm</Width>
+  <Body>
+    <ColumnSpacing>1cm</ColumnSpacing>
+    <ReportItems>
+      <Matrix Name="matrix1">
+        <MatrixColumns>
+          <MatrixColumn>
+            <Width>2.53968cm</Width>
+          </MatrixColumn>
+          <MatrixColumn>
+            <Width>2.53968cm</Width>
+          </MatrixColumn>
+          <MatrixColumn>
+            <Width>2.53968cm</Width>
+          </MatrixColumn>
+        </MatrixColumns>
+        <DataSetName>VentasGEASA</DataSetName>
+        <RowGroupings>
+          <RowGrouping>
+            <Width>3.27645cm</Width>
+            <DynamicRows>
+              <Grouping Name="matrix1_LOCNCODE">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!LOCNCODE.Value</GroupExpression>
+                </GroupExpressions>
+              </Grouping>
+              <ReportItems>
+                <Textbox Name="LOCNCODE">
+                  <rd:DefaultName>LOCNCODE</rd:DefaultName>
+                  <Style>
+                    <FontSize>8pt</FontSize>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                  <ZIndex>4</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Value>=Fields!LOCNCODE.Value</Value>
+                </Textbox>
+              </ReportItems>
+            </DynamicRows>
+          </RowGrouping>
+          <RowGrouping>
+            <Width>4.25cm</Width>
+            <DynamicRows>
+              <Grouping Name="matrix1_ITEMNMBR">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!ITEMNMBR.Value</GroupExpression>
+                </GroupExpressions>
+              </Grouping>
+              <ReportItems>
+                <Textbox Name="ITEMNMBR">
+                  <rd:DefaultName>ITEMNMBR</rd:DefaultName>
+                  <Style>
+                    <FontSize>8pt</FontSize>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                  <ZIndex>3</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Value>=Fields!ITEMNMBR.Value &amp; " "&amp;Fields!ITEMDESC.Value</Value>
+                </Textbox>
+              </ReportItems>
+            </DynamicRows>
+          </RowGrouping>
+        </RowGroupings>
+        <Top>1cm</Top>
+        <ColumnGroupings>
+          <ColumnGrouping>
+            <Height>0.63492cm</Height>
+            <DynamicColumns>
+              <Grouping Name="matrix1_DOCDATE">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!DOCDATE.Value</GroupExpression>
+                </GroupExpressions>
+              </Grouping>
+              <ReportItems>
+                <Textbox Name="DOCDATE">
+                  <rd:DefaultName>DOCDATE</rd:DefaultName>
+                  <Style>
+                    <FontSize>8pt</FontSize>
+                    <TextAlign>Center</TextAlign>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                  <ZIndex>8</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Value>=MONtH(Fields!DOCDATE.Value)</Value>
+                </Textbox>
+              </ReportItems>
+            </DynamicColumns>
+          </ColumnGrouping>
+          <ColumnGrouping>
+            <Height>0.63492cm</Height>
+            <StaticColumns>
+              <StaticColumn>
+                <ReportItems>
+                  <Textbox Name="textbox2">
+                    <rd:DefaultName>textbox2</rd:DefaultName>
+                    <Style>
+                      <FontSize>8pt</FontSize>
+                      <TextAlign>Center</TextAlign>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingRight>2pt</PaddingRight>
+                      <PaddingTop>2pt</PaddingTop>
+                      <PaddingBottom>2pt</PaddingBottom>
+                    </Style>
+                    <ZIndex>7</ZIndex>
+                    <CanGrow>true</CanGrow>
+                    <Value>QUANTITY</Value>
+                  </Textbox>
+                </ReportItems>
+              </StaticColumn>
+              <StaticColumn>
+                <ReportItems>
+                  <Textbox Name="textbox4">
+                    <rd:DefaultName>textbox4</rd:DefaultName>
+                    <Style>
+                      <FontSize>8pt</FontSize>
+                      <TextAlign>Center</TextAlign>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingRight>2pt</PaddingRight>
+                      <PaddingTop>2pt</PaddingTop>
+                      <PaddingBottom>2pt</PaddingBottom>
+                    </Style>
+                    <ZIndex>6</ZIndex>
+                    <CanGrow>true</CanGrow>
+                    <Value>UNITPRCE</Value>
+                  </Textbox>
+                </ReportItems>
+              </StaticColumn>
+              <StaticColumn>
+                <ReportItems>
+                  <Textbox Name="textbox3">
+                    <rd:DefaultName>textbox3</rd:DefaultName>
+                    <Style>
+                      <FontSize>8pt</FontSize>
+                      <TextAlign>Center</TextAlign>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingRight>2pt</PaddingRight>
+                      <PaddingTop>2pt</PaddingTop>
+                      <PaddingBottom>2pt</PaddingBottom>
+                    </Style>
+                    <ZIndex>5</ZIndex>
+                    <CanGrow>true</CanGrow>
+                    <Value>XTNDPRCE</Value>
+                  </Textbox>
+                </ReportItems>
+              </StaticColumn>
+            </StaticColumns>
+          </ColumnGrouping>
+        </ColumnGroupings>
+        <Width>15.1455cm</Width>
+        <Corner>
+          <ReportItems>
+            <Textbox Name="textbox1">
+              <rd:DefaultName>textbox1</rd:DefaultName>
+              <Style>
+                <FontSize>8pt</FontSize>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+              <ZIndex>9</ZIndex>
+              <CanGrow>true</CanGrow>
+              <Value />
+            </Textbox>
+          </ReportItems>
+        </Corner>
+        <MatrixRows>
+          <MatrixRow>
+            <Height>0.63492cm</Height>
+            <MatrixCells>
+              <MatrixCell>
+                <ReportItems>
+                  <Textbox Name="QUANTITY">
+                    <rd:DefaultName>QUANTITY</rd:DefaultName>
+                    <Style>
+                      <FontSize>8pt</FontSize>
+                      <TextAlign>Center</TextAlign>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingRight>2pt</PaddingRight>
+                      <PaddingTop>2pt</PaddingTop>
+                      <PaddingBottom>2pt</PaddingBottom>
+                    </Style>
+                    <ZIndex>2</ZIndex>
+                    <CanGrow>true</CanGrow>
+                    <Value>=Sum(Fields!QUANTITY.Value)</Value>
+                  </Textbox>
+                </ReportItems>
+              </MatrixCell>
+              <MatrixCell>
+                <ReportItems>
+                  <Textbox Name="UNITPRCE">
+                    <rd:DefaultName>UNITPRCE</rd:DefaultName>
+                    <Style>
+                      <FontSize>8pt</FontSize>
+                      <TextAlign>Center</TextAlign>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingRight>2pt</PaddingRight>
+                      <PaddingTop>2pt</PaddingTop>
+                      <PaddingBottom>2pt</PaddingBottom>
+                    </Style>
+                    <ZIndex>1</ZIndex>
+                    <CanGrow>true</CanGrow>
+                    <Value>=AVG(Fields!UNITPRCE.Value)</Value>
+                  </Textbox>
+                </ReportItems>
+              </MatrixCell>
+              <MatrixCell>
+                <ReportItems>
+                  <Textbox Name="XTNDPRCE">
+                    <rd:DefaultName>XTNDPRCE</rd:DefaultName>
+                    <Style>
+                      <FontSize>8pt</FontSize>
+                      <TextAlign>Center</TextAlign>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingRight>2pt</PaddingRight>
+                      <PaddingTop>2pt</PaddingTop>
+                      <PaddingBottom>2pt</PaddingBottom>
+                    </Style>
+                    <CanGrow>true</CanGrow>
+                    <Value>=Sum(Fields!XTNDPRCE.Value)</Value>
+                  </Textbox>
+                </ReportItems>
+              </MatrixCell>
+            </MatrixCells>
+          </MatrixRow>
+        </MatrixRows>
+        <Height>1.90476cm</Height>
+        <Left>2cm</Left>
+      </Matrix>
+    </ReportItems>
+    <Height>5cm</Height>
+  </Body>
+  <Language>en-US</Language>
+  <TopMargin>2.5cm</TopMargin>
+  <PageHeight>29.7cm</PageHeight>
+</Report>

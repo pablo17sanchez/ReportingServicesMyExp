@@ -1,0 +1,4283 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2005/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <DataSources>
+    <DataSource Name="DataSourceGPCompany">
+      <DataSourceReference>DataSourceGPCompany</DataSourceReference>
+      <rd:DataSourceID>a5abf260-b82a-4b4a-b612-38afcd07ac7d</rd:DataSourceID>
+    </DataSource>
+  </DataSources>
+  <BottomMargin>0.2in</BottomMargin>
+  <RightMargin>0.2in</RightMargin>
+  <PageWidth>11in</PageWidth>
+  <ReportParameters>
+    <ReportParameter Name="I_iPostingAccounts">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>1</Value>
+        </Values>
+      </DefaultValue>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>Show Posting Accounts:</Prompt>
+      <ValidValues>
+        <ParameterValues>
+          <ParameterValue>
+            <Value>0</Value>
+            <Label>No</Label>
+          </ParameterValue>
+          <ParameterValue>
+            <Value>1</Value>
+            <Label>Yes</Label>
+          </ParameterValue>
+        </ParameterValues>
+      </ValidValues>
+    </ReportParameter>
+    <ReportParameter Name="I_tInactiveAccounts">
+      <DataType>Integer</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>0</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Show Inactive Accounts:</Prompt>
+      <ValidValues>
+        <ParameterValues>
+          <ParameterValue>
+            <Value>0</Value>
+            <Label>No</Label>
+          </ParameterValue>
+          <ParameterValue>
+            <Value>1</Value>
+            <Label>Yes</Label>
+          </ParameterValue>
+        </ParameterValues>
+      </ValidValues>
+    </ReportParameter>
+    <ReportParameter Name="I_tIncludeUnitAccounts">
+      <DataType>Integer</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>0</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Show Unit Accounts:</Prompt>
+      <ValidValues>
+        <ParameterValues>
+          <ParameterValue>
+            <Value>0</Value>
+            <Label>No</Label>
+          </ParameterValue>
+          <ParameterValue>
+            <Value>1</Value>
+            <Label>Yes</Label>
+          </ParameterValue>
+        </ParameterValues>
+      </ValidValues>
+    </ReportParameter>
+    <ReportParameter Name="I_tIncludeZeroBalance">
+      <DataType>Integer</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>0</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Show Zero Balance Accounts:</Prompt>
+      <ValidValues>
+        <ParameterValues>
+          <ParameterValue>
+            <Value>0</Value>
+            <Label>No</Label>
+          </ParameterValue>
+          <ParameterValue>
+            <Value>1</Value>
+            <Label>Yes</Label>
+          </ParameterValue>
+        </ParameterValues>
+      </ValidValues>
+    </ReportParameter>
+    <ReportParameter Name="I_tHistoryYear">
+      <DataType>Integer</DataType>
+      <Prompt>History Year:</Prompt>
+      <ValidValues>
+        <ParameterValues>
+          <ParameterValue>
+            <Value>0</Value>
+            <Label>No</Label>
+          </ParameterValue>
+          <ParameterValue>
+            <Value>1</Value>
+            <Label>Yes</Label>
+          </ParameterValue>
+        </ParameterValues>
+      </ValidValues>
+    </ReportParameter>
+    <ReportParameter Name="I_iYear">
+      <DataType>Integer</DataType>
+      <Prompt>Year:</Prompt>
+      <ValidValues>
+        <DataSetReference>
+          <DataSetName>dsFiscalYearParam</DataSetName>
+          <ValueField>YEAR1</ValueField>
+          <LabelField>YEAR1</LabelField>
+        </DataSetReference>
+      </ValidValues>
+    </ReportParameter>
+    <ReportParameter Name="type">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>1</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Account Ranges:</Prompt>
+      <ValidValues>
+        <ParameterValues>
+          <ParameterValue>
+            <Value>1</Value>
+            <Label>Account</Label>
+          </ParameterValue>
+          <ParameterValue>
+            <Value>2</Value>
+            <Label>Segment</Label>
+          </ParameterValue>
+        </ParameterValues>
+      </ValidValues>
+    </ReportParameter>
+    <ReportParameter Name="actsegmnt">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>1</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Segment ID:</Prompt>
+      <ValidValues>
+        <DataSetReference>
+          <DataSetName>dsSegmentDDL</DataSetName>
+          <ValueField>SGMTNUMB</ValueField>
+          <LabelField>SGMTNAME</LabelField>
+        </DataSetReference>
+      </ValidValues>
+    </ReportParameter>
+    <ReportParameter Name="I_cStartingAccountNumber">
+      <DataType>String</DataType>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>Starting Account Number:</Prompt>
+      <ValidValues>
+        <DataSetReference>
+          <DataSetName>dsAccountOrSegment</DataSetName>
+          <ValueField>begaccstr</ValueField>
+          <LabelField>endaccstr</LabelField>
+        </DataSetReference>
+      </ValidValues>
+    </ReportParameter>
+    <ReportParameter Name="I_cEndingAccountNumber">
+      <DataType>String</DataType>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>Ending Account Number:</Prompt>
+      <ValidValues>
+        <DataSetReference>
+          <DataSetName>dsAccountOrSegment</DataSetName>
+          <ValueField>endaccstr</ValueField>
+          <LabelField>endaccstr</LabelField>
+        </DataSetReference>
+      </ValidValues>
+    </ReportParameter>
+    <ReportParameter Name="I_dStartingDate">
+      <DataType>DateTime</DataType>
+      <DefaultValue>
+        <DataSetReference>
+          <DataSetName>dsDefaultDates</DataSetName>
+          <ValueField>sDate</ValueField>
+        </DataSetReference>
+      </DefaultValue>
+      <Prompt>Starting Date:</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="I_dEndingDate">
+      <DataType>DateTime</DataType>
+      <DefaultValue>
+        <DataSetReference>
+          <DataSetName>dsDefaultDates</DataSetName>
+          <ValueField>eDate</ValueField>
+        </DataSetReference>
+      </DefaultValue>
+      <Prompt>Ending Date:</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="SortBy">
+      <DataType>String</DataType>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>Sort By:</Prompt>
+      <ValidValues>
+        <DataSetReference>
+          <DataSetName>SegmentSort</DataSetName>
+          <ValueField>SegmentName</ValueField>
+          <LabelField>SGMTNAME</LabelField>
+        </DataSetReference>
+      </ValidValues>
+    </ReportParameter>
+    <ReportParameter Name="Grouping">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>ACTNUMST</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Subtotal By:</Prompt>
+      <ValidValues>
+        <ParameterValues>
+          <ParameterValue>
+            <Value>ACTNUMST</Value>
+            <Label>No Subtotal</Label>
+          </ParameterValue>
+          <ParameterValue>
+            <Value>PeriodIndex</Value>
+            <Label>Period</Label>
+          </ParameterValue>
+          <ParameterValue>
+            <Value>MonthIndex</Value>
+            <Label>Month</Label>
+          </ParameterValue>
+        </ParameterValues>
+      </ValidValues>
+    </ReportParameter>
+  </ReportParameters>
+  <rd:DrawGrid>true</rd:DrawGrid>
+  <InteractiveWidth>8.5in</InteractiveWidth>
+  <rd:SnapToGrid>true</rd:SnapToGrid>
+  <Body>
+    <ReportItems>
+      <Textbox Name="tbCompanyName">
+        <RepeatWith>Tbl_Main</RepeatWith>
+        <Left>1.75in</Left>
+        <Top>0.125in</Top>
+        <ZIndex>2</ZIndex>
+        <Visibility>
+          <Hidden>true</Hidden>
+        </Visibility>
+        <Width>0.125in</Width>
+        <Style>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingBottom>2pt</PaddingBottom>
+          <BackgroundColor>Red</BackgroundColor>
+          <Color>Red</Color>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+        </Style>
+        <CanGrow>true</CanGrow>
+        <Height>0.125in</Height>
+        <Value>=First(Fields!CMPNYNAM.Value, "dsCompanyName")</Value>
+      </Textbox>
+      <Textbox Name="textbox2">
+        <RepeatWith>Tbl_Main</RepeatWith>
+        <Left>5.49375in</Left>
+        <Top>0.90625in</Top>
+        <ZIndex>1</ZIndex>
+        <Visibility>
+          <Hidden>true</Hidden>
+        </Visibility>
+        <Width>0.0125in</Width>
+        <Style>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingBottom>2pt</PaddingBottom>
+          <BackgroundColor>Red</BackgroundColor>
+          <Color>Red</Color>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+        </Style>
+        <CanGrow>true</CanGrow>
+        <Height>0.0125in</Height>
+        <Value>=First(Fields!CMPNYNAM.Value, "dsCompanyName")</Value>
+      </Textbox>
+      <Table Name="Tbl_Main">
+        <Footer>
+          <TableRows>
+            <TableRow>
+              <TableCells>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox37">
+                      <rd:DefaultName>textbox37</rd:DefaultName>
+                      <ZIndex>41</ZIndex>
+                      <Style>
+                        <BorderStyle>
+                          <Top>Solid</Top>
+                        </BorderStyle>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontSize>7pt</FontSize>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value />
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox46">
+                      <rd:DefaultName>textbox46</rd:DefaultName>
+                      <ZIndex>40</ZIndex>
+                      <Style>
+                        <BorderStyle>
+                          <Top>Solid</Top>
+                        </BorderStyle>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontSize>7pt</FontSize>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value />
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox50">
+                      <rd:DefaultName>textbox50</rd:DefaultName>
+                      <ZIndex>39</ZIndex>
+                      <Style>
+                        <BorderStyle>
+                          <Top>Solid</Top>
+                        </BorderStyle>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontSize>7pt</FontSize>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value />
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox51">
+                      <rd:DefaultName>textbox51</rd:DefaultName>
+                      <ZIndex>38</ZIndex>
+                      <Style>
+                        <BorderStyle>
+                          <Top>Solid</Top>
+                        </BorderStyle>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontSize>7pt</FontSize>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value />
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox48">
+                      <rd:DefaultName>textbox48</rd:DefaultName>
+                      <ZIndex>37</ZIndex>
+                      <Style>
+                        <BorderStyle>
+                          <Top>Solid</Top>
+                        </BorderStyle>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value />
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="Tot_Lbl_Accounts">
+                      <ZIndex>36</ZIndex>
+                      <Style>
+                        <BorderStyle>
+                          <Top>Solid</Top>
+                        </BorderStyle>
+                        <TextAlign>Right</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontWeight>700</FontWeight>
+                        <FontSize>7pt</FontSize>
+                        <TextDecoration>Underline</TextDecoration>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value>Accounts</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="Tot_Lbl_Begining_Balance">
+                      <ZIndex>35</ZIndex>
+                      <Style>
+                        <BorderStyle>
+                          <Top>Solid</Top>
+                        </BorderStyle>
+                        <TextAlign>Right</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontWeight>700</FontWeight>
+                        <FontSize>7pt</FontSize>
+                        <Format>c</Format>
+                        <TextDecoration>Underline</TextDecoration>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value>Begining Balane</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="Tot_Lbl_Debit">
+                      <ZIndex>34</ZIndex>
+                      <Style>
+                        <BorderStyle>
+                          <Top>Solid</Top>
+                        </BorderStyle>
+                        <TextAlign>Right</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontWeight>700</FontWeight>
+                        <FontSize>7pt</FontSize>
+                        <Format>c</Format>
+                        <TextDecoration>Underline</TextDecoration>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value>Debit</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="Tot_Lbl_Credit">
+                      <ZIndex>33</ZIndex>
+                      <Style>
+                        <BorderStyle>
+                          <Top>Solid</Top>
+                        </BorderStyle>
+                        <TextAlign>Right</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontWeight>700</FontWeight>
+                        <FontSize>7pt</FontSize>
+                        <Format>c</Format>
+                        <TextDecoration>Underline</TextDecoration>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value>Credit</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="Tot_Lbl_Net_Change">
+                      <ZIndex>32</ZIndex>
+                      <Style>
+                        <BorderStyle>
+                          <Top>Solid</Top>
+                        </BorderStyle>
+                        <TextAlign>Right</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontWeight>700</FontWeight>
+                        <FontSize>7pt</FontSize>
+                        <Format>c</Format>
+                        <TextDecoration>Underline</TextDecoration>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value>Net Change</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="Tot_Lbl_Ending_Balance">
+                      <ZIndex>31</ZIndex>
+                      <Style>
+                        <BorderStyle>
+                          <Top>Solid</Top>
+                        </BorderStyle>
+                        <TextAlign>Right</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontWeight>700</FontWeight>
+                        <FontSize>7pt</FontSize>
+                        <Format>c</Format>
+                        <TextDecoration>Underline</TextDecoration>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value>Ending Balance</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+              </TableCells>
+              <Height>0.25in</Height>
+            </TableRow>
+            <TableRow>
+              <TableCells>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox7">
+                      <rd:DefaultName>textbox7</rd:DefaultName>
+                      <ZIndex>51</ZIndex>
+                      <Style>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontSize>7pt</FontSize>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value />
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ColSpan>2</ColSpan>
+                  <ReportItems>
+                    <Textbox Name="Lbl_Grand_Total">
+                      <ZIndex>50</ZIndex>
+                      <Style>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontWeight>700</FontWeight>
+                        <FontSize>7pt</FontSize>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value>Grand Totals:</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox16">
+                      <rd:DefaultName>textbox16</rd:DefaultName>
+                      <ZIndex>49</ZIndex>
+                      <Style>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontSize>7pt</FontSize>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value />
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox39">
+                      <rd:DefaultName>textbox39</rd:DefaultName>
+                      <ZIndex>48</ZIndex>
+                      <Style>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value />
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="Grand_Total_Accounts">
+                      <ZIndex>47</ZIndex>
+                      <Style>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontWeight>700</FontWeight>
+                        <FontSize>7pt</FontSize>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value>=CountDistinct(Fields!ACTNUMST.Value)</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="Grand_Total_Begining_Balance">
+                      <ZIndex>46</ZIndex>
+                      <Style>
+                        <TextAlign>Right</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontWeight>700</FontWeight>
+                        <FontSize>7pt</FontSize>
+                        <Format>c</Format>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value>=Sum(Fields!Beg_Bal.Value)</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="Grand_Total_Debit">
+                      <ZIndex>45</ZIndex>
+                      <Style>
+                        <TextAlign>Right</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontWeight>700</FontWeight>
+                        <FontSize>7pt</FontSize>
+                        <Format>c</Format>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value>=Sum(Fields!DEBITAMT.Value)</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="Grand_Total_Credit">
+                      <ZIndex>44</ZIndex>
+                      <Style>
+                        <TextAlign>Right</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontWeight>700</FontWeight>
+                        <FontSize>7pt</FontSize>
+                        <Format>c</Format>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value>=Sum(Fields!CREDITAMT.Value)</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="Grand_Total_Net_CHange">
+                      <ZIndex>43</ZIndex>
+                      <Style>
+                        <TextAlign>Right</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontWeight>700</FontWeight>
+                        <FontSize>7pt</FontSize>
+                        <Format>c</Format>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value>=Sum(Fields!DEBITAMT.Value)-Sum(Fields!CREDITAMT.Value)</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="Grand_Total_Ending_Balance">
+                      <ZIndex>42</ZIndex>
+                      <Style>
+                        <TextAlign>Right</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontWeight>700</FontWeight>
+                        <FontSize>7pt</FontSize>
+                        <Format>c</Format>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value>=sum(Fields!Beg_Bal.Value)+(Sum(Fields!DEBITAMT.Value)-Sum(Fields!CREDITAMT.Value))</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+              </TableCells>
+              <Height>0.25in</Height>
+            </TableRow>
+            <TableRow>
+              <TableCells>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox4">
+                      <rd:DefaultName>textbox4</rd:DefaultName>
+                      <ZIndex>62</ZIndex>
+                      <Style>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontSize>7pt</FontSize>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value />
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox8">
+                      <rd:DefaultName>textbox8</rd:DefaultName>
+                      <ZIndex>61</ZIndex>
+                      <Style>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontWeight>700</FontWeight>
+                        <FontSize>7pt</FontSize>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value />
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox10">
+                      <rd:DefaultName>textbox10</rd:DefaultName>
+                      <ZIndex>60</ZIndex>
+                      <Style>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontWeight>700</FontWeight>
+                        <FontSize>7pt</FontSize>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value />
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox11">
+                      <rd:DefaultName>textbox11</rd:DefaultName>
+                      <ZIndex>59</ZIndex>
+                      <Style>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontSize>7pt</FontSize>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value />
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox12">
+                      <rd:DefaultName>textbox12</rd:DefaultName>
+                      <ZIndex>58</ZIndex>
+                      <Style>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value />
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox13">
+                      <rd:DefaultName>textbox13</rd:DefaultName>
+                      <ZIndex>57</ZIndex>
+                      <Style>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontWeight>700</FontWeight>
+                        <FontSize>7pt</FontSize>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value />
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox15">
+                      <rd:DefaultName>textbox15</rd:DefaultName>
+                      <ZIndex>56</ZIndex>
+                      <Style>
+                        <TextAlign>Right</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontWeight>700</FontWeight>
+                        <FontSize>7pt</FontSize>
+                        <Format>c</Format>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value />
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox17">
+                      <rd:DefaultName>textbox17</rd:DefaultName>
+                      <ZIndex>55</ZIndex>
+                      <Style>
+                        <TextAlign>Right</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontWeight>700</FontWeight>
+                        <FontSize>7pt</FontSize>
+                        <Format>c</Format>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value />
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox22">
+                      <rd:DefaultName>textbox22</rd:DefaultName>
+                      <ZIndex>54</ZIndex>
+                      <Style>
+                        <TextAlign>Right</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontWeight>700</FontWeight>
+                        <FontSize>7pt</FontSize>
+                        <Format>c</Format>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value />
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox24">
+                      <rd:DefaultName>textbox24</rd:DefaultName>
+                      <ZIndex>53</ZIndex>
+                      <Style>
+                        <TextAlign>Right</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontWeight>700</FontWeight>
+                        <FontSize>7pt</FontSize>
+                        <Format>c</Format>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value />
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox25">
+                      <rd:DefaultName>textbox25</rd:DefaultName>
+                      <ZIndex>52</ZIndex>
+                      <Style>
+                        <TextAlign>Right</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontWeight>700</FontWeight>
+                        <FontSize>7pt</FontSize>
+                        <Format>c</Format>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value />
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+              </TableCells>
+              <Height>0.25in</Height>
+            </TableRow>
+            <TableRow>
+              <TableCells>
+                <TableCell>
+                  <ColSpan>5</ColSpan>
+                  <ReportItems>
+                    <Textbox Name="textbox26">
+                      <rd:DefaultName>textbox26</rd:DefaultName>
+                      <ZIndex>69</ZIndex>
+                      <Style>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontWeight>700</FontWeight>
+                        <FontSize>7pt</FontSize>
+                        <Color>Navy</Color>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value>="Sort By:  " &amp; Parameters!SortBy.Label</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox36">
+                      <rd:DefaultName>textbox36</rd:DefaultName>
+                      <ZIndex>68</ZIndex>
+                      <Style>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontWeight>700</FontWeight>
+                        <FontSize>7pt</FontSize>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value />
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox38">
+                      <rd:DefaultName>textbox38</rd:DefaultName>
+                      <ZIndex>67</ZIndex>
+                      <Style>
+                        <TextAlign>Right</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontWeight>700</FontWeight>
+                        <FontSize>7pt</FontSize>
+                        <Format>c</Format>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value />
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox40">
+                      <rd:DefaultName>textbox40</rd:DefaultName>
+                      <ZIndex>66</ZIndex>
+                      <Style>
+                        <TextAlign>Right</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontWeight>700</FontWeight>
+                        <FontSize>7pt</FontSize>
+                        <Format>c</Format>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value />
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox42">
+                      <rd:DefaultName>textbox42</rd:DefaultName>
+                      <ZIndex>65</ZIndex>
+                      <Style>
+                        <TextAlign>Right</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontWeight>700</FontWeight>
+                        <FontSize>7pt</FontSize>
+                        <Format>c</Format>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value />
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox44">
+                      <rd:DefaultName>textbox44</rd:DefaultName>
+                      <ZIndex>64</ZIndex>
+                      <Style>
+                        <TextAlign>Right</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontWeight>700</FontWeight>
+                        <FontSize>7pt</FontSize>
+                        <Format>c</Format>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value />
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox45">
+                      <rd:DefaultName>textbox45</rd:DefaultName>
+                      <ZIndex>63</ZIndex>
+                      <Style>
+                        <TextAlign>Right</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontWeight>700</FontWeight>
+                        <FontSize>7pt</FontSize>
+                        <Format>c</Format>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value />
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+              </TableCells>
+              <Height>0.25in</Height>
+            </TableRow>
+            <TableRow>
+              <TableCells>
+                <TableCell>
+                  <ColSpan>5</ColSpan>
+                  <ReportItems>
+                    <Textbox Name="textbox58">
+                      <ZIndex>76</ZIndex>
+                      <Style>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontWeight>700</FontWeight>
+                        <FontSize>7pt</FontSize>
+                        <Color>Navy</Color>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value>=Switch( Parameters!type.Value=2,"Account Range By:  " &amp; Parameters!type.Label + " (" + trim(Parameters!actsegmnt.Label) + ") ", Parameters!type.Value=1,"Account Range By:  " &amp; Parameters!type.Label)</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox49">
+                      <rd:DefaultName>textbox49</rd:DefaultName>
+                      <ZIndex>75</ZIndex>
+                      <Style>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontWeight>700</FontWeight>
+                        <FontSize>7pt</FontSize>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value />
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox52">
+                      <rd:DefaultName>textbox52</rd:DefaultName>
+                      <ZIndex>74</ZIndex>
+                      <Style>
+                        <TextAlign>Right</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontWeight>700</FontWeight>
+                        <FontSize>7pt</FontSize>
+                        <Format>c</Format>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value />
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox53">
+                      <rd:DefaultName>textbox53</rd:DefaultName>
+                      <ZIndex>73</ZIndex>
+                      <Style>
+                        <TextAlign>Right</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontWeight>700</FontWeight>
+                        <FontSize>7pt</FontSize>
+                        <Format>c</Format>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value />
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox54">
+                      <rd:DefaultName>textbox54</rd:DefaultName>
+                      <ZIndex>72</ZIndex>
+                      <Style>
+                        <TextAlign>Right</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontWeight>700</FontWeight>
+                        <FontSize>7pt</FontSize>
+                        <Format>c</Format>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value />
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox56">
+                      <rd:DefaultName>textbox56</rd:DefaultName>
+                      <ZIndex>71</ZIndex>
+                      <Style>
+                        <TextAlign>Right</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontWeight>700</FontWeight>
+                        <FontSize>7pt</FontSize>
+                        <Format>c</Format>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value />
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox57">
+                      <rd:DefaultName>textbox57</rd:DefaultName>
+                      <ZIndex>70</ZIndex>
+                      <Style>
+                        <TextAlign>Right</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontWeight>700</FontWeight>
+                        <FontSize>7pt</FontSize>
+                        <Format>c</Format>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value />
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+              </TableCells>
+              <Height>0.25in</Height>
+            </TableRow>
+            <TableRow>
+              <TableCells>
+                <TableCell>
+                  <ColSpan>5</ColSpan>
+                  <ReportItems>
+                    <Textbox Name="textbox67">
+                      <ZIndex>83</ZIndex>
+                      <Style>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontWeight>700</FontWeight>
+                        <FontSize>7pt</FontSize>
+                        <Color>Navy</Color>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value>="Fiscal Year:  " &amp; Parameters!I_iYear.Value</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox59">
+                      <rd:DefaultName>textbox59</rd:DefaultName>
+                      <ZIndex>82</ZIndex>
+                      <Style>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontWeight>700</FontWeight>
+                        <FontSize>7pt</FontSize>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value />
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox60">
+                      <rd:DefaultName>textbox60</rd:DefaultName>
+                      <ZIndex>81</ZIndex>
+                      <Style>
+                        <TextAlign>Right</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontWeight>700</FontWeight>
+                        <FontSize>7pt</FontSize>
+                        <Format>c</Format>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value />
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox61">
+                      <rd:DefaultName>textbox61</rd:DefaultName>
+                      <ZIndex>80</ZIndex>
+                      <Style>
+                        <TextAlign>Right</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontWeight>700</FontWeight>
+                        <FontSize>7pt</FontSize>
+                        <Format>c</Format>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value />
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox64">
+                      <rd:DefaultName>textbox64</rd:DefaultName>
+                      <ZIndex>79</ZIndex>
+                      <Style>
+                        <TextAlign>Right</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontWeight>700</FontWeight>
+                        <FontSize>7pt</FontSize>
+                        <Format>c</Format>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value />
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox65">
+                      <rd:DefaultName>textbox65</rd:DefaultName>
+                      <ZIndex>78</ZIndex>
+                      <Style>
+                        <TextAlign>Right</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontWeight>700</FontWeight>
+                        <FontSize>7pt</FontSize>
+                        <Format>c</Format>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value />
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox66">
+                      <rd:DefaultName>textbox66</rd:DefaultName>
+                      <ZIndex>77</ZIndex>
+                      <Style>
+                        <TextAlign>Right</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontWeight>700</FontWeight>
+                        <FontSize>7pt</FontSize>
+                        <Format>c</Format>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value />
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+              </TableCells>
+              <Height>0.25in</Height>
+            </TableRow>
+            <TableRow>
+              <TableCells>
+                <TableCell>
+                  <ColSpan>11</ColSpan>
+                  <ReportItems>
+                    <Textbox Name="textbox28">
+                      <rd:DefaultName>textbox28</rd:DefaultName>
+                      <ZIndex>84</ZIndex>
+                      <Style>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontWeight>700</FontWeight>
+                        <FontSize>7pt</FontSize>
+                        <Color>Navy</Color>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value>=Switch( Parameters!type.Value=1,"Account From: " + trim(Parameters!I_cStartingAccountNumber.Label) + "  Account To: " + trim(Parameters!I_cEndingAccountNumber.Label), Parameters!type.Value=2, trim(Parameters!actsegmnt.Label) + " From: " + trim(Parameters!I_cStartingAccountNumber.Label) + " " + trim(Parameters!actsegmnt.Label) + " To: " + trim(Parameters!I_cEndingAccountNumber.Label))</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+              </TableCells>
+              <Height>0.25in</Height>
+            </TableRow>
+            <TableRow>
+              <TableCells>
+                <TableCell>
+                  <ColSpan>6</ColSpan>
+                  <ReportItems>
+                    <Textbox Name="textbox76">
+                      <ZIndex>90</ZIndex>
+                      <Style>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontWeight>700</FontWeight>
+                        <FontSize>7pt</FontSize>
+                        <Color>Navy</Color>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value>="From Date:  " &amp; Trim(Parameters!I_dStartingDate.Value) &amp; " To Date: " &amp; Trim(Parameters!I_dEndingDate.Value)</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox71">
+                      <rd:DefaultName>textbox71</rd:DefaultName>
+                      <ZIndex>89</ZIndex>
+                      <Style>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontWeight>700</FontWeight>
+                        <FontSize>7pt</FontSize>
+                        <Color>Navy</Color>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value />
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox72">
+                      <rd:DefaultName>textbox72</rd:DefaultName>
+                      <ZIndex>88</ZIndex>
+                      <Style>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontWeight>700</FontWeight>
+                        <FontSize>7pt</FontSize>
+                        <Color>Navy</Color>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value />
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox73">
+                      <rd:DefaultName>textbox73</rd:DefaultName>
+                      <ZIndex>87</ZIndex>
+                      <Style>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontWeight>700</FontWeight>
+                        <FontSize>7pt</FontSize>
+                        <Color>Navy</Color>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value />
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox74">
+                      <rd:DefaultName>textbox74</rd:DefaultName>
+                      <ZIndex>86</ZIndex>
+                      <Style>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontWeight>700</FontWeight>
+                        <FontSize>7pt</FontSize>
+                        <Color>Navy</Color>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value />
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox75">
+                      <rd:DefaultName>textbox75</rd:DefaultName>
+                      <ZIndex>85</ZIndex>
+                      <Style>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontWeight>700</FontWeight>
+                        <FontSize>7pt</FontSize>
+                        <Color>Navy</Color>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value />
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+              </TableCells>
+              <Height>0.25in</Height>
+            </TableRow>
+            <TableRow>
+              <TableCells>
+                <TableCell>
+                  <ColSpan>6</ColSpan>
+                  <ReportItems>
+                    <Textbox Name="textbox29">
+                      <rd:DefaultName>textbox29</rd:DefaultName>
+                      <ZIndex>96</ZIndex>
+                      <Style>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontWeight>700</FontWeight>
+                        <FontSize>7pt</FontSize>
+                        <Color>Navy</Color>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value>="Show Inactive Accounts:  " &amp; Parameters!I_tInactiveAccounts.Label</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox77">
+                      <rd:DefaultName>textbox77</rd:DefaultName>
+                      <ZIndex>95</ZIndex>
+                      <Style>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontWeight>700</FontWeight>
+                        <FontSize>7pt</FontSize>
+                        <Color>Navy</Color>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value />
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox78">
+                      <rd:DefaultName>textbox78</rd:DefaultName>
+                      <ZIndex>94</ZIndex>
+                      <Style>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontWeight>700</FontWeight>
+                        <FontSize>7pt</FontSize>
+                        <Color>Navy</Color>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value />
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox79">
+                      <rd:DefaultName>textbox79</rd:DefaultName>
+                      <ZIndex>93</ZIndex>
+                      <Style>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontWeight>700</FontWeight>
+                        <FontSize>7pt</FontSize>
+                        <Color>Navy</Color>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value />
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox80">
+                      <rd:DefaultName>textbox80</rd:DefaultName>
+                      <ZIndex>92</ZIndex>
+                      <Style>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontWeight>700</FontWeight>
+                        <FontSize>7pt</FontSize>
+                        <Color>Navy</Color>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value />
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox81">
+                      <rd:DefaultName>textbox81</rd:DefaultName>
+                      <ZIndex>91</ZIndex>
+                      <Style>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontWeight>700</FontWeight>
+                        <FontSize>7pt</FontSize>
+                        <Color>Navy</Color>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value />
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+              </TableCells>
+              <Height>0.25in</Height>
+            </TableRow>
+            <TableRow>
+              <TableCells>
+                <TableCell>
+                  <ColSpan>6</ColSpan>
+                  <ReportItems>
+                    <Textbox Name="textbox33">
+                      <ZIndex>102</ZIndex>
+                      <Style>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontWeight>700</FontWeight>
+                        <FontSize>7pt</FontSize>
+                        <Color>Navy</Color>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value>="Show Unit Accounts:  " &amp; Parameters!I_tIncludeUnitAccounts.Label</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox114">
+                      <rd:DefaultName>textbox114</rd:DefaultName>
+                      <ZIndex>101</ZIndex>
+                      <Style>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontWeight>700</FontWeight>
+                        <FontSize>7pt</FontSize>
+                        <Color>Navy</Color>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value />
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox115">
+                      <rd:DefaultName>textbox115</rd:DefaultName>
+                      <ZIndex>100</ZIndex>
+                      <Style>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontWeight>700</FontWeight>
+                        <FontSize>7pt</FontSize>
+                        <Color>Navy</Color>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value />
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox116">
+                      <rd:DefaultName>textbox116</rd:DefaultName>
+                      <ZIndex>99</ZIndex>
+                      <Style>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontWeight>700</FontWeight>
+                        <FontSize>7pt</FontSize>
+                        <Color>Navy</Color>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value />
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox117">
+                      <rd:DefaultName>textbox117</rd:DefaultName>
+                      <ZIndex>98</ZIndex>
+                      <Style>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontWeight>700</FontWeight>
+                        <FontSize>7pt</FontSize>
+                        <Color>Navy</Color>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value />
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox118">
+                      <rd:DefaultName>textbox118</rd:DefaultName>
+                      <ZIndex>97</ZIndex>
+                      <Style>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontWeight>700</FontWeight>
+                        <FontSize>7pt</FontSize>
+                        <Color>Navy</Color>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value />
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+              </TableCells>
+              <Height>0.25in</Height>
+            </TableRow>
+            <TableRow>
+              <TableCells>
+                <TableCell>
+                  <ColSpan>6</ColSpan>
+                  <ReportItems>
+                    <Textbox Name="textbox34">
+                      <ZIndex>108</ZIndex>
+                      <Style>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontWeight>700</FontWeight>
+                        <FontSize>7pt</FontSize>
+                        <Color>Navy</Color>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value>="Show Zero Balance Accounts:  " &amp; Parameters!I_tIncludeZeroBalance.Label</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox103">
+                      <rd:DefaultName>textbox103</rd:DefaultName>
+                      <ZIndex>107</ZIndex>
+                      <Style>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontWeight>700</FontWeight>
+                        <FontSize>7pt</FontSize>
+                        <Color>Navy</Color>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value />
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox104">
+                      <rd:DefaultName>textbox104</rd:DefaultName>
+                      <ZIndex>106</ZIndex>
+                      <Style>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontWeight>700</FontWeight>
+                        <FontSize>7pt</FontSize>
+                        <Color>Navy</Color>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value />
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox105">
+                      <rd:DefaultName>textbox105</rd:DefaultName>
+                      <ZIndex>105</ZIndex>
+                      <Style>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontWeight>700</FontWeight>
+                        <FontSize>7pt</FontSize>
+                        <Color>Navy</Color>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value />
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox106">
+                      <rd:DefaultName>textbox106</rd:DefaultName>
+                      <ZIndex>104</ZIndex>
+                      <Style>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontWeight>700</FontWeight>
+                        <FontSize>7pt</FontSize>
+                        <Color>Navy</Color>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value />
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox107">
+                      <rd:DefaultName>textbox107</rd:DefaultName>
+                      <ZIndex>103</ZIndex>
+                      <Style>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontWeight>700</FontWeight>
+                        <FontSize>7pt</FontSize>
+                        <Color>Navy</Color>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value />
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+              </TableCells>
+              <Height>0.25in</Height>
+            </TableRow>
+            <TableRow>
+              <TableCells>
+                <TableCell>
+                  <ColSpan>6</ColSpan>
+                  <ReportItems>
+                    <Textbox Name="textbox47">
+                      <ZIndex>114</ZIndex>
+                      <Style>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontWeight>700</FontWeight>
+                        <FontSize>7pt</FontSize>
+                        <Color>Navy</Color>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value>="Show Posting Accounts:  " &amp; Parameters!I_iPostingAccounts.Label</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox92">
+                      <rd:DefaultName>textbox92</rd:DefaultName>
+                      <ZIndex>113</ZIndex>
+                      <Style>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontWeight>700</FontWeight>
+                        <FontSize>7pt</FontSize>
+                        <Color>Navy</Color>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value />
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox93">
+                      <rd:DefaultName>textbox93</rd:DefaultName>
+                      <ZIndex>112</ZIndex>
+                      <Style>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontWeight>700</FontWeight>
+                        <FontSize>7pt</FontSize>
+                        <Color>Navy</Color>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value />
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox94">
+                      <rd:DefaultName>textbox94</rd:DefaultName>
+                      <ZIndex>111</ZIndex>
+                      <Style>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontWeight>700</FontWeight>
+                        <FontSize>7pt</FontSize>
+                        <Color>Navy</Color>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value />
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox95">
+                      <rd:DefaultName>textbox95</rd:DefaultName>
+                      <ZIndex>110</ZIndex>
+                      <Style>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontWeight>700</FontWeight>
+                        <FontSize>7pt</FontSize>
+                        <Color>Navy</Color>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value />
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox96">
+                      <rd:DefaultName>textbox96</rd:DefaultName>
+                      <ZIndex>109</ZIndex>
+                      <Style>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontWeight>700</FontWeight>
+                        <FontSize>7pt</FontSize>
+                        <Color>Navy</Color>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value />
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+              </TableCells>
+              <Height>0.25in</Height>
+            </TableRow>
+          </TableRows>
+        </Footer>
+        <DataSetName>Proc</DataSetName>
+        <TableGroups>
+          <TableGroup>
+            <Footer>
+              <TableRows>
+                <TableRow>
+                  <TableCells>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="textbox19">
+                          <rd:DefaultName>textbox19</rd:DefaultName>
+                          <ZIndex>30</ZIndex>
+                          <Style>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingBottom>2pt</PaddingBottom>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                          </Style>
+                          <CanGrow>true</CanGrow>
+                          <Value />
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="textbox20">
+                          <rd:DefaultName>textbox20</rd:DefaultName>
+                          <ZIndex>29</ZIndex>
+                          <Style>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingBottom>2pt</PaddingBottom>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                          </Style>
+                          <CanGrow>true</CanGrow>
+                          <Value />
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="textbox27">
+                          <rd:DefaultName>textbox27</rd:DefaultName>
+                          <ZIndex>28</ZIndex>
+                          <Style>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingBottom>2pt</PaddingBottom>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                          </Style>
+                          <CanGrow>true</CanGrow>
+                          <Value />
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="textbox31">
+                          <rd:DefaultName>textbox31</rd:DefaultName>
+                          <ZIndex>27</ZIndex>
+                          <Style>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingBottom>2pt</PaddingBottom>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                          </Style>
+                          <CanGrow>true</CanGrow>
+                          <Value />
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="textbox32">
+                          <rd:DefaultName>textbox32</rd:DefaultName>
+                          <ZIndex>26</ZIndex>
+                          <Style>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingBottom>2pt</PaddingBottom>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                          </Style>
+                          <CanGrow>true</CanGrow>
+                          <Value />
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="Lbl_Totals">
+                          <ZIndex>25</ZIndex>
+                          <Style>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingBottom>2pt</PaddingBottom>
+                            <FontFamily>Tahoma</FontFamily>
+                            <FontWeight>700</FontWeight>
+                            <FontSize>7pt</FontSize>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                          </Style>
+                          <CanGrow>true</CanGrow>
+                          <Value>Totals:</Value>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="textbox35">
+                          <rd:DefaultName>textbox35</rd:DefaultName>
+                          <ZIndex>24</ZIndex>
+                          <Style>
+                            <BorderStyle>
+                              <Top>Solid</Top>
+                            </BorderStyle>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingBottom>2pt</PaddingBottom>
+                            <BorderColor>
+                              <Default>DarkGray</Default>
+                            </BorderColor>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                          </Style>
+                          <CanGrow>true</CanGrow>
+                          <Value />
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="Tot_DEBIT">
+                          <ZIndex>23</ZIndex>
+                          <Style>
+                            <BorderStyle>
+                              <Top>Solid</Top>
+                            </BorderStyle>
+                            <TextAlign>Right</TextAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingBottom>2pt</PaddingBottom>
+                            <FontFamily>Tahoma</FontFamily>
+                            <FontSize>7pt</FontSize>
+                            <Format>c</Format>
+                            <BorderColor>
+                              <Default>DarkGray</Default>
+                            </BorderColor>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                          </Style>
+                          <CanGrow>true</CanGrow>
+                          <Value>=Iif(Parameters!Grouping.Value="ACTNUMST", "", iif(Fields!ACCTTYPE.Value = 2, Format(Sum(Fields!DEBITAMTD.Value), "N"), Format(Sum(Fields!DEBITAMTD.Value), "C")))</Value>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="Tot_CREDIT">
+                          <ZIndex>22</ZIndex>
+                          <Style>
+                            <BorderStyle>
+                              <Top>Solid</Top>
+                            </BorderStyle>
+                            <TextAlign>Right</TextAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingBottom>2pt</PaddingBottom>
+                            <FontFamily>Tahoma</FontFamily>
+                            <FontSize>7pt</FontSize>
+                            <Format>c</Format>
+                            <BorderColor>
+                              <Default>DarkGray</Default>
+                            </BorderColor>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                          </Style>
+                          <CanGrow>true</CanGrow>
+                          <Value>=Iif(Parameters!Grouping.Value="ACTNUMST", "", iif(Fields!ACCTTYPE.Value = 2, Format(Sum(Fields!CRDTAMNTD.Value), "N"), Format(Sum(Fields!CRDTAMNTD.Value), "C")))</Value>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="Tot_NETCHANGE">
+                          <ZIndex>21</ZIndex>
+                          <Style>
+                            <BorderStyle>
+                              <Top>Solid</Top>
+                            </BorderStyle>
+                            <TextAlign>Right</TextAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingBottom>2pt</PaddingBottom>
+                            <FontFamily>Tahoma</FontFamily>
+                            <FontSize>7pt</FontSize>
+                            <Format>c</Format>
+                            <BorderColor>
+                              <Default>DarkGray</Default>
+                            </BorderColor>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                          </Style>
+                          <CanGrow>true</CanGrow>
+                          <Value>=Iif(Parameters!Grouping.Value="ACTNUMST", "", iif(Fields!ACCTTYPE.Value = 2, Format(Sum(Fields!DEBITAMTD.Value)-Sum(Fields!CRDTAMNTD.Value), "N"), Format(Sum(Fields!DEBITAMTD.Value)-Sum(Fields!CRDTAMNTD.Value), "C")))</Value>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="Tot_ENDINGBAL">
+                          <ZIndex>20</ZIndex>
+                          <Style>
+                            <BorderStyle>
+                              <Top>Solid</Top>
+                            </BorderStyle>
+                            <TextAlign>Right</TextAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingBottom>2pt</PaddingBottom>
+                            <FontFamily>Tahoma</FontFamily>
+                            <FontSize>7pt</FontSize>
+                            <Format>C</Format>
+                            <BorderColor>
+                              <Default>DarkGray</Default>
+                            </BorderColor>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                          </Style>
+                          <CanGrow>true</CanGrow>
+                          <Value>=Iif(Parameters!Grouping.Value="ACTNUMST", "", iif(Fields!ACCTTYPE.Value = 2, Format((Sum(Fields!DEBITAMTD.Value)-Sum(Fields!CRDTAMNTD.Value)) + Fields!Beg_Bal.Value, "N"), Format((Sum(Fields!DEBITAMTD.Value)-Sum(Fields!CRDTAMNTD.Value)) + Fields!BGNGBAL.Value, "C")))</Value>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                  </TableCells>
+                  <Height>0.25in</Height>
+                  <Visibility>
+                    <Hidden>=Iif(Parameters!Grouping.Value&lt;&gt;"ACTNUMST", false, true)</Hidden>
+                  </Visibility>
+                </TableRow>
+              </TableRows>
+            </Footer>
+            <Header>
+              <TableRows>
+                <TableRow>
+                  <TableCells>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="ACTIVE">
+                          <rd:DefaultName>ACTIVE</rd:DefaultName>
+                          <ZIndex>123</ZIndex>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingBottom>2pt</PaddingBottom>
+                            <FontFamily>Tahoma</FontFamily>
+                            <FontSize>7pt</FontSize>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                          </Style>
+                          <CanGrow>true</CanGrow>
+                          <Value>=Switch( Fields!ACTIVE.Value="0","X", Fields!ACTIVE.Value="1", "")</Value>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ColSpan>2</ColSpan>
+                      <ReportItems>
+                        <Textbox Name="ACTNUMST">
+                          <ZIndex>122</ZIndex>
+                          <Style>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingBottom>2pt</PaddingBottom>
+                            <FontFamily>Tahoma</FontFamily>
+                            <FontSize>7pt</FontSize>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                          </Style>
+                          <CanGrow>true</CanGrow>
+                          <Value>=Fields!ACTNUMST.Value</Value>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ColSpan>2</ColSpan>
+                      <ReportItems>
+                        <Textbox Name="ACTDESCR">
+                          <rd:DefaultName>ACTDESCR</rd:DefaultName>
+                          <ZIndex>121</ZIndex>
+                          <Style>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingBottom>2pt</PaddingBottom>
+                            <FontFamily>Tahoma</FontFamily>
+                            <FontSize>7pt</FontSize>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                          </Style>
+                          <CanGrow>true</CanGrow>
+                          <Value>=First(Fields!ACTDESCR.Value)</Value>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="textbox9">
+                          <rd:DefaultName>textbox9</rd:DefaultName>
+                          <ZIndex>120</ZIndex>
+                          <Style>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingBottom>2pt</PaddingBottom>
+                            <FontFamily>Tahoma</FontFamily>
+                            <FontSize>7pt</FontSize>
+                            <Format>c</Format>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                          </Style>
+                          <CanGrow>true</CanGrow>
+                          <Value>=Iif(Parameters!Grouping.Value="ACTNUMST", "", iif(Fields!ACCTTYPE.Value = 2, Format(Sum(Fields!Beg_Bal.Value), "N"), Format(Sum(Fields!Beg_Bal.Value), "C")))</Value>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="BEGINING_BAL">
+                          <ZIndex>119</ZIndex>
+                          <Style>
+                            <TextAlign>Right</TextAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingBottom>2pt</PaddingBottom>
+                            <FontFamily>Tahoma</FontFamily>
+                            <FontSize>7pt</FontSize>
+                            <Format>c</Format>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                          </Style>
+                          <CanGrow>true</CanGrow>
+                          <Value>=Iif(Parameters!Grouping.Value&lt;&gt;"ACTNUMST", "", iif(Fields!ACCTTYPE.Value = 2, Format(Sum(Fields!Beg_Bal.Value), "N"), Format(Sum(Fields!Beg_Bal.Value), "C")))</Value>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="DEBIT">
+                          <ZIndex>118</ZIndex>
+                          <Style>
+                            <TextAlign>Right</TextAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingBottom>2pt</PaddingBottom>
+                            <FontFamily>Tahoma</FontFamily>
+                            <FontSize>7pt</FontSize>
+                            <Format>c</Format>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                          </Style>
+                          <CanGrow>true</CanGrow>
+                          <Value>=Iif(Parameters!Grouping.Value&lt;&gt;"ACTNUMST", "", iif(Fields!ACCTTYPE.Value = 2, Format(Sum(Fields!DEBITAMTD.Value), "N"), Format(Sum(Fields!DEBITAMTD.Value), "C")))</Value>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="CREDIT">
+                          <ZIndex>117</ZIndex>
+                          <Style>
+                            <TextAlign>Right</TextAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingBottom>2pt</PaddingBottom>
+                            <FontFamily>Tahoma</FontFamily>
+                            <FontSize>7pt</FontSize>
+                            <Format>c</Format>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                          </Style>
+                          <CanGrow>true</CanGrow>
+                          <Value>=Iif(Parameters!Grouping.Value&lt;&gt;"ACTNUMST", "", iif(Fields!ACCTTYPE.Value = 2, Format(Sum(Fields!CRDTAMNTD.Value), "N"), Format(Sum(Fields!CRDTAMNTD.Value), "C")))</Value>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="NETCHANGE">
+                          <ZIndex>116</ZIndex>
+                          <Style>
+                            <TextAlign>Right</TextAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingBottom>2pt</PaddingBottom>
+                            <FontFamily>Tahoma</FontFamily>
+                            <FontSize>7pt</FontSize>
+                            <Format>c</Format>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                          </Style>
+                          <CanGrow>true</CanGrow>
+                          <Value>=Iif(Parameters!Grouping.Value&lt;&gt;"ACTNUMST", "", iif(Fields!ACCTTYPE.Value = 2, Format(Sum(Fields!DEBITAMTD.Value)-Sum(Fields!CRDTAMNTD.Value), "N"), Format(Sum(Fields!DEBITAMTD.Value)-Sum(Fields!CRDTAMNTD.Value), "C")))</Value>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="ENDINGBAL">
+                          <ZIndex>115</ZIndex>
+                          <Style>
+                            <TextAlign>Right</TextAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingBottom>2pt</PaddingBottom>
+                            <FontFamily>Tahoma</FontFamily>
+                            <FontSize>7pt</FontSize>
+                            <Format>c</Format>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                          </Style>
+                          <CanGrow>true</CanGrow>
+                          <Value>=Iif(Parameters!Grouping.Value&lt;&gt;"ACTNUMST", "", iif(Fields!ACCTTYPE.Value = 2, Format((Sum(Fields!DEBITAMTD.Value)-Sum(Fields!CRDTAMNTD.Value)) + sum(Fields!Beg_Bal.Value), "N"), Format((Sum(Fields!DEBITAMTD.Value)-Sum(Fields!CRDTAMNTD.Value)) + sum(Fields!Beg_Bal.Value), "C")))</Value>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                  </TableCells>
+                  <Height>0.2in</Height>
+                </TableRow>
+              </TableRows>
+            </Header>
+            <Sorting>
+              <SortBy>
+                <SortExpression>=Fields(Parameters!SortBy.Value).Value</SortExpression>
+                <Direction>Ascending</Direction>
+              </SortBy>
+              <SortBy>
+                <SortExpression>=Fields!ACTNUMST.Value</SortExpression>
+                <Direction>Ascending</Direction>
+              </SortBy>
+            </Sorting>
+            <Grouping Name="AccountNumber">
+              <GroupExpressions>
+                <GroupExpression>=Fields!ACTNUMST.Value</GroupExpression>
+              </GroupExpressions>
+            </Grouping>
+          </TableGroup>
+          <TableGroup>
+            <Footer>
+              <TableRows>
+                <TableRow>
+                  <TableCells>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="textbox83">
+                          <rd:DefaultName>textbox83</rd:DefaultName>
+                          <ZIndex>19</ZIndex>
+                          <Style>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingBottom>2pt</PaddingBottom>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                          </Style>
+                          <CanGrow>true</CanGrow>
+                          <Value />
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="textbox84">
+                          <rd:DefaultName>textbox84</rd:DefaultName>
+                          <ZIndex>18</ZIndex>
+                          <Style>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingBottom>2pt</PaddingBottom>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                          </Style>
+                          <CanGrow>true</CanGrow>
+                          <Value />
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="textbox85">
+                          <rd:DefaultName>textbox85</rd:DefaultName>
+                          <ZIndex>17</ZIndex>
+                          <Style>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingBottom>2pt</PaddingBottom>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                          </Style>
+                          <CanGrow>true</CanGrow>
+                          <Value />
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="textbox86">
+                          <rd:DefaultName>textbox86</rd:DefaultName>
+                          <ZIndex>16</ZIndex>
+                          <Style>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingBottom>2pt</PaddingBottom>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                          </Style>
+                          <CanGrow>true</CanGrow>
+                          <Value />
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ColSpan>2</ColSpan>
+                      <ReportItems>
+                        <Textbox Name="Period_Month_Switch">
+                          <ZIndex>15</ZIndex>
+                          <Style>
+                            <TextAlign>Right</TextAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingBottom>2pt</PaddingBottom>
+                            <FontFamily>Tahoma</FontFamily>
+                            <FontSize>7pt</FontSize>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                          </Style>
+                          <CanGrow>true</CanGrow>
+                          <Value>=Switch( Parameters!Grouping.Value="ACTNUMST","", Parameters!Grouping.Value="PeriodIndex", "Period " &amp; Fields!PeriodIndex.Value &amp; ": ", Parameters!Grouping.Value="MonthIndex", Fields!MonthField.Value &amp; ": ") </Value>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="Tot_Grp_BEGINGBAL">
+                          <ZIndex>14</ZIndex>
+                          <Style>
+                            <TextAlign>Right</TextAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingBottom>2pt</PaddingBottom>
+                            <FontFamily>Tahoma</FontFamily>
+                            <FontSize>7pt</FontSize>
+                            <Format>c</Format>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                          </Style>
+                          <CanGrow>true</CanGrow>
+                          <Value />
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="Tot_Grp_DEBIT">
+                          <ZIndex>13</ZIndex>
+                          <Style>
+                            <TextAlign>Right</TextAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingBottom>2pt</PaddingBottom>
+                            <FontFamily>Tahoma</FontFamily>
+                            <FontSize>7pt</FontSize>
+                            <Format>c</Format>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                          </Style>
+                          <CanGrow>true</CanGrow>
+                          <Value>=Iif(Parameters!Grouping.Value="ACTNUMST", "", iif(Fields!ACCTTYPE.Value = 2, Format(Sum(Fields!DEBITAMTD.Value), "N"), Format(Sum(Fields!DEBITAMTD.Value), "C")))</Value>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="Tot_Grp_CREDIT">
+                          <ZIndex>12</ZIndex>
+                          <Style>
+                            <TextAlign>Right</TextAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingBottom>2pt</PaddingBottom>
+                            <FontFamily>Tahoma</FontFamily>
+                            <FontSize>7pt</FontSize>
+                            <Format>c</Format>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                          </Style>
+                          <CanGrow>true</CanGrow>
+                          <Value>=Iif(Parameters!Grouping.Value="ACTNUMST", "", iif(Fields!ACCTTYPE.Value = 2, Format(Sum(Fields!CRDTAMNTD.Value), "N"), Format(Sum(Fields!CRDTAMNTD.Value), "C")))</Value>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="Tot_Grp_NETCHANGE">
+                          <ZIndex>11</ZIndex>
+                          <Style>
+                            <TextAlign>Right</TextAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingBottom>2pt</PaddingBottom>
+                            <FontFamily>Tahoma</FontFamily>
+                            <FontSize>7pt</FontSize>
+                            <Format>c</Format>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                          </Style>
+                          <CanGrow>true</CanGrow>
+                          <Value>=Iif(Parameters!Grouping.Value="ACTNUMST", "", iif(Fields!ACCTTYPE.Value = 2, Format(Sum(Fields!DEBITAMTD.Value)-Sum(Fields!CRDTAMNTD.Value), "N"), Format(Sum(Fields!DEBITAMTD.Value)-Sum(Fields!CRDTAMNTD.Value), "C")))</Value>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="Tot_Grp_ENDINGBAL">
+                          <ZIndex>10</ZIndex>
+                          <Style>
+                            <TextAlign>Right</TextAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingBottom>2pt</PaddingBottom>
+                            <FontFamily>Tahoma</FontFamily>
+                            <FontSize>7pt</FontSize>
+                            <Format>c</Format>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                          </Style>
+                          <CanGrow>true</CanGrow>
+                          <Value>=Iif(Parameters!Grouping.Value="ACTNUMST", "", iif(Fields!ACCTTYPE.Value = 2, Format(RunningValue(((Fields!DEBITAMTD.Value - Fields!CRDTAMNTD.Value) + Fields!Beg_Bal.Value), Sum, "AccountNumber"), "N"), Format(RunningValue(((Fields!DEBITAMTD.Value - Fields!CRDTAMNTD.Value) + Fields!Beg_Bal.Value), Sum, "AccountNumber"), "C")))</Value>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                  </TableCells>
+                  <Height>0.15in</Height>
+                  <Visibility>
+                    <Hidden>=Iif(Parameters!Grouping.Value&lt;&gt;"ACTNUMST", false, true)</Hidden>
+                  </Visibility>
+                </TableRow>
+              </TableRows>
+            </Footer>
+            <Sorting>
+              <SortBy>
+                <SortExpression>=Fields(Parameters!SortBy.Value).Value</SortExpression>
+                <Direction>Ascending</Direction>
+              </SortBy>
+              <SortBy>
+                <SortExpression>=Fields!TRXDATE.Value</SortExpression>
+                <Direction>Ascending</Direction>
+              </SortBy>
+            </Sorting>
+            <Grouping Name="table1_Group2">
+              <GroupExpressions>
+                <GroupExpression>=Fields(Parameters!Grouping.Value).Value</GroupExpression>
+              </GroupExpressions>
+            </Grouping>
+          </TableGroup>
+        </TableGroups>
+        <Width>10.25in</Width>
+        <Details>
+          <TableRows>
+            <TableRow>
+              <TableCells>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="TRXDATE">
+                      <rd:DefaultName>TRXDATE</rd:DefaultName>
+                      <ZIndex>9</ZIndex>
+                      <Style>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <LineHeight>15pt</LineHeight>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontSize>7pt</FontSize>
+                        <VerticalAlign>Middle</VerticalAlign>
+                        <Format>d</Format>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value>=Fields!TRXDATE.Value</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="JRNENTRY">
+                      <rd:DefaultName>JRNENTRY</rd:DefaultName>
+                      <ZIndex>8</ZIndex>
+                      <Style>
+                        <TextAlign>Right</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <LineHeight>15pt</LineHeight>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontSize>7pt</FontSize>
+                        <VerticalAlign>Middle</VerticalAlign>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value>=Fields!JRNENTRY.Value</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="ORTRXSRC">
+                      <rd:DefaultName>ORTRXSRC</rd:DefaultName>
+                      <ZIndex>7</ZIndex>
+                      <Style>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontSize>7pt</FontSize>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value>=Fields!ORTRXSRC.Value</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="DSCRIPTN">
+                      <rd:DefaultName>DSCRIPTN</rd:DefaultName>
+                      <ZIndex>6</ZIndex>
+                      <Style>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <LineHeight>15pt</LineHeight>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontSize>7pt</FontSize>
+                        <VerticalAlign>Middle</VerticalAlign>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value>=Fields!DSCRIPTN.Value</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="ORDOCNUM">
+                      <rd:DefaultName>ORDOCNUM</rd:DefaultName>
+                      <ZIndex>5</ZIndex>
+                      <Style>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <LineHeight>15pt</LineHeight>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontSize>7pt</FontSize>
+                        <VerticalAlign>Middle</VerticalAlign>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value>=Fields!ORDOCNUM.Value</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ColSpan>2</ColSpan>
+                  <ReportItems>
+                    <Textbox Name="ORMSTRNM">
+                      <rd:DefaultName>ORMSTRNM</rd:DefaultName>
+                      <ZIndex>4</ZIndex>
+                      <Style>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <LineHeight>15pt</LineHeight>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontSize>7pt</FontSize>
+                        <VerticalAlign>Middle</VerticalAlign>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value>=Fields!ORMSTRNM.Value</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox23">
+                      <rd:DefaultName>textbox23</rd:DefaultName>
+                      <ZIndex>3</ZIndex>
+                      <Style>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <LineHeight>15pt</LineHeight>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <VerticalAlign>Middle</VerticalAlign>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value />
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="DEBITAMTD">
+                      <rd:DefaultName>DEBITAMTD</rd:DefaultName>
+                      <ZIndex>2</ZIndex>
+                      <Style>
+                        <TextAlign>Right</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <LineHeight>15pt</LineHeight>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontSize>7pt</FontSize>
+                        <VerticalAlign>Middle</VerticalAlign>
+                        <Format>c</Format>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value>=Fields!DEBITAMTD.Value</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="CRDTAMNTD">
+                      <rd:DefaultName>CRDTAMNTD</rd:DefaultName>
+                      <ZIndex>1</ZIndex>
+                      <Style>
+                        <TextAlign>Right</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <LineHeight>15pt</LineHeight>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontSize>7pt</FontSize>
+                        <VerticalAlign>Middle</VerticalAlign>
+                        <Format>c</Format>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value>=Fields!CRDTAMNTD.Value</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox70">
+                      <rd:DefaultName>textbox70</rd:DefaultName>
+                      <Style>
+                        <TextAlign>Right</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <LineHeight>15pt</LineHeight>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontSize>7pt</FontSize>
+                        <VerticalAlign>Middle</VerticalAlign>
+                        <Format>c</Format>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value />
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+              </TableCells>
+              <Height>0.15in</Height>
+              <Visibility>
+                <Hidden>true</Hidden>
+              </Visibility>
+            </TableRow>
+          </TableRows>
+          <Sorting>
+            <SortBy>
+              <SortExpression>=Fields(Parameters!SortBy.Value).Value</SortExpression>
+              <Direction>Ascending</Direction>
+            </SortBy>
+            <SortBy>
+              <SortExpression>=Fields!ACTNUMST.Value</SortExpression>
+              <Direction>Descending</Direction>
+            </SortBy>
+            <SortBy>
+              <SortExpression>=Fields!TRXDATE.Value</SortExpression>
+              <Direction>Ascending</Direction>
+            </SortBy>
+          </Sorting>
+        </Details>
+        <Header>
+          <TableRows>
+            <TableRow>
+              <TableCells>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox43">
+                      <rd:DefaultName>textbox43</rd:DefaultName>
+                      <ZIndex>144</ZIndex>
+                      <Style>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value />
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox21">
+                      <rd:DefaultName>textbox21</rd:DefaultName>
+                      <ZIndex>143</ZIndex>
+                      <Style>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontSize>7pt</FontSize>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value />
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox1">
+                      <rd:DefaultName>textbox1</rd:DefaultName>
+                      <ZIndex>142</ZIndex>
+                      <Style>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value />
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox3">
+                      <rd:DefaultName>textbox3</rd:DefaultName>
+                      <ZIndex>141</ZIndex>
+                      <Style>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value />
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox41">
+                      <rd:DefaultName>textbox41</rd:DefaultName>
+                      <ZIndex>140</ZIndex>
+                      <Style>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontSize>7pt</FontSize>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value />
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox62">
+                      <rd:DefaultName>textbox62</rd:DefaultName>
+                      <ZIndex>139</ZIndex>
+                      <Style>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontSize>7pt</FontSize>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value />
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox5">
+                      <rd:DefaultName>textbox5</rd:DefaultName>
+                      <ZIndex>138</ZIndex>
+                      <Style>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value />
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox30">
+                      <rd:DefaultName>textbox30</rd:DefaultName>
+                      <ZIndex>137</ZIndex>
+                      <Style>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value />
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox6">
+                      <rd:DefaultName>textbox6</rd:DefaultName>
+                      <ZIndex>136</ZIndex>
+                      <Style>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value />
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox18">
+                      <rd:DefaultName>textbox18</rd:DefaultName>
+                      <ZIndex>135</ZIndex>
+                      <Style>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value />
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox14">
+                      <rd:DefaultName>textbox14</rd:DefaultName>
+                      <ZIndex>134</ZIndex>
+                      <Style>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value />
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+              </TableCells>
+              <Height>0.25in</Height>
+            </TableRow>
+            <TableRow>
+              <TableCells>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="Lbl_Inactive">
+                      <ZIndex>133</ZIndex>
+                      <Style>
+                        <BorderStyle>
+                          <Bottom>Solid</Bottom>
+                          <Top>Solid</Top>
+                        </BorderStyle>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontWeight>700</FontWeight>
+                        <FontSize>7pt</FontSize>
+                        <VerticalAlign>Middle</VerticalAlign>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value>Inactive</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ColSpan>2</ColSpan>
+                  <ReportItems>
+                    <Textbox Name="Lbl_Account">
+                      <ZIndex>132</ZIndex>
+                      <Style>
+                        <BorderStyle>
+                          <Bottom>Solid</Bottom>
+                          <Top>Solid</Top>
+                        </BorderStyle>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontWeight>700</FontWeight>
+                        <FontSize>7pt</FontSize>
+                        <VerticalAlign>Middle</VerticalAlign>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value>Account</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="Lbl_Description">
+                      <ZIndex>131</ZIndex>
+                      <Style>
+                        <BorderStyle>
+                          <Bottom>Solid</Bottom>
+                          <Top>Solid</Top>
+                        </BorderStyle>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontWeight>700</FontWeight>
+                        <FontSize>7pt</FontSize>
+                        <VerticalAlign>Middle</VerticalAlign>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value>Description</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox55">
+                      <rd:DefaultName>textbox55</rd:DefaultName>
+                      <ZIndex>130</ZIndex>
+                      <Style>
+                        <BorderStyle>
+                          <Bottom>Solid</Bottom>
+                          <Top>Solid</Top>
+                        </BorderStyle>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontWeight>700</FontWeight>
+                        <VerticalAlign>Middle</VerticalAlign>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value />
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox68">
+                      <ZIndex>129</ZIndex>
+                      <Style>
+                        <BorderStyle>
+                          <Bottom>Solid</Bottom>
+                          <Top>Solid</Top>
+                        </BorderStyle>
+                        <TextAlign>Right</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontWeight>700</FontWeight>
+                        <FontSize>7pt</FontSize>
+                        <VerticalAlign>Middle</VerticalAlign>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value>=Iif(Parameters!Grouping.Value&lt;&gt;"ACTNUMST", "Begining Balance", "")</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="Lbl_Begining_Balance">
+                      <ZIndex>128</ZIndex>
+                      <Style>
+                        <BorderStyle>
+                          <Bottom>Solid</Bottom>
+                          <Top>Solid</Top>
+                        </BorderStyle>
+                        <TextAlign>Right</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontWeight>700</FontWeight>
+                        <FontSize>7pt</FontSize>
+                        <VerticalAlign>Middle</VerticalAlign>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value>=Iif(Parameters!Grouping.Value="ACTNUMST", "Begining Balance", "")</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="Lbl_Debit">
+                      <ZIndex>127</ZIndex>
+                      <Style>
+                        <BorderStyle>
+                          <Bottom>Solid</Bottom>
+                          <Top>Solid</Top>
+                        </BorderStyle>
+                        <TextAlign>Right</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontWeight>700</FontWeight>
+                        <FontSize>7pt</FontSize>
+                        <VerticalAlign>Middle</VerticalAlign>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value>Debit</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="Lbl_Credit">
+                      <ZIndex>126</ZIndex>
+                      <Style>
+                        <BorderStyle>
+                          <Bottom>Solid</Bottom>
+                          <Top>Solid</Top>
+                        </BorderStyle>
+                        <TextAlign>Right</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontWeight>700</FontWeight>
+                        <FontSize>7pt</FontSize>
+                        <VerticalAlign>Middle</VerticalAlign>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value>Credit</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="Lbl_Net_Change">
+                      <ZIndex>125</ZIndex>
+                      <Style>
+                        <BorderStyle>
+                          <Bottom>Solid</Bottom>
+                          <Top>Solid</Top>
+                        </BorderStyle>
+                        <TextAlign>Right</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontWeight>700</FontWeight>
+                        <FontSize>7pt</FontSize>
+                        <VerticalAlign>Middle</VerticalAlign>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value>Net Change</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="Lbl_Ending_Balance">
+                      <ZIndex>124</ZIndex>
+                      <Style>
+                        <BorderStyle>
+                          <Bottom>Solid</Bottom>
+                          <Top>Solid</Top>
+                        </BorderStyle>
+                        <TextAlign>Right</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontWeight>700</FontWeight>
+                        <FontSize>7pt</FontSize>
+                        <VerticalAlign>Middle</VerticalAlign>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value>Ending Balance</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+              </TableCells>
+              <Height>0.2in</Height>
+            </TableRow>
+          </TableRows>
+          <RepeatOnNewPage>true</RepeatOnNewPage>
+        </Header>
+        <TableColumns>
+          <TableColumn>
+            <Width>0.625in</Width>
+          </TableColumn>
+          <TableColumn>
+            <Width>0.625in</Width>
+          </TableColumn>
+          <TableColumn>
+            <Width>1.125in</Width>
+          </TableColumn>
+          <TableColumn>
+            <Width>1in</Width>
+          </TableColumn>
+          <TableColumn>
+            <Width>0.875in</Width>
+          </TableColumn>
+          <TableColumn>
+            <Width>1in</Width>
+          </TableColumn>
+          <TableColumn>
+            <Width>1in</Width>
+          </TableColumn>
+          <TableColumn>
+            <Width>1in</Width>
+          </TableColumn>
+          <TableColumn>
+            <Width>1in</Width>
+          </TableColumn>
+          <TableColumn>
+            <Width>1in</Width>
+          </TableColumn>
+          <TableColumn>
+            <Width>1in</Width>
+          </TableColumn>
+        </TableColumns>
+        <Height>4.2in</Height>
+      </Table>
+    </ReportItems>
+    <Height>4.325in</Height>
+  </Body>
+  <PageHeader>
+    <ReportItems>
+      <Textbox Name="tbReportNameLbl">
+        <Top>0.125in</Top>
+        <ZIndex>5</ZIndex>
+        <Width>10.25in</Width>
+        <Style>
+          <TextAlign>Center</TextAlign>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingBottom>2pt</PaddingBottom>
+          <FontFamily>Tahoma</FontFamily>
+          <FontWeight>700</FontWeight>
+          <FontSize>12pt</FontSize>
+          <Color>Navy</Color>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+        </Style>
+        <CanGrow>true</CanGrow>
+        <Height>0.23227in</Height>
+        <Value>GL Summary Trial Balance</Value>
+      </Textbox>
+      <Textbox Name="tbCompanyNameLbl">
+        <Top>0.42029in</Top>
+        <ZIndex>4</ZIndex>
+        <Width>10.25in</Width>
+        <Style>
+          <TextAlign>Center</TextAlign>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingBottom>2pt</PaddingBottom>
+          <FontFamily>Tahoma</FontFamily>
+          <FontWeight>700</FontWeight>
+          <FontSize>9pt</FontSize>
+          <Color>Navy</Color>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+        </Style>
+        <CanGrow>true</CanGrow>
+        <Height>0.25594in</Height>
+        <Value>=ReportItems!tbCompanyName.Value</Value>
+      </Textbox>
+      <Textbox Name="tbModuleName">
+        <Top>0.71558in</Top>
+        <ZIndex>3</ZIndex>
+        <Width>10.25in</Width>
+        <Style>
+          <TextAlign>Center</TextAlign>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingBottom>2pt</PaddingBottom>
+          <FontFamily>Tahoma</FontFamily>
+          <FontWeight>700</FontWeight>
+          <FontSize>9pt</FontSize>
+          <Color>Navy</Color>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+        </Style>
+        <CanGrow>true</CanGrow>
+        <Height>0.19686in</Height>
+        <Value>=IIF(Globals!PageNumber=1,"General Ledger","")</Value>
+      </Textbox>
+      <Textbox Name="tbPrintedDate">
+        <Top>0.91244in</Top>
+        <ZIndex>2</ZIndex>
+        <Width>1.55913in</Width>
+        <Style>
+          <TextAlign>Left</TextAlign>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingBottom>2pt</PaddingBottom>
+          <BackgroundImage>
+            <Value>bevel</Value>
+            <Source>Embedded</Source>
+          </BackgroundImage>
+          <FontFamily>Tahoma</FontFamily>
+          <FontWeight>700</FontWeight>
+          <FontSize>8pt</FontSize>
+          <Format>d</Format>
+          <Color>Gainsboro</Color>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+        </Style>
+        <CanGrow>true</CanGrow>
+        <Value>=IIF(Globals!PageNumber=1,Globals!ExecutionTime,"")</Value>
+      </Textbox>
+      <Textbox Name="tbPrintedTime">
+        <Left>1.55913in</Left>
+        <Top>0.91244in</Top>
+        <ZIndex>1</ZIndex>
+        <Width>0.985in</Width>
+        <Style>
+          <TextAlign>Left</TextAlign>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingBottom>2pt</PaddingBottom>
+          <BackgroundImage>
+            <Value>bevel</Value>
+            <Source>Embedded</Source>
+          </BackgroundImage>
+          <FontFamily>Tahoma</FontFamily>
+          <FontWeight>700</FontWeight>
+          <FontSize>8pt</FontSize>
+          <Format>T</Format>
+          <Color>Gainsboro</Color>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+        </Style>
+        <CanGrow>true</CanGrow>
+        <Value>=IIF(Globals!PageNumber=1,Globals!ExecutionTime,"")</Value>
+      </Textbox>
+      <Textbox Name="tbUserID">
+        <Left>2.54925in</Left>
+        <Top>0.91244in</Top>
+        <Width>7.70075in</Width>
+        <Style>
+          <TextAlign>Right</TextAlign>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingBottom>2pt</PaddingBottom>
+          <BackgroundImage>
+            <Value>bevel</Value>
+            <Source>Embedded</Source>
+          </BackgroundImage>
+          <FontFamily>Tahoma</FontFamily>
+          <FontWeight>700</FontWeight>
+          <FontSize>8pt</FontSize>
+          <Color>Gainsboro</Color>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+        </Style>
+        <CanGrow>true</CanGrow>
+        <Value>=IIF(Globals!PageNumber=1,User!UserID,"")</Value>
+      </Textbox>
+    </ReportItems>
+    <Height>1.20773in</Height>
+    <PrintOnLastPage>true</PrintOnLastPage>
+    <PrintOnFirstPage>true</PrintOnFirstPage>
+  </PageHeader>
+  <rd:ReportID>148b7a41-78bf-4c47-b562-38cbafa37043</rd:ReportID>
+  <LeftMargin>0.2in</LeftMargin>
+  <EmbeddedImages>
+    <EmbeddedImage Name="bevel">
+      <ImageData>iVBORw0KGgoAAAANSUhEUgAAAAEAAAAWCAYAAAABxvaqAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAKTWlDQ1BQaG90b3Nob3AgSUNDIHByb2ZpbGUAAHjanVN3WJP3Fj7f92UPVkLY8LGXbIEAIiOsCMgQWaIQkgBhhBASQMWFiApWFBURnEhVxILVCkidiOKgKLhnQYqIWotVXDjuH9yntX167+3t+9f7vOec5/zOec8PgBESJpHmomoAOVKFPDrYH49PSMTJvYACFUjgBCAQ5svCZwXFAADwA3l4fnSwP/wBr28AAgBw1S4kEsfh/4O6UCZXACCRAOAiEucLAZBSAMguVMgUAMgYALBTs2QKAJQAAGx5fEIiAKoNAOz0ST4FANipk9wXANiiHKkIAI0BAJkoRyQCQLsAYFWBUiwCwMIAoKxAIi4EwK4BgFm2MkcCgL0FAHaOWJAPQGAAgJlCLMwAIDgCAEMeE80DIEwDoDDSv+CpX3CFuEgBAMDLlc2XS9IzFLiV0Bp38vDg4iHiwmyxQmEXKRBmCeQinJebIxNI5wNMzgwAABr50cH+OD+Q5+bk4eZm52zv9MWi/mvwbyI+IfHf/ryMAgQAEE7P79pf5eXWA3DHAbB1v2upWwDaVgBo3/ldM9sJoFoK0Hr5i3k4/EAenqFQyDwdHAoLC+0lYqG9MOOLPv8z4W/gi372/EAe/tt68ABxmkCZrcCjg/1xYW52rlKO58sEQjFu9+cj/seFf/2OKdHiNLFcLBWK8ViJuFAiTcd5uVKRRCHJleIS6X8y8R+W/QmTdw0ArIZPwE62B7XLbMB+7gECiw5Y0nYAQH7zLYwaC5EAEGc0Mnn3AACTv/mPQCsBAM2XpOMAALzoGFyolBdMxggAAESggSqwQQcMwRSswA6cwR28wBcCYQZEQAwkwDwQQgbkgBwKoRiWQRlUwDrYBLWwAxqgEZrhELTBMTgN5+ASXIHrcBcGYBiewhi8hgkEQcgI
+E2EhOogRYo7YIs4IF5mOBCJhSDSSgKQg6YgUUSLFyHKkAqlCapFdSCPyLXIUOY1cQPqQ28ggMor8irxHMZSBslED1AJ1QLmoHxqKxqBz0XQ0D12AlqJr0Rq0Hj2AtqKn0UvodXQAfYqOY4DRMQ5mjNlhXIyHRWCJWBomxxZj5Vg1Vo81Yx1YN3YVG8CeYe8IJAKLgBPsCF6EEMJsgpCQR1hMWEOoJewjtBK6CFcJg4Qxwicik6hPtCV6EvnEeGI6sZBYRqwm7iEeIZ4lXicOE1+TSCQOyZLkTgohJZAySQtJa0jbSC2kU6Q+0hBpnEwm65Btyd7kCLKArCCXkbeQD5BPkvvJw+S3FDrFiOJMCaIkUqSUEko1ZT/lBKWfMkKZoKpRzame1AiqiDqfWkltoHZQL1OHqRM0dZolzZsWQ8ukLaPV0JppZ2n3aC/pdLoJ3YMeRZfQl9Jr6Afp5+mD9HcMDYYNg8dIYigZaxl7GacYtxkvmUymBdOXmchUMNcyG5lnmA+Yb1VYKvYqfBWRyhKVOpVWlX6V56pUVXNVP9V5qgtUq1UPq15WfaZGVbNQ46kJ1Bar1akdVbupNq7OUndSj1DPUV+jvl/9gvpjDbKGhUaghkijVGO3xhmNIRbGMmXxWELWclYD6yxrmE1iW7L57Ex2Bfsbdi97TFNDc6pmrGaRZp3mcc0BDsax4PA52ZxKziHODc57LQMtPy2x1mqtZq1+rTfaetq+2mLtcu0W7eva73VwnUCdLJ31Om0693UJuja6UbqFutt1z+o+02PreekJ9cr1Dund0Uf1bfSj9Rfq79bv0R83MDQINpAZbDE4Y/DMkGPoa5hpuNHwhOGoEctoupHEaKPRSaMnuCbuh2fjNXgXPmasbxxirDTeZdxrPGFiaTLbpMSkxeS+Kc2Ua5pmutG003TMzMgs3KzYrMnsjjnVnGueYb7ZvNv8jYWlRZzFSos2i8eW2pZ8ywWWTZb3rJhWPlZ5VvV
+W16xJ1lzrLOtt1ldsUBtXmwybOpvLtqitm63Edptt3xTiFI8p0in1U27aMez87ArsmuwG7Tn2YfYl9m32zx3MHBId1jt0O3xydHXMdmxwvOuk4TTDqcSpw+lXZxtnoXOd8zUXpkuQyxKXdpcXU22niqdun3rLleUa7rrStdP1o5u7m9yt2W3U3cw9xX2r+00umxvJXcM970H08PdY4nHM452nm6fC85DnL152Xlle+70eT7OcJp7WMG3I28Rb4L3Le2A6Pj1l+s7pAz7GPgKfep+Hvqa+It89viN+1n6Zfgf8nvs7+sv9j/i/4XnyFvFOBWABwQHlAb2BGoGzA2sDHwSZBKUHNQWNBbsGLww+FUIMCQ1ZH3KTb8AX8hv5YzPcZyya0RXKCJ0VWhv6MMwmTB7WEY6GzwjfEH5vpvlM6cy2CIjgR2yIuB9pGZkX+X0UKSoyqi7qUbRTdHF09yzWrORZ+2e9jvGPqYy5O9tqtnJ2Z6xqbFJsY+ybuIC4qriBeIf4RfGXEnQTJAntieTE2MQ9ieNzAudsmjOc5JpUlnRjruXcorkX5unOy553PFk1WZB8OIWYEpeyP+WDIEJQLxhP5aduTR0T8oSbhU9FvqKNolGxt7hKPJLmnVaV9jjdO31D+miGT0Z1xjMJT1IreZEZkrkj801WRNberM/ZcdktOZSclJyjUg1plrQr1zC3KLdPZisrkw3keeZtyhuTh8r35CP5c/PbFWyFTNGjtFKuUA4WTC+oK3hbGFt4uEi9SFrUM99m/ur5IwuCFny9kLBQuLCz2Lh4WfHgIr9FuxYji1MXdy4xXVK6ZHhp8NJ9y2jLspb9UOJYUlXyannc8o5Sg9KlpUMrglc0lamUycturvRauWMVYZVkVe9ql9VbVn8qF5VfrHCsqK74sEa45uJXTl/VfPV5bdra3kq3yu3rSOuk626s91m/r0q9akHV0IbwDa0b8Y3lG19tSt50oXpq9Y7NtM3KzQM1YT
+XtW8y2rNvyoTaj9nqdf13LVv2tq7e+2Sba1r/dd3vzDoMdFTve75TsvLUreFdrvUV99W7S7oLdjxpiG7q/5n7duEd3T8Wej3ulewf2Re/ranRvbNyvv7+yCW1SNo0eSDpw5ZuAb9qb7Zp3tXBaKg7CQeXBJ9+mfHvjUOihzsPcw83fmX+39QjrSHkr0jq/dawto22gPaG97+iMo50dXh1Hvrf/fu8x42N1xzWPV56gnSg98fnkgpPjp2Snnp1OPz3Umdx590z8mWtdUV29Z0PPnj8XdO5Mt1/3yfPe549d8Lxw9CL3Ytslt0utPa49R35w/eFIr1tv62X3y+1XPK509E3rO9Hv03/6asDVc9f41y5dn3m978bsG7duJt0cuCW69fh29u0XdwruTNxdeo94r/y+2v3qB/oP6n+0/rFlwG3g+GDAYM/DWQ/vDgmHnv6U/9OH4dJHzEfVI0YjjY+dHx8bDRq98mTOk+GnsqcTz8p+Vv9563Or59/94vtLz1j82PAL+YvPv655qfNy76uprzrHI8cfvM55PfGm/K3O233vuO+638e9H5ko/ED+UPPR+mPHp9BP9z7nfP78L/eE8/sl0p8zAAAABGdBTUEAALGOfPtRkwAAACBjSFJNAAB6JQAAgIMAAPn/AACA6QAAdTAAAOpgAAA6mAAAF2+SX8VGAAAAL0lEQVR42mKIz5nyn4mBgYGBAPHu3ScGJkZGgurQiH///jEwCQsLMDAwKrT9BwwA8PUKLbAyVrsAAAAASUVORK5CYII=</ImageData>
+      <MIMEType>image/png</MIMEType>
+    </EmbeddedImage>
+  </EmbeddedImages>
+  <DataSets>
+    <DataSet Name="Proc">
+      <Query>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+        <CommandType>StoredProcedure</CommandType>
+        <CommandText>[seeglPrintSRSTrialBalance ]</CommandText>
+        <QueryParameters>
+          <QueryParameter Name="@I_tInactiveAccounts">
+            <Value>=Parameters!I_tInactiveAccounts.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@I_tIncludeUnitAccounts">
+            <Value>=Parameters!I_tIncludeUnitAccounts.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@I_tIncludeZeroBalance">
+            <Value>=Parameters!I_tIncludeZeroBalance.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@I_cStartingAccountNumber">
+            <Value>=Parameters!I_cStartingAccountNumber.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@I_cEndingAccountNumber">
+            <Value>=Parameters!I_cEndingAccountNumber.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@I_dStartingDate">
+            <Value>=Parameters!I_dStartingDate.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@I_dEndingDate">
+            <Value>=Parameters!I_dEndingDate.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@I_iYear">
+            <Value>=Parameters!I_iYear.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@I_tHistoryYear">
+            <Value>=Parameters!I_tHistoryYear.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@I_iRangeByAccount">
+            <Value>=Parameters!type.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@I_iPostingAccounts">
+            <Value>=Parameters!I_iPostingAccounts.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <DataSourceName>DataSourceGPCompany</DataSourceName>
+      </Query>
+      <Fields>
+        <Field Name="ACTINDX">
+          <rd:TypeName>System.Int32</rd:TypeName>
+          <DataField>ACTINDX</DataField>
+        </Field>
+        <Field Name="ACTNUMBR_1">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>ACTNUMBR_1</DataField>
+        </Field>
+        <Field Name="ACTNUMBR_2">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>ACTNUMBR_2</DataField>
+        </Field>
+        <Field Name="ACTNUMBR_3">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>ACTNUMBR_3</DataField>
+        </Field>
+        <Field Name="ACTNUMBR_4">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>ACTNUMBR_4</DataField>
+        </Field>
+        <Field Name="ACTNUMBR_5">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>ACTNUMBR_5</DataField>
+        </Field>
+        <Field Name="ACTNUMBR_6">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>ACTNUMBR_6</DataField>
+        </Field>
+        <Field Name="ACTNUMBR_7">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>ACTNUMBR_7</DataField>
+        </Field>
+        <Field Name="ACTNUMST">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>ACTNUMST</DataField>
+        </Field>
+        <Field Name="Identity_Column">
+          <rd:TypeName>System.Int32</rd:TypeName>
+          <DataField>Identity_Column</DataField>
+        </Field>
+        <Field Name="BGNGBAL">
+          <rd:TypeName>System.Decimal</rd:TypeName>
+          <DataField>BGNGBAL</DataField>
+        </Field>
+        <Field Name="ENDNGBAL">
+          <rd:TypeName>System.Decimal</rd:TypeName>
+          <DataField>ENDNGBAL</DataField>
+        </Field>
+        <Field Name="HSTYEAR">
+          <rd:TypeName>System.Int16</rd:TypeName>
+          <DataField>HSTYEAR</DataField>
+        </Field>
+        <Field Name="STRTNGDT">
+          <rd:TypeName>System.DateTime</rd:TypeName>
+          <DataField>STRTNGDT</DataField>
+        </Field>
+        <Field Name="ENDINGDT">
+          <rd:TypeName>System.DateTime</rd:TypeName>
+          <DataField>ENDINGDT</DataField>
+        </Field>
+        <Field Name="TOTDEB">
+          <rd:TypeName>System.Decimal</rd:TypeName>
+          <DataField>TOTDEB</DataField>
+        </Field>
+        <Field Name="TOTCRED">
+          <rd:TypeName>System.Decimal</rd:TypeName>
+          <DataField>TOTCRED</DataField>
+        </Field>
+        <Field Name="PERNAME">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>PERNAME</DataField>
+        </Field>
+        <Field Name="PERINDX">
+          <rd:TypeName>System.Int16</rd:TypeName>
+          <DataField>PERINDX</DataField>
+        </Field>
+        <Field Name="DEBITAMTS">
+          <rd:TypeName>System.Decimal</rd:TypeName>
+          <DataField>DEBITAMTS</DataField>
+        </Field>
+        <Field Name="CRDTAMNTS">
+          <rd:TypeName>System.Decimal</rd:TypeName>
+          <DataField>CRDTAMNTS</DataField>
+        </Field>
+        <Field Name="NETAMNT">
+          <rd:TypeName>System.Decimal</rd:TypeName>
+          <DataField>NETAMNT</DataField>
+        </Field>
+        <Field Name="NMBRACTS">
+          <rd:TypeName>System.Int32</rd:TypeName>
+          <DataField>NMBRACTS</DataField>
+        </Field>
+        <Field Name="CURNCYID">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>CURNCYID</DataField>
+        </Field>
+        <Field Name="CURRNIDX">
+          <rd:TypeName>System.Int16</rd:TypeName>
+          <DataField>CURRNIDX</DataField>
+        </Field>
+        <Field Name="ORDBTAMTS">
+          <rd:TypeName>System.Decimal</rd:TypeName>
+          <DataField>ORDBTAMTS</DataField>
+        </Field>
+        <Field Name="ORCRDAMTS">
+          <rd:TypeName>System.Decimal</rd:TypeName>
+          <DataField>ORCRDAMTS</DataField>
+        </Field>
+        <Field Name="ORNETAMT">
+          <rd:TypeName>System.Decimal</rd:TypeName>
+          <DataField>ORNETAMT</DataField>
+        </Field>
+        <Field Name="DEX_ROW_ID">
+          <rd:TypeName>System.Int32</rd:TypeName>
+          <DataField>DEX_ROW_ID</DataField>
+        </Field>
+        <Field Name="YEAR1">
+          <rd:TypeName>System.Int16</rd:TypeName>
+          <DataField>YEAR1</DataField>
+        </Field>
+        <Field Name="JRNENTRY">
+          <rd:TypeName>System.Int32</rd:TypeName>
+          <DataField>JRNENTRY</DataField>
+        </Field>
+        <Field Name="RCTRXSEQ">
+          <rd:TypeName>System.Decimal</rd:TypeName>
+          <DataField>RCTRXSEQ</DataField>
+        </Field>
+        <Field Name="SOURCDOC">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>SOURCDOC</DataField>
+        </Field>
+        <Field Name="REFRENCE">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>REFRENCE</DataField>
+        </Field>
+        <Field Name="DSCRIPTN">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>DSCRIPTN</DataField>
+        </Field>
+        <Field Name="TRXDATE">
+          <rd:TypeName>System.DateTime</rd:TypeName>
+          <DataField>TRXDATE</DataField>
+        </Field>
+        <Field Name="TRXSORCE">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>TRXSORCE</DataField>
+        </Field>
+        <Field Name="ACTINDX_1">
+          <rd:TypeName>System.Int32</rd:TypeName>
+          <DataField>ACTINDX</DataField>
+        </Field>
+        <Field Name="POLLDTRX">
+          <rd:TypeName>System.Byte</rd:TypeName>
+          <DataField>POLLDTRX</DataField>
+        </Field>
+        <Field Name="LASTUSER">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>LASTUSER</DataField>
+        </Field>
+        <Field Name="LSTDTEDT">
+          <rd:TypeName>System.DateTime</rd:TypeName>
+          <DataField>LSTDTEDT</DataField>
+        </Field>
+        <Field Name="ORGNTSRC">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>ORGNTSRC</DataField>
+        </Field>
+        <Field Name="ORGNATYP">
+          <rd:TypeName>System.Int16</rd:TypeName>
+          <DataField>ORGNATYP</DataField>
+        </Field>
+        <Field Name="QKOFSET">
+          <rd:TypeName>System.Int16</rd:TypeName>
+          <DataField>QKOFSET</DataField>
+        </Field>
+        <Field Name="SERIES">
+          <rd:TypeName>System.Int16</rd:TypeName>
+          <DataField>SERIES</DataField>
+        </Field>
+        <Field Name="ORTRXTYP">
+          <rd:TypeName>System.Int16</rd:TypeName>
+          <DataField>ORTRXTYP</DataField>
+        </Field>
+        <Field Name="ORCTRNUM">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>ORCTRNUM</DataField>
+        </Field>
+        <Field Name="ORMSTRID">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>ORMSTRID</DataField>
+        </Field>
+        <Field Name="ORMSTRNM">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>ORMSTRNM</DataField>
+        </Field>
+        <Field Name="ORDOCNUM">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>ORDOCNUM</DataField>
+        </Field>
+        <Field Name="ORPSTDDT">
+          <rd:TypeName>System.DateTime</rd:TypeName>
+          <DataField>ORPSTDDT</DataField>
+        </Field>
+        <Field Name="ORTRXSRC">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>ORTRXSRC</DataField>
+        </Field>
+        <Field Name="OrigDTASeries">
+          <rd:TypeName>System.Int16</rd:TypeName>
+          <DataField>OrigDTASeries</DataField>
+        </Field>
+        <Field Name="OrigSeqNum">
+          <rd:TypeName>System.Int32</rd:TypeName>
+          <DataField>OrigSeqNum</DataField>
+        </Field>
+        <Field Name="SEQNUMBR">
+          <rd:TypeName>System.Int32</rd:TypeName>
+          <DataField>SEQNUMBR</DataField>
+        </Field>
+        <Field Name="DTA_GL_Status">
+          <rd:TypeName>System.Int16</rd:TypeName>
+          <DataField>DTA_GL_Status</DataField>
+        </Field>
+        <Field Name="DTA_Index">
+          <rd:TypeName>System.Decimal</rd:TypeName>
+          <DataField>DTA_Index</DataField>
+        </Field>
+        <Field Name="NOTEINDX">
+          <rd:TypeName>System.Decimal</rd:TypeName>
+          <DataField>NOTEINDX</DataField>
+        </Field>
+        <Field Name="ICTRX">
+          <rd:TypeName>System.Byte</rd:TypeName>
+          <DataField>ICTRX</DataField>
+        </Field>
+        <Field Name="ORCOMID">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>ORCOMID</DataField>
+        </Field>
+        <Field Name="ORIGINJE">
+          <rd:TypeName>System.Int32</rd:TypeName>
+          <DataField>ORIGINJE</DataField>
+        </Field>
+        <Field Name="PERIODID">
+          <rd:TypeName>System.Int16</rd:TypeName>
+          <DataField>PERIODID</DataField>
+        </Field>
+        <Field Name="CRDTAMNTD">
+          <rd:TypeName>System.Decimal</rd:TypeName>
+          <DataField>CRDTAMNTD</DataField>
+        </Field>
+        <Field Name="DEBITAMTD">
+          <rd:TypeName>System.Decimal</rd:TypeName>
+          <DataField>DEBITAMTD</DataField>
+        </Field>
+        <Field Name="DOCDATE">
+          <rd:TypeName>System.DateTime</rd:TypeName>
+          <DataField>DOCDATE</DataField>
+        </Field>
+        <Field Name="PSTGNMBR">
+          <rd:TypeName>System.Int32</rd:TypeName>
+          <DataField>PSTGNMBR</DataField>
+        </Field>
+        <Field Name="PPSGNMBR">
+          <rd:TypeName>System.Int32</rd:TypeName>
+          <DataField>PPSGNMBR</DataField>
+        </Field>
+        <Field Name="CorrespondingUnit">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>CorrespondingUnit</DataField>
+        </Field>
+        <Field Name="PeriodIndex">
+          <rd:TypeName>System.Int16</rd:TypeName>
+          <DataField>PeriodIndex</DataField>
+        </Field>
+        <Field Name="PeriodName">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>PeriodName</DataField>
+        </Field>
+        <Field Name="DEX_ROW_IDD">
+          <rd:TypeName>System.Int32</rd:TypeName>
+          <DataField>DEX_ROW_IDD</DataField>
+        </Field>
+        <Field Name="DEBITAMT">
+          <rd:TypeName>System.Decimal</rd:TypeName>
+          <DataField>DEBITAMT</DataField>
+        </Field>
+        <Field Name="CREDITAMT">
+          <rd:TypeName>System.Decimal</rd:TypeName>
+          <DataField>CREDITAMT</DataField>
+        </Field>
+        <Field Name="ACTINDX_2">
+          <rd:TypeName>System.Int32</rd:TypeName>
+          <DataField>ACTINDX</DataField>
+        </Field>
+        <Field Name="ACTNUMBR_1_1">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>ACTNUMBR_1</DataField>
+        </Field>
+        <Field Name="ACTNUMBR_2_1">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>ACTNUMBR_2</DataField>
+        </Field>
+        <Field Name="ACTNUMBR_3_1">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>ACTNUMBR_3</DataField>
+        </Field>
+        <Field Name="ACTNUMBR_4_1">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>ACTNUMBR_4</DataField>
+        </Field>
+        <Field Name="ACTNUMBR_5_1">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>ACTNUMBR_5</DataField>
+        </Field>
+        <Field Name="ACTNUMBR_6_1">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>ACTNUMBR_6</DataField>
+        </Field>
+        <Field Name="ACTNUMBR_7_1">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>ACTNUMBR_7</DataField>
+        </Field>
+        <Field Name="ACTALIAS">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>ACTALIAS</DataField>
+        </Field>
+        <Field Name="MNACSGMT">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>MNACSGMT</DataField>
+        </Field>
+        <Field Name="ACCTTYPE">
+          <rd:TypeName>System.Int16</rd:TypeName>
+          <DataField>ACCTTYPE</DataField>
+        </Field>
+        <Field Name="ACTDESCR">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>ACTDESCR</DataField>
+        </Field>
+        <Field Name="PSTNGTYP">
+          <rd:TypeName>System.Int16</rd:TypeName>
+          <DataField>PSTNGTYP</DataField>
+        </Field>
+        <Field Name="ACCATNUM">
+          <rd:TypeName>System.Int16</rd:TypeName>
+          <DataField>ACCATNUM</DataField>
+        </Field>
+        <Field Name="ACTIVE">
+          <rd:TypeName>System.Byte</rd:TypeName>
+          <DataField>ACTIVE</DataField>
+        </Field>
+        <Field Name="TPCLBLNC">
+          <rd:TypeName>System.Int16</rd:TypeName>
+          <DataField>TPCLBLNC</DataField>
+        </Field>
+        <Field Name="DECPLACS">
+          <rd:TypeName>System.Int16</rd:TypeName>
+          <DataField>DECPLACS</DataField>
+        </Field>
+        <Field Name="FXDORVAR">
+          <rd:TypeName>System.Int16</rd:TypeName>
+          <DataField>FXDORVAR</DataField>
+        </Field>
+        <Field Name="BALFRCLC">
+          <rd:TypeName>System.Int16</rd:TypeName>
+          <DataField>BALFRCLC</DataField>
+        </Field>
+        <Field Name="DSPLKUPS">
+          <rd:TypeName>System.Byte[]</rd:TypeName>
+          <DataField>DSPLKUPS</DataField>
+        </Field>
+        <Field Name="CNVRMTHD">
+          <rd:TypeName>System.Int16</rd:TypeName>
+          <DataField>CNVRMTHD</DataField>
+        </Field>
+        <Field Name="HSTRCLRT">
+          <rd:TypeName>System.Decimal</rd:TypeName>
+          <DataField>HSTRCLRT</DataField>
+        </Field>
+        <Field Name="NOTEINDX_1">
+          <rd:TypeName>System.Decimal</rd:TypeName>
+          <DataField>NOTEINDX</DataField>
+        </Field>
+        <Field Name="CREATDDT">
+          <rd:TypeName>System.DateTime</rd:TypeName>
+          <DataField>CREATDDT</DataField>
+        </Field>
+        <Field Name="MODIFDT">
+          <rd:TypeName>System.DateTime</rd:TypeName>
+          <DataField>MODIFDT</DataField>
+        </Field>
+        <Field Name="USERDEF1">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>USERDEF1</DataField>
+        </Field>
+        <Field Name="USERDEF2">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>USERDEF2</DataField>
+        </Field>
+        <Field Name="PostSlsIn">
+          <rd:TypeName>System.Int16</rd:TypeName>
+          <DataField>PostSlsIn</DataField>
+        </Field>
+        <Field Name="PostIvIn">
+          <rd:TypeName>System.Int16</rd:TypeName>
+          <DataField>PostIvIn</DataField>
+        </Field>
+        <Field Name="PostPurchIn">
+          <rd:TypeName>System.Int16</rd:TypeName>
+          <DataField>PostPurchIn</DataField>
+        </Field>
+        <Field Name="PostPRIn">
+          <rd:TypeName>System.Int16</rd:TypeName>
+          <DataField>PostPRIn</DataField>
+        </Field>
+        <Field Name="ADJINFL">
+          <rd:TypeName>System.Byte</rd:TypeName>
+          <DataField>ADJINFL</DataField>
+        </Field>
+        <Field Name="INFLAREV">
+          <rd:TypeName>System.Int32</rd:TypeName>
+          <DataField>INFLAREV</DataField>
+        </Field>
+        <Field Name="INFLAEQU">
+          <rd:TypeName>System.Int32</rd:TypeName>
+          <DataField>INFLAEQU</DataField>
+        </Field>
+        <Field Name="ACCTENTR">
+          <rd:TypeName>System.Byte</rd:TypeName>
+          <DataField>ACCTENTR</DataField>
+        </Field>
+        <Field Name="USRDEFS1">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>USRDEFS1</DataField>
+        </Field>
+        <Field Name="USRDEFS2">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>USRDEFS2</DataField>
+        </Field>
+        <Field Name="DEX_ROW_TS">
+          <rd:TypeName>System.DateTime</rd:TypeName>
+          <DataField>DEX_ROW_TS</DataField>
+        </Field>
+        <Field Name="DEX_ROW_ID_1">
+          <rd:TypeName>System.Int32</rd:TypeName>
+          <DataField>DEX_ROW_ID</DataField>
+        </Field>
+        <Field Name="MonthIndex">
+          <rd:TypeName>System.Int32</rd:TypeName>
+          <DataField>MonthIndex</DataField>
+        </Field>
+        <Field Name="MonthField">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>MonthField</DataField>
+        </Field>
+        <Field Name="ActZeroDesc">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>ActZeroDesc</DataField>
+        </Field>
+        <Field Name="ActInactiveDesc">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>ActInactiveDesc</DataField>
+        </Field>
+        <Field Name="Beg_Bal">
+          <rd:TypeName>System.Decimal</rd:TypeName>
+          <DataField>Beg_Bal</DataField>
+        </Field>
+        <Field Name="End_Bal">
+          <rd:TypeName>System.Decimal</rd:TypeName>
+          <DataField>End_Bal</DataField>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="dsFiscalYearParam">
+      <Query>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+        <CommandText>select distinct YEAR1 from SY40101 where HISTORYR = @I_tHistoryYear order by YEAR1</CommandText>
+        <QueryParameters>
+          <QueryParameter Name="@I_tHistoryYear">
+            <Value>=Parameters!I_tHistoryYear.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <DataSourceName>DataSourceGPCompany</DataSourceName>
+      </Query>
+      <Fields>
+        <Field Name="YEAR1">
+          <rd:TypeName>System.Int16</rd:TypeName>
+          <DataField>YEAR1</DataField>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="prmGLAccountNumber">
+      <Query>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+        <CommandText>select rtrim(ACTNUMST) as AccountNumber from GL00105 order by ACTNUMST</CommandText>
+        <DataSourceName>DataSourceGPCompany</DataSourceName>
+      </Query>
+      <Fields>
+        <Field Name="AccountNumber">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>AccountNumber</DataField>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="SegmentSort">
+      <Query>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+        <CommandText>select SGMTNAME, 'ACTNUMBR_' + ltrim(SGMTNUMB) as SegmentName from SY00300</CommandText>
+        <DataSourceName>DataSourceGPCompany</DataSourceName>
+      </Query>
+      <Fields>
+        <Field Name="SGMTNAME">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>SGMTNAME</DataField>
+        </Field>
+        <Field Name="SegmentName">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>SegmentName</DataField>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="SegmentDefault">
+      <Query>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+        <CommandText>select top 1 SGMTNAME from SY00300 where MNSEGIND &lt;&gt; 1</CommandText>
+        <DataSourceName>DataSourceGPCompany</DataSourceName>
+      </Query>
+      <Fields>
+        <Field Name="SGMTNAME">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>SGMTNAME</DataField>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="dsAccountOrSegment">
+      <Query>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+        <CommandType>StoredProcedure</CommandType>
+        <CommandText>seeglSRSAccountListing</CommandText>
+        <QueryParameters>
+          <QueryParameter Name="@type">
+            <Value>=Parameters!type.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@actsegmnt">
+            <Value>=Parameters!actsegmnt.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <DataSourceName>DataSourceGPCompany</DataSourceName>
+      </Query>
+      <Fields>
+        <Field Name="SegmentID">
+          <rd:TypeName>System.Int32</rd:TypeName>
+          <DataField>SegmentID</DataField>
+        </Field>
+        <Field Name="SegmentListing">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>SegmentListing</DataField>
+        </Field>
+        <Field Name="begaccstr">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>begaccstr</DataField>
+        </Field>
+        <Field Name="endaccstr">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>endaccstr</DataField>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="dsSegmentDDL">
+      <Query>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+        <CommandText>select SGMTNUMB, SGMTNAME from SY00300</CommandText>
+        <DataSourceName>DataSourceGPCompany</DataSourceName>
+      </Query>
+      <Fields>
+        <Field Name="SGMTNUMB">
+          <rd:TypeName>System.Int16</rd:TypeName>
+          <DataField>SGMTNUMB</DataField>
+        </Field>
+        <Field Name="SGMTNAME">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>SGMTNAME</DataField>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="dsCompanyName">
+      <Query>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+        <CommandText>select CMPNYNAM from DYNAMICS..SY01500 where INTERID = db_name()</CommandText>
+        <DataSourceName>DataSourceGPCompany</DataSourceName>
+      </Query>
+      <Fields>
+        <Field Name="CMPNYNAM">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>CMPNYNAM</DataField>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="dsFiscalYearDefault">
+      <Query>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+        <CommandText>select min(YEAR1) as FiscYear from SY40101 where HISTORYR = @I_tHistoryYear</CommandText>
+        <QueryParameters>
+          <QueryParameter Name="@I_tHistoryYear">
+            <Value>=Parameters!I_tHistoryYear.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <DataSourceName>DataSourceGPCompany</DataSourceName>
+      </Query>
+      <Fields>
+        <Field Name="FiscYear">
+          <rd:TypeName>System.Int16</rd:TypeName>
+          <DataField>FiscYear</DataField>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="dsDefaultDates">
+      <Query>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+        <CommandText>select min(PERIODDT) sDate, max(PERDENDT) eDate from SY40100 where YEAR1 = (select max(YEAR1) as FiscYear from SY40101 where HISTORYR = @I_tHistoryYear ) 
+and PERIODID &lt;&gt; 0</CommandText>
+	<QueryParameters>
+          <QueryParameter Name="@I_tHistoryYear">
+            <Value>=Parameters!I_tHistoryYear.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <DataSourceName>DataSourceGPCompany</DataSourceName>
+      </Query>
+      <Fields>
+        <Field Name="sDate">
+          <rd:TypeName>System.DateTime</rd:TypeName>
+          <DataField>sDate</DataField>
+        </Field>
+        <Field Name="eDate">
+          <rd:TypeName>System.DateTime</rd:TypeName>
+          <DataField>eDate</DataField>
+        </Field>
+      </Fields>
+    </DataSet>
+  </DataSets>
+  <Code />
+  <Width>10.375in</Width>
+  <InteractiveHeight>11in</InteractiveHeight>
+  <Language>en-US</Language>
+  <PageFooter>
+    <ReportItems>
+      <Textbox Name="tbPageLbl">
+        <Left>8.75in</Left>
+        <Top>0.125in</Top>
+        <ZIndex>1</ZIndex>
+        <Width>0.60925in</Width>
+        <Style>
+          <TextAlign>Left</TextAlign>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingBottom>2pt</PaddingBottom>
+          <FontFamily>Tahoma</FontFamily>
+          <FontWeight>700</FontWeight>
+          <FontSize>7pt</FontSize>
+          <Color>Navy</Color>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+        </Style>
+        <CanGrow>true</CanGrow>
+        <Height>0.16535in</Height>
+        <Value>Page:</Value>
+      </Textbox>
+      <Textbox Name="tbPageOf">
+        <Left>9.5in</Left>
+        <Top>0.125in</Top>
+        <Width>0.75in</Width>
+        <Style>
+          <TextAlign>Left</TextAlign>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingBottom>2pt</PaddingBottom>
+          <FontFamily>Tahoma</FontFamily>
+          <FontWeight>700</FontWeight>
+          <FontSize>7pt</FontSize>
+          <Color>Navy</Color>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+        </Style>
+        <CanGrow>true</CanGrow>
+        <Height>0.16535in</Height>
+        <Value>=Globals!PageNumber &amp; " of " &amp; Globals!TotalPages</Value>
+      </Textbox>
+    </ReportItems>
+    <Height>0.375in</Height>
+    <PrintOnLastPage>true</PrintOnLastPage>
+    <PrintOnFirstPage>true</PrintOnFirstPage>
+  </PageFooter>
+  <TopMargin>0.2in</TopMargin>
+  <PageHeight>8.5in</PageHeight>
+</Report>

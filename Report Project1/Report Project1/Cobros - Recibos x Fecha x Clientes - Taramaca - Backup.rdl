@@ -1,0 +1,992 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2005/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <Language>en-US</Language>
+  <BottomMargin>0.5in</BottomMargin>
+  <RightMargin>0.5in</RightMargin>
+  <rd:GridSpacing>0.125in</rd:GridSpacing>
+  <DataSets>
+    <DataSet Name="dataSet">
+      <Query>
+        <DataSourceName>dataSource1</DataSourceName>
+        <CommandText>&lt;SemanticQuery xmlns="http://schemas.microsoft.com/sqlserver/2004/10/semanticmodeling" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:rb="http://schemas.microsoft.com/sqlserver/2004/11/reportbuilder" xmlns:qd="http://schemas.microsoft.com/sqlserver/2004/11/semanticquerydesign"&gt;
+  &lt;Hierarchies&gt;
+    &lt;Hierarchy&gt;
+      &lt;BaseEntity&gt;
+        &lt;!--Recibos--&gt;
+        &lt;EntityID&gt;G966812f3-5260-480d-8cc9-2a2d0b630779&lt;/EntityID&gt;
+      &lt;/BaseEntity&gt;
+      &lt;Groupings&gt;
+        &lt;Grouping Name="FECHA"&gt;
+          &lt;Expression Name="FECHA"&gt;
+            &lt;AttributeRef&gt;
+              &lt;!--Fecha Documento--&gt;
+              &lt;AttributeID&gt;Gd28709b3-02f2-4671-a30d-169ddd6cb056&lt;/AttributeID&gt;
+            &lt;/AttributeRef&gt;
+          &lt;/Expression&gt;
+        &lt;/Grouping&gt;
+        &lt;Grouping Name="ID Cliente"&gt;
+          &lt;Expression Name="ID Cliente"&gt;
+            &lt;Path&gt;
+              &lt;RolePathItem&gt;
+                &lt;!--ID Cliente--&gt;
+                &lt;RoleID&gt;G6e076196-85af-402a-8a56-dd7756ffecb8&lt;/RoleID&gt;
+              &lt;/RolePathItem&gt;
+            &lt;/Path&gt;
+            &lt;EntityRef&gt;
+              &lt;!--Clientes--&gt;
+              &lt;EntityID&gt;Gcc626e36-4fdf-4468-920b-905107ce3385&lt;/EntityID&gt;
+            &lt;/EntityRef&gt;
+          &lt;/Expression&gt;
+          &lt;Details&gt;
+            &lt;Expression Name="COD_CTE"&gt;
+              &lt;AttributeRef&gt;
+                &lt;!--ID Cliente--&gt;
+                &lt;AttributeID&gt;Gff0c4853-8169-45bf-92cd-86242c97071e&lt;/AttributeID&gt;
+              &lt;/AttributeRef&gt;
+            &lt;/Expression&gt;
+            &lt;Expression Name="NOMBRE"&gt;
+              &lt;AttributeRef&gt;
+                &lt;!--Nombre--&gt;
+                &lt;AttributeID&gt;G246c9fea-1b12-4f83-b868-bacf8c1f0879&lt;/AttributeID&gt;
+              &lt;/AttributeRef&gt;
+            &lt;/Expression&gt;
+          &lt;/Details&gt;
+        &lt;/Grouping&gt;
+        &lt;Grouping Name="Recibos"&gt;
+          &lt;Expression Name="Recibos"&gt;
+            &lt;EntityRef&gt;
+              &lt;!--Recibos--&gt;
+              &lt;EntityID&gt;G966812f3-5260-480d-8cc9-2a2d0b630779&lt;/EntityID&gt;
+            &lt;/EntityRef&gt;
+          &lt;/Expression&gt;
+          &lt;Details&gt;
+            &lt;Expression Name="No. Documento"&gt;
+              &lt;AttributeRef&gt;
+                &lt;!--No. Documento--&gt;
+                &lt;AttributeID&gt;Geed51a98-a7ea-478e-baf3-25eab92b4902&lt;/AttributeID&gt;
+              &lt;/AttributeRef&gt;
+            &lt;/Expression&gt;
+          &lt;/Details&gt;
+        &lt;/Grouping&gt;
+      &lt;/Groupings&gt;
+      &lt;Filter&gt;
+        &lt;Expression Name="expr1"&gt;
+          &lt;Function&gt;
+            &lt;FunctionName&gt;And&lt;/FunctionName&gt;
+            &lt;Arguments&gt;
+              &lt;Expression&gt;
+                &lt;Function&gt;
+                  &lt;FunctionName&gt;GreaterThanOrEquals&lt;/FunctionName&gt;
+                  &lt;Arguments&gt;
+                    &lt;Expression&gt;
+                      &lt;Function&gt;
+                        &lt;FunctionName&gt;Date&lt;/FunctionName&gt;
+                        &lt;Arguments&gt;
+                          &lt;Expression&gt;
+                            &lt;AttributeRef&gt;
+                              &lt;!--Fecha Documento--&gt;
+                              &lt;AttributeID&gt;Gd28709b3-02f2-4671-a30d-169ddd6cb056&lt;/AttributeID&gt;
+                            &lt;/AttributeRef&gt;
+                          &lt;/Expression&gt;
+                        &lt;/Arguments&gt;
+                      &lt;/Function&gt;
+                    &lt;/Expression&gt;
+                    &lt;Expression&gt;
+                      &lt;ParameterRef&gt;
+                        &lt;ParameterName&gt;Fecha Documento&lt;/ParameterName&gt;
+                      &lt;/ParameterRef&gt;
+                    &lt;/Expression&gt;
+                  &lt;/Arguments&gt;
+                &lt;/Function&gt;
+                &lt;CustomProperties&gt;
+                  &lt;CustomProperty Name="qd:FilterCondition" /&gt;
+                &lt;/CustomProperties&gt;
+              &lt;/Expression&gt;
+              &lt;Expression&gt;
+                &lt;Function&gt;
+                  &lt;FunctionName&gt;And&lt;/FunctionName&gt;
+                  &lt;Arguments&gt;
+                    &lt;Expression&gt;
+                      &lt;Function&gt;
+                        &lt;FunctionName&gt;LessThanOrEquals&lt;/FunctionName&gt;
+                        &lt;Arguments&gt;
+                          &lt;Expression&gt;
+                            &lt;Function&gt;
+                              &lt;FunctionName&gt;Date&lt;/FunctionName&gt;
+                              &lt;Arguments&gt;
+                                &lt;Expression&gt;
+                                  &lt;AttributeRef&gt;
+                                    &lt;!--Fecha Documento--&gt;
+                                    &lt;AttributeID&gt;Gd28709b3-02f2-4671-a30d-169ddd6cb056&lt;/AttributeID&gt;
+                                  &lt;/AttributeRef&gt;
+                                &lt;/Expression&gt;
+                              &lt;/Arguments&gt;
+                            &lt;/Function&gt;
+                          &lt;/Expression&gt;
+                          &lt;Expression&gt;
+                            &lt;ParameterRef&gt;
+                              &lt;ParameterName&gt;Fecha Documento1&lt;/ParameterName&gt;
+                            &lt;/ParameterRef&gt;
+                          &lt;/Expression&gt;
+                        &lt;/Arguments&gt;
+                      &lt;/Function&gt;
+                      &lt;CustomProperties&gt;
+                        &lt;CustomProperty Name="qd:FilterCondition" /&gt;
+                      &lt;/CustomProperties&gt;
+                    &lt;/Expression&gt;
+                    &lt;Expression&gt;
+                      &lt;Function&gt;
+                        &lt;FunctionName&gt;And&lt;/FunctionName&gt;
+                        &lt;Arguments&gt;
+                          &lt;Expression&gt;
+                            &lt;Function&gt;
+                              &lt;FunctionName&gt;GreaterThanOrEquals&lt;/FunctionName&gt;
+                              &lt;Arguments&gt;
+                                &lt;Expression&gt;
+                                  &lt;Path&gt;
+                                    &lt;RolePathItem&gt;
+                                      &lt;!--ID Cliente--&gt;
+                                      &lt;RoleID&gt;G6e076196-85af-402a-8a56-dd7756ffecb8&lt;/RoleID&gt;
+                                    &lt;/RolePathItem&gt;
+                                  &lt;/Path&gt;
+                                  &lt;AttributeRef&gt;
+                                    &lt;!--ID Cliente--&gt;
+                                    &lt;AttributeID&gt;Gff0c4853-8169-45bf-92cd-86242c97071e&lt;/AttributeID&gt;
+                                  &lt;/AttributeRef&gt;
+                                &lt;/Expression&gt;
+                                &lt;Expression&gt;
+                                  &lt;ParameterRef&gt;
+                                    &lt;ParameterName&gt;ID Cliente&lt;/ParameterName&gt;
+                                  &lt;/ParameterRef&gt;
+                                &lt;/Expression&gt;
+                              &lt;/Arguments&gt;
+                            &lt;/Function&gt;
+                            &lt;CustomProperties&gt;
+                              &lt;CustomProperty Name="qd:FilterCondition" /&gt;
+                            &lt;/CustomProperties&gt;
+                          &lt;/Expression&gt;
+                          &lt;Expression&gt;
+                            &lt;Function&gt;
+                              &lt;FunctionName&gt;LessThanOrEquals&lt;/FunctionName&gt;
+                              &lt;Arguments&gt;
+                                &lt;Expression&gt;
+                                  &lt;Path&gt;
+                                    &lt;RolePathItem&gt;
+                                      &lt;!--ID Cliente--&gt;
+                                      &lt;RoleID&gt;G6e076196-85af-402a-8a56-dd7756ffecb8&lt;/RoleID&gt;
+                                    &lt;/RolePathItem&gt;
+                                  &lt;/Path&gt;
+                                  &lt;AttributeRef&gt;
+                                    &lt;!--ID Cliente--&gt;
+                                    &lt;AttributeID&gt;Gff0c4853-8169-45bf-92cd-86242c97071e&lt;/AttributeID&gt;
+                                  &lt;/AttributeRef&gt;
+                                &lt;/Expression&gt;
+                                &lt;Expression&gt;
+                                  &lt;ParameterRef&gt;
+                                    &lt;ParameterName&gt;ID Cliente2&lt;/ParameterName&gt;
+                                  &lt;/ParameterRef&gt;
+                                &lt;/Expression&gt;
+                              &lt;/Arguments&gt;
+                            &lt;/Function&gt;
+                            &lt;CustomProperties&gt;
+                              &lt;CustomProperty Name="qd:FilterCondition" /&gt;
+                            &lt;/CustomProperties&gt;
+                          &lt;/Expression&gt;
+                        &lt;/Arguments&gt;
+                      &lt;/Function&gt;
+                    &lt;/Expression&gt;
+                  &lt;/Arguments&gt;
+                &lt;/Function&gt;
+              &lt;/Expression&gt;
+            &lt;/Arguments&gt;
+          &lt;/Function&gt;
+          &lt;CustomProperties&gt;
+            &lt;CustomProperty Name="qd:Filter" /&gt;
+            &lt;CustomProperty Name="qd:ContextEntityID"&gt;
+              &lt;Value xsi:type="xsd:string"&gt;G966812f3-5260-480d-8cc9-2a2d0b630779&lt;/Value&gt;
+            &lt;/CustomProperty&gt;
+            &lt;CustomProperty Name="qd:Design"&gt;
+              &lt;Value xsi:type="xsd:string"&gt;expr2&lt;/Value&gt;
+            &lt;/CustomProperty&gt;
+          &lt;/CustomProperties&gt;
+        &lt;/Expression&gt;
+      &lt;/Filter&gt;
+    &lt;/Hierarchy&gt;
+  &lt;/Hierarchies&gt;
+  &lt;MeasureGroups&gt;
+    &lt;MeasureGroup&gt;
+      &lt;BaseEntity&gt;
+        &lt;!--Recibos--&gt;
+        &lt;EntityID&gt;G966812f3-5260-480d-8cc9-2a2d0b630779&lt;/EntityID&gt;
+      &lt;/BaseEntity&gt;
+      &lt;Measures&gt;
+        &lt;Expression Name="MONTO PAGADO_Sum"&gt;
+          &lt;Function&gt;
+            &lt;FunctionName&gt;Sum&lt;/FunctionName&gt;
+            &lt;Arguments&gt;
+              &lt;Expression&gt;
+                &lt;AttributeRef&gt;
+                  &lt;!--Monto Transaccion--&gt;
+                  &lt;AttributeID&gt;G744625c5-f286-4a16-9be8-de0d774faa69&lt;/AttributeID&gt;
+                &lt;/AttributeRef&gt;
+              &lt;/Expression&gt;
+            &lt;/Arguments&gt;
+          &lt;/Function&gt;
+          &lt;CustomProperties&gt;
+            &lt;CustomProperty Name="qd:Design"&gt;
+              &lt;Value xsi:type="xsd:string"&gt;MONTO PAGADO&lt;/Value&gt;
+            &lt;/CustomProperty&gt;
+          &lt;/CustomProperties&gt;
+        &lt;/Expression&gt;
+      &lt;/Measures&gt;
+    &lt;/MeasureGroup&gt;
+  &lt;/MeasureGroups&gt;
+  &lt;CalculatedAttributes&gt;
+    &lt;Expression Name="MONTO PAGADO"&gt;
+      &lt;AttributeRef&gt;
+        &lt;!--Total ORTRXAMT--&gt;
+        &lt;AttributeID&gt;Gab7b1e0d-d322-4f1e-8a96-0c4849dbf3d5&lt;/AttributeID&gt;
+      &lt;/AttributeRef&gt;
+      &lt;CustomProperties&gt;
+        &lt;CustomProperty Name="qd:ContextEntityID"&gt;
+          &lt;Value xsi:type="xsd:string"&gt;G966812f3-5260-480d-8cc9-2a2d0b630779&lt;/Value&gt;
+        &lt;/CustomProperty&gt;
+      &lt;/CustomProperties&gt;
+    &lt;/Expression&gt;
+  &lt;/CalculatedAttributes&gt;
+  &lt;Parameters&gt;
+    &lt;Parameter Name="Fecha Documento"&gt;
+      &lt;DataType&gt;DateTime&lt;/DataType&gt;
+      &lt;Expression&gt;
+        &lt;Literal&gt;
+          &lt;DataType&gt;DateTime&lt;/DataType&gt;
+          &lt;Value&gt;2008-01-01T00:00:00&lt;/Value&gt;
+        &lt;/Literal&gt;
+      &lt;/Expression&gt;
+    &lt;/Parameter&gt;
+    &lt;Parameter Name="Fecha Documento1"&gt;
+      &lt;DataType&gt;DateTime&lt;/DataType&gt;
+      &lt;Expression&gt;
+        &lt;Literal&gt;
+          &lt;DataType&gt;DateTime&lt;/DataType&gt;
+          &lt;Value&gt;2008-01-01T00:00:00&lt;/Value&gt;
+        &lt;/Literal&gt;
+      &lt;/Expression&gt;
+    &lt;/Parameter&gt;
+    &lt;Parameter Name="ID Cliente"&gt;
+      &lt;DataType&gt;String&lt;/DataType&gt;
+      &lt;Nullable&gt;true&lt;/Nullable&gt;
+      &lt;Expression&gt;
+        &lt;Literal&gt;
+          &lt;DataType&gt;String&lt;/DataType&gt;
+          &lt;Value&gt;10000          &lt;/Value&gt;
+        &lt;/Literal&gt;
+      &lt;/Expression&gt;
+    &lt;/Parameter&gt;
+    &lt;Parameter Name="ID Cliente2"&gt;
+      &lt;DataType&gt;String&lt;/DataType&gt;
+      &lt;Nullable&gt;true&lt;/Nullable&gt;
+      &lt;Expression&gt;
+        &lt;Literal&gt;
+          &lt;DataType&gt;String&lt;/DataType&gt;
+          &lt;Value&gt;24995          &lt;/Value&gt;
+        &lt;/Literal&gt;
+      &lt;/Expression&gt;
+    &lt;/Parameter&gt;
+  &lt;/Parameters&gt;
+&lt;/SemanticQuery&gt;</CommandText>
+        <QueryParameters>
+          <QueryParameter Name="Fecha Documento">
+            <Value>=Parameters!FechaDocumento.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="Fecha Documento1">
+            <Value>=Parameters!FechaDocumento1.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="ID Cliente">
+            <Value>=Parameters!IDCliente.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="ID Cliente2">
+            <Value>=Parameters!IDCliente2.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+      </Query>
+      <Fields>
+        <Field Name="FECHA">
+          <DataField>FECHA</DataField>
+        </Field>
+        <Field Name="IDCliente">
+          <DataField>ID Cliente</DataField>
+        </Field>
+        <Field Name="COD_CTE">
+          <DataField>COD_CTE</DataField>
+        </Field>
+        <Field Name="NOMBRE">
+          <DataField>NOMBRE</DataField>
+        </Field>
+        <Field Name="Recibos">
+          <DataField>Recibos</DataField>
+        </Field>
+        <Field Name="NoDocumento">
+          <DataField>No. Documento</DataField>
+        </Field>
+        <Field Name="MONTOPAGADO_Sum">
+          <DataField>MONTO PAGADO_Sum</DataField>
+        </Field>
+      </Fields>
+    </DataSet>
+  </DataSets>
+  <DataSources>
+    <DataSource Name="dataSource1">
+      <DataSourceReference>/Models/GPDB</DataSourceReference>
+      <rd:DataSourceID>5a0020a1-d971-4609-81da-72d706c4028e</rd:DataSourceID>
+    </DataSource>
+  </DataSources>
+  <PageHeight>11in</PageHeight>
+  <LeftMargin>0.5in</LeftMargin>
+  <ReportParameters>
+    <ReportParameter Name="FechaDocumento">
+      <DataType>DateTime</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>=CDate("2008-01-01")</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Fecha Documento</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="FechaDocumento1">
+      <DataType>DateTime</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>=CDate("2008-01-01")</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Fecha Documento1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="IDCliente">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <DefaultValue>
+        <Values>
+          <Value>="10000          "</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>ID Cliente</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="IDCliente2">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <DefaultValue>
+        <Values>
+          <Value>="24995          "</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>ID Cliente2</Prompt>
+    </ReportParameter>
+  </ReportParameters>
+  <TopMargin>0.5in</TopMargin>
+  <Width>7.5in</Width>
+  <Body>
+    <Height>0in</Height>
+    <ReportItems>
+      <Textbox Name="Title">
+        <Left>0.5in</Left>
+        <Top>0.125in</Top>
+        <CanGrow>true</CanGrow>
+        <Width>6.5in</Width>
+        <Value>INVERSIONES TARAMACA, S.A.</Value>
+        <Style>
+          <FontSize>18pt</FontSize>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+          <FontFamily>Tahoma</FontFamily>
+        </Style>
+        <CustomProperties>
+          <CustomProperty>
+            <Name>rb:Watermark</Name>
+            <Value>Click to add title</Value>
+          </CustomProperty>
+        </CustomProperties>
+        <Height>0.5in</Height>
+      </Textbox>
+      <Table Name="table">
+        <Footer>
+          <TableRows>
+            <TableRow>
+              <TableCells>
+                <TableCell>
+                  <ColSpan>4</ColSpan>
+                  <ReportItems>
+                    <Textbox Name="FechaDocumento_SubtotalHeader">
+                      <CanGrow>true</CanGrow>
+                      <Value>Total</Value>
+                      <Style>
+                        <BackgroundColor>#c6dbff</BackgroundColor>
+                        <FontSize>8pt</FontSize>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <BorderColor>
+                          <Default>#c0c0c0</Default>
+                        </BorderColor>
+                        <BorderStyle>
+                          <Default>Solid</Default>
+                        </BorderStyle>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontWeight>Bold</FontWeight>
+                      </Style>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="TotalORTRXAMT_Total_2_2">
+                      <CanGrow>true</CanGrow>
+                      <Value>=SUM(Fields!MONTOPAGADO_Sum.Value)</Value>
+                      <Style>
+                        <BackgroundColor>#c6dbff</BackgroundColor>
+                        <FontSize>8pt</FontSize>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <BorderColor>
+                          <Default>#c0c0c0</Default>
+                        </BorderColor>
+                        <BorderStyle>
+                          <Default>Solid</Default>
+                        </BorderStyle>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontWeight>Bold</FontWeight>
+                        <Format>n</Format>
+                        <Language>en-US</Language>
+                      </Style>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+              </TableCells>
+              <Height>0.25in</Height>
+            </TableRow>
+          </TableRows>
+        </Footer>
+        <Top>1.5in</Top>
+        <TableGroups>
+          <TableGroup>
+            <Footer>
+              <TableRows>
+                <TableRow>
+                  <TableCells>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="blank">
+                          <CanGrow>true</CanGrow>
+                          <Value />
+                          <Style>
+                            <BackgroundColor>White</BackgroundColor>
+                            <FontSize>8pt</FontSize>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                            <BorderColor>
+                              <Default>#c0c0c0</Default>
+                            </BorderColor>
+                            <BorderStyle>
+                              <Left>Solid</Left>
+                              <Right>Solid</Right>
+                              <Bottom>Solid</Bottom>
+                            </BorderStyle>
+                            <FontFamily>Tahoma</FontFamily>
+                            <Format>d</Format>
+                            <Language>en-US</Language>
+                          </Style>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ColSpan>3</ColSpan>
+                      <ReportItems>
+                        <Textbox Name="IDCliente_SubtotalHeader">
+                          <CanGrow>true</CanGrow>
+                          <Value>Total</Value>
+                          <Style>
+                            <BackgroundColor>#c6dbff</BackgroundColor>
+                            <FontSize>8pt</FontSize>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                            <BorderColor>
+                              <Default>#c0c0c0</Default>
+                            </BorderColor>
+                            <BorderStyle>
+                              <Default>Solid</Default>
+                            </BorderStyle>
+                            <FontFamily>Tahoma</FontFamily>
+                            <FontWeight>Bold</FontWeight>
+                          </Style>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="TotalORTRXAMT_Total_2_1">
+                          <CanGrow>true</CanGrow>
+                          <Value>=SUM(Fields!MONTOPAGADO_Sum.Value)</Value>
+                          <Style>
+                            <BackgroundColor>#c6dbff</BackgroundColor>
+                            <FontSize>8pt</FontSize>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                            <BorderColor>
+                              <Default>#c0c0c0</Default>
+                            </BorderColor>
+                            <BorderStyle>
+                              <Default>Solid</Default>
+                            </BorderStyle>
+                            <FontFamily>Tahoma</FontFamily>
+                            <FontWeight>Bold</FontWeight>
+                            <Format>n</Format>
+                            <Language>en-US</Language>
+                          </Style>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                  </TableCells>
+                  <Height>0.25in</Height>
+                </TableRow>
+              </TableRows>
+            </Footer>
+            <Sorting>
+              <SortBy>
+                <SortExpression>=Fields!FECHA.Value</SortExpression>
+              </SortBy>
+            </Sorting>
+            <Grouping Name="table_FECHA">
+              <GroupExpressions>
+                <GroupExpression>=Fields!FECHA.Value</GroupExpression>
+              </GroupExpressions>
+            </Grouping>
+          </TableGroup>
+          <TableGroup>
+            <Sorting>
+              <SortBy>
+                <SortExpression>=Fields!COD_CTE.Value</SortExpression>
+              </SortBy>
+              <SortBy>
+                <SortExpression>=IIf(True, Fields!NOMBRE.Value, Nothing)</SortExpression>
+              </SortBy>
+            </Sorting>
+            <Grouping Name="table_IDCliente">
+              <GroupExpressions>
+                <GroupExpression>=Fields!IDCliente.Value</GroupExpression>
+              </GroupExpressions>
+            </Grouping>
+          </TableGroup>
+        </TableGroups>
+        <Details>
+          <TableRows>
+            <TableRow>
+              <TableCells>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="FechaDocumento_Value">
+                      <DataElementOutput>Output</DataElementOutput>
+                      <CanGrow>true</CanGrow>
+                      <HideDuplicates>table_FECHA</HideDuplicates>
+                      <Value>=Fields!FECHA.Value</Value>
+                      <Style>
+                        <BackgroundColor>White</BackgroundColor>
+                        <FontSize>8pt</FontSize>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <BorderColor>
+                          <Default>#c0c0c0</Default>
+                        </BorderColor>
+                        <BorderStyle>
+                          <Left>Solid</Left>
+                          <Right>Solid</Right>
+                        </BorderStyle>
+                        <FontFamily>Tahoma</FontFamily>
+                        <Format>d</Format>
+                        <Language>en-US</Language>
+                      </Style>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="IDCliente_Value">
+                      <DataElementOutput>Output</DataElementOutput>
+                      <CanGrow>true</CanGrow>
+                      <HideDuplicates>table_IDCliente</HideDuplicates>
+                      <Value>=Fields!COD_CTE.Value</Value>
+                      <Style>
+                        <BackgroundColor>White</BackgroundColor>
+                        <FontSize>8pt</FontSize>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <BorderColor>
+                          <Default>#c0c0c0</Default>
+                        </BorderColor>
+                        <BorderStyle>
+                          <Left>Solid</Left>
+                          <Right>Solid</Right>
+                          <Bottom>=Iif( RowNumber("table_IDCliente") = CountRows("table_IDCliente"), "Solid", Nothing)</Bottom>
+                        </BorderStyle>
+                        <FontFamily>Tahoma</FontFamily>
+                        <Language>en-US</Language>
+                      </Style>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="IDClienteNombre_Value">
+                      <DataElementOutput>Output</DataElementOutput>
+                      <CanGrow>true</CanGrow>
+                      <HideDuplicates>table_IDCliente</HideDuplicates>
+                      <Value>=Fields!NOMBRE.Value</Value>
+                      <Style>
+                        <BackgroundColor>White</BackgroundColor>
+                        <FontSize>8pt</FontSize>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <BorderColor>
+                          <Default>#c0c0c0</Default>
+                        </BorderColor>
+                        <BorderStyle>
+                          <Left>Solid</Left>
+                          <Right>Solid</Right>
+                          <Bottom>=Iif( RowNumber("table_IDCliente") = CountRows("table_IDCliente"), "Solid", Nothing)</Bottom>
+                        </BorderStyle>
+                        <FontFamily>Tahoma</FontFamily>
+                        <Language>en-US</Language>
+                      </Style>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="NoDocumento_Value">
+                      <DataElementOutput>Output</DataElementOutput>
+                      <CanGrow>true</CanGrow>
+                      <Value>=Fields!NoDocumento.Value</Value>
+                      <Style>
+                        <BackgroundColor>White</BackgroundColor>
+                        <FontSize>8pt</FontSize>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <BorderColor>
+                          <Default>#c0c0c0</Default>
+                        </BorderColor>
+                        <BorderStyle>
+                          <Default>Solid</Default>
+                        </BorderStyle>
+                        <FontFamily>Tahoma</FontFamily>
+                        <Language>en-US</Language>
+                      </Style>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="TotalORTRXAMT_Value">
+                      <DataElementOutput>Output</DataElementOutput>
+                      <CanGrow>true</CanGrow>
+                      <Value>=Fields!MONTOPAGADO_Sum.Value</Value>
+                      <Style>
+                        <BackgroundColor>White</BackgroundColor>
+                        <FontSize>8pt</FontSize>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <BorderColor>
+                          <Default>#c0c0c0</Default>
+                        </BorderColor>
+                        <BorderStyle>
+                          <Default>Solid</Default>
+                        </BorderStyle>
+                        <FontFamily>Tahoma</FontFamily>
+                        <Format>n</Format>
+                        <Language>en-US</Language>
+                      </Style>
+                      <CustomProperties>
+                        <CustomProperty>
+                          <Name>rb:Group</Name>
+                          <Value>table_Recibos</Value>
+                        </CustomProperty>
+                      </CustomProperties>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+              </TableCells>
+              <Height>0.25in</Height>
+            </TableRow>
+          </TableRows>
+          <Grouping Name="table_Recibos">
+            <GroupExpressions>
+              <GroupExpression>=Fields!Recibos.Value</GroupExpression>
+            </GroupExpressions>
+          </Grouping>
+          <Sorting>
+            <SortBy>
+              <SortExpression>=IIf(True, Fields!NoDocumento.Value, Nothing)</SortExpression>
+            </SortBy>
+          </Sorting>
+        </Details>
+        <Style />
+        <Width>0in</Width>
+        <Height>0in</Height>
+        <NoRows>No data was found that matched your report criteria.</NoRows>
+        <DataSetName>dataSet</DataSetName>
+        <TableColumns>
+          <TableColumn>
+            <Width>0.75in</Width>
+            <Visibility>
+              <Hidden>=Fields!FECHA.IsMissing</Hidden>
+            </Visibility>
+          </TableColumn>
+          <TableColumn>
+            <Width>0.75in</Width>
+            <Visibility>
+              <Hidden>=Fields!COD_CTE.IsMissing</Hidden>
+            </Visibility>
+          </TableColumn>
+          <TableColumn>
+            <Width>1.875in</Width>
+            <Visibility>
+              <Hidden>=Fields!NOMBRE.IsMissing</Hidden>
+            </Visibility>
+          </TableColumn>
+          <TableColumn>
+            <Width>1.75in</Width>
+            <Visibility>
+              <Hidden>=Fields!NoDocumento.IsMissing</Hidden>
+            </Visibility>
+          </TableColumn>
+          <TableColumn>
+            <Width>1.125in</Width>
+            <Visibility>
+              <Hidden>=Fields!MONTOPAGADO_Sum.IsMissing</Hidden>
+            </Visibility>
+          </TableColumn>
+        </TableColumns>
+        <Header>
+          <TableRows>
+            <TableRow>
+              <TableCells>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="FechaDocumento_Header">
+                      <CanGrow>true</CanGrow>
+                      <UserSort>
+                        <SortExpression>=Fields!FECHA.Value</SortExpression>
+                        <SortExpressionScope>table_FECHA</SortExpressionScope>
+                      </UserSort>
+                      <Value>FECHA</Value>
+                      <Style>
+                        <Color>White</Color>
+                        <BackgroundColor>#528ae7</BackgroundColor>
+                        <FontSize>8pt</FontSize>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <BorderColor>
+                          <Default>#c0c0c0</Default>
+                        </BorderColor>
+                        <BorderStyle>
+                          <Default>Solid</Default>
+                        </BorderStyle>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontWeight>Bold</FontWeight>
+                        <Language>en-US</Language>
+                      </Style>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="IDCliente_Header">
+                      <CanGrow>true</CanGrow>
+                      <UserSort>
+                        <SortExpression>=Fields!COD_CTE.Value</SortExpression>
+                        <SortExpressionScope>table_IDCliente</SortExpressionScope>
+                      </UserSort>
+                      <Value>COD_CTE</Value>
+                      <Style>
+                        <Color>White</Color>
+                        <BackgroundColor>#528ae7</BackgroundColor>
+                        <FontSize>8pt</FontSize>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <BorderColor>
+                          <Default>#c0c0c0</Default>
+                        </BorderColor>
+                        <BorderStyle>
+                          <Default>Solid</Default>
+                        </BorderStyle>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontWeight>Bold</FontWeight>
+                        <Language>en-US</Language>
+                      </Style>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="IDClienteNombre_Header">
+                      <CanGrow>true</CanGrow>
+                      <UserSort>
+                        <SortExpression>=Fields!NOMBRE.Value</SortExpression>
+                        <SortExpressionScope>table_IDCliente</SortExpressionScope>
+                      </UserSort>
+                      <Value>NOMBRE</Value>
+                      <Style>
+                        <Color>White</Color>
+                        <BackgroundColor>#528ae7</BackgroundColor>
+                        <FontSize>8pt</FontSize>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <BorderColor>
+                          <Default>#c0c0c0</Default>
+                        </BorderColor>
+                        <BorderStyle>
+                          <Default>Solid</Default>
+                        </BorderStyle>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontWeight>Bold</FontWeight>
+                        <Language>en-US</Language>
+                      </Style>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="NoDocumento_Header">
+                      <CanGrow>true</CanGrow>
+                      <UserSort>
+                        <SortExpression>=Fields!NoDocumento.Value</SortExpression>
+                        <SortExpressionScope>table_Recibos</SortExpressionScope>
+                      </UserSort>
+                      <Value>No. Documento</Value>
+                      <Style>
+                        <Color>White</Color>
+                        <BackgroundColor>#528ae7</BackgroundColor>
+                        <FontSize>8pt</FontSize>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <BorderColor>
+                          <Default>#c0c0c0</Default>
+                        </BorderColor>
+                        <BorderStyle>
+                          <Default>Solid</Default>
+                        </BorderStyle>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontWeight>Bold</FontWeight>
+                        <Language>en-US</Language>
+                      </Style>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="TotalORTRXAMT_Header">
+                      <CanGrow>true</CanGrow>
+                      <UserSort>
+                        <SortExpression>=Fields!MONTOPAGADO_Sum.Value</SortExpression>
+                        <SortExpressionScope>table_Recibos</SortExpressionScope>
+                      </UserSort>
+                      <Value>MONTO PAGADO</Value>
+                      <Style>
+                        <Color>White</Color>
+                        <BackgroundColor>#528ae7</BackgroundColor>
+                        <FontSize>8pt</FontSize>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <BorderColor>
+                          <Default>#c0c0c0</Default>
+                        </BorderColor>
+                        <BorderStyle>
+                          <Default>Solid</Default>
+                        </BorderStyle>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontWeight>Bold</FontWeight>
+                        <Language>en-US</Language>
+                      </Style>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+              </TableCells>
+              <Height>0.47179in</Height>
+            </TableRow>
+          </TableRows>
+          <RepeatOnNewPage>true</RepeatOnNewPage>
+          <FixedHeader>true</FixedHeader>
+        </Header>
+        <Left>0.625in</Left>
+      </Table>
+      <Textbox Name="TotalRows">
+        <Left>0.5in</Left>
+        <Top>2.875in</Top>
+        <CanGrow>true</CanGrow>
+        <Width>6.5in</Width>
+        <Value>=String.Format("Total RM10201s" &amp; Chr(58) &amp; " {0}", COUNTROWS("dataSet"))</Value>
+        <Style>
+          <FontSize>8pt</FontSize>
+          <PaddingLeft>3pt</PaddingLeft>
+          <PaddingRight>3pt</PaddingRight>
+          <PaddingTop>3pt</PaddingTop>
+          <PaddingBottom>3pt</PaddingBottom>
+        </Style>
+        <CustomProperties>
+          <CustomProperty>
+            <Name>rb:SpecialContent</Name>
+            <Value>TotalRows</Value>
+          </CustomProperty>
+        </CustomProperties>
+        <Height>0.25in</Height>
+      </Textbox>
+      <Textbox Name="textbox">
+        <Left>0.5in</Left>
+        <Top>0.75in</Top>
+        <CanGrow>true</CanGrow>
+        <Width>4.125in</Width>
+        <Value>Reporte Cobros x Fecha x Clientes - Taramaca</Value>
+        <Style>
+          <FontSize>12pt</FontSize>
+          <PaddingLeft>3pt</PaddingLeft>
+          <PaddingRight>3pt</PaddingRight>
+          <PaddingTop>3pt</PaddingTop>
+          <PaddingBottom>3pt</PaddingBottom>
+          <FontWeight>Bold</FontWeight>
+        </Style>
+        <Height>0.375in</Height>
+      </Textbox>
+    </ReportItems>
+    <Style />
+  </Body>
+  <PageWidth>8.5in</PageWidth>
+</Report>

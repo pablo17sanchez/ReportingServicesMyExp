@@ -1,0 +1,218 @@
+﻿<DataSourceView xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" dwd:design-time-name="d0b517f2-2b6f-4b02-af6e-e2f1719b96cc" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
+  <ID>DSW-GPHNV</ID>
+  <Name>DSW-GPHNV</Name>
+  <CreatedTimestamp>0001-01-01T04:00:00Z</CreatedTimestamp>
+  <LastSchemaUpdate>0001-01-01T04:00:00Z</LastSchemaUpdate>
+  <Annotations>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowFriendlyNames</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:CurrentLayout</Name>
+      <Value>_ALL_TABLES_</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:SchemaRestriction</Name>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:RetrieveRelationships</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:Layouts</Name>
+      <Value>
+        <Layouts xmlns="">
+          <Diagram>
+            <Name>_ALL_TABLES_</Name>
+            <DiagramLayout>
+              <dds>
+                <diagram fontclsid="{0BE35203-8F91-11CE-9DE3-00AA004BB851}" mouseiconclsid="{0BE35204-8F91-11CE-9DE3-00AA004BB851}" defaultlayout="MSDDS.Rectilinear" defaultlineroute="MSDDS.Rectilinear" version="7" nextobject="9" scale="100" pagebreakanchorx="0" pagebreakanchory="0" pagebreaksizex="0" pagebreaksizey="0" scrollleft="-1881" scrolltop="-8946" gridx="150" gridy="150" marginx="5000" marginy="5000" zoom="100" x="16484" y="13811" backcolor="15334399" defaultpersistence="2" PrintPageNumbersMode="3" PrintMarginTop="0" PrintMarginBottom="635" PrintMarginLeft="0" PrintMarginRight="0" marqueeselectionmode="0" mousepointer="0" snaptogrid="0" autotypeannotation="1" showscrollbars="0" viewpagebreaks="0" donotforceconnectorsbehindshapes="1" backpictureclsid="{00000000-0000-0000-0000-000000000000}">
+                  <font>
+                    <ddsxmlobjectstreamwrapper binary="01000000900144420100065461686f6d61" />
+                  </font>
+                  <mouseicon>
+                    <ddsxmlobjectstreamwrapper binary="6c74000000000000" />
+                  </mouseicon>
+                </diagram>
+                <layoutmanager>
+                  <ddsxmlobj />
+                </layoutmanager>
+                <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.1" tooltip="vw_VentasGP (dbo.vw_VentasGP)" left="-372" top="-8007" logicalid="8" controlid="5" masterid="0" hint1="0" hint2="0" width="3519" height="5000" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+                  <control>
+                    <ddsxmlobjectstreaminitwrapper binary="00080000bf0d000088130000" />
+                  </control>
+                  <layoutobject>
+                    <ddsxmlobj>
+                      <property name="LogicalObject" value="dbo_vw_VentasGP" vartype="8" />
+                    </ddsxmlobj>
+                  </layoutobject>
+                  <shape groupshapeid="0" groupnode="0" />
+                </ddscontrol>
+              </dds>
+</DiagramLayout>
+            <ShowRelationshipNames>False</ShowRelationshipNames>
+            <UseDiagramDefaultLayout>True</UseDiagramDefaultLayout>
+            <DiagramViewPortLeft>-1881</DiagramViewPortLeft>
+            <DiagramViewPortTop>-8946</DiagramViewPortTop>
+            <DiagramBoundingLeft>0</DiagramBoundingLeft>
+            <DiagramBoundingTop>0</DiagramBoundingTop>
+            <DiagramZoom>100</DiagramZoom>
+          </Diagram>
+        </Layouts>
+      </Value>
+    </Annotation>
+  </Annotations>
+  <DataSourceID>DS-GPHN</DataSourceID>
+  <Schema>
+    <xs:schema id="DSW-GPHNV" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop">
+      <xs:element name="DSW-GPHNV" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:design-time-name="29c7d0ff-60f4-4573-8d61-4989c318f4e7">
+        <xs:complexType>
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="dbo_vw_VentasGP" msprop:FriendlyName="vw_VentasGP" msprop:DbSchemaName="dbo" msprop:DbTableName="vw_VentasGP" msprop:design-time-name="35a0cf2a-0d59-4d79-98d3-091927a259ec" msprop:TableType="View">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="BACHNUMB" msdata:ReadOnly="true" msprop:FriendlyName="BACHNUMB" msprop:DbColumnName="BACHNUMB" msprop:design-time-name="d9830d18-9326-4b11-967d-c96d04d7f533">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="15" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="DOCID" msdata:ReadOnly="true" msprop:FriendlyName="DOCID" msprop:DbColumnName="DOCID" msprop:design-time-name="9223c84b-c9fd-4072-8eb3-55c46aa31be8">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="15" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="CUSTNMBR" msdata:ReadOnly="true" msprop:FriendlyName="CUSTNMBR" msprop:DbColumnName="CUSTNMBR" msprop:design-time-name="429e62ba-17b7-4bfb-867e-5f1cf308e340" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="15" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="CUSTNAME" msdata:ReadOnly="true" msprop:FriendlyName="CUSTNAME" msprop:DbColumnName="CUSTNAME" msprop:design-time-name="ec54b007-fb3f-4094-a30b-877ce2248f2d">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="65" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="SOPNUMBE" msdata:ReadOnly="true" msprop:FriendlyName="SOPNUMBE" msprop:DbColumnName="SOPNUMBE" msprop:design-time-name="1f06650f-c1ad-450d-ac51-151bcb99c626">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="21" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="DOCDATE" msdata:ReadOnly="true" msprop:FriendlyName="DOCDATE" msprop:DbColumnName="DOCDATE" msprop:design-time-name="2c80f54f-ffae-464c-9656-780278b8a3ce" type="xs:dateTime" />
+                  <xs:element name="SLPRSNID" msdata:ReadOnly="true" msprop:FriendlyName="SLPRSNID" msprop:DbColumnName="SLPRSNID" msprop:design-time-name="c80d93ae-729e-45ba-b5ab-8f9fdea9aca3">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="15" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="ITEMNMBR" msdata:ReadOnly="true" msprop:FriendlyName="ITEMNMBR" msprop:DbColumnName="ITEMNMBR" msprop:design-time-name="b28bcff4-8110-4b15-9446-3b3a9e5cfb3c" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="31" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="ITEMDESC" msdata:ReadOnly="true" msprop:FriendlyName="ITEMDESC" msprop:DbColumnName="ITEMDESC" msprop:design-time-name="841b51fe-2689-49d7-89b4-b19070e6a521" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="8000" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="LOCNCODE" msdata:ReadOnly="true" msprop:FriendlyName="LOCNCODE" msprop:DbColumnName="LOCNCODE" msprop:design-time-name="581103b4-f514-42c8-9e86-7401c6348f46">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="11" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="UNITPRCE" msdata:ReadOnly="true" msprop:FriendlyName="UNITPRCE" msprop:DbColumnName="UNITPRCE" msprop:design-time-name="5cd92030-1a52-48d2-a320-0ae13a574315" type="xs:decimal" />
+                  <xs:element name="QUANTITY" msdata:ReadOnly="true" msprop:FriendlyName="QUANTITY" msprop:DbColumnName="QUANTITY" msprop:design-time-name="dae4a09f-6d4d-4541-916e-8531d8076fdb" type="xs:decimal" />
+                  <xs:element name="XTNDPRCE" msdata:ReadOnly="true" msprop:FriendlyName="XTNDPRCE" msprop:DbColumnName="XTNDPRCE" msprop:design-time-name="a22ab328-fad5-42a2-b422-32732bced0c1" type="xs:decimal" />
+                  <xs:element name="USER2ENT" msdata:ReadOnly="true" msprop:FriendlyName="USER2ENT" msprop:DbColumnName="USER2ENT" msprop:design-time-name="93ff4a3b-fcab-4e84-83c2-6b5931a48aec">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="15" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="PYMTRCVD" msdata:ReadOnly="true" msprop:FriendlyName="PYMTRCVD" msprop:DbColumnName="PYMTRCVD" msprop:design-time-name="2de7b32f-1bd1-42b0-aba8-7b557a90b23e" type="xs:decimal" />
+                  <xs:element name="DOCAMNT" msdata:ReadOnly="true" msprop:FriendlyName="DOCAMNT" msprop:DbColumnName="DOCAMNT" msprop:design-time-name="0c4235bf-25ad-4928-8b29-22b4c42a76bf" type="xs:decimal" />
+                  <xs:element name="SOPTYPE" msdata:ReadOnly="true" msprop:FriendlyName="SOPTYPE" msprop:DbColumnName="SOPTYPE" msprop:design-time-name="166278c2-e208-485d-afcb-4554b684ef0e" type="xs:short" />
+                  <xs:element name="VOIDSTTS" msdata:ReadOnly="true" msprop:FriendlyName="VOIDSTTS" msprop:DbColumnName="VOIDSTTS" msprop:design-time-name="b5a4a2c1-2d60-4686-af7f-d4fcfc38be71" type="xs:short" />
+                  <xs:element name="PYMTRMID" msdata:ReadOnly="true" msprop:FriendlyName="PYMTRMID" msprop:DbColumnName="PYMTRMID" msprop:design-time-name="3e1b5d83-b252-4e4b-b868-854cb22c10d8">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="21" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="NombreRuta" msprop:FriendlyName="NombreRuta" msprop:DbColumnName="NombreRuta" msprop:design-time-name="136b31a4-8ed2-4d6b-a497-b3f94d174701" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="50" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="IdVendedor" msprop:FriendlyName="IdVendedor" msprop:DbColumnName="IdVendedor" msprop:design-time-name="146e4510-68d8-49cb-a9bb-20b4a080a4fa" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="10" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="NombreVendedor" msprop:FriendlyName="NombreVendedor" msprop:DbColumnName="NombreVendedor" msprop:design-time-name="86d4f2b8-aea0-43f0-9ef5-4567d6ef2f58" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="50" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="NombreSubZona" msprop:FriendlyName="NombreSubZona" msprop:DbColumnName="NombreSubZona" msprop:design-time-name="60b21710-718b-4bfe-bbc9-a4bc8ef4d4e3" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="255" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="IdZona" msprop:FriendlyName="IdZona" msprop:DbColumnName="IdZona" msprop:design-time-name="a919bdd3-8803-4f80-9adb-1f261187cf41" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="15" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="ZonaResp" msdata:ReadOnly="true" msprop:FriendlyName="ZonaResp" msprop:DbColumnName="ZonaResp" msprop:design-time-name="b9196d98-8129-4dbe-be3a-111d18b9566c" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="37" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="NombreSupervisor" msprop:FriendlyName="NombreSupervisor" msprop:DbColumnName="NombreSupervisor" msprop:design-time-name="b87ced18-963d-4a3e-b79e-903fe8269a93" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="50" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:choice>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+    <diffgr:diffgram xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:diffgr="urn:schemas-microsoft-com:xml-diffgram-v1" />
+  </Schema>
+</DataSourceView>

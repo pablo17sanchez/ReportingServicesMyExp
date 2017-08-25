@@ -1,0 +1,794 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2005/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <DataSources>
+    <DataSource Name="Taramaca">
+      <ConnectionProperties>
+        <ConnectString>Data Source=10.0.0.86;Initial Catalog=GPHN</ConnectString>
+        <DataProvider>SQL</DataProvider>
+      </ConnectionProperties>
+      <rd:DataSourceID>262f1583-e281-4e48-9957-7e13c0108c14</rd:DataSourceID>
+    </DataSource>
+  </DataSources>
+  <BottomMargin>2.5cm</BottomMargin>
+  <RightMargin>2.5cm</RightMargin>
+  <PageWidth>21cm</PageWidth>
+  <ReportParameters>
+    <ReportParameter Name="iFecha">
+      <DataType>String</DataType>
+      <Prompt>Desde Fecha yyyymm</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="aFecha">
+      <DataType>String</DataType>
+      <Prompt>Hasta Fecha yyyymm</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="iVendedor">
+      <DataType>String</DataType>
+      <Prompt>Desde Id. Vendedor </Prompt>
+    </ReportParameter>
+    <ReportParameter Name="aVendedor">
+      <DataType>String</DataType>
+      <Prompt>Hasta Id. Vendedor</Prompt>
+    </ReportParameter>
+  </ReportParameters>
+  <rd:DrawGrid>true</rd:DrawGrid>
+  <InteractiveWidth>8.5in</InteractiveWidth>
+  <rd:GridSpacing>0.25cm</rd:GridSpacing>
+  <rd:SnapToGrid>true</rd:SnapToGrid>
+  <Body>
+    <ColumnSpacing>1cm</ColumnSpacing>
+    <ReportItems>
+      <Chart Name="chart1">
+        <Legend>
+          <Visible>true</Visible>
+          <Style>
+            <BorderStyle>
+              <Default>Solid</Default>
+            </BorderStyle>
+            <FontSize>9pt</FontSize>
+            <BackgroundColor>White</BackgroundColor>
+            <BackgroundGradientEndColor>WhiteSmoke</BackgroundGradientEndColor>
+            <BackgroundGradientType>TopBottom</BackgroundGradientType>
+          </Style>
+          <Position>TopCenter</Position>
+          <Layout>Row</Layout>
+        </Legend>
+        <Subtype>Plain</Subtype>
+        <Title />
+        <Height>6cm</Height>
+        <CategoryAxis>
+          <Axis>
+            <Title>
+              <Style>
+                <Color>Maroon</Color>
+              </Style>
+            </Title>
+            <MajorGridLines>
+              <ShowGridLines>true</ShowGridLines>
+              <Style>
+                <BorderStyle>
+                  <Default>Solid</Default>
+                </BorderStyle>
+              </Style>
+            </MajorGridLines>
+            <MinorGridLines>
+              <Style>
+                <BorderStyle>
+                  <Default>Solid</Default>
+                </BorderStyle>
+              </Style>
+            </MinorGridLines>
+            <MajorTickMarks>Outside</MajorTickMarks>
+            <Min>0</Min>
+            <Visible>true</Visible>
+          </Axis>
+        </CategoryAxis>
+        <PointWidth>0</PointWidth>
+        <Left>0.25cm</Left>
+        <ThreeDProperties>
+          <Enabled>true</Enabled>
+          <ProjectionMode>Orthographic</ProjectionMode>
+          <Rotation>5</Rotation>
+          <Inclination>15</Inclination>
+          <Perspective>100</Perspective>
+          <Shading>Simple</Shading>
+          <Clustered>true</Clustered>
+        </ThreeDProperties>
+        <DataSetName>Taramaca</DataSetName>
+        <SeriesGroupings>
+          <SeriesGrouping>
+            <DynamicSeries>
+              <Grouping Name="Cantidad">
+                <Parent>=Fields!itemnmbr.Value</Parent>
+                <GroupExpressions>
+                  <GroupExpression>=Fields!itemnmbr.Value</GroupExpression>
+                </GroupExpressions>
+              </Grouping>
+              <Sorting>
+                <SortBy>
+                  <SortExpression>=Fields!Cantidad.Value</SortExpression>
+                  <Direction>Ascending</Direction>
+                </SortBy>
+              </Sorting>
+              <Label>=Fields!itemnmbr.Value</Label>
+            </DynamicSeries>
+          </SeriesGrouping>
+          <SeriesGrouping>
+            <StaticSeries>
+              <StaticMember>
+                <Label>Cantidad Total</Label>
+              </StaticMember>
+            </StaticSeries>
+          </SeriesGrouping>
+        </SeriesGroupings>
+        <Top>3cm</Top>
+        <PlotArea>
+          <Style>
+            <BorderStyle>
+              <Default>Solid</Default>
+            </BorderStyle>
+            <BackgroundColor>LightGrey</BackgroundColor>
+          </Style>
+        </PlotArea>
+        <ValueAxis>
+          <Axis>
+            <Title />
+            <MajorGridLines>
+              <Style>
+                <BorderStyle>
+                  <Default>Solid</Default>
+                </BorderStyle>
+              </Style>
+            </MajorGridLines>
+            <MinorGridLines>
+              <ShowGridLines>true</ShowGridLines>
+              <Style>
+                <BorderStyle>
+                  <Default>Solid</Default>
+                </BorderStyle>
+              </Style>
+            </MinorGridLines>
+            <MajorTickMarks>Outside</MajorTickMarks>
+            <MinorTickMarks>Inside</MinorTickMarks>
+            <Min>10</Min>
+            <Visible>true</Visible>
+            <Scalar>true</Scalar>
+          </Axis>
+        </ValueAxis>
+        <ZIndex>1</ZIndex>
+        <Type>Line</Type>
+        <Width>15cm</Width>
+        <CategoryGroupings>
+          <CategoryGrouping>
+            <DynamicCategories>
+              <Grouping Name="AnoVenta">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!Año_Venta.Value</GroupExpression>
+                </GroupExpressions>
+              </Grouping>
+              <Label>=Fields!Año_Venta.Value</Label>
+            </DynamicCategories>
+          </CategoryGrouping>
+          <CategoryGrouping>
+            <DynamicCategories>
+              <Grouping Name="Mesventa">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!Mes_Venta.Value</GroupExpression>
+                </GroupExpressions>
+              </Grouping>
+              <Label>=Fields!Mes_Venta.Value</Label>
+            </DynamicCategories>
+          </CategoryGrouping>
+          <CategoryGrouping>
+            <DynamicCategories>
+              <Grouping Name="Vendedor">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!slprsnid.Value</GroupExpression>
+                </GroupExpressions>
+              </Grouping>
+              <Label>=Fields!slprsnid.Value</Label>
+            </DynamicCategories>
+          </CategoryGrouping>
+          <CategoryGrouping>
+            <DynamicCategories>
+              <Grouping Name="Articulo">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!itemnmbr.Value</GroupExpression>
+                </GroupExpressions>
+              </Grouping>
+              <Label />
+            </DynamicCategories>
+          </CategoryGrouping>
+        </CategoryGroupings>
+        <Palette>Pastel</Palette>
+        <ChartData>
+          <ChartSeries>
+            <DataPoints>
+              <DataPoint>
+                <DataValues>
+                  <DataValue>
+                    <Value>=Sum(Fields!Cantidad.Value)</Value>
+                  </DataValue>
+                </DataValues>
+                <DataLabel />
+                <Marker>
+                  <Size>6pt</Size>
+                </Marker>
+              </DataPoint>
+            </DataPoints>
+          </ChartSeries>
+        </ChartData>
+        <Style>
+          <BackgroundColor>White</BackgroundColor>
+        </Style>
+      </Chart>
+      <Matrix Name="matrix1">
+        <MatrixColumns>
+          <MatrixColumn>
+            <Width>1.75cm</Width>
+          </MatrixColumn>
+          <MatrixColumn>
+            <Width>2.25cm</Width>
+          </MatrixColumn>
+        </MatrixColumns>
+        <RowGroupings>
+          <RowGrouping>
+            <Width>2.25cm</Width>
+            <DynamicRows>
+              <ReportItems>
+                <Textbox Name="salsterr">
+                  <rd:DefaultName>salsterr</rd:DefaultName>
+                  <ZIndex>5</ZIndex>
+                  <Style>
+                    <BorderStyle>
+                      <Default>Solid</Default>
+                    </BorderStyle>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingBottom>2pt</PaddingBottom>
+                    <FontFamily>Tahoma</FontFamily>
+                    <BackgroundColor>#8fb3f3</BackgroundColor>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                  </Style>
+                  <CanGrow>true</CanGrow>
+                  <Value>=Fields!salsterr.Value</Value>
+                </Textbox>
+              </ReportItems>
+              <Sorting>
+                <SortBy>
+                  <SortExpression>=Fields!salsterr.Value</SortExpression>
+                  <Direction>Ascending</Direction>
+                </SortBy>
+              </Sorting>
+              <Grouping Name="matrix1_salsterr">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!salsterr.Value</GroupExpression>
+                </GroupExpressions>
+              </Grouping>
+            </DynamicRows>
+          </RowGrouping>
+          <RowGrouping>
+            <Width>2.25cm</Width>
+            <DynamicRows>
+              <ReportItems>
+                <Textbox Name="slprsnid">
+                  <rd:DefaultName>slprsnid</rd:DefaultName>
+                  <ZIndex>4</ZIndex>
+                  <Style>
+                    <BorderStyle>
+                      <Default>Solid</Default>
+                    </BorderStyle>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingBottom>2pt</PaddingBottom>
+                    <FontFamily>Tahoma</FontFamily>
+                    <BackgroundColor>#8fb3f3</BackgroundColor>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                  </Style>
+                  <CanGrow>true</CanGrow>
+                  <Value>=Fields!slprsnid.Value</Value>
+                </Textbox>
+              </ReportItems>
+              <Grouping Name="matrix1_slprsnid">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!slprsnid.Value</GroupExpression>
+                </GroupExpressions>
+              </Grouping>
+            </DynamicRows>
+          </RowGrouping>
+          <RowGrouping>
+            <Width>2.25cm</Width>
+            <DynamicRows>
+              <ReportItems>
+                <Textbox Name="itemnmbr">
+                  <rd:DefaultName>itemnmbr</rd:DefaultName>
+                  <ZIndex>3</ZIndex>
+                  <Style>
+                    <BorderStyle>
+                      <Bottom>Dotted</Bottom>
+                      <Top>Dotted</Top>
+                      <Left>Dotted</Left>
+                    </BorderStyle>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <BorderWidth>
+                      <Bottom>1pt</Bottom>
+                      <Top>1pt</Top>
+                      <Left>1pt</Left>
+                    </BorderWidth>
+                    <PaddingBottom>2pt</PaddingBottom>
+                    <FontFamily>Tahoma</FontFamily>
+                    <BorderColor>
+                      <Bottom>Blue</Bottom>
+                      <Top>Blue</Top>
+                      <Left>Blue</Left>
+                    </BorderColor>
+                    <BackgroundColor>#c7d9f9</BackgroundColor>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                  </Style>
+                  <CanGrow>true</CanGrow>
+                  <Value>=Fields!itemnmbr.Value</Value>
+                </Textbox>
+              </ReportItems>
+              <Grouping Name="matrix1_itemnmbr">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!itemnmbr.Value</GroupExpression>
+                </GroupExpressions>
+              </Grouping>
+            </DynamicRows>
+          </RowGrouping>
+          <RowGrouping>
+            <Width>3.5cm</Width>
+            <DynamicRows>
+              <ReportItems>
+                <Textbox Name="itemdesc">
+                  <rd:DefaultName>itemdesc</rd:DefaultName>
+                  <ZIndex>2</ZIndex>
+                  <Style>
+                    <BorderStyle>
+                      <Bottom>Dotted</Bottom>
+                      <Top>Dotted</Top>
+                      <Right>Dotted</Right>
+                    </BorderStyle>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <BorderWidth>
+                      <Bottom>1pt</Bottom>
+                      <Top>1pt</Top>
+                      <Right>1pt</Right>
+                    </BorderWidth>
+                    <PaddingBottom>2pt</PaddingBottom>
+                    <FontFamily>Tahoma</FontFamily>
+                    <BorderColor>
+                      <Bottom>Blue</Bottom>
+                      <Top>Blue</Top>
+                      <Right>Blue</Right>
+                    </BorderColor>
+                    <BackgroundColor>#c7d9f9</BackgroundColor>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                  </Style>
+                  <CanGrow>true</CanGrow>
+                  <Value>=Fields!itemdesc.Value</Value>
+                </Textbox>
+              </ReportItems>
+              <Grouping Name="matrix1_itemdesc">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!itemdesc.Value</GroupExpression>
+                </GroupExpressions>
+              </Grouping>
+            </DynamicRows>
+          </RowGrouping>
+        </RowGroupings>
+        <ColumnGroupings>
+          <ColumnGrouping>
+            <DynamicColumns>
+              <ReportItems>
+                <Textbox Name="Año_Venta">
+                  <rd:DefaultName>Año_Venta</rd:DefaultName>
+                  <ZIndex>10</ZIndex>
+                  <Style>
+                    <BorderStyle>
+                      <Default>Dotted</Default>
+                    </BorderStyle>
+                    <TextAlign>Left</TextAlign>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingBottom>2pt</PaddingBottom>
+                    <FontFamily>Tahoma</FontFamily>
+                    <BorderColor>
+                      <Default>Blue</Default>
+                    </BorderColor>
+                    <BackgroundColor>#8fb3f3</BackgroundColor>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                  </Style>
+                  <CanGrow>true</CanGrow>
+                  <Value>=Fields!Año_Venta.Value</Value>
+                </Textbox>
+              </ReportItems>
+              <Subtotal>
+                <ReportItems>
+                  <Textbox Name="textbox7">
+                    <rd:DefaultName>textbox7</rd:DefaultName>
+                    <ZIndex>9</ZIndex>
+                    <Style>
+                      <BorderStyle>
+                        <Default>Dotted</Default>
+                      </BorderStyle>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingBottom>2pt</PaddingBottom>
+                      <FontFamily>Tahoma</FontFamily>
+                      <BorderColor>
+                        <Default>Blue</Default>
+                      </BorderColor>
+                      <BackgroundColor>#8fb3f3</BackgroundColor>
+                      <PaddingRight>2pt</PaddingRight>
+                      <PaddingTop>2pt</PaddingTop>
+                    </Style>
+                    <CanGrow>true</CanGrow>
+                    <Value>Total</Value>
+                  </Textbox>
+                </ReportItems>
+              </Subtotal>
+              <Sorting>
+                <SortBy>
+                  <SortExpression>=Fields!Año_Venta.Value</SortExpression>
+                  <Direction>Ascending</Direction>
+                </SortBy>
+              </Sorting>
+              <Grouping Name="matrix1_Año_Venta">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!Año_Venta.Value</GroupExpression>
+                </GroupExpressions>
+              </Grouping>
+            </DynamicColumns>
+            <Height>0.5cm</Height>
+          </ColumnGrouping>
+          <ColumnGrouping>
+            <DynamicColumns>
+              <ReportItems>
+                <Textbox Name="Mes_Venta">
+                  <rd:DefaultName>Mes_Venta</rd:DefaultName>
+                  <ZIndex>8</ZIndex>
+                  <Style>
+                    <BorderStyle>
+                      <Default>Dotted</Default>
+                    </BorderStyle>
+                    <TextAlign>Center</TextAlign>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingBottom>2pt</PaddingBottom>
+                    <FontFamily>Tahoma</FontFamily>
+                    <BorderColor>
+                      <Default>Blue</Default>
+                    </BorderColor>
+                    <BackgroundColor>#c7d9f9</BackgroundColor>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                  </Style>
+                  <CanGrow>true</CanGrow>
+                  <Value>=Fields!Mes_Venta.Value</Value>
+                </Textbox>
+              </ReportItems>
+              <Sorting>
+                <SortBy>
+                  <SortExpression>=Fields!Mes_Venta.Value</SortExpression>
+                  <Direction>Ascending</Direction>
+                </SortBy>
+              </Sorting>
+              <Grouping Name="matrix1_Mes_Venta">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!Mes_Venta.Value</GroupExpression>
+                </GroupExpressions>
+              </Grouping>
+            </DynamicColumns>
+            <Height>0.75cm</Height>
+          </ColumnGrouping>
+          <ColumnGrouping>
+            <Height>0.5cm</Height>
+            <StaticColumns>
+              <StaticColumn>
+                <ReportItems>
+                  <Textbox Name="textbox11">
+                    <rd:DefaultName>textbox11</rd:DefaultName>
+                    <ZIndex>7</ZIndex>
+                    <Style>
+                      <BorderStyle>
+                        <Bottom>Solid</Bottom>
+                        <Top>Solid</Top>
+                        <Left>Solid</Left>
+                      </BorderStyle>
+                      <TextAlign>Right</TextAlign>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <BorderWidth>
+                        <Bottom>1pt</Bottom>
+                        <Top>1pt</Top>
+                        <Left>1pt</Left>
+                      </BorderWidth>
+                      <PaddingBottom>2pt</PaddingBottom>
+                      <FontFamily>Tahoma</FontFamily>
+                      <BorderColor>
+                        <Bottom>Black</Bottom>
+                        <Top>Black</Top>
+                        <Left>Black</Left>
+                      </BorderColor>
+                      <BackgroundColor>#e6eefc</BackgroundColor>
+                      <PaddingRight>2pt</PaddingRight>
+                      <PaddingTop>2pt</PaddingTop>
+                    </Style>
+                    <CanGrow>true</CanGrow>
+                    <Value>Cantidad</Value>
+                  </Textbox>
+                </ReportItems>
+              </StaticColumn>
+              <StaticColumn>
+                <ReportItems>
+                  <Textbox Name="textbox12">
+                    <rd:DefaultName>textbox12</rd:DefaultName>
+                    <ZIndex>6</ZIndex>
+                    <Style>
+                      <BorderStyle>
+                        <Bottom>Solid</Bottom>
+                        <Top>Solid</Top>
+                        <Right>Solid</Right>
+                      </BorderStyle>
+                      <TextAlign>Right</TextAlign>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <BorderWidth>
+                        <Bottom>1pt</Bottom>
+                        <Top>1pt</Top>
+                        <Right>1pt</Right>
+                      </BorderWidth>
+                      <PaddingBottom>2pt</PaddingBottom>
+                      <FontFamily>Tahoma</FontFamily>
+                      <Format>N</Format>
+                      <BorderColor>
+                        <Bottom>Black</Bottom>
+                        <Top>Black</Top>
+                        <Right>Black</Right>
+                      </BorderColor>
+                      <BackgroundColor>#e6eefc</BackgroundColor>
+                      <PaddingRight>2pt</PaddingRight>
+                      <PaddingTop>2pt</PaddingTop>
+                    </Style>
+                    <CanGrow>true</CanGrow>
+                    <Value>Valor Venta</Value>
+                  </Textbox>
+                </ReportItems>
+              </StaticColumn>
+            </StaticColumns>
+          </ColumnGrouping>
+        </ColumnGroupings>
+        <DataSetName>Taramaca</DataSetName>
+        <Top>0.5cm</Top>
+        <Width>18.25cm</Width>
+        <Corner>
+          <ReportItems>
+            <Textbox Name="textbox4">
+              <rd:DefaultName>textbox4</rd:DefaultName>
+              <ZIndex>11</ZIndex>
+              <Style>
+                <BorderStyle>
+                  <Bottom>Solid</Bottom>
+                  <Default>Solid</Default>
+                  <Right>Solid</Right>
+                </BorderStyle>
+                <PaddingLeft>2pt</PaddingLeft>
+                <BorderWidth>
+                  <Bottom>1pt</Bottom>
+                  <Right>1pt</Right>
+                </BorderWidth>
+                <PaddingBottom>2pt</PaddingBottom>
+                <FontWeight>700</FontWeight>
+                <BorderColor>
+                  <Bottom>Black</Bottom>
+                  <Default>LightGrey</Default>
+                  <Right>Black</Right>
+                </BorderColor>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+              </Style>
+              <CanGrow>true</CanGrow>
+              <Value>Zona Venta   Id. Vendedor  No. Articulo   Descripcion</Value>
+            </Textbox>
+          </ReportItems>
+        </Corner>
+        <Height>2.28333cm</Height>
+        <MatrixRows>
+          <MatrixRow>
+            <Height>0.53333cm</Height>
+            <MatrixCells>
+              <MatrixCell>
+                <ReportItems>
+                  <Textbox Name="textbox5">
+                    <rd:DefaultName>textbox5</rd:DefaultName>
+                    <ZIndex>1</ZIndex>
+                    <Style>
+                      <BorderStyle>
+                        <Default>Solid</Default>
+                      </BorderStyle>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingBottom>2pt</PaddingBottom>
+                      <FontFamily>Tahoma</FontFamily>
+                      <FontSize>9pt</FontSize>
+                      <Format>D0</Format>
+                      <PaddingRight>2pt</PaddingRight>
+                      <PaddingTop>2pt</PaddingTop>
+                    </Style>
+                    <CanGrow>true</CanGrow>
+                    <Value>=Sum(Fields!Cantidad.Value)</Value>
+                  </Textbox>
+                </ReportItems>
+              </MatrixCell>
+              <MatrixCell>
+                <ReportItems>
+                  <Textbox Name="textbox6">
+                    <rd:DefaultName>textbox6</rd:DefaultName>
+                    <Style>
+                      <BorderStyle>
+                        <Default>Solid</Default>
+                      </BorderStyle>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingBottom>2pt</PaddingBottom>
+                      <FontFamily>Tahoma</FontFamily>
+                      <FontSize>9pt</FontSize>
+                      <Format>N</Format>
+                      <PaddingRight>2pt</PaddingRight>
+                      <PaddingTop>2pt</PaddingTop>
+                    </Style>
+                    <CanGrow>true</CanGrow>
+                    <Value>=Sum(Fields!Valor_Venta.Value)</Value>
+                  </Textbox>
+                </ReportItems>
+              </MatrixCell>
+            </MatrixCells>
+          </MatrixRow>
+        </MatrixRows>
+      </Matrix>
+    </ReportItems>
+    <Height>11cm</Height>
+  </Body>
+  <PageHeader>
+    <ReportItems>
+      <Textbox Name="textbox3">
+        <Left>0.25cm</Left>
+        <Top>2cm</Top>
+        <rd:DefaultName>textbox3</rd:DefaultName>
+        <ZIndex>2</ZIndex>
+        <Width>6.5cm</Width>
+        <Style>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingBottom>2pt</PaddingBottom>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+        </Style>
+        <CanGrow>true</CanGrow>
+        <Height>0.75cm</Height>
+        <Value>="Desde "&amp;Parameters!iFecha.Value &amp; " Hasta " &amp; Parameters!aFecha.Value</Value>
+      </Textbox>
+      <Textbox Name="textbox2">
+        <Left>0.25cm</Left>
+        <Top>0.25cm</Top>
+        <rd:DefaultName>textbox2</rd:DefaultName>
+        <ZIndex>1</ZIndex>
+        <Width>8cm</Width>
+        <Style>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingBottom>2pt</PaddingBottom>
+          <FontWeight>700</FontWeight>
+          <FontSize>12pt</FontSize>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+        </Style>
+        <CanGrow>true</CanGrow>
+        <Height>0.63492cm</Height>
+        <Value>Inversiones Taramaca, S.A.</Value>
+      </Textbox>
+      <Textbox Name="textbox1">
+        <Left>0.25cm</Left>
+        <Top>1cm</Top>
+        <rd:DefaultName>textbox1</rd:DefaultName>
+        <Width>12.75cm</Width>
+        <Style>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingBottom>2pt</PaddingBottom>
+          <FontFamily>Tahoma</FontFamily>
+          <FontSize>14pt</FontSize>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+        </Style>
+        <CanGrow>true</CanGrow>
+        <Height>0.8381cm</Height>
+        <Value>Reporte de Ventas Vendedor x Producto - Proyeccion </Value>
+      </Textbox>
+    </ReportItems>
+    <Height>3.25cm</Height>
+    <PrintOnLastPage>true</PrintOnLastPage>
+    <PrintOnFirstPage>true</PrintOnFirstPage>
+  </PageHeader>
+  <rd:ReportID>83cbf734-1ae8-4b72-85c3-b60bfbc27af0</rd:ReportID>
+  <LeftMargin>2.5cm</LeftMargin>
+  <DataSets>
+    <DataSet Name="Taramaca">
+      <Query>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+        <CommandText>select year(soph.docdate)[Año Venta],month(soph.docdate)[Mes Venta],sop.sopnumbe,sop.itemnmbr,sop.itemdesc,sop.locncode,cast(sop.unitprce as decimal(10,2)),cast(sop.quantity as decimal(10,0)) [Cantidad],cast((sop.unitprce * sop.quantity) as decimal(10,2)) [Valor Venta],sop.salsterr,sop.slprsnid,sop.city 
+from (select soptype,sopnumbe,itemnmbr,itemdesc,locncode,unitprce,quantity,(unitprce * quantity)[Valor Venta],salsterr,slprsnid,city  from sop10200
+union all
+select soptype,sopnumbe,itemnmbr,itemdesc,locncode,unitprce,quantity,(unitprce * quantity)[Valor Venta],salsterr,slprsnid,city from sop30300) sop join (select sopnumbe,docdate from sop10100 
+union all 
+select sopnumbe,docdate from sop30200) soph on sop.sopnumbe = soph.sopnumbe join rm00301 vp on sop.slprsnid = vp.slprsnid
+where sop.soptype = 3 and (cast (year(docdate) as varchar (4))+''+ 
+ cast (replicate('0', 2 - len(month(docdate))) as varchar (2)) + cast (month(docdate) as varchar(2))) between  @iFecha and @aFecha  and sop.slprsnid between @iVendedor and @aVendedor
+order by year(soph.docdate)</CommandText>
+        <QueryParameters>
+          <QueryParameter Name="@iFecha">
+            <Value>=Parameters!iFecha.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@aFecha">
+            <Value>=Parameters!aFecha.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@iVendedor">
+            <Value>=Parameters!iVendedor.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@aVendedor">
+            <Value>=Parameters!aVendedor.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <DataSourceName>Taramaca</DataSourceName>
+      </Query>
+      <Fields>
+        <Field Name="Año_Venta">
+          <rd:TypeName>System.Int32</rd:TypeName>
+          <DataField>Año Venta</DataField>
+        </Field>
+        <Field Name="Mes_Venta">
+          <rd:TypeName>System.Int32</rd:TypeName>
+          <DataField>Mes Venta</DataField>
+        </Field>
+        <Field Name="sopnumbe">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>sopnumbe</DataField>
+        </Field>
+        <Field Name="itemnmbr">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>itemnmbr</DataField>
+        </Field>
+        <Field Name="itemdesc">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>itemdesc</DataField>
+        </Field>
+        <Field Name="locncode">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>locncode</DataField>
+        </Field>
+        <Field Name="ID">
+          <rd:TypeName>System.Decimal</rd:TypeName>
+          <DataField />
+        </Field>
+        <Field Name="Cantidad">
+          <rd:TypeName>System.Decimal</rd:TypeName>
+          <DataField>Cantidad</DataField>
+        </Field>
+        <Field Name="Valor_Venta">
+          <rd:TypeName>System.Decimal</rd:TypeName>
+          <DataField>Valor Venta</DataField>
+        </Field>
+        <Field Name="salsterr">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>salsterr</DataField>
+        </Field>
+        <Field Name="slprsnid">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>slprsnid</DataField>
+        </Field>
+        <Field Name="city">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>city</DataField>
+        </Field>
+      </Fields>
+    </DataSet>
+  </DataSets>
+  <Width>22.5cm</Width>
+  <InteractiveHeight>11in</InteractiveHeight>
+  <Language>en-US</Language>
+  <TopMargin>2.5cm</TopMargin>
+  <PageHeight>29.7cm</PageHeight>
+</Report>

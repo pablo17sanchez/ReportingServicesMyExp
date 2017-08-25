@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2008/01/reportdefinition"><Body><Height>2in</Height><Style /></Body><Width>6.5in</Width><Page><LeftMargin>1in</LeftMargin><RightMargin>1in</RightMargin><TopMargin>1in</TopMargin><BottomMargin>1in</BottomMargin><Style /></Page><AutoRefresh>0</AutoRefresh><DataSources><DataSource Name="PalmSync"><ConnectionProperties><DataProvider>SQL</DataProvider><ConnectString>Data Source=GEA-SRVDATA\SQLSERVER2008;Initial Catalog=PalmComSync</ConnectString><IntegratedSecurity>true</IntegratedSecurity></ConnectionProperties><rd:SecurityType xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">Integrated</rd:SecurityType><rd:DataSourceID xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">9af12188-6fdf-4082-83e1-66078f26a7fb</rd:DataSourceID></DataSource></DataSources><DataSets><DataSet Name="DataSet1"><Query><DataSourceName>PalmSync</DataSourceName><QueryParameters><QueryParameter Name="@ifecha"><Value>=Parameters!ifecha.Value</Value></QueryParameter><QueryParameter Name="@afecha"><Value>=Parameters!afecha.Value</Value></QueryParameter></QueryParameters><CommandText>SELECT IDVENDEDOR,
+		NombreVendedor,
+	    IdZona,
+	    ZonaResp,
+	   -- NombreRuta,
+	    CodCliente,
+		SUM(PT100)PT100,
+		SUM(PT103)PT103,
+		SUM(PT200)PT200,
+		SUM(PT204)PT204,
+		SUM(PT300)PT300,
+		SUM(PT400)PT400,
+		SUM(PT500)PT500,
+		SUM(PT600)PT600,
+		SUM(PT700)PT700,
+		SUM(PT701)PT701,
+		SUM(EMB100)EMB100,
+		SUM(EMB101)EMB101,
+		SUM(EMB111)EMB111,
+		SUM(EMB112)EMB112,
+		
+		SUM(EMB200)EMB200,
+		SUM(EMB201)EMB201,
+		SUM(EMB211)EMB211,
+		SUM(EMB212)EMB212,
+		SUM(EMB300)EMB300,
+		SUM(EMB400)EMB400,
+		SUM(EMB411)EMB411
+		
+FROM(
+SELECT  c.IdVendedor,
+		c.NombreVendedor,
+		c.IdZona,
+		c.ZonaResp,
+		CASE  WHEN c.NombreRuta Like '%SD10%' AND c.NombreRuta Like '%SD30%' THEN 'SD100/SD300' ELSE c.NombreRuta END NombreRuta,
+		c.CodCliente,
+		CASE WHEN v.ITEMNMBR='PT100'  THEN SUM(v.XTNDPRCE) ELSE 0 END 'PT100',
+		CASE WHEN v.ITEMNMBR='PT103'  THEN SUM(v.XTNDPRCE) ELSE 0 END 'PT103',
+		CASE WHEN v.ITEMNMBR='PT200'  THEN SUM(v.XTNDPRCE) ELSE 0 END 'PT200',
+		CASE WHEN v.ITEMNMBR='PT204'  THEN SUM(v.XTNDPRCE) ELSE 0 END 'PT204',
+		CASE WHEN v.ITEMNMBR='PT300'  THEN SUM(v.XTNDPRCE) ELSE 0 END 'PT300',
+		CASE WHEN v.ITEMNMBR='PT400'  THEN SUM(v.XTNDPRCE) ELSE 0 END 'PT400',
+		CASE WHEN v.ITEMNMBR='PT500'  THEN SUM(v.XTNDPRCE) ELSE 0 END 'PT500',
+		CASE WHEN v.ITEMNMBR='PT600'  THEN SUM(v.XTNDPRCE) ELSE 0 END 'PT600',
+		CASE WHEN v.ITEMNMBR='PT700'  THEN SUM(v.XTNDPRCE) ELSE 0 END 'PT700',
+		CASE WHEN v.ITEMNMBR='PT701'  THEN SUM(v.XTNDPRCE) ELSE 0 END 'PT701',
+		CASE WHEN v.ITEMNMBR='EMB100'  THEN SUM(v.XTNDPRCE) ELSE 0 END 'EMB100',
+		CASE WHEN v.ITEMNMBR='EMB101'  THEN SUM(v.XTNDPRCE) ELSE 0 END 'EMB101',
+		CASE WHEN v.ITEMNMBR='EMB111'  THEN SUM(v.XTNDPRCE) ELSE 0 END 'EMB111',
+		CASE WHEN v.ITEMNMBR='EMB112'  THEN SUM(v.XTNDPRCE) ELSE 0 END 'EMB112',
+		CASE WHEN v.ITEMNMBR='EMB200'  THEN SUM(v.XTNDPRCE) ELSE 0 END 'EMB200',
+		CASE WHEN v.ITEMNMBR='EMB201'  THEN SUM(v.XTNDPRCE) ELSE 0 END 'EMB201',
+		CASE WHEN v.ITEMNMBR='EMB211'  THEN SUM(v.XTNDPRCE) ELSE 0 END 'EMB211',
+		CASE WHEN v.ITEMNMBR='EMB212'  THEN SUM(v.XTNDPRCE) ELSE 0 END 'EMB212',
+		CASE WHEN v.ITEMNMBR='EMB300'  THEN SUM(v.XTNDPRCE) ELSE 0 END 'EMB300',
+		CASE WHEN v.ITEMNMBR='EMB400'  THEN SUM(v.XTNDPRCE) ELSE 0 END 'EMB400',
+		CASE WHEN v.ITEMNMBR='EMB411'  THEN SUM(v.XTNDPRCE) ELSE 0 END 'EMB411'
+		
+FROM GPHN..vw_VentasGP1 v 
+			INNER JOIN  
+	 vw_Clientes_CSRBAK c 
+ON v.CUSTNMBR=c.CodCliente
+WHERE v.DOCDATE BETWEEN @ifecha AND @afecha
+GROUP BY c.IdVendedor,
+		c.NombreVendedor,
+		c.IdZona,
+		c.ZonaResp,
+		c.NombreRuta,
+		c.CodCliente,
+		v.ITEMNMBR
+
+)vent
+GROUP BY IDVENDEDOR,
+		NombreVendedor,
+	    IdZona,
+	    NombreRuta,
+	    CodCliente,
+	    ZonaResp</CommandText><rd:UseGenericDesigner xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">true</rd:UseGenericDesigner></Query><Fields><Field Name="IDVENDEDOR"><DataField>IDVENDEDOR</DataField><rd:TypeName xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">System.String</rd:TypeName></Field><Field Name="NombreVendedor"><DataField>NombreVendedor</DataField><rd:TypeName xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">System.String</rd:TypeName></Field><Field Name="IdZona"><DataField>IdZona</DataField><rd:TypeName xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">System.String</rd:TypeName></Field><Field Name="ZonaResp"><DataField>ZonaResp</DataField><rd:TypeName xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">System.String</rd:TypeName></Field><Field Name="CodCliente"><DataField>CodCliente</DataField><rd:TypeName xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">System.String</rd:TypeName></Field><Field Name="PT100"><DataField>PT100</DataField><rd:TypeName xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">System.Decimal</rd:TypeName></Field><Field Name="PT103"><DataField>PT103</DataField><rd:TypeName xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">System.Decimal</rd:TypeName></Field><Field Name="PT200"><DataField>PT200</DataField><rd:TypeName xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">System.Decimal</rd:TypeName></Field><Field Name="PT204"><DataField>PT204</DataField><rd:TypeName xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">System.Decimal</rd:TypeName></Field><Field Name="PT300"><DataField>PT300</DataField><rd:TypeName xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">System.Decimal</rd:TypeName></Field><Field Name="PT400"><DataField>PT400</DataField><rd:TypeName xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">System.Decimal</rd:TypeName></Field><Field Name="PT500"><DataField>PT500</DataField><rd:TypeName xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">System.Decimal</rd:TypeName></Field><Field Name="PT600"><DataField>PT600</DataField><rd:TypeName xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">System.Decimal</rd:TypeName></Field><Field Name="PT700"><DataField>PT700</DataField><rd:TypeName xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">System.Decimal</rd:TypeName></Field><Field Name="PT701"><DataField>PT701</DataField><rd:TypeName xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">System.Decimal</rd:TypeName></Field><Field Name="EMB100"><DataField>EMB100</DataField><rd:TypeName xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">System.Decimal</rd:TypeName></Field><Field Name="EMB101"><DataField>EMB101</DataField><rd:TypeName xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">System.Decimal</rd:TypeName></Field><Field Name="EMB111"><DataField>EMB111</DataField><rd:TypeName xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">System.Decimal</rd:TypeName></Field><Field Name="EMB112"><DataField>EMB112</DataField><rd:TypeName xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">System.Decimal</rd:TypeName></Field><Field Name="EMB200"><DataField>EMB200</DataField><rd:TypeName xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">System.Decimal</rd:TypeName></Field><Field Name="EMB201"><DataField>EMB201</DataField><rd:TypeName xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">System.Decimal</rd:TypeName></Field><Field Name="EMB211"><DataField>EMB211</DataField><rd:TypeName xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">System.Decimal</rd:TypeName></Field><Field Name="EMB212"><DataField>EMB212</DataField><rd:TypeName xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">System.Decimal</rd:TypeName></Field><Field Name="EMB300"><DataField>EMB300</DataField><rd:TypeName xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">System.Decimal</rd:TypeName></Field><Field Name="EMB400"><DataField>EMB400</DataField><rd:TypeName xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">System.Decimal</rd:TypeName></Field><Field Name="EMB411"><DataField>EMB411</DataField><rd:TypeName xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">System.Decimal</rd:TypeName></Field></Fields></DataSet></DataSets><ReportParameters><ReportParameter Name="ifecha"><DataType>DateTime</DataType><Prompt>Fecha Desde:</Prompt></ReportParameter><ReportParameter Name="afecha"><DataType>DateTime</DataType><Prompt>Fecha Hasta:</Prompt></ReportParameter></ReportParameters><rd:ReportUnitType xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">Inch</rd:ReportUnitType><rd:ReportID xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">d864a65a-74ef-49de-bbcd-ce2f9bbc905c</rd:ReportID></Report>

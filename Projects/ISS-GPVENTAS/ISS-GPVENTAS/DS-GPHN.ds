@@ -1,0 +1,9 @@
+﻿<DataSource xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" xsi:type="RelationalDataSource" dwd:design-time-name="4e1630fe-417e-4ff3-aa65-e6e7ef4a9f74" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
+  <ID>DS-GPHN</ID>
+  <Name>DS-GPHN</Name>
+  <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
+  <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+  <ConnectionString>Provider=SQLNCLI.1;Data Source=10.0.0.86;Persist Security Info=True;Password=;User ID=;Initial Catalog=GPHN</ConnectionString>
+  <ConnectionStringSecurity>PasswordRemoved</ConnectionStringSecurity>
+  <Timeout>PT0S</Timeout>
+</DataSource>

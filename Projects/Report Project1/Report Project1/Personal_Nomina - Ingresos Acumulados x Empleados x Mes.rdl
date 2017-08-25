@@ -1,0 +1,564 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2005/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <DataSources>
+    <DataSource Name="PersonalNomina">
+      <rd:DataSourceID>4aefb5ed-3bd4-4ea9-a79e-5ce6dfb3746f</rd:DataSourceID>
+      <DataSourceReference>PersonalNomina</DataSourceReference>
+    </DataSource>
+  </DataSources>
+  <InteractiveHeight>11in</InteractiveHeight>
+  <ReportParameters>
+    <ReportParameter Name="iFecha">
+      <DataType>String</DataType>
+      <Prompt>Fecha Desde YYYY/MM:</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="aFecha">
+      <DataType>String</DataType>
+      <Prompt>Fecha Hasta YYYY/MM:</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Estatus">
+      <DataType>String</DataType>
+      <Prompt>Estatus</Prompt>
+      <ValidValues>
+        <DataSetReference>
+          <DataSetName>dtsEmpleados</DataSetName>
+          <ValueField>ID</ValueField>
+          <LabelField>estatus</LabelField>
+        </DataSetReference>
+      </ValidValues>
+    </ReportParameter>
+  </ReportParameters>
+  <rd:DrawGrid>true</rd:DrawGrid>
+  <InteractiveWidth>8.5in</InteractiveWidth>
+  <rd:GridSpacing>0.25cm</rd:GridSpacing>
+  <rd:SnapToGrid>true</rd:SnapToGrid>
+  <RightMargin>2.5cm</RightMargin>
+  <LeftMargin>2.5cm</LeftMargin>
+  <BottomMargin>2.5cm</BottomMargin>
+  <rd:ReportID>11c483cf-ea61-4b2c-997a-df91118e7eeb</rd:ReportID>
+  <PageWidth>21cm</PageWidth>
+  <DataSets>
+    <DataSet Name="PersonalNomina">
+      <Fields>
+        <Field Name="Ano_Correspondiente">
+          <DataField>Ano_Correspondiente</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="Mes_Letra">
+          <DataField>Mes_Letra</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Desc_Grupo">
+          <DataField>Desc_Grupo</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Desc_SubGrupo">
+          <DataField>Desc_SubGrupo</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="codigo_empleado">
+          <DataField>codigo_empleado</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="nom_emp">
+          <DataField>nom_emp</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Valor">
+          <DataField>Valor</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>PersonalNomina</DataSourceName>
+        <CommandText>SELECT IE.Ano_Correspondiente,CASE IE.mes_correspondiente
+	WHEN 1 THEN 'Enero'
+	WHEN 2 THEN 'Febrero'
+	WHEN 3 THEN 'Marzo'
+	WHEN 4 THEN 'Abril'
+	WHEN 5 THEN 'Mayo'
+	WHEN 6 THEN 'Junio'
+	WHEN 7 THEN 'Julio'
+	WHEN 8 THEN 'Agosto'
+	WHEN 9 THEN 'Septiembre'
+	WHEN 10 THEN 'Octubre'
+	WHEN 11 THEN 'Noviembre'
+	WHEN 12 THEN 'Diciembre'
+End Mes_Letra,IE.Desc_Grupo,IE.Desc_SubGrupo,IE.codigo_empleado,IE.nom_emp,SUM(IE.valor)Valor FROM (
+SELECT n.mes_correspondiente,n.ano_correspondiente,e.Desc_Grupo,e.Desc_SubGrupo,i.codigo_empleado,e.nom_emp,SUM(i.valor)Valor FROM vw_ingresos_nomina_empleados i join vw_nomina n 
+ON i.codigo_nomina = n.codigo_nomina JOIN vw_empleados e ON i.codigo_empleado = e.numero
+WHERE Tipo_Ingreso  in (1,6,18,26,29,50)
+GROUP BY n.mes_correspondiente,n.ano_correspondiente,e.Desc_Grupo,e.Desc_SubGrupo,codigo_empleado,e.nom_emp
+
+)IE join vw_empleados ve on IE.codigo_empleado = ve.numero
+
+WHERE  (cast (IE.Ano_Correspondiente as varchar (4))+'/'+ 
+ cast (replicate('0', 2 - len(IE.Mes_correspondiente)) as varchar (2)) + cast (IE.Mes_correspondiente as varchar(2)))between  @iFecha and @aFecha and ve.estatus =@Estatus
+GROUP BY IE.mes_correspondiente,IE.ano_correspondiente,IE.Desc_Grupo,IE.Desc_SubGrupo,IE.codigo_empleado,IE.nom_emp
+ORDER BY IE.Desc_Grupo,IE.Desc_SubGrupo,IE.codigo_empleado</CommandText>
+        <QueryParameters>
+          <QueryParameter Name="@iFecha">
+            <Value>=Parameters!iFecha.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@aFecha">
+            <Value>=Parameters!aFecha.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@Estatus">
+            <Value>=Parameters!Estatus.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+      </Query>
+    </DataSet>
+    <DataSet Name="NominaGeneral">
+      <Fields>
+        <Field Name="Ano_Correspondiente">
+          <DataField>Ano_Correspondiente</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="Mes_Correspondiente">
+          <DataField>Mes_Correspondiente</DataField>
+          <rd:TypeName>System.Byte</rd:TypeName>
+        </Field>
+        <Field Name="Mes_Letra">
+          <DataField>Mes_Letra</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>PersonalNomina</DataSourceName>
+        <CommandText>select  Ano_Correspondiente,Mes_Correspondiente,CASE n.mes_correspondiente
+	WHEN 1 THEN 'Enero'
+	WHEN 2 THEN 'Febrero'
+	WHEN 3 THEN 'Marzo'
+	WHEN 4 THEN 'Abril'
+	WHEN 5 THEN 'Mayo'
+	WHEN 6 THEN 'Junio'
+	WHEN 7 THEN 'Julio'
+	WHEN 8 THEN 'Agosto'
+	WHEN 9 THEN 'Septiembre'
+	WHEN 10 THEN 'Octubre'
+	WHEN 11 THEN 'Noviembre'
+	WHEN 12 THEN 'Diciembre'
+End Mes_Letra from vw_nomina n
+group by Ano_Correspondiente,Mes_Correspondiente</CommandText>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+      </Query>
+    </DataSet>
+    <DataSet Name="dtsEmpleados">
+      <Fields>
+        <Field Name="ID">
+          <DataField>ID</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="estatus">
+          <DataField>ESTATUS</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>PersonalNomina</DataSourceName>
+        <CommandText>select estatus1 ID,CASE estatus1 WHEN 'A' THEN 'ACTIVO' ELSE 'INACTIVO' END ESTATUS from vw_Empleados 
+group by estatus1</CommandText>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+      </Query>
+    </DataSet>
+  </DataSets>
+  <Width>18.75cm</Width>
+  <Body>
+    <ColumnSpacing>1cm</ColumnSpacing>
+    <ReportItems>
+      <Textbox Name="textbox1">
+        <rd:DefaultName>textbox1</rd:DefaultName>
+        <Style>
+          <FontFamily>Tahoma</FontFamily>
+          <FontSize>18pt</FontSize>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+        <ZIndex>1</ZIndex>
+        <CanGrow>true</CanGrow>
+        <Height>0.8381cm</Height>
+        <Value>Personal_Nomina - Ingresos Acumulados x Empleados x Mes</Value>
+      </Textbox>
+      <Matrix Name="matrix1">
+        <MatrixColumns>
+          <MatrixColumn>
+            <Width>2.53968cm</Width>
+          </MatrixColumn>
+        </MatrixColumns>
+        <DataSetName>PersonalNomina</DataSetName>
+        <RowGroupings>
+          <RowGrouping>
+            <Width>4cm</Width>
+            <DynamicRows>
+              <Grouping Name="matrix1_Desc_Grupo">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!Desc_Grupo.Value</GroupExpression>
+                </GroupExpressions>
+              </Grouping>
+              <Sorting>
+                <SortBy>
+                  <SortExpression>=Fields!Desc_Grupo.Value</SortExpression>
+                  <Direction>Ascending</Direction>
+                </SortBy>
+              </Sorting>
+              <Subtotal>
+                <ReportItems>
+                  <Textbox Name="textbox4">
+                    <rd:DefaultName>textbox4</rd:DefaultName>
+                    <Style>
+                      <BackgroundColor>#8fb3f3</BackgroundColor>
+                      <BorderColor>
+                        <Default>LightGrey</Default>
+                      </BorderColor>
+                      <BorderStyle>
+                        <Default>Solid</Default>
+                      </BorderStyle>
+                      <FontFamily>Times New Roman</FontFamily>
+                      <FontSize>9pt</FontSize>
+                      <FontWeight>700</FontWeight>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingRight>2pt</PaddingRight>
+                      <PaddingTop>2pt</PaddingTop>
+                      <PaddingBottom>2pt</PaddingBottom>
+                    </Style>
+                    <ZIndex>2</ZIndex>
+                    <CanGrow>true</CanGrow>
+                    <Value>Total</Value>
+                  </Textbox>
+                </ReportItems>
+              </Subtotal>
+              <ReportItems>
+                <Textbox Name="Desc_Grupo">
+                  <rd:DefaultName>Desc_Grupo</rd:DefaultName>
+                  <Style>
+                    <BackgroundColor>#8fb3f3</BackgroundColor>
+                    <BorderColor>
+                      <Default>LightGrey</Default>
+                    </BorderColor>
+                    <BorderStyle>
+                      <Default>Solid</Default>
+                    </BorderStyle>
+                    <FontFamily>Times New Roman</FontFamily>
+                    <FontSize>8pt</FontSize>
+                    <FontWeight>700</FontWeight>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                  <ZIndex>6</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Value>=Fields!Desc_Grupo.Value</Value>
+                </Textbox>
+              </ReportItems>
+            </DynamicRows>
+          </RowGrouping>
+          <RowGrouping>
+            <Width>3.75cm</Width>
+            <DynamicRows>
+              <Grouping Name="matrix1_Desc_SubGrupo">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!Desc_SubGrupo.Value</GroupExpression>
+                </GroupExpressions>
+              </Grouping>
+              <Sorting>
+                <SortBy>
+                  <SortExpression>=Fields!Desc_SubGrupo.Value</SortExpression>
+                  <Direction>Ascending</Direction>
+                </SortBy>
+              </Sorting>
+              <Visibility>
+                <Hidden>true</Hidden>
+                <ToggleItem>Desc_Grupo</ToggleItem>
+              </Visibility>
+              <Subtotal>
+                <ReportItems>
+                  <Textbox Name="textbox5">
+                    <rd:DefaultName>textbox5</rd:DefaultName>
+                    <Style>
+                      <BackgroundColor>#c7d9f9</BackgroundColor>
+                      <BorderColor>
+                        <Default>LightGrey</Default>
+                      </BorderColor>
+                      <BorderStyle>
+                        <Default>Solid</Default>
+                      </BorderStyle>
+                      <FontFamily>Times New Roman</FontFamily>
+                      <FontSize>9pt</FontSize>
+                      <FontWeight>700</FontWeight>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingRight>2pt</PaddingRight>
+                      <PaddingTop>2pt</PaddingTop>
+                      <PaddingBottom>2pt</PaddingBottom>
+                    </Style>
+                    <ZIndex>1</ZIndex>
+                    <CanGrow>true</CanGrow>
+                    <Value>Total</Value>
+                  </Textbox>
+                </ReportItems>
+              </Subtotal>
+              <ReportItems>
+                <Textbox Name="Desc_SubGrupo">
+                  <rd:DefaultName>Desc_SubGrupo</rd:DefaultName>
+                  <Style>
+                    <BackgroundColor>#c7d9f9</BackgroundColor>
+                    <BorderColor>
+                      <Default>LightGrey</Default>
+                    </BorderColor>
+                    <BorderStyle>
+                      <Default>Solid</Default>
+                    </BorderStyle>
+                    <FontFamily>Times New Roman</FontFamily>
+                    <FontSize>8pt</FontSize>
+                    <FontWeight>700</FontWeight>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                  <ZIndex>5</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Value>=Fields!Desc_SubGrupo.Value</Value>
+                </Textbox>
+              </ReportItems>
+            </DynamicRows>
+          </RowGrouping>
+          <RowGrouping>
+            <Width>4.25cm</Width>
+            <DynamicRows>
+              <Grouping Name="matrix1_codigo_empleado">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!codigo_empleado.Value</GroupExpression>
+                </GroupExpressions>
+              </Grouping>
+              <Sorting>
+                <SortBy>
+                  <SortExpression>=Fields!codigo_empleado.Value</SortExpression>
+                  <Direction>Ascending</Direction>
+                </SortBy>
+              </Sorting>
+              <Visibility>
+                <Hidden>true</Hidden>
+                <ToggleItem>Desc_SubGrupo</ToggleItem>
+              </Visibility>
+              <Subtotal>
+                <ReportItems>
+                  <Textbox Name="textbox6">
+                    <rd:DefaultName>textbox6</rd:DefaultName>
+                    <Style>
+                      <BackgroundColor>#e6eefc</BackgroundColor>
+                      <BorderColor>
+                        <Default>LightGrey</Default>
+                      </BorderColor>
+                      <BorderStyle>
+                        <Default>Solid</Default>
+                      </BorderStyle>
+                      <FontFamily>Times New Roman</FontFamily>
+                      <FontSize>9pt</FontSize>
+                      <FontWeight>700</FontWeight>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingRight>2pt</PaddingRight>
+                      <PaddingTop>2pt</PaddingTop>
+                      <PaddingBottom>2pt</PaddingBottom>
+                    </Style>
+                    <CanGrow>true</CanGrow>
+                    <Value>Total</Value>
+                  </Textbox>
+                </ReportItems>
+              </Subtotal>
+              <ReportItems>
+                <Textbox Name="codigo_empleado">
+                  <rd:DefaultName>codigo_empleado</rd:DefaultName>
+                  <Style>
+                    <BackgroundColor>#e6eefc</BackgroundColor>
+                    <BorderColor>
+                      <Default>LightGrey</Default>
+                    </BorderColor>
+                    <BorderStyle>
+                      <Default>Solid</Default>
+                    </BorderStyle>
+                    <FontFamily>Times New Roman</FontFamily>
+                    <FontSize>9pt</FontSize>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                  <ZIndex>4</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Value>=Fields!codigo_empleado.Value &amp;" "&amp;Fields!nom_emp.Value</Value>
+                </Textbox>
+              </ReportItems>
+            </DynamicRows>
+          </RowGrouping>
+        </RowGroupings>
+        <Top>0.8381cm</Top>
+        <ColumnGroupings>
+          <ColumnGrouping>
+            <Height>0.53333cm</Height>
+            <DynamicColumns>
+              <Grouping Name="matrix1_Ano_Correspondiente">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!Ano_Correspondiente.Value</GroupExpression>
+                </GroupExpressions>
+              </Grouping>
+              <Sorting>
+                <SortBy>
+                  <SortExpression>=Fields!Ano_Correspondiente.Value</SortExpression>
+                  <Direction>Ascending</Direction>
+                </SortBy>
+              </Sorting>
+              <ReportItems>
+                <Textbox Name="Ano_Correspondiente">
+                  <rd:DefaultName>Ano_Correspondiente</rd:DefaultName>
+                  <Style>
+                    <BackgroundColor>#8fb3f3</BackgroundColor>
+                    <BorderColor>
+                      <Default>LightGrey</Default>
+                    </BorderColor>
+                    <BorderStyle>
+                      <Default>Solid</Default>
+                    </BorderStyle>
+                    <FontFamily>Tahoma</FontFamily>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                  <ZIndex>9</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Value>=Fields!Ano_Correspondiente.Value</Value>
+                </Textbox>
+              </ReportItems>
+            </DynamicColumns>
+          </ColumnGrouping>
+          <ColumnGrouping>
+            <Height>0.53333cm</Height>
+            <DynamicColumns>
+              <Grouping Name="matrix1_Mes_Letra">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!Mes_Letra.Value</GroupExpression>
+                </GroupExpressions>
+              </Grouping>
+              <Subtotal>
+                <ReportItems>
+                  <Textbox Name="textbox8">
+                    <rd:DefaultName>textbox8</rd:DefaultName>
+                    <Style>
+                      <BackgroundColor>#8fb3f3</BackgroundColor>
+                      <BorderColor>
+                        <Default>LightGrey</Default>
+                      </BorderColor>
+                      <BorderStyle>
+                        <Default>Solid</Default>
+                      </BorderStyle>
+                      <FontFamily>Tahoma</FontFamily>
+                      <FontWeight>700</FontWeight>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingRight>2pt</PaddingRight>
+                      <PaddingTop>2pt</PaddingTop>
+                      <PaddingBottom>2pt</PaddingBottom>
+                    </Style>
+                    <ZIndex>7</ZIndex>
+                    <CanGrow>true</CanGrow>
+                    <Value>Total</Value>
+                  </Textbox>
+                </ReportItems>
+              </Subtotal>
+              <ReportItems>
+                <Textbox Name="Mes_Letra">
+                  <rd:DefaultName>Mes_Letra</rd:DefaultName>
+                  <Style>
+                    <BackgroundColor>#8fb3f3</BackgroundColor>
+                    <BorderColor>
+                      <Default>LightGrey</Default>
+                    </BorderColor>
+                    <BorderStyle>
+                      <Default>Solid</Default>
+                    </BorderStyle>
+                    <FontFamily>Tahoma</FontFamily>
+                    <FontWeight>700</FontWeight>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                  <ZIndex>8</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Value>=Fields!Mes_Letra.Value</Value>
+                </Textbox>
+              </ReportItems>
+            </DynamicColumns>
+          </ColumnGrouping>
+        </ColumnGroupings>
+        <Width>17.07936cm</Width>
+        <Corner>
+          <ReportItems>
+            <Textbox Name="textbox3">
+              <rd:DefaultName>textbox3</rd:DefaultName>
+              <Style>
+                <BorderColor>
+                  <Default>LightGrey</Default>
+                </BorderColor>
+                <BorderStyle>
+                  <Default>Solid</Default>
+                </BorderStyle>
+                <FontFamily>Tahoma</FontFamily>
+                <FontSize>9pt</FontSize>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+              <ZIndex>10</ZIndex>
+              <CanGrow>true</CanGrow>
+              <Value>
+              </Value>
+            </Textbox>
+          </ReportItems>
+        </Corner>
+        <MatrixRows>
+          <MatrixRow>
+            <Height>0.53333cm</Height>
+            <MatrixCells>
+              <MatrixCell>
+                <ReportItems>
+                  <Textbox Name="textbox2">
+                    <rd:DefaultName>textbox2</rd:DefaultName>
+                    <Style>
+                      <BorderColor>
+                        <Default>LightGrey</Default>
+                      </BorderColor>
+                      <BorderStyle>
+                        <Default>Solid</Default>
+                      </BorderStyle>
+                      <FontFamily>Times New Roman</FontFamily>
+                      <FontSize>9pt</FontSize>
+                      <Format>N</Format>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingRight>2pt</PaddingRight>
+                      <PaddingTop>2pt</PaddingTop>
+                      <PaddingBottom>2pt</PaddingBottom>
+                    </Style>
+                    <ZIndex>3</ZIndex>
+                    <CanGrow>true</CanGrow>
+                    <Value>=Sum(Fields!Valor.Value)</Value>
+                  </Textbox>
+                </ReportItems>
+              </MatrixCell>
+            </MatrixCells>
+          </MatrixRow>
+        </MatrixRows>
+        <Height>2.13332cm</Height>
+      </Matrix>
+    </ReportItems>
+    <Height>3.50475cm</Height>
+  </Body>
+  <Language>en-US</Language>
+  <TopMargin>2.5cm</TopMargin>
+  <PageHeight>29.7cm</PageHeight>
+</Report>

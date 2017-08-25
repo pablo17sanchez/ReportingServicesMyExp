@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RptDataSource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Name>dtsGPHN</Name>
+  <DataSourceID>d299e08c-e938-40b9-a0fc-1d063706beb4</DataSourceID>
+  <ConnectionProperties>
+    <Extension>SQL</Extension>
+    <ConnectString>Data Source=GEA-SRVDATA;Initial Catalog=GPHN</ConnectString>
+  </ConnectionProperties>
+</RptDataSource>

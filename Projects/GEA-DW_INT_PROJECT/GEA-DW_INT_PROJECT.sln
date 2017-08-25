@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{D183A3D8-5FD8-494B-B014-37F57B35E655}") = "GEA-DW_INT_PROJECT", "GEA-DW_INT_PROJECT\GEA-DW_INT_PROJECT.dtproj", "{7B5F98BD-A72D-4B80-9513-A19C99558D15}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		1|Default = 1|Default
+		Development|Default = Development|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7B5F98BD-A72D-4B80-9513-A19C99558D15}.1|Default.ActiveCfg = 1
+		{7B5F98BD-A72D-4B80-9513-A19C99558D15}.1|Default.Build.0 = 1
+		{7B5F98BD-A72D-4B80-9513-A19C99558D15}.Development|Default.ActiveCfg = Development
+		{7B5F98BD-A72D-4B80-9513-A19C99558D15}.Development|Default.Build.0 = Development
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

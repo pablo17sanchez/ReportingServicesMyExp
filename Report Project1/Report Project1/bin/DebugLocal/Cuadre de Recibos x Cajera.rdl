@@ -1,0 +1,1090 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2008/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <Body>
+    <ReportItems>
+      <Textbox Name="textbox">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Inversiones Taramaca</Value>
+                <Style>
+                  <FontSize>11pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <Top>0.25in</Top>
+        <Left>0.5in</Left>
+        <Height>0.25in</Height>
+        <Width>2in</Width>
+        <Style>
+          <PaddingLeft>3pt</PaddingLeft>
+          <PaddingRight>3pt</PaddingRight>
+          <PaddingTop>3pt</PaddingTop>
+          <PaddingBottom>3pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Tablix Name="table">
+        <TablixBody>
+          <TablixColumns>
+            <TablixColumn>
+              <Width>0.89094in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>0.9422in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>1.33846in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>1.96173in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>1.42928in</Width>
+            </TablixColumn>
+          </TablixColumns>
+          <TablixRows>
+            <TablixRow>
+              <Height>0.125in</Height>
+              <TablixCells>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Usuario_Header">
+                      <CanGrow>true</CanGrow>
+                      <UserSort>
+                        <SortExpression>=Fields!Cajeroa.Value</SortExpression>
+                        <SortExpressionScope>table_Cajeroa</SortExpressionScope>
+                      </UserSort>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Cajero/a</Value>
+                              <Style>
+                                <FontFamily>Tahoma</FontFamily>
+                                <FontSize>7pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                                <Color>White</Color>
+                                <Language>en-US</Language>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <BackgroundColor>#518ae5</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Lote_Header">
+                      <CanGrow>true</CanGrow>
+                      <UserSort>
+                        <SortExpression>=Fields!Lote.Value</SortExpression>
+                        <SortExpressionScope>table_Recibos</SortExpressionScope>
+                      </UserSort>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Lote</Value>
+                              <Style>
+                                <FontFamily>Tahoma</FontFamily>
+                                <FontSize>7pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                                <Color>White</Color>
+                                <Language>en-US</Language>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <BackgroundColor>#518ae5</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="NoDocumento_Header">
+                      <CanGrow>true</CanGrow>
+                      <UserSort>
+                        <SortExpression>=Fields!NoRecibo.Value</SortExpression>
+                        <SortExpressionScope>table_Recibos</SortExpressionScope>
+                      </UserSort>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>No. Recibo</Value>
+                              <Style>
+                                <FontFamily>Tahoma</FontFamily>
+                                <FontSize>7pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                                <Color>White</Color>
+                                <Language>en-US</Language>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <BackgroundColor>#518ae5</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="IDClienteNombre_Header">
+                      <CanGrow>true</CanGrow>
+                      <UserSort>
+                        <SortExpression>=Fields!NombreCliente.Value</SortExpression>
+                        <SortExpressionScope>table_Recibos</SortExpressionScope>
+                      </UserSort>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Nombre Cliente</Value>
+                              <Style>
+                                <FontFamily>Tahoma</FontFamily>
+                                <FontSize>7pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                                <Color>White</Color>
+                                <Language>en-US</Language>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <BackgroundColor>#518ae5</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="TotalORTRXAMT_Header">
+                      <CanGrow>true</CanGrow>
+                      <UserSort>
+                        <SortExpression>=Fields!Monto_Sum.Value</SortExpression>
+                        <SortExpressionScope>table_Recibos</SortExpressionScope>
+                      </UserSort>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Monto</Value>
+                              <Style>
+                                <FontFamily>Tahoma</FontFamily>
+                                <FontSize>7pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                                <Color>White</Color>
+                                <Language>en-US</Language>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <BackgroundColor>#518ae5</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+              </TablixCells>
+            </TablixRow>
+            <TablixRow>
+              <Height>0.125in</Height>
+              <TablixCells>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Usuario_Value">
+                      <CanGrow>true</CanGrow>
+                      <HideDuplicates>table_Cajeroa</HideDuplicates>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!Cajeroa.Value</Value>
+                              <Style>
+                                <FontFamily>Tahoma</FontFamily>
+                                <FontSize>7pt</FontSize>
+                                <FontWeight>Normal</FontWeight>
+                                <Language>en-US</Language>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <DataElementOutput>Output</DataElementOutput>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                        </Border>
+                        <LeftBorder>
+                          <Style>Solid</Style>
+                        </LeftBorder>
+                        <RightBorder>
+                          <Style>Solid</Style>
+                        </RightBorder>
+                        <BackgroundColor>White</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Lote_Value">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!Lote.Value</Value>
+                              <Style>
+                                <FontFamily>Tahoma</FontFamily>
+                                <FontSize>7pt</FontSize>
+                                <FontWeight>Normal</FontWeight>
+                                <Language>en-US</Language>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <DataElementOutput>Output</DataElementOutput>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <BackgroundColor>White</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="NoDocumento_Value">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!NoRecibo.Value</Value>
+                              <Style>
+                                <FontFamily>Tahoma</FontFamily>
+                                <FontSize>7pt</FontSize>
+                                <FontWeight>Normal</FontWeight>
+                                <Language>en-US</Language>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <DataElementOutput>Output</DataElementOutput>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <BackgroundColor>White</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="IDClienteNombre_Value">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!NombreCliente.Value</Value>
+                              <Style>
+                                <FontFamily>Tahoma</FontFamily>
+                                <FontSize>7pt</FontSize>
+                                <FontWeight>Normal</FontWeight>
+                                <Language>en-US</Language>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <DataElementOutput>Output</DataElementOutput>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <BackgroundColor>White</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="TotalORTRXAMT_Value">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!Monto_Sum.Value</Value>
+                              <Style>
+                                <FontFamily>Tahoma</FontFamily>
+                                <FontSize>7pt</FontSize>
+                                <FontWeight>Normal</FontWeight>
+                                <Format>n</Format>
+                                <Language>en-US</Language>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <CustomProperties>
+                        <CustomProperty>
+                          <Name>rb:Group</Name>
+                          <Value>table_Recibos</Value>
+                        </CustomProperty>
+                      </CustomProperties>
+                      <DataElementOutput>Output</DataElementOutput>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <BackgroundColor>White</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+              </TablixCells>
+            </TablixRow>
+            <TablixRow>
+              <Height>0.125in</Height>
+              <TablixCells>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="blank">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value />
+                              <Style>
+                                <FontFamily>Tahoma</FontFamily>
+                                <FontSize>7pt</FontSize>
+                                <FontWeight>Normal</FontWeight>
+                                <Language>en-US</Language>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                        </Border>
+                        <BottomBorder>
+                          <Style>Solid</Style>
+                        </BottomBorder>
+                        <LeftBorder>
+                          <Style>Solid</Style>
+                        </LeftBorder>
+                        <RightBorder>
+                          <Style>Solid</Style>
+                        </RightBorder>
+                        <BackgroundColor>White</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Recibos_SubtotalHeader">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Total</Value>
+                              <Style>
+                                <FontFamily>Tahoma</FontFamily>
+                                <FontSize>7pt</FontSize>
+                                <FontWeight>Normal</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <BackgroundColor>#c7d9f9</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                    <ColSpan>3</ColSpan>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell />
+                <TablixCell />
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="TotalORTRXAMT_Total_1">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=SUM(Fields!Monto_Sum.Value)</Value>
+                              <Style>
+                                <FontFamily>Tahoma</FontFamily>
+                                <FontSize>7pt</FontSize>
+                                <FontWeight>Normal</FontWeight>
+                                <Format>n</Format>
+                                <Language>en-US</Language>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <BackgroundColor>#c7d9f9</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+              </TablixCells>
+            </TablixRow>
+            <TablixRow>
+              <Height>0.125in</Height>
+              <TablixCells>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Usuario_SubtotalHeader">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Total</Value>
+                              <Style>
+                                <FontFamily>Tahoma</FontFamily>
+                                <FontSize>7pt</FontSize>
+                                <FontWeight>Normal</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <BackgroundColor>#c7d9f9</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                    <ColSpan>4</ColSpan>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell />
+                <TablixCell />
+                <TablixCell />
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="TotalORTRXAMT_Total_2">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=SUM(Fields!Monto_Sum.Value)</Value>
+                              <Style>
+                                <FontFamily>Tahoma</FontFamily>
+                                <FontSize>7pt</FontSize>
+                                <FontWeight>Normal</FontWeight>
+                                <Format>n</Format>
+                                <Language>en-US</Language>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <BackgroundColor>#c7d9f9</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+              </TablixCells>
+            </TablixRow>
+          </TablixRows>
+        </TablixBody>
+        <TablixColumnHierarchy>
+          <TablixMembers>
+            <TablixMember>
+              <Visibility>
+                <Hidden>=Fields!Cajeroa.IsMissing</Hidden>
+              </Visibility>
+            </TablixMember>
+            <TablixMember>
+              <Visibility>
+                <Hidden>=Fields!Lote.IsMissing</Hidden>
+              </Visibility>
+            </TablixMember>
+            <TablixMember>
+              <Visibility>
+                <Hidden>=Fields!NoRecibo.IsMissing</Hidden>
+              </Visibility>
+            </TablixMember>
+            <TablixMember>
+              <Visibility>
+                <Hidden>=Fields!NombreCliente.IsMissing</Hidden>
+              </Visibility>
+            </TablixMember>
+            <TablixMember>
+              <Visibility>
+                <Hidden>=Fields!Monto_Sum.IsMissing</Hidden>
+              </Visibility>
+            </TablixMember>
+          </TablixMembers>
+        </TablixColumnHierarchy>
+        <TablixRowHierarchy>
+          <TablixMembers>
+            <TablixMember>
+              <FixedData>true</FixedData>
+              <KeepWithGroup>After</KeepWithGroup>
+              <RepeatOnNewPage>true</RepeatOnNewPage>
+              <KeepTogether>true</KeepTogether>
+            </TablixMember>
+            <TablixMember>
+              <Group Name="table_Cajeroa">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!Cajeroa.Value</GroupExpression>
+                </GroupExpressions>
+              </Group>
+              <SortExpressions>
+                <SortExpression>
+                  <Value>=IIf(True, Fields!Cajeroa.Value, Nothing)</Value>
+                </SortExpression>
+              </SortExpressions>
+              <TablixMembers>
+                <TablixMember>
+                  <Group Name="table_Recibos">
+                    <GroupExpressions>
+                      <GroupExpression>=Fields!Recibos.Value</GroupExpression>
+                    </GroupExpressions>
+                    <DataElementName>Detail</DataElementName>
+                  </Group>
+                  <SortExpressions>
+                    <SortExpression>
+                      <Value>=IIf(True, Fields!NoRecibo.Value, Nothing)</Value>
+                    </SortExpression>
+                  </SortExpressions>
+                  <TablixMembers>
+                    <TablixMember />
+                  </TablixMembers>
+                  <DataElementName>Detail_Collection</DataElementName>
+                  <DataElementOutput>Output</DataElementOutput>
+                  <KeepTogether>true</KeepTogether>
+                </TablixMember>
+                <TablixMember>
+                  <KeepWithGroup>Before</KeepWithGroup>
+                  <KeepTogether>true</KeepTogether>
+                </TablixMember>
+              </TablixMembers>
+            </TablixMember>
+            <TablixMember>
+              <KeepWithGroup>Before</KeepWithGroup>
+              <KeepTogether>true</KeepTogether>
+            </TablixMember>
+          </TablixMembers>
+        </TablixRowHierarchy>
+        <DataSetName>dataSet</DataSetName>
+        <Top>0.875in</Top>
+        <Left>0.5in</Left>
+        <Height>0.5in</Height>
+        <Width>6.56261in</Width>
+        <ZIndex>1</ZIndex>
+        <Style />
+      </Tablix>
+      <Textbox Name="Title">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Cuadre de Recibos por Cajera</Value>
+                <Style>
+                  <FontFamily>Tahoma</FontFamily>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Left</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <Top>0.5in</Top>
+        <Left>0.5in</Left>
+        <Height>0.25in</Height>
+        <Width>6.5in</Width>
+        <ZIndex>2</ZIndex>
+        <CustomProperties>
+          <CustomProperty>
+            <Name>rb:Watermark</Name>
+            <Value>Click to add title</Value>
+          </CustomProperty>
+        </CustomProperties>
+        <Style>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+    </ReportItems>
+    <Height>1.375in</Height>
+    <Style />
+  </Body>
+  <Width>7.5in</Width>
+  <Page>
+    <LeftMargin>0.5in</LeftMargin>
+    <RightMargin>0.5in</RightMargin>
+    <TopMargin>0.5in</TopMargin>
+    <BottomMargin>0.5in</BottomMargin>
+    <Style />
+  </Page>
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="dataSource1">
+      <DataSourceReference>GPDB</DataSourceReference>
+      <rd:SecurityType>None</rd:SecurityType>
+      <rd:DataSourceID>c48ad5f6-9cef-4073-acc1-cce0505ae4ca</rd:DataSourceID>
+    </DataSource>
+  </DataSources>
+  <DataSets>
+    <DataSet Name="dataSet">
+      <Query>
+        <DataSourceName>dataSource1</DataSourceName>
+        <QueryParameters>
+          <QueryParameter Name="Usuario">
+            <Value>=Parameters!Usuario.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="Fecha Documento">
+            <Value>=Parameters!FechaDocumento.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <CommandText>&lt;SemanticQuery xmlns="http://schemas.microsoft.com/sqlserver/2004/10/semanticmodeling" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:rb="http://schemas.microsoft.com/sqlserver/2004/11/reportbuilder" xmlns:qd="http://schemas.microsoft.com/sqlserver/2004/11/semanticquerydesign"&gt;
+  &lt;Hierarchies&gt;
+    &lt;Hierarchy&gt;
+      &lt;BaseEntity&gt;
+        &lt;!--Recibos--&gt;
+        &lt;EntityID&gt;G966812f3-5260-480d-8cc9-2a2d0b630779&lt;/EntityID&gt;
+      &lt;/BaseEntity&gt;
+      &lt;Groupings&gt;
+        &lt;Grouping Name="Cajero/a"&gt;
+          &lt;Expression Name="Cajero/a"&gt;
+            &lt;AttributeRef&gt;
+              &lt;!--Usuario--&gt;
+              &lt;AttributeID&gt;G65d974b7-3fa9-4113-9a06-73925681dcc9&lt;/AttributeID&gt;
+            &lt;/AttributeRef&gt;
+          &lt;/Expression&gt;
+        &lt;/Grouping&gt;
+        &lt;Grouping Name="Recibos"&gt;
+          &lt;Expression Name="Recibos"&gt;
+            &lt;EntityRef&gt;
+              &lt;!--Recibos--&gt;
+              &lt;EntityID&gt;G966812f3-5260-480d-8cc9-2a2d0b630779&lt;/EntityID&gt;
+            &lt;/EntityRef&gt;
+          &lt;/Expression&gt;
+          &lt;Details&gt;
+            &lt;Expression Name="Lote"&gt;
+              &lt;AttributeRef&gt;
+                &lt;!--Lote--&gt;
+                &lt;AttributeID&gt;Gf264184f-3661-406d-a612-14594e1b21aa&lt;/AttributeID&gt;
+              &lt;/AttributeRef&gt;
+            &lt;/Expression&gt;
+            &lt;Expression Name="No. Recibo"&gt;
+              &lt;AttributeRef&gt;
+                &lt;!--No. Documento--&gt;
+                &lt;AttributeID&gt;Geed51a98-a7ea-478e-baf3-25eab92b4902&lt;/AttributeID&gt;
+              &lt;/AttributeRef&gt;
+            &lt;/Expression&gt;
+            &lt;Expression Name="Nombre Cliente"&gt;
+              &lt;Path&gt;
+                &lt;RolePathItem&gt;
+                  &lt;!--ID Cliente--&gt;
+                  &lt;RoleID&gt;G6e076196-85af-402a-8a56-dd7756ffecb8&lt;/RoleID&gt;
+                &lt;/RolePathItem&gt;
+              &lt;/Path&gt;
+              &lt;AttributeRef&gt;
+                &lt;!--Nombre--&gt;
+                &lt;AttributeID&gt;G246c9fea-1b12-4f83-b868-bacf8c1f0879&lt;/AttributeID&gt;
+              &lt;/AttributeRef&gt;
+            &lt;/Expression&gt;
+          &lt;/Details&gt;
+        &lt;/Grouping&gt;
+      &lt;/Groupings&gt;
+      &lt;Filter&gt;
+        &lt;Expression Name="expr1"&gt;
+          &lt;Function&gt;
+            &lt;FunctionName&gt;And&lt;/FunctionName&gt;
+            &lt;Arguments&gt;
+              &lt;Expression&gt;
+                &lt;Function&gt;
+                  &lt;FunctionName&gt;Equals&lt;/FunctionName&gt;
+                  &lt;Arguments&gt;
+                    &lt;Expression&gt;
+                      &lt;AttributeRef&gt;
+                        &lt;!--Usuario--&gt;
+                        &lt;AttributeID&gt;G65d974b7-3fa9-4113-9a06-73925681dcc9&lt;/AttributeID&gt;
+                      &lt;/AttributeRef&gt;
+                    &lt;/Expression&gt;
+                    &lt;Expression&gt;
+                      &lt;ParameterRef&gt;
+                        &lt;ParameterName&gt;Usuario&lt;/ParameterName&gt;
+                      &lt;/ParameterRef&gt;
+                    &lt;/Expression&gt;
+                  &lt;/Arguments&gt;
+                &lt;/Function&gt;
+                &lt;CustomProperties&gt;
+                  &lt;CustomProperty Name="qd:FilterCondition" /&gt;
+                &lt;/CustomProperties&gt;
+              &lt;/Expression&gt;
+              &lt;Expression&gt;
+                &lt;Function&gt;
+                  &lt;FunctionName&gt;Equals&lt;/FunctionName&gt;
+                  &lt;Arguments&gt;
+                    &lt;Expression&gt;
+                      &lt;AttributeRef&gt;
+                        &lt;!--Fecha Documento--&gt;
+                        &lt;AttributeID&gt;Gd28709b3-02f2-4671-a30d-169ddd6cb056&lt;/AttributeID&gt;
+                      &lt;/AttributeRef&gt;
+                    &lt;/Expression&gt;
+                    &lt;Expression&gt;
+                      &lt;ParameterRef&gt;
+                        &lt;ParameterName&gt;Fecha Documento&lt;/ParameterName&gt;
+                      &lt;/ParameterRef&gt;
+                    &lt;/Expression&gt;
+                  &lt;/Arguments&gt;
+                &lt;/Function&gt;
+                &lt;CustomProperties&gt;
+                  &lt;CustomProperty Name="qd:FilterCondition" /&gt;
+                &lt;/CustomProperties&gt;
+              &lt;/Expression&gt;
+            &lt;/Arguments&gt;
+          &lt;/Function&gt;
+          &lt;CustomProperties&gt;
+            &lt;CustomProperty Name="qd:Filter" /&gt;
+            &lt;CustomProperty Name="qd:ContextEntityID"&gt;
+              &lt;Value xsi:type="xsd:string"&gt;G966812f3-5260-480d-8cc9-2a2d0b630779&lt;/Value&gt;
+            &lt;/CustomProperty&gt;
+            &lt;CustomProperty Name="qd:AutoChangeBaseEntity" /&gt;
+            &lt;CustomProperty Name="qd:Design"&gt;
+              &lt;Value xsi:type="xsd:string"&gt;expr2&lt;/Value&gt;
+            &lt;/CustomProperty&gt;
+          &lt;/CustomProperties&gt;
+        &lt;/Expression&gt;
+      &lt;/Filter&gt;
+    &lt;/Hierarchy&gt;
+  &lt;/Hierarchies&gt;
+  &lt;MeasureGroups&gt;
+    &lt;MeasureGroup&gt;
+      &lt;BaseEntity&gt;
+        &lt;!--Recibos--&gt;
+        &lt;EntityID&gt;G966812f3-5260-480d-8cc9-2a2d0b630779&lt;/EntityID&gt;
+      &lt;/BaseEntity&gt;
+      &lt;Measures&gt;
+        &lt;Expression Name="Monto_Sum"&gt;
+          &lt;Function&gt;
+            &lt;FunctionName&gt;Sum&lt;/FunctionName&gt;
+            &lt;Arguments&gt;
+              &lt;Expression&gt;
+                &lt;AttributeRef&gt;
+                  &lt;!--Monto Transaccion--&gt;
+                  &lt;AttributeID&gt;G744625c5-f286-4a16-9be8-de0d774faa69&lt;/AttributeID&gt;
+                &lt;/AttributeRef&gt;
+              &lt;/Expression&gt;
+            &lt;/Arguments&gt;
+          &lt;/Function&gt;
+          &lt;CustomProperties&gt;
+            &lt;CustomProperty Name="qd:Design"&gt;
+              &lt;Value xsi:type="xsd:string"&gt;Monto&lt;/Value&gt;
+            &lt;/CustomProperty&gt;
+          &lt;/CustomProperties&gt;
+        &lt;/Expression&gt;
+      &lt;/Measures&gt;
+    &lt;/MeasureGroup&gt;
+  &lt;/MeasureGroups&gt;
+  &lt;CalculatedAttributes&gt;
+    &lt;Expression Name="Monto"&gt;
+      &lt;AttributeRef&gt;
+        &lt;!--Total ORTRXAMT--&gt;
+        &lt;AttributeID&gt;Gab7b1e0d-d322-4f1e-8a96-0c4849dbf3d5&lt;/AttributeID&gt;
+      &lt;/AttributeRef&gt;
+      &lt;CustomProperties&gt;
+        &lt;CustomProperty Name="qd:ContextEntityID"&gt;
+          &lt;Value xsi:type="xsd:string"&gt;G966812f3-5260-480d-8cc9-2a2d0b630779&lt;/Value&gt;
+        &lt;/CustomProperty&gt;
+      &lt;/CustomProperties&gt;
+    &lt;/Expression&gt;
+  &lt;/CalculatedAttributes&gt;
+  &lt;Parameters&gt;
+    &lt;Parameter Name="Usuario"&gt;
+      &lt;DataType&gt;String&lt;/DataType&gt;
+    &lt;/Parameter&gt;
+    &lt;Parameter Name="Fecha Documento"&gt;
+      &lt;DataType&gt;DateTime&lt;/DataType&gt;
+    &lt;/Parameter&gt;
+  &lt;/Parameters&gt;
+&lt;/SemanticQuery&gt;</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="Cajeroa">
+          <DataField>Cajero/a</DataField>
+        </Field>
+        <Field Name="Recibos">
+          <DataField>Recibos</DataField>
+        </Field>
+        <Field Name="Lote">
+          <DataField>Lote</DataField>
+        </Field>
+        <Field Name="NoRecibo">
+          <DataField>No. Recibo</DataField>
+        </Field>
+        <Field Name="NombreCliente">
+          <DataField>Nombre Cliente</DataField>
+        </Field>
+        <Field Name="Monto_Sum">
+          <DataField>Monto_Sum</DataField>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="paramDataSet">
+      <Query>
+        <DataSourceName>dataSource1</DataSourceName>
+        <CommandText>&lt;SemanticQuery xmlns="http://schemas.microsoft.com/sqlserver/2004/10/semanticmodeling" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:qd="http://schemas.microsoft.com/sqlserver/2004/11/semanticquerydesign"&gt;
+  &lt;Hierarchies&gt;
+    &lt;Hierarchy&gt;
+      &lt;BaseEntity&gt;
+        &lt;!--Recibos--&gt;
+        &lt;EntityID&gt;G966812f3-5260-480d-8cc9-2a2d0b630779&lt;/EntityID&gt;
+      &lt;/BaseEntity&gt;
+      &lt;Groupings&gt;
+        &lt;Grouping Name="value"&gt;
+          &lt;Expression Name="value"&gt;
+            &lt;AttributeRef&gt;
+              &lt;!--Usuario--&gt;
+              &lt;AttributeID&gt;G65d974b7-3fa9-4113-9a06-73925681dcc9&lt;/AttributeID&gt;
+            &lt;/AttributeRef&gt;
+          &lt;/Expression&gt;
+        &lt;/Grouping&gt;
+      &lt;/Groupings&gt;
+    &lt;/Hierarchy&gt;
+  &lt;/Hierarchies&gt;
+&lt;/SemanticQuery&gt;</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="value">
+          <DataField>value</DataField>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="paramDataSet2">
+      <Query>
+        <DataSourceName>dataSource1</DataSourceName>
+        <CommandText>&lt;SemanticQuery xmlns="http://schemas.microsoft.com/sqlserver/2004/10/semanticmodeling" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:qd="http://schemas.microsoft.com/sqlserver/2004/11/semanticquerydesign"&gt;
+  &lt;Hierarchies&gt;
+    &lt;Hierarchy&gt;
+      &lt;BaseEntity&gt;
+        &lt;!--Recibos--&gt;
+        &lt;EntityID&gt;G966812f3-5260-480d-8cc9-2a2d0b630779&lt;/EntityID&gt;
+      &lt;/BaseEntity&gt;
+      &lt;Groupings&gt;
+        &lt;Grouping Name="value"&gt;
+          &lt;Expression Name="value"&gt;
+            &lt;AttributeRef&gt;
+              &lt;!--Fecha Documento--&gt;
+              &lt;AttributeID&gt;Gd28709b3-02f2-4671-a30d-169ddd6cb056&lt;/AttributeID&gt;
+            &lt;/AttributeRef&gt;
+          &lt;/Expression&gt;
+        &lt;/Grouping&gt;
+      &lt;/Groupings&gt;
+    &lt;/Hierarchy&gt;
+  &lt;/Hierarchies&gt;
+&lt;/SemanticQuery&gt;</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="value">
+          <DataField>value</DataField>
+        </Field>
+      </Fields>
+    </DataSet>
+  </DataSets>
+  <ReportParameters>
+    <ReportParameter Name="Usuario">
+      <DataType>String</DataType>
+      <Prompt>Usuario</Prompt>
+      <ValidValues>
+        <DataSetReference>
+          <DataSetName>paramDataSet</DataSetName>
+          <ValueField>value</ValueField>
+          <LabelField>value</LabelField>
+        </DataSetReference>
+      </ValidValues>
+    </ReportParameter>
+    <ReportParameter Name="FechaDocumento">
+      <DataType>DateTime</DataType>
+      <Prompt>Fecha Documento</Prompt>
+      <ValidValues>
+        <DataSetReference>
+          <DataSetName>paramDataSet2</DataSetName>
+          <ValueField>value</ValueField>
+          <LabelField>value</LabelField>
+        </DataSetReference>
+      </ValidValues>
+    </ReportParameter>
+  </ReportParameters>
+  <Language>en-US</Language>
+  <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
+  <rd:ReportUnitType>Inch</rd:ReportUnitType>
+  <rd:ReportID>4a86475f-7210-4050-88db-421481a90279</rd:ReportID>
+</Report>

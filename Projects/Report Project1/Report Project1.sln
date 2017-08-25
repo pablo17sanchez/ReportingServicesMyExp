@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{F14B399A-7131-4C87-9E4B-1186C45EF12D}") = "Projecto Nomina", "Report Project1\Projecto Nomina.rptproj", "{7867CB5A-7325-40DC-89EE-97DCD1549A25}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Default = Debug|Default
+		DebugLocal|Default = DebugLocal|Default
+		Production|Default = Production|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7867CB5A-7325-40DC-89EE-97DCD1549A25}.Debug|Default.ActiveCfg = Debug
+		{7867CB5A-7325-40DC-89EE-97DCD1549A25}.Debug|Default.Build.0 = DebugLocal
+		{7867CB5A-7325-40DC-89EE-97DCD1549A25}.Debug|Default.Deploy.0 = DebugLocal
+		{7867CB5A-7325-40DC-89EE-97DCD1549A25}.DebugLocal|Default.ActiveCfg = DebugLocal
+		{7867CB5A-7325-40DC-89EE-97DCD1549A25}.DebugLocal|Default.Build.0 = DebugLocal
+		{7867CB5A-7325-40DC-89EE-97DCD1549A25}.Production|Default.ActiveCfg = Production
+		{7867CB5A-7325-40DC-89EE-97DCD1549A25}.Production|Default.Build.0 = Production
+		{7867CB5A-7325-40DC-89EE-97DCD1549A25}.Production|Default.Deploy.0 = Production
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
